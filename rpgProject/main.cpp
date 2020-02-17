@@ -22,6 +22,8 @@ int main()
     //Player.attack(&Enemy);
     //Enemy.display();
 
+
+
     // Example 002
     // testing a narrator, handling character creation, temporary enemy, and dummy encounter test
     Narrator narrator;
@@ -30,9 +32,14 @@ int main()
     narrator.characterCreator();
 
     Actor player{};
+    Actor enemy{ "Enemy" };
     player.display();
     
-    narrator.encounter(&player);
+    narrator.encounter(&player, &enemy);
+
+    enemy.display();
+
+
 
     return 0;
 }

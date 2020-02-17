@@ -17,11 +17,13 @@ public:
 	int getHealth();
 	int getMana();
 	int getXP();
+	bool livingOrDead();
 	void display();
 
 	// actions
 	bool subtractHealth(int damage);
 	void addXP(int xpGain);
+	int rollDice(int dice);
 
 	// moves (temporary)
 	void attack(Actor* target);
@@ -31,6 +33,8 @@ private:
 	int health{};
 	int mana{};
 	int xp{};
+	bool isAlive{ true };
+	int attackDice{ 10 };
 
 };
 

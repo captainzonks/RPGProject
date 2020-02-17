@@ -1,4 +1,5 @@
 #include "Narrator.h"
+#include "Encounter.h"
 
 #include <iostream>
 
@@ -13,41 +14,52 @@ void Narrator::startGreeting()
 	cout << "-----------------------" << endl;
 }
 
+void Narrator::menuBuilder(int decisions, std::string listOfDecisions[])
+{
+	int count{ 1 };
+	for (int i{}; i <= decisions; ++i)
+	{
+		cout << count << ") " << listOfDecisions[i] << endl;
+		count++;
+	}
+}
+
 void Narrator::characterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
 }
 
-void Narrator::encounter(Actor* player)
+void Narrator::encounter(Actor* player, Actor* enemy)
 {
-	// TODO should an encounter be handled here?
-	// (probably not)
-
 	cout << "An enemy approaches!" << endl;
-	Actor enemy{ "Enemy", 1, 0 };
+	cout << "Do you engage the enemy, or run?" << endl;
+
+	// calls the menu, passes the decisions (2 in this case, Yes or No)
+	std::string* tempYorNdecision = new std::string[2]{ "Y", "N" };
+	menuBuilder(tempYorNdecision->length(), tempYorNdecision);
+
+	// can a Y or N decision be made into a separate method? return a true or false
 	char choice{};
 	while (tolower(choice) != 'y' && tolower(choice) != 'n')
 	{
-		cout << "Engage? ";
 		cin >> choice;
 		switch (tolower(choice))
 		{
 		case 'y':
 		{
-			player->attack(&enemy);
-			enemy.display();
+			Encounter* temp = new Encounter;
+			temp->encounterHandler(player, enemy);
+			delete temp;
 			break;
 		}
 		case 'n':
-		{
 			cout << "You ran away!" << endl;
 			break;
-		}
 		default:
-		{
-			cout << "That is not recognized input." << endl;
+			cout << "Input not recognized." << endl;
 			break;
 		}
-		}
 	}
+
+	delete[] tempYorNdecision;
 }

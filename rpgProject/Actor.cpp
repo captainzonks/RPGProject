@@ -57,6 +57,11 @@ int Actor::getXP()
 	return xp;
 }
 
+bool Actor::livingOrDead()
+{
+	return isAlive;
+}
+
 void Actor::display()
 {
 	cout << endl;
@@ -98,21 +103,28 @@ void Actor::addXP(int xpGain)
 	this->xp += xpGain;
 }
 
+int Actor::rollDice(int dice)
+{
+	srand((unsigned int)time(NULL));
+	int result{ rand() % dice + 1 };
+	return result;
+}
+
 void Actor::attack(Actor* target)
 {
 	// TODO this is a basic randomly generated attack concept
 	// eventual goal is to have unique attacks in separate methods (or classes)
 	
 	cout << this->name << " is attacking " << (*target).name << endl;
-	srand((unsigned int)time(NULL));
-	int damage{ rand() % 10 + 1 };
+	int damage{ rollDice(attackDice) };
 	if ((*target).subtractHealth(damage))
 	{
 		cout << this->name << " did " << damage << " damage to " << (*target).name << "!" << endl;
 	}
 	else if (!(*target).subtractHealth(damage))
 	{
-		cout << this->name << " killed " << (*target).name << "!" << endl;
+		cout << this->name << " killed " << (*target).name << " with " << damage << " damage!" << endl;
+		target->isAlive = false;
 	}
 }
 
