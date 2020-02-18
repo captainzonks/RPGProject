@@ -24,7 +24,7 @@ int main()
 
 
 
-    // Example 002
+    // Example 002 / 003
     // testing a narrator, handling character creation, temporary enemy, and dummy encounter test
     Narrator narrator;
 
@@ -32,13 +32,18 @@ int main()
     narrator.characterCreator();
 
     Actor player{};
-    Actor enemy{ "Enemy" };
+    // Actor enemy{ "Enemy" };
     player.display();
     
-    narrator.encounter(&player, &enemy);
+    // narrator.encounter(&player, &enemy);
 
-    enemy.display();
+    // enemy.display();
 
+    // Example 004
+    // buying stuff and adding an item to an inventory
+    // testing the dynamic menu creation system
+
+    narrator.buySomething(&player);
 
 
     return 0;

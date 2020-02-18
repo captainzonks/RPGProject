@@ -1,5 +1,6 @@
 #include "Narrator.h"
 #include "Encounter.h"
+#include "Menu.h"
 
 #include <iostream>
 
@@ -14,16 +15,6 @@ void Narrator::startGreeting()
 	cout << "-----------------------" << endl;
 }
 
-void Narrator::menuBuilder(int decisions, std::string listOfDecisions[])
-{
-	int count{ 1 };
-	for (int i{}; i <= decisions; ++i)
-	{
-		cout << count << ") " << listOfDecisions[i] << endl;
-		count++;
-	}
-}
-
 void Narrator::characterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
@@ -34,32 +25,34 @@ void Narrator::encounter(Actor* player, Actor* enemy)
 	cout << "An enemy approaches!" << endl;
 	cout << "Do you engage the enemy, or run?" << endl;
 
-	// calls the menu, passes the decisions (2 in this case, Yes or No)
-	std::string* tempYorNdecision = new std::string[2]{ "Y", "N" };
-	menuBuilder(tempYorNdecision->length(), tempYorNdecision);
-
-	// can a Y or N decision be made into a separate method? return a true or false
-	char choice{};
-	while (tolower(choice) != 'y' && tolower(choice) != 'n')
+	Menu* tempMenu = new Menu;
+	const int* decisions = new int{ 2 };
+	string* tempYorNdecision = new string[2]{ "Engage!", "Run Away!" };
+	
+	if (tempMenu->printMenu(decisions, tempYorNdecision) == 1)
 	{
-		cin >> choice;
-		switch (tolower(choice))
-		{
-		case 'y':
-		{
-			Encounter* temp = new Encounter;
-			temp->encounterHandler(player, enemy);
-			delete temp;
-			break;
-		}
-		case 'n':
-			cout << "You ran away!" << endl;
-			break;
-		default:
-			cout << "Input not recognized." << endl;
-			break;
-		}
+		Encounter* tempEncounter = new Encounter;
+		tempEncounter->encounterHandler(player, enemy);
 	}
+	else
+		cout << "You ran away!" << endl;
 
+	delete decisions;
+	delete tempMenu;
 	delete[] tempYorNdecision;
+}
+
+void Narrator::buySomething(Actor* player)
+{
+	cout << "\nWelcome to fantasy shop " << version << "!" << endl;
+	cout << "=============================" << endl;
+
+	Menu* tempMenu = new Menu;
+	const int* decisions = new int{ 4 };
+	string* tempStoreDecisions = new string[*decisions]{ "Sword", "Shield", "Potion", "Torch" };
+
+	player->addToInventory(tempStoreDecisions[tempMenu->printMenu(decisions, tempStoreDecisions) - 1]);
+
+	player->displayInventory();
+
 }

@@ -1,6 +1,10 @@
 #pragma once
 
 #include <string>
+#include <vector>
+
+using std::string;
+using std::vector;
 
 class Actor
 {
@@ -8,33 +12,38 @@ public:
 
 	// constructors
 	Actor();
-	Actor(std::string name);
-	Actor(std::string name, int health, int xp);
-	Actor(std::string name, int health, int mana, int xp);
+	Actor(string name);
+	Actor(string name, int health, int xp);
+	Actor(string name, int health, int mana, int xp);
 
 	// getters
-	std::string getName();
+	string getName();
 	int getHealth();
 	int getMana();
 	int getXP();
 	bool livingOrDead();
 	void display();
+	void displayInventory();
 
 	// actions
 	bool subtractHealth(int damage);
 	void addXP(int xpGain);
 	int rollDice(int dice);
+	void addToInventory(string item);
 
 	// moves (temporary)
 	void attack(Actor* target);
 
 private:
-	std::string name{};
+	// traits
+	string name{};
 	int health{};
 	int mana{};
 	int xp{};
 	bool isAlive{ true };
 	int attackDice{ 10 };
 
+	// inventory
+	vector<string> inventory{};
 };
 

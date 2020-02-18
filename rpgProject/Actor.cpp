@@ -77,6 +77,18 @@ void Actor::display()
 	cout << "====\n" << endl;
 }
 
+void Actor::displayInventory()
+{
+	cout << this->getName() << "'s Inventory" << endl;
+	cout << "============" << endl;
+	int counter{ 1 };
+	for (auto i : inventory)
+	{
+		cout << counter << ": " << i << endl;
+	}
+	cout << "============" << endl;
+}
+
 bool Actor::subtractHealth(int damage)
 {
 	// TODO handling of death won't be here
@@ -108,6 +120,11 @@ int Actor::rollDice(int dice)
 	srand((unsigned int)time(NULL));
 	int result{ rand() % dice + 1 };
 	return result;
+}
+
+void Actor::addToInventory(string item)
+{
+	inventory.push_back(item);
 }
 
 void Actor::attack(Actor* target)
