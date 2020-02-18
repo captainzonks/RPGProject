@@ -6,25 +6,25 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-int Menu::printMenu(const int* decisions, const string listOfDecisions[])
+int Menu::printMenu(const int& decisions, const string* listOfDecisions[])
 {
 	int count{ 1 };
-	for (int i{}; i != *decisions; ++i)
+	for (int i{}; i != decisions; ++i)
 	{
-		cout << count << ") " << listOfDecisions[i] << endl;
+		cout << count << ") " << (*listOfDecisions)[i] << endl;
 		count++;
 	}
 	cout << "Please enter a number: ";
 	return choiceHandler(decisions);
 }
 
-int Menu::choiceHandler(const int* decisions)
+int Menu::choiceHandler(const int& decisions)
 {
 	int choice{};
-	while (choice == 0 || (choice < *decisions && choice > *decisions))
+	while (choice == 0 || (choice < decisions && choice > decisions))
 	{
 		cin >> choice;
-		if (choice < 1 || choice > *decisions)
+		if (choice < 1 || choice > decisions)
 		{
 			cout << "That's not a valid choice." << endl;
 			choice = 0;

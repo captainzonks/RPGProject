@@ -32,7 +32,7 @@ public:
 	void addToInventory(string item);
 
 	// moves (temporary)
-	void attack(Actor* target);
+	void attack(Actor& target);
 
 private:
 	// traits

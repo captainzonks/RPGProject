@@ -6,6 +6,6 @@
 class Encounter
 {
 public:
-	void encounterHandler(Actor* player, Actor* enemy);
+	void encounterHandler(Actor& player, Actor& enemy);
 };
 

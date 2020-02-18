@@ -128,21 +128,21 @@ void Actor::addToInventory(string item)
 	cout << "\nAdded " << item << " to inventory!" << endl;
 }
 
-void Actor::attack(Actor* target)
+void Actor::attack(Actor& target)
 {
 	// TODO this is a basic randomly generated attack concept
 	// eventual goal is to have unique attacks in separate methods (or classes)
 	
-	cout << this->name << " is attacking " << (*target).name << endl;
+	cout << this->name << " is attacking " << target.name << endl;
 	int damage{ rollDice(attackDice) };
-	if ((*target).subtractHealth(damage))
+	if (target.subtractHealth(damage))
 	{
-		cout << this->name << " did " << damage << " damage to " << (*target).name << "!" << endl;
+		cout << this->name << " did " << damage << " damage to " << target.name << "!" << endl;
 	}
-	else if (!(*target).subtractHealth(damage))
+	else if (!target.subtractHealth(damage))
 	{
-		cout << this->name << " killed " << (*target).name << " with " << damage << " damage!" << endl;
-		target->isAlive = false;
+		cout << this->name << " killed " << target.name << " with " << damage << " damage!" << endl;
+		target.isAlive = false;
 	}
 }
 

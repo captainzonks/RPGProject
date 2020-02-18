@@ -20,16 +20,16 @@ void Narrator::characterCreator()
 	cout << "\nLet's create a character!" << endl;
 }
 
-void Narrator::encounter(Actor* player, Actor* enemy)
+void Narrator::encounter(Actor& player, Actor& enemy)
 {
 	cout << "An enemy approaches!" << endl;
 	cout << "Do you engage the enemy, or run?" << endl;
 
 	Menu* tempMenu = new Menu;
 	const int* decisions = new int{ 2 };
-	string* tempYorNdecision = new string[2]{ "Engage!", "Run Away!" };
+	const string* tempYorNdecision = new string[2]{ "Engage!", "Run Away!" };
 	
-	if (tempMenu->printMenu(decisions, tempYorNdecision) == 1)
+	if (tempMenu->printMenu(*decisions, &tempYorNdecision) == 1)
 	{
 		Encounter* tempEncounter = new Encounter;
 		tempEncounter->encounterHandler(player, enemy);
@@ -42,17 +42,17 @@ void Narrator::encounter(Actor* player, Actor* enemy)
 	delete[] tempYorNdecision;
 }
 
-void Narrator::buySomething(Actor* player)
+void Narrator::buySomething(Actor& player)
 {
 	cout << "\nWelcome to fantasy shop " << version << "!" << endl;
 	cout << "=============================" << endl;
 
 	Menu* tempMenu = new Menu;
 	const int* decisions = new int{ 4 };
-	string* tempStoreDecisions = new string[*decisions]{ "Sword", "Shield", "Potion", "Torch" };
+	const string* tempStoreDecisions = new string[*decisions]{ "Sword", "Shield", "Potion", "Torch" };
 
-	player->addToInventory(tempStoreDecisions[tempMenu->printMenu(decisions, tempStoreDecisions) - 1]);
+	player.addToInventory(tempStoreDecisions[tempMenu->printMenu(*decisions, &tempStoreDecisions) - 1]);
 
-	player->displayInventory();
+	player.displayInventory();
 
 }

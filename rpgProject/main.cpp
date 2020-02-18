@@ -39,11 +39,13 @@ int main()
 
     // enemy.display();
 
+
+
     // Example 004
     // buying stuff and adding an item to an inventory
     // testing the dynamic menu creation system
 
-    narrator.buySomething(&player);
+    narrator.buySomething(player);
 
 
     return 0;

@@ -7,13 +7,13 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void Encounter::encounterHandler(Actor* player, Actor* enemy)
+void Encounter::encounterHandler(Actor& player, Actor& enemy)
 {
 	// TODO getting kinda big, and the flow is wonky (asks Attack? every time)
 	// eventually a choice of KIND of attack will be replaced here
 
 	char choice{};
-	while (enemy->livingOrDead() && tolower(choice) != 'y' && tolower(choice) != 'n')
+	while (enemy.livingOrDead() && tolower(choice) != 'y' && tolower(choice) != 'n')
 	{
 		cout << "Attack? ";
 		cin >> choice;
@@ -21,7 +21,7 @@ void Encounter::encounterHandler(Actor* player, Actor* enemy)
 		{
 		case 'y':
 		{
-			player->attack(enemy);
+			player.attack(enemy);
 			break;
 		}
 		case 'n':
@@ -35,7 +35,7 @@ void Encounter::encounterHandler(Actor* player, Actor* enemy)
 			break;
 		}
 		}
-		if (enemy->livingOrDead())
+		if (enemy.livingOrDead())
 		{
 			cout << "The enemy still stands! Attack again (Y or N)? ";
 			cin >> choice;
