@@ -14,6 +14,7 @@ int Menu::printMenu(const int* decisions, const string listOfDecisions[])
 		cout << count << ") " << listOfDecisions[i] << endl;
 		count++;
 	}
+	cout << "Please enter a number: ";
 	return choiceHandler(decisions);
 }
 

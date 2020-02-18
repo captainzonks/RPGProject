@@ -79,7 +79,7 @@ void Actor::display()
 
 void Actor::displayInventory()
 {
-	cout << this->getName() << "'s Inventory" << endl;
+	cout << "\n" << this->getName() << "'s Inventory" << endl;
 	cout << "============" << endl;
 	int counter{ 1 };
 	for (auto i : inventory)
@@ -125,6 +125,7 @@ int Actor::rollDice(int dice)
 void Actor::addToInventory(string item)
 {
 	inventory.push_back(item);
+	cout << "\nAdded " << item << " to inventory!" << endl;
 }
 
 void Actor::attack(Actor* target)
