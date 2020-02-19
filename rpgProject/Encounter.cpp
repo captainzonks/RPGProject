@@ -1,11 +1,4 @@
-#include <iostream>
-
 #include "Encounter.h"
-#include "Actor.h"
-
-using std::cout;
-using std::cin;
-using std::endl;
 
 void Encounter::encounterHandler(Actor& player, Actor& enemy)
 {

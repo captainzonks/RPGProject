@@ -2,27 +2,29 @@
 
 Actor::Actor()
 {
-	name = "Guy";
-	health = 100;
-	xp = 0;
+	cout << "Actor constructor called" << endl; // debug
+	this->name = "Guy";
+	this->health = 100;
+	this->xp = 0;
 	this->strength, this->dexterity, this->constitution, this->intelligence, this->wisdom, this->charisma = 10;
 }
 
-Actor::Actor(std::string name)
+Actor::Actor(string name)
 {
+	cout << "Actor (name) overloaded constructor called" << endl; // debug
 	this->name = name;
-	health = 100;
-	xp = 0;
+	this->health = 100;
+	this->xp = 0;
 	this->strength, this->dexterity, this->constitution, this->intelligence, this->wisdom, this->charisma = 10;
 }
 
-Actor::Actor(std::string name, int health, int xp)
-{
-	this->name = name;
-	this->health = health;
-	this->xp = xp;
-	this->strength, this->dexterity, this->constitution, this->intelligence, this->wisdom, this->charisma = 10;
-}
+//Actor::Actor(string name, int health, int xp)
+//{
+//	this->name = name;
+//	this->health = health;
+//	this->xp = xp;
+//	this->strength, this->dexterity, this->constitution, this->intelligence, this->wisdom, this->charisma = 10;
+//}
 
 void Actor::rollStats()
 {

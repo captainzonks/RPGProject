@@ -1,16 +1,18 @@
 #pragma once
 
+#include "Menu.h"
 #include "Actor.h"
-
-#include <string>
+#include "Human.h"
+#include "Encounter.h"
 
 class Narrator
 {
 public:
+
 	void startGreeting();
 
 	// character creation
-	void characterCreator();
+	Actor* characterCreator();
 
 	// encounters
 	void encounter(Actor& player, Actor& enemy);

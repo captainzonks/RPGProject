@@ -8,19 +8,16 @@
 #include <iostream>
 #include <algorithm>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
 using std::vector;
 
 class Human
-	: Actor
+	: public Actor
 {
 public:
 
 	// constructors
 	Human();
+	Human(string name);
 
 	// display
 	void display();

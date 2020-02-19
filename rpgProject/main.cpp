@@ -13,20 +13,21 @@ int main()
 {
 
     srand((unsigned int)time(0)); // seed the dice rolls
-    Narrator narrator; // start the narrator
+    Narrator narrator{}; // start the narrator
 
     narrator.startGreeting();
 
-    narrator.characterCreator();
+    Actor* player{ nullptr };
 
-    Human player{};
+    player = narrator.characterCreator();
 
-    player.display();
+    player->display();
 
     // narrator.encounter(&player, &enemy);
     // enemy.display();
 
     // narrator.buySomething(player);
+
 
     return 0;
 }

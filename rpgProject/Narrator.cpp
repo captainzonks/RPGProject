@@ -1,12 +1,4 @@
 #include "Narrator.h"
-#include "Encounter.h"
-#include "Menu.h"
-
-#include <iostream>
-
-using std::cout;
-using std::cin;
-using std::endl;
 
 void Narrator::startGreeting()
 {
@@ -15,9 +7,36 @@ void Narrator::startGreeting()
 	cout << "-----------------------" << endl;
 }
 
-void Narrator::characterCreator()
+Actor* Narrator::characterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
+
+	cout << "What are you?" << endl;
+	int choice{};
+	Menu* tempMenu = new Menu;
+	const int* decisions = new int{ 4 };
+	const string* tempYorNdecision = new string[4]{ "Human", "Dwarf", "Elf", "Halfling" };
+	choice = tempMenu->printMenu(*decisions, &tempYorNdecision);
+
+	string name{};
+	cout << "What's your name? ";
+	cin >> name;
+
+	Actor* player{ nullptr };
+
+	switch (choice)
+	{
+	case 1:
+		player = new Human(name);
+	default:
+		break;
+	}
+
+	delete decisions;
+	delete tempMenu;
+	delete[] tempYorNdecision;
+
+	return player;
 }
 
 void Narrator::encounter(Actor& player, Actor& enemy)

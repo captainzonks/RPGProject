@@ -21,7 +21,10 @@ public:
 	// constructors
 	Actor();
 	Actor(string name);
-	Actor(string name, int health, int xp);
+	// Actor(string name, int health, int xp);
+
+	// destructors
+	virtual ~Actor() {};
 
 	// setters
 	void rollStats();

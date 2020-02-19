@@ -1,8 +1,12 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
 
 class Menu
 {
@@ -12,7 +16,7 @@ public:
 	int printMenu(const int& decisions, const string* listOfDecisions[]);
 	int choiceHandler(const int& decisions);
 
-
+	
 
 };
 

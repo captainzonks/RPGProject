@@ -2,8 +2,13 @@
 
 Human::Human()
 {
-	cout << "\nWhat is your name? ";
-	cin >> name;
+	cout << "Human constructor called" << endl; // debug
+}
+
+Human::Human(string name)
+{
+	cout << "Human (name) overloaded constructor called" << endl; // debug
+	this->name = name;
 	health = 100;
 	xp = 0;
 	this->rollStats();
