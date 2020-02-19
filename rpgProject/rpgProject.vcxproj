@@ -150,6 +150,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Encounter.cpp" />
     <ClCompile Include="Fighter.cpp" />
+    <ClCompile Include="Human.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Narrator.cpp" />
     <ClCompile Include="main.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Encounter.h" />
     <ClInclude Include="Fighter.h" />
+    <ClInclude Include="Human.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Narrator.h" />
   </ItemGroup>
