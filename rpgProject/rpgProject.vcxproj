@@ -148,20 +148,34 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Currency.cpp" />
+    <ClCompile Include="Dwarf.cpp" />
+    <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Encounter.cpp" />
     <ClCompile Include="Fighter.cpp" />
+    <ClCompile Include="Halfling.cpp" />
     <ClCompile Include="Human.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Narrator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="Weapons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Currency.h" />
+    <ClInclude Include="Dwarf.h" />
+    <ClInclude Include="Elf.h" />
     <ClInclude Include="Encounter.h" />
     <ClInclude Include="Fighter.h" />
+    <ClInclude Include="Halfling.h" />
     <ClInclude Include="Human.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Narrator.h" />
+    <ClInclude Include="Sword.h" />
+    <ClInclude Include="Weapons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

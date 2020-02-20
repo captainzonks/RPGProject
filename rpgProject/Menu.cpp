@@ -1,13 +1,15 @@
 #include "Menu.h"
 
-int Menu::printMenu(const int& decisions, const string* listOfDecisions[])
+int Menu::printMenu(const int& decisions, const vector<string>& listOfDecisions)
 {
+	cout << "--------" << endl;
 	int count{ 1 };
 	for (int i{}; i != decisions; ++i)
 	{
-		cout << count << ") " << (*listOfDecisions)[i] << endl;
+		cout << count << ") " << listOfDecisions[i] << endl;
 		count++;
 	}
+	cout << "--------" << endl;
 	return choiceHandler(decisions);
 }
 

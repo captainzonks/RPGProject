@@ -9,15 +9,14 @@
 #include <algorithm>
 
 using std::vector;
-
-class Human
-	: public Actor
+class Elf :
+	public Actor
 {
 public:
 
 	// constructors
-	Human();
-	Human(string name);
+	Elf();
+	Elf(string name);
 
 	// getter
 	string getRace();
@@ -28,7 +27,7 @@ public:
 
 private:
 
-	string race{ "Human" };
+	string race{ "Elf" };
 	int walkingSpeed{ 30 };
 
 };

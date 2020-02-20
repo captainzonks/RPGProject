@@ -5,6 +5,8 @@
 
 #include "Actor.h"
 #include "Human.h"
+#include "Elf.h"
+#include "Dwarf.h"
 #include "Narrator.h"
 
 using namespace std;
@@ -22,12 +24,15 @@ int main()
     player = narrator.characterCreator();
 
     player->display();
+    
+    cout << "Inventory Capacity: " << player->myInventory.getCapacity() << endl;
+    cout << "Gold : " << player->myCurrency.getGold() << endl;
+    cout << "Silver : " << player->myCurrency.getSilver() << endl;
+    cout << "Copper : " << player->myCurrency.getCopper() << endl;
 
-    // narrator.encounter(&player, &enemy);
-    // enemy.display();
+    player->myInventory.getASword();
 
-    // narrator.buySomething(player);
-
+    delete player;
 
     return 0;
 }

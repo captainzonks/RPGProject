@@ -1,27 +1,27 @@
-#include "Human.h"
+#include "Dwarf.h"
 
-Human::Human()
+Dwarf::Dwarf()
 {
-	cout << "Human constructor called" << endl; // debug
+	cout << "Dwarf constructor called" << endl; // debug
 }
 
-Human::Human(string name)
+Dwarf::Dwarf(string name)
 {
-	cout << "Human (name) overloaded constructor called" << endl; // debug
+	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
 	this->name = name;
-	this->race = "Human";
+	this->race = "Dwarf";
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
 	this->raceModification();
 }
 
-string Human::getRace()
+string Dwarf::getRace()
 {
 	return this->race;
 }
 
-void Human::display()
+void Dwarf::display()
 {
 	cout << endl;
 	// name header
@@ -52,12 +52,9 @@ void Human::display()
 	cout << "====\n" << endl;
 }
 
-void Human::raceModification()
+void Dwarf::raceModification()
 {
-	this->strength += 1;
-	this->dexterity += 1;
-	this->constitution += 1;
-	this->intelligence += 1;
+	this->strength += 2;
+	this->constitution += 2;
 	this->wisdom += 1;
-	this->charisma += 1;
 }

@@ -15,8 +15,8 @@ Actor* Narrator::characterCreator()
 	int choice{};
 	Menu* tempMenu = new Menu;
 	const int* decisions = new int{ 4 };
-	const string* tempYorNdecision = new string[4]{ "Human", "Dwarf", "Elf", "Halfling" };
-	choice = tempMenu->printMenu(*decisions, &tempYorNdecision);
+	const vector<string>* tempDecisions = new vector<string>{ "Human", "Dwarf", "Elf", "Halfling" };
+	choice = tempMenu->printMenu(*decisions, *tempDecisions);
 
 	string name{};
 	cout << "What's your name? ";
@@ -28,13 +28,23 @@ Actor* Narrator::characterCreator()
 	{
 	case 1:
 		player = new Human(name);
+		break;
+	case 2:
+		player = new Dwarf(name);
+		break;
+	case 3:
+		player = new Elf(name);
+		break;
+	case 4:
+		player = new Halfling(name);
+		break;
 	default:
 		break;
 	}
 
 	delete decisions;
 	delete tempMenu;
-	delete[] tempYorNdecision;
+	delete tempDecisions;
 
 	return player;
 }
@@ -46,9 +56,9 @@ void Narrator::encounter(Actor& player, Actor& enemy)
 
 	Menu* tempMenu = new Menu;
 	const int* decisions = new int{ 2 };
-	const string* tempYorNdecision = new string[2]{ "Engage!", "Run Away!" };
+	const vector<string>* tempDecisions = new vector<string>{ "Engage!", "Run Away!" };
 	
-	if (tempMenu->printMenu(*decisions, &tempYorNdecision) == 1)
+	if (tempMenu->printMenu(*decisions, *tempDecisions) == 1)
 	{
 		Encounter* tempEncounter = new Encounter;
 		tempEncounter->encounterHandler(player, enemy);
@@ -58,20 +68,30 @@ void Narrator::encounter(Actor& player, Actor& enemy)
 
 	delete decisions;
 	delete tempMenu;
-	delete[] tempYorNdecision;
+	delete tempDecisions;
 }
 
-void Narrator::buySomething(Actor& player)
-{
-	cout << "\nWelcome to fantasy shop " << version << "!" << endl;
-	cout << "=============================" << endl;
+// broken and obsolete - items should be classes
 
-	Menu* tempMenu = new Menu;
-	const int* decisions = new int{ 4 };
-	const string* tempStoreDecisions = new string[*decisions]{ "Sword", "Shield", "Potion", "Torch" };
-
-	player.addToInventory(tempStoreDecisions[tempMenu->printMenu(*decisions, &tempStoreDecisions) - 1]);
-
-	player.displayInventory();
-
-}
+//void Narrator::buySomething(Actor& player)
+//{
+//	cout << "Welcome to fantasy shop " << version << "!" << endl;
+//	cout << "=============================" << endl;
+//	cout << "What would you like to purchase?" << endl;
+//
+//	Actor* storeNPC = new Actor;
+//	vector<string> items{ "Sword", "Shield", "Potion", "Torch" };
+//	storeNPC->addToInventory(items);
+//	storeNPC->displayInventory();
+//
+//	Menu* tempMenu = new Menu;
+//	const int* decisions = new int{ storeNPC->sizeOfInventory() };
+//	vector<string>* tempStoreDecisions = new vector<string>[*decisions]{ storeNPC->inventory };
+//	
+//	player.addToInventory(tempStoreDecisions[tempMenu->printMenu(*decisions, *tempStoreDecisions) - 1]);
+//
+//	player.displayInventory();
+//
+//	delete storeNPC, tempMenu, decisions;
+//	delete[] tempStoreDecisions;
+//}

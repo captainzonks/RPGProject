@@ -1,27 +1,27 @@
-#include "Human.h"
+#include "Halfling.h"
 
-Human::Human()
+Halfling::Halfling()
 {
-	cout << "Human constructor called" << endl; // debug
+	cout << "Halfling constructor called" << endl; // debug
 }
 
-Human::Human(string name)
+Halfling::Halfling(string name)
 {
-	cout << "Human (name) overloaded constructor called" << endl; // debug
+	cout << "Halfling (name) overloaded constructor called" << endl; // debug
 	this->name = name;
-	this->race = "Human";
+	this->race = "Halfling";
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
 	this->raceModification();
 }
 
-string Human::getRace()
+string Halfling::getRace()
 {
 	return this->race;
 }
 
-void Human::display()
+void Halfling::display()
 {
 	cout << endl;
 	// name header
@@ -52,12 +52,8 @@ void Human::display()
 	cout << "====\n" << endl;
 }
 
-void Human::raceModification()
+void Halfling::raceModification()
 {
-	this->strength += 1;
-	this->dexterity += 1;
 	this->constitution += 1;
-	this->intelligence += 1;
-	this->wisdom += 1;
 	this->charisma += 1;
 }

@@ -2,18 +2,22 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <initializer_list>
 
-using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
+using std::vector;
+using std::initializer_list;
 
 class Menu
 {
 public:
 
 	// dynamic menu creation and handling
-	int printMenu(const int& decisions, const string* listOfDecisions[]);
+	int printMenu(const int& decisions, const vector<string>& listOfDecisions);
 	int choiceHandler(const int& decisions);
 
 	

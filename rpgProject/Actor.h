@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Menu.h"
+#include "Inventory.h"
+#include "Currency.h"
 
 #include <string>
 #include <vector>
@@ -15,8 +17,10 @@ using std::vector;
 
 class Actor
 {
-
 public:
+
+	Inventory myInventory;
+	Currency myCurrency;
 
 	// constructors
 	Actor();
@@ -28,6 +32,9 @@ public:
 
 	// setters
 	void rollStats();
+	// money setters
+	void addMoney(int gold, int silver, int copper);
+	void subtractMoney(int gold, int silver, int copper);
 
 	// getters
 	string getName();
@@ -36,14 +43,16 @@ public:
 	int getStrengthMod(), getDexMod(), getConstMod(), getIntelMod(), getWisdomMod(), getCharMod();
 	int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
 	bool livingOrDead();
-	void display(), displayInventory();
+	virtual void display();
+	void displayInventory(), displayMoney();
+	int sizeOfInventory();
 
 	// actions
 	bool subtractHealth(int& damage);
 	void addXP(int& xpGain);
 	int rollDice(const int& quantity, const int& dice),
 		rollDiceIgnoreLowest(const int& quantity, const int& dice);
-	void addToInventory(string item);
+	void addToInventory(vector<string> items);
 
 	// modify stats
 	void modifyStrength(const int& modifier),
@@ -57,6 +66,7 @@ public:
 	void attack(Actor& target);
 
 protected:
+	friend class Narrator;
 	// basic traits
 	string name{};
 	int health{};
@@ -71,9 +81,6 @@ protected:
 	int intelligence{};
 	int wisdom{};
 	int charisma{};
-
-	// inventory
-	vector<string> inventory{};
 
 };
 

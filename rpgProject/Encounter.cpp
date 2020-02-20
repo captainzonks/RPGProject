@@ -5,10 +5,10 @@ void Encounter::encounterHandler(Actor& player, Actor& enemy)
 	// TODO getting kinda big, and the flow is wonky (asks Attack? every time)
 	// eventually a choice of KIND of attack will be replaced here
 
+
 	char choice{};
 	while (enemy.livingOrDead() && tolower(choice) != 'y' && tolower(choice) != 'n')
 	{
-		cout << "Attack? ";
 		cin >> choice;
 		switch (tolower(choice))
 		{

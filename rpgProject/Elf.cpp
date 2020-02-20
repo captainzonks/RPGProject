@@ -1,27 +1,27 @@
-#include "Human.h"
+#include "Elf.h"
 
-Human::Human()
+Elf::Elf()
 {
-	cout << "Human constructor called" << endl; // debug
+	cout << "Elf constructor called" << endl; // debug
 }
 
-Human::Human(string name)
+Elf::Elf(string name)
 {
-	cout << "Human (name) overloaded constructor called" << endl; // debug
+	cout << "Elf (name) overloaded constructor called" << endl; // debug
 	this->name = name;
-	this->race = "Human";
+	this->race = "Elf";
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
 	this->raceModification();
 }
 
-string Human::getRace()
+string Elf::getRace()
 {
 	return this->race;
 }
 
-void Human::display()
+void Elf::display()
 {
 	cout << endl;
 	// name header
@@ -52,11 +52,9 @@ void Human::display()
 	cout << "====\n" << endl;
 }
 
-void Human::raceModification()
+void Elf::raceModification()
 {
-	this->strength += 1;
-	this->dexterity += 1;
-	this->constitution += 1;
+	this->dexterity += 2;
 	this->intelligence += 1;
 	this->wisdom += 1;
 	this->charisma += 1;

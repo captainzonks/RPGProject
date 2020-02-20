@@ -3,12 +3,14 @@
 #include "Menu.h"
 #include "Actor.h"
 #include "Human.h"
+#include "Dwarf.h"
+#include "Elf.h"
+#include "Halfling.h"
 #include "Encounter.h"
 
 class Narrator
 {
 public:
-
 	void startGreeting();
 
 	// character creation
@@ -21,6 +23,7 @@ public:
 	void buySomething(Actor& player);
 
 private:
-	std::string version{ "v0.01c" };
+	
+	string version{ "v0.01d" };
 };
 

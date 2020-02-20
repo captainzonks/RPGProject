@@ -10,14 +10,14 @@
 
 using std::vector;
 
-class Human
+class Dwarf
 	: public Actor
 {
 public:
 
 	// constructors
-	Human();
-	Human(string name);
+	Dwarf();
+	Dwarf(string name);
 
 	// getter
 	string getRace();
@@ -28,8 +28,8 @@ public:
 
 private:
 
-	string race{ "Human" };
-	int walkingSpeed{ 30 };
+	string race{ "Dwarf" };
+	int walkingSpeed{ 25 };
 
 };
 
