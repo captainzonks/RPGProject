@@ -13,7 +13,10 @@ Actor::Actor()
 	this->wisdom = 10;
 	this->charisma = 10;
 
-	/*this->gold = rollDice(4, 4);*/
+	Inventory myInventory;
+	Currency myCurrency;
+
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
 Actor::Actor(string name)
@@ -30,19 +33,6 @@ Actor::Actor(string name)
 	this->charisma = 10;
 }
 
-//Actor::Actor(string name, int health, int xp)
-//{
-//	this->name = name;
-//	this->health = health;
-//	this->xp = xp;
-//	this->strength = 10;
-//	this->dexterity = 10;
-//	this->constitution = 10;
-//	this->intelligence = 10;
-//	this->wisdom = 10;
-//	this->charisma = 10;
-//}
-
 void Actor::rollStats()
 {
 	this->strength = rollDiceIgnoreLowest(4, 6);
@@ -52,38 +42,6 @@ void Actor::rollStats()
 	this->wisdom = rollDiceIgnoreLowest(4, 6);
 	this->charisma = rollDiceIgnoreLowest(4, 6);
 }
-
-//void Actor::addMoney(int gold, int silver, int copper)
-//{
-//	this->gold += gold;
-//	this->silver += silver;
-//	this->copper += copper;
-//}
-
-//void Actor::subtractMoney(int gold, int silver, int copper)
-//{
-//	if (gold != 0 && this->gold >= gold)
-//		this->gold -= gold;
-//	else if (gold == 0)
-//	{
-//	}
-//	else
-//		cout << "You don't have enough gold!" << endl;
-//	if (silver != 0 && this->silver >= silver)
-//		this->silver -= silver;
-//	else if (silver == 0)
-//	{
-//	}
-//	else
-//		cout << "You don't have enough silver!" << endl;
-//	if (copper != 0 && this->copper >= copper)
-//		this->copper -= copper;
-//	else if (copper == 0)
-//	{
-//	}
-//	else
-//		cout << "You don't have enough copper!" << endl;
-//}
 
 string Actor::getName()
 {
@@ -219,32 +177,11 @@ void Actor::display()
 	cout << "====\n" << endl;
 }
 
-//void Actor::displayInventory()
-//{
-//	cout << "\n" << this->getName() << "'s Inventory" << endl;
-//	cout << "============" << endl;
-//	int counter{ 1 };
-//	for (auto i : this->inventory)
-//	{
-//		cout << counter << ": " << i << endl;
-//	}
-//	cout << "============" << endl;
-//}
 
-//void Actor::displayMoney()
-//{
-//	cout << "\n" << this->getName() << "'s Money" << endl;
-//	cout << "============" << endl;
-//	cout << "Gold   : " << gold << endl;
-//	cout << "Silver : " << silver << endl;
-//	cout << "Copper : " << copper << endl;
-//	cout << "============" << endl;
-//}
-
-//int Actor::sizeOfInventory()
-//{
-//	return inventory.size();
-//}
+int Actor::sizeOfInventory()
+{
+	return this->myInventory.getCapacity();
+}
 
 bool Actor::subtractHealth(int& damage)
 {
@@ -299,14 +236,6 @@ int Actor::rollDiceIgnoreLowest(const int& quantity, const int& dice)
 	
 	return total;
 }
-
-//void Actor::addToInventory(vector<string> items)
-//{
-//	for (auto i : items)
-//	{
-//		this->inventory.push_back(i);
-//	}
-//}
 
 void Actor::modifyStrength(const int& modifier)
 {

@@ -26,11 +26,12 @@ int main()
     player->display();
     
     cout << "Inventory Capacity: " << player->myInventory.getCapacity() << endl;
-    cout << "Gold : " << player->myCurrency.getGold() << endl;
-    cout << "Silver : " << player->myCurrency.getSilver() << endl;
-    cout << "Copper : " << player->myCurrency.getCopper() << endl;
+    cout << player->getName() << "'s Money" << endl;
+    player->myCurrency.displayMoney();
 
-    player->myInventory.getASword();
+    
+    player->myInventory.addToInventory(narrator.makeASword());
+    player->myInventory.displayInventory();
 
     delete player;
 

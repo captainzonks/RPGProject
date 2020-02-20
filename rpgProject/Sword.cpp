@@ -1,5 +1,11 @@
 #include "Sword.h"
 
+Sword::Sword(string name)
+	: Item(name)
+{
+	this->name = name;
+}
+
 string Sword::getName()
 {
 	return this->name;

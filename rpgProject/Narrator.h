@@ -19,8 +19,8 @@ public:
 	// encounters
 	void encounter(Actor& player, Actor& enemy);
 
-	// dummy inventory purchase
-	void buySomething(Actor& player);
+	// inventory creation
+	Sword* makeASword();
 
 private:
 	

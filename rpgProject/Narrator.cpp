@@ -71,6 +71,12 @@ void Narrator::encounter(Actor& player, Actor& enemy)
 	delete tempDecisions;
 }
 
+Sword* Narrator::makeASword()
+{
+	Sword* sword_ptr = new Sword("Sword");
+	return sword_ptr;
+}
+
 // broken and obsolete - items should be classes
 
 //void Narrator::buySomething(Actor& player)

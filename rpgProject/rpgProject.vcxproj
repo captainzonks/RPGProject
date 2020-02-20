@@ -156,11 +156,11 @@
     <ClCompile Include="Halfling.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Narrator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="Weapons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
@@ -172,10 +172,10 @@
     <ClInclude Include="Halfling.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Narrator.h" />
     <ClInclude Include="Sword.h" />
-    <ClInclude Include="Weapons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

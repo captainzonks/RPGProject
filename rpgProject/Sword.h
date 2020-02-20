@@ -1,15 +1,18 @@
 #pragma once
 
-#include "Weapons.h"
+#include "Item.h"
 
 #include <string>
 
 using std::string;
 
 class Sword :
-	public Weapons
+	public Item
 {
 public:
+
+	Sword(string name);
+
 	string getName();
 	int getAttackDie();
 	int getDurability();

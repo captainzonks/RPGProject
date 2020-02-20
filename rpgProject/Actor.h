@@ -32,9 +32,6 @@ public:
 
 	// setters
 	void rollStats();
-	// money setters
-	void addMoney(int gold, int silver, int copper);
-	void subtractMoney(int gold, int silver, int copper);
 
 	// getters
 	string getName();
@@ -44,7 +41,7 @@ public:
 	int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
 	bool livingOrDead();
 	virtual void display();
-	void displayInventory(), displayMoney();
+	
 	int sizeOfInventory();
 
 	// actions
@@ -52,7 +49,6 @@ public:
 	void addXP(int& xpGain);
 	int rollDice(const int& quantity, const int& dice),
 		rollDiceIgnoreLowest(const int& quantity, const int& dice);
-	void addToInventory(vector<string> items);
 
 	// modify stats
 	void modifyStrength(const int& modifier),

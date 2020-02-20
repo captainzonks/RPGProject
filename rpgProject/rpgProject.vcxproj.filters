@@ -48,13 +48,13 @@
     <ClCompile Include="Currency.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Weapons.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sword.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,13 +89,13 @@
     <ClInclude Include="Currency.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Weapons.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Sword.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
