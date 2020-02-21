@@ -1,18 +1,15 @@
 #pragma once
 
-#include "Sword.h"
+#include "Item.h"
+#include "Armor.h"
+#include "Menu.h"
 
-#include <iostream>
-#include <string>
 #include <vector>
-#include <iostream>
 #include <algorithm>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::ostream;
-using std::string;
 using std::vector;
 
 class Inventory
@@ -24,10 +21,14 @@ public:
 
 	~Inventory();
 
+	void setCapacity(int capacityChange);
 	int getCapacity();
+	int totalItemsInInventory();
 
 	void addToInventory(Item* item);
 	void displayInventory();
+
+	// Item* selectItemInInventory();
 
 private:
 

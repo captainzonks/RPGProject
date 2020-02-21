@@ -16,6 +16,10 @@ Dwarf::Dwarf(string name)
 	this->raceModification();
 }
 
+Dwarf::~Dwarf()
+{
+}
+
 string Dwarf::getRace()
 {
 	return this->race;

@@ -19,6 +19,8 @@ public:
 	Halfling();
 	Halfling(string name);
 
+	virtual ~Halfling() override;
+
 	// getter
 	string getRace();
 	void display();

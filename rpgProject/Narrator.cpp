@@ -71,6 +71,25 @@ void Narrator::encounter(Actor& player, Actor& enemy)
 	delete tempDecisions;
 }
 
+Item* Narrator::makeAnItem(ITEM_TYPES itemType)
+{
+	Item* new_item{ nullptr };
+	switch (itemType)
+	{
+	case Narrator::ITEM_TYPES::SWORD:
+		new_item = new Sword("Sword");
+		break;
+	case Narrator::ITEM_TYPES::SHIELD:
+		new_item = new Shield("Shield", 2);
+		break;
+	default:
+		break;
+	}
+
+
+	return new_item;
+}
+
 Sword* Narrator::makeASword()
 {
 	Sword* sword_ptr = new Sword("Sword");

@@ -7,6 +7,10 @@ class Fighter
 {
 public:
 
+	Fighter();
+
+	~Fighter();
+
 	int attack(int decision);
 
 private:

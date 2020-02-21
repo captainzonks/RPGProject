@@ -28,14 +28,15 @@ public:
 	// Actor(string name, int health, int xp);
 
 	// destructors
-	virtual ~Actor() {};
+	virtual ~Actor();
 
 	// setters
 	void rollStats();
+	void setArmorClass(int armor);
 
 	// getters
 	string getName();
-	int getHealth(), getXP();
+	int getHealth(), getArmorClass(), getXP();
 	int getStrength(), getDexterity(), getConstitution(), getIntelligence(), getWisdom(), getCharisma();
 	int getStrengthMod(), getDexMod(), getConstMod(), getIntelMod(), getWisdomMod(), getCharMod();
 	int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
@@ -49,6 +50,12 @@ public:
 	void addXP(int& xpGain);
 	int rollDice(const int& quantity, const int& dice),
 		rollDiceIgnoreLowest(const int& quantity, const int& dice);
+
+	// inventory management
+	void openInventory();
+
+	// armor related functions
+	void equipArmor(Armor& armor);
 
 	// modify stats
 	void modifyStrength(const int& modifier),
@@ -66,6 +73,7 @@ protected:
 	// basic traits
 	string name{};
 	int health{};
+	int armorClass{ 10 };
 	int xp{};
 	bool isAlive{ true };
 	int attackDice{ 10 }; // temporary

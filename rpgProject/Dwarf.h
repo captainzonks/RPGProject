@@ -19,6 +19,8 @@ public:
 	Dwarf();
 	Dwarf(string name);
 
+	virtual ~Dwarf() override;
+
 	// getter
 	string getRace();
 	void display();

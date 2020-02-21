@@ -1,8 +1,16 @@
 #include "Item.h"
 
+Item::Item()
+{
+}
+
 Item::Item(string name)
 {
 	this->name = name;
+}
+
+Item::~Item()
+{
 }
 
 string Item::getName()

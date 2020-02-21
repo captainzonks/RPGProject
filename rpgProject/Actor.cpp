@@ -33,6 +33,10 @@ Actor::Actor(string name)
 	this->charisma = 10;
 }
 
+Actor::~Actor()
+{
+}
+
 void Actor::rollStats()
 {
 	this->strength = rollDiceIgnoreLowest(4, 6);
@@ -41,6 +45,11 @@ void Actor::rollStats()
 	this->intelligence = rollDiceIgnoreLowest(4, 6);
 	this->wisdom = rollDiceIgnoreLowest(4, 6);
 	this->charisma = rollDiceIgnoreLowest(4, 6);
+}
+
+void Actor::setArmorClass(int armor)
+{
+	armorClass += armor;
 }
 
 string Actor::getName()
@@ -56,6 +65,11 @@ int Actor::getHealth()
 int Actor::getXP()
 {
 	return this->xp;
+}
+
+int Actor::getArmorClass()
+{
+	return this->armorClass;
 }
 
 int Actor::getStrength()
@@ -235,6 +249,25 @@ int Actor::rollDiceIgnoreLowest(const int& quantity, const int& dice)
 		total += i;
 	
 	return total;
+}
+
+//void Actor::openInventory()
+//{
+//	myInventory.displayInventory();
+//	
+//	Menu* tempMenu = new Menu;
+//	const int* decisions = new int{ 2 };
+//	vector<string>* decisionList = new vector<string>{ "Equip Armor", "Exit" };
+//
+//	if (tempMenu->printMenu(*decisions, *decisionList) == 1)
+//	{
+//		equipArmor(myInventory.selectItemInInventory());
+//	}
+//}
+
+void Actor::equipArmor(Armor& armor)
+{
+	setArmorClass(armor.getArmorValue());
 }
 
 void Actor::modifyStrength(const int& modifier)

@@ -19,6 +19,8 @@ public:
 	Human();
 	Human(string name);
 
+	virtual ~Human() override;
+
 	// getter
 	string getRace();
 	void display();

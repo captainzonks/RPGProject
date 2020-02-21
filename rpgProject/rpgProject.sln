@@ -5,6 +5,38 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpgProject", "rpgProject.vcxproj", "{D4CB675C-78F1-4EE6-B522-AC4EEB69337E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actor Classes", "Actor Classes", "{3B45CAC5-3849-41EA-B017-7C3ACC6EA71C}"
+	ProjectSection(SolutionItems) = preProject
+		Actor.cpp = Actor.cpp
+		Actor.h = Actor.h
+		Dwarf.cpp = Dwarf.cpp
+		Dwarf.h = Dwarf.h
+		Elf.cpp = Elf.cpp
+		Elf.h = Elf.h
+		Fighter.cpp = Fighter.cpp
+		Fighter.h = Fighter.h
+		Halfling.cpp = Halfling.cpp
+		Halfling.h = Halfling.h
+		Human.cpp = Human.cpp
+		Human.h = Human.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item Classes", "Item Classes", "{A216FE0F-0766-4AF8-893F-D50CFF2EA855}"
+	ProjectSection(SolutionItems) = preProject
+		Armor.cpp = Armor.cpp
+		Armor.h = Armor.h
+		Currency.cpp = Currency.cpp
+		Currency.h = Currency.h
+		Inventory.cpp = Inventory.cpp
+		Inventory.h = Inventory.h
+		Item.cpp = Item.cpp
+		Item.h = Item.h
+		Shield.cpp = Shield.cpp
+		Shield.h = Shield.h
+		Sword.cpp = Sword.cpp
+		Sword.h = Sword.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

@@ -6,15 +6,25 @@ Inventory::Inventory()
 
 Inventory::~Inventory()
 {
-	for (auto i : inventory)
+	for (auto i : this->inventory)
 		delete i;
-	inventory.clear();
+	this->inventory.clear();
 	cout << "Inventory destructor called" << endl;
+}
+
+void Inventory::setCapacity(int capacityChange)
+{
+	this->capacity += capacityChange;
 }
 
 int Inventory::getCapacity()
 {
-	return capacity;
+	return this->capacity;
+}
+
+int Inventory::totalItemsInInventory()
+{
+	return this->inventory.size();
 }
 
 void Inventory::addToInventory(Item* item)
@@ -29,6 +39,19 @@ void Inventory::displayInventory()
 	for (auto i : this->inventory)
 	{
 		cout << counter << ": " << *i << endl;
+		counter++;
 	}
 	cout << "============" << endl;
 }
+
+//Item* Inventory::selectItemInInventory()
+//{
+//	Menu* tempMenu = new Menu;
+//	const int* decisions = new int{ totalItemsInInventory() };
+//
+//	Item* item_ptr = this->inventory[tempMenu->choiceHandler(*decisions)];
+//
+//	delete decisions, tempMenu;
+//
+//	return item_ptr;
+//}

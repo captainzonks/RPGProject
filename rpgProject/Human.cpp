@@ -16,6 +16,10 @@ Human::Human(string name)
 	this->raceModification();
 }
 
+Human::~Human()
+{
+}
+
 string Human::getRace()
 {
 	return this->race;

@@ -29,18 +29,10 @@ MENU CODE TEMPLATE
 
 	Menu* tempMenu = new Menu;
 	const int* decisions = new int{ 2 };
-	const string* tempYorNdecision = new string[2]{ "Engage!", "Run Away!" };
+	vector<string>* decisionList = new vector<string>{ "Select an Item...", "Exit" };
 
-	if (tempMenu->printMenu(*decisions, &tempYorNdecision) == 1)
-	{
-		Encounter* tempEncounter = new Encounter;
-		tempEncounter->encounterHandler(player, enemy);
-	}
-	else
-		cout << "You ran away!" << endl;
+	tempMenu->printMenu(*decisions, *decisionList)
 
-	delete decisions;
-	delete tempMenu;
-	delete[] tempYorNdecision;
+	delete decisions, tempMenu, decisionList;
 
 */

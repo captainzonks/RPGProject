@@ -18,6 +18,8 @@ public:
 	Elf();
 	Elf(string name);
 
+	virtual ~Elf() override;
+
 	// getter
 	string getRace();
 	void display();

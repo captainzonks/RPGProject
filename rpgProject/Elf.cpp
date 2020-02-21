@@ -16,6 +16,10 @@ Elf::Elf(string name)
 	this->raceModification();
 }
 
+Elf::~Elf()
+{
+}
+
 string Elf::getRace()
 {
 	return this->race;

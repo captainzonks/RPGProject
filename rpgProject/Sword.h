@@ -2,23 +2,21 @@
 
 #include "Item.h"
 
-#include <string>
-
-using std::string;
-
 class Sword :
-	public Item
+	virtual public Item
 {
 public:
-
+	Sword();
 	Sword(string name);
 
-	string getName();
+	virtual ~Sword() override;
+
+	virtual string getName() override;
 	int getAttackDie();
 	int getDurability();
 
 private:
-	string name{ "Sword" };
+	string name{};
 	int attackDie{ 6 };
 	int durability{ 20 };
 };

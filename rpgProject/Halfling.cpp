@@ -16,6 +16,10 @@ Halfling::Halfling(string name)
 	this->raceModification();
 }
 
+Halfling::~Halfling()
+{
+}
+
 string Halfling::getRace()
 {
 	return this->race;
