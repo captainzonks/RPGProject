@@ -1,5 +1,7 @@
 #pragma once
 
+#include "I_Display.h"
+
 #include <iostream>
 #include <string>
 
@@ -7,19 +9,23 @@ using std::ostream;
 using std::string;
 
 class Item
+	: public I_Display
 {
 public:
-	Item();
-	Item(string name);
 
+	// constructor
+	Item();
+
+	// destructor
 	virtual ~Item();
 
-	// overload ostream to display item (just its name for now)
-	friend ostream& operator<<(ostream& os, const Item& item);
+	// print override
+	virtual void print(ostream& os) const override = 0;
 
-	virtual string getName();
+	// getter
+	virtual string getName() const = 0;
+	virtual int getDurability() const = 0;
 
 private:
-	string name{ "You Should Never See This Name" };
 };
 

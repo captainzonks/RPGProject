@@ -19,14 +19,14 @@ public:
 	Dwarf();
 	Dwarf(string name);
 
+	// destructor
 	virtual ~Dwarf() override;
 
-	// getter
-	string getRace();
-	void display();
+	// character creation functions
+	virtual void rollStats() override;
 
-	// race modifier
-	void raceModification();
+	// getter
+	virtual void display();
 
 private:
 
@@ -34,4 +34,3 @@ private:
 	int walkingSpeed{ 25 };
 
 };
-

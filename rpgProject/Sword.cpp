@@ -2,29 +2,33 @@
 
 Sword::Sword()
 {
+	name = "Sword";
+	attackDie = 6;
+	durability = 20;
 }
 
-Sword::Sword(string name)
-	: Item(name)
+Sword::Sword(string name, int attackDie)
 {
 	this->name = name;
+	durability = 20;
+	this->attackDie = attackDie;
 }
 
 Sword::~Sword()
 {
 }
 
-string Sword::getName()
+string Sword::getName() const
 {
-	return name;
+	return this->name;
 }
 
-int Sword::getAttackDie()
+int Sword::getAttackDie() const
 {
-	return attackDie;
+	return this->attackDie;
 }
 
-int Sword::getDurability()
+int Sword::getDurability() const
 {
-	return durability;
+	return this->durability;
 }

@@ -19,14 +19,14 @@ public:
 	Human();
 	Human(string name);
 
+	// destructor
 	virtual ~Human() override;
 
-	// getter
-	string getRace();
-	void display();
+	// character creation functions
+	virtual void rollStats() override;
 
-	// race modifier
-	void raceModification();
+	// getter
+	virtual void display();
 
 private:
 

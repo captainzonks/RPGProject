@@ -14,23 +14,22 @@ class Halfling
 	: public Actor
 {
 public:
-
 	// constructors
 	Halfling();
 	Halfling(string name);
 
+	// destructor
 	virtual ~Halfling() override;
 
-	// getter
-	string getRace();
-	void display();
+	// character creation functions
+	virtual void rollStats() override;
 
-	// race modifier
-	void raceModification();
+	// getter
+	virtual void display();
 
 private:
 
-	string race{ "Halfling" };
+	string race{ "Elf" };
 	int walkingSpeed{ 25 };
 
 };

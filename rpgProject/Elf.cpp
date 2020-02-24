@@ -13,16 +13,21 @@ Elf::Elf(string name)
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
-	this->raceModification();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
 Elf::~Elf()
 {
 }
 
-string Elf::getRace()
+void Elf::rollStats()
 {
-	return this->race;
+	this->strength = rollDiceIgnoreLowest(4, 6);
+	this->dexterity = rollDiceIgnoreLowest(4, 6) + 2;
+	this->constitution = rollDiceIgnoreLowest(4, 6);
+	this->intelligence = rollDiceIgnoreLowest(4, 6) + 1;
+	this->wisdom = rollDiceIgnoreLowest(4, 6) + 1;
+	this->charisma = rollDiceIgnoreLowest(4, 6) + 1;
 }
 
 void Elf::display()
@@ -54,12 +59,4 @@ void Elf::display()
 		cout << "=";
 	}
 	cout << "====\n" << endl;
-}
-
-void Elf::raceModification()
-{
-	this->dexterity += 2;
-	this->intelligence += 1;
-	this->wisdom += 1;
-	this->charisma += 1;
 }

@@ -35,6 +35,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item Classes", "Item Classe
 		Shield.h = Shield.h
 		Sword.cpp = Sword.cpp
 		Sword.h = Sword.h
+		Weapon.cpp = Weapon.cpp
+		Weapon.h = Weapon.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface Classes", "Interface Classes", "{DB0370E7-42B0-497B-8578-94C86484B916}"
+	ProjectSection(SolutionItems) = preProject
+		I_Display.cpp = I_Display.cpp
+		I_Display.h = I_Display.h
 	EndProjectSection
 EndProject
 Global

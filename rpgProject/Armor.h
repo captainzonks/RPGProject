@@ -3,16 +3,19 @@
 #include "Item.h"
 
 class Armor :
-	virtual public Item
+	public Item
 {
 public:
+
+	// constructors
 	Armor();
 	
+	// destructors
 	virtual ~Armor() override;
 
-	virtual int getArmorValue();
+	// getter
+	virtual int getArmorValue() const = 0;
 
 private:
-	int armorValue{};
 };
 

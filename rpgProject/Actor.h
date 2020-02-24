@@ -15,6 +15,8 @@ using std::endl;
 using std::string;
 using std::vector;
 
+// Abstract Base Class
+
 class Actor
 {
 public:
@@ -24,41 +26,39 @@ public:
 
 	// constructors
 	Actor();
-	Actor(string name);
-	// Actor(string name, int health, int xp);
 
 	// destructors
 	virtual ~Actor();
 
 	// setters
-	void rollStats();
-	void setArmorClass(int armor);
+	virtual void rollStats() = 0;
+	virtual void setArmorClass(int armor);
 
 	// getters
-	string getName();
-	int getHealth(), getArmorClass(), getXP();
-	int getStrength(), getDexterity(), getConstitution(), getIntelligence(), getWisdom(), getCharisma();
-	int getStrengthMod(), getDexMod(), getConstMod(), getIntelMod(), getWisdomMod(), getCharMod();
-	int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
-	bool livingOrDead();
-	virtual void display();
+	virtual string getName(), getRace();
+	virtual int getHealth(), getArmorClass(), getXP();
+	virtual int getStrength(), getDexterity(), getConstitution(), getIntelligence(), getWisdom(), getCharisma();
+	virtual int getStrengthMod(), getDexMod(), getConstMod(), getIntelMod(), getWisdomMod(), getCharMod();
+	virtual int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
+	virtual bool livingOrDead();
+	virtual void display() = 0;
 	
-	int sizeOfInventory();
+	virtual int sizeOfInventory();
 
 	// actions
-	bool subtractHealth(int& damage);
-	void addXP(int& xpGain);
-	int rollDice(const int& quantity, const int& dice),
+	virtual bool subtractHealth(int& damage);
+	virtual void addXP(int& xpGain);
+	virtual int rollDice(const int& quantity, const int& dice),
 		rollDiceIgnoreLowest(const int& quantity, const int& dice);
 
 	// inventory management
-	void openInventory();
+	// virtual void openInventory();
 
 	// armor related functions
-	void equipArmor(Armor& armor);
+	virtual void equipArmor(Armor& armor);
 
 	// modify stats
-	void modifyStrength(const int& modifier),
+	virtual void modifyStrength(const int& modifier),
 		modifyDexterity(const int& modifier),
 		modifyConstitution(const int& modifier),
 		modifyIntelligence(const int& modifier),
@@ -66,25 +66,21 @@ public:
 		modifyCharisma(const int& modifier);
 
 	// moves (temporary)
-	void attack(Actor& target);
+	/*virtual void attack(Actor& target);*/
 
 protected:
 	friend class Narrator;
+
 	// basic traits
-	string name{};
-	int health{};
+	string name;
+	string race;
+	int health;
 	int armorClass{ 10 };
-	int xp{};
+	int walkingSpeed{ 30 };
+	int xp;
 	bool isAlive{ true };
-	int attackDice{ 10 }; // temporary
 
 	// stats
-	int strength{};
-	int dexterity{};
-	int constitution{};
-	int intelligence{};
-	int wisdom{};
-	int charisma{};
-
+	int strength, dexterity, constitution, intelligence, wisdom, charisma;
 };
 

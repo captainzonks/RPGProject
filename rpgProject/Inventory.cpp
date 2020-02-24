@@ -6,8 +6,6 @@ Inventory::Inventory()
 
 Inventory::~Inventory()
 {
-	for (auto i : this->inventory)
-		delete i;
 	this->inventory.clear();
 	cout << "Inventory destructor called" << endl;
 }
@@ -17,26 +15,26 @@ void Inventory::setCapacity(int capacityChange)
 	this->capacity += capacityChange;
 }
 
-int Inventory::getCapacity()
+int Inventory::getCapacity() const
 {
 	return this->capacity;
 }
 
-int Inventory::totalItemsInInventory()
+int Inventory::totalItemsInInventory() const
 {
 	return this->inventory.size();
 }
 
-void Inventory::addToInventory(Item* item)
+void Inventory::addToInventory(std::unique_ptr<Item> item)
 {
-	this->inventory.push_back(item);
+	this->inventory.push_back(std::move(item));
 }
 
-void Inventory::displayInventory()
+void Inventory::displayInventory() const
 {
 	cout << "============" << endl;
 	int counter{ 1 };
-	for (auto i : this->inventory)
+	for (auto& i : this->inventory)
 	{
 		cout << counter << ": " << *i << endl;
 		counter++;

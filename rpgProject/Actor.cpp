@@ -6,46 +6,27 @@ Actor::Actor()
 	this->name = "Guy";
 	this->health = 100;
 	this->xp = 0;
-	this->strength = 10;
-	this->dexterity = 10;
-	this->constitution = 10;
-	this->intelligence = 10;
-	this->wisdom = 10;
-	this->charisma = 10;
-
-	Inventory myInventory;
-	Currency myCurrency;
-
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
-}
-
-Actor::Actor(string name)
-{
-	cout << "Actor (name) overloaded constructor called" << endl; // debug
-	this->name = name;
-	this->health = 100;
-	this->xp = 0;
-	this->strength = 10;
-	this->dexterity = 10;
-	this->constitution = 10;
-	this->intelligence = 10;
-	this->wisdom = 10;
-	this->charisma = 10;
+	this->strength = 0;
+	this->dexterity = 0;
+	this->constitution = 0;
+	this->intelligence = 0;
+	this->wisdom = 0;
+	this->charisma = 0;
 }
 
 Actor::~Actor()
 {
 }
 
-void Actor::rollStats()
-{
-	this->strength = rollDiceIgnoreLowest(4, 6);
-	this->dexterity = rollDiceIgnoreLowest(4, 6);
-	this->constitution = rollDiceIgnoreLowest(4, 6);
-	this->intelligence = rollDiceIgnoreLowest(4, 6);
-	this->wisdom = rollDiceIgnoreLowest(4, 6);
-	this->charisma = rollDiceIgnoreLowest(4, 6);
-}
+//void Actor::rollStats()
+//{
+//	this->strength = rollDiceIgnoreLowest(4, 6);
+//	this->dexterity = rollDiceIgnoreLowest(4, 6);
+//	this->constitution = rollDiceIgnoreLowest(4, 6);
+//	this->intelligence = rollDiceIgnoreLowest(4, 6);
+//	this->wisdom = rollDiceIgnoreLowest(4, 6);
+//	this->charisma = rollDiceIgnoreLowest(4, 6);
+//}
 
 void Actor::setArmorClass(int armor)
 {
@@ -55,6 +36,11 @@ void Actor::setArmorClass(int armor)
 string Actor::getName()
 {
 	return this->name;
+}
+
+string Actor::getRace()
+{
+	return this->race;
 }
 
 int Actor::getHealth()
@@ -161,35 +147,35 @@ bool Actor::livingOrDead()
 	return isAlive;
 }
 
-void Actor::display()
-{
-	cout << endl;
-	// name header
-	cout << "====" << this->getName() << "====" << endl;
-	// basic stats
-	cout << "   " << this->getHealth() << " HP" << endl;
-	cout << "   " << this->getXP() << " XP" << endl;
-	// ability stats
-	cout << "   " << this->getStrength() << " Strength"
-		<< " (" << this->getStrengthMod() << ")" << endl;
-	cout << "   " << this->getDexterity() << " Dexterity"
-		<< " (" << this->getDexMod() << ")" << endl;
-	cout << "   " << this->getConstitution() << " Constitution"
-		<< " (" << this->getConstMod() << ")" << endl;
-	cout << "   " << this->getIntelligence() << " Intelligence"
-		<< " (" << this->getIntelMod() << ")" << endl;
-	cout << "   " << this->getWisdom() << " Wisdom"
-		<< " (" << this->getWisdomMod() << ")" << endl;
-	cout << "   " << this->getCharisma() << " Charisma"
-		<< " (" << this->getCharMod() << ")" << endl;
-	// footer (matches length of header plus name)
-	cout << "====";
-	for (char c : this->getName())
-	{
-		cout << "=";
-	}
-	cout << "====\n" << endl;
-}
+//void Actor::display()
+//{
+//	cout << endl;
+//	// name header
+//	cout << "====" << this->getName() << "====" << endl;
+//	// basic stats
+//	cout << "   " << this->getHealth() << " HP" << endl;
+//	cout << "   " << this->getXP() << " XP" << endl;
+//	// ability stats
+//	cout << "   " << this->getStrength() << " Strength"
+//		<< " (" << this->getStrengthMod() << ")" << endl;
+//	cout << "   " << this->getDexterity() << " Dexterity"
+//		<< " (" << this->getDexMod() << ")" << endl;
+//	cout << "   " << this->getConstitution() << " Constitution"
+//		<< " (" << this->getConstMod() << ")" << endl;
+//	cout << "   " << this->getIntelligence() << " Intelligence"
+//		<< " (" << this->getIntelMod() << ")" << endl;
+//	cout << "   " << this->getWisdom() << " Wisdom"
+//		<< " (" << this->getWisdomMod() << ")" << endl;
+//	cout << "   " << this->getCharisma() << " Charisma"
+//		<< " (" << this->getCharMod() << ")" << endl;
+//	// footer (matches length of header plus name)
+//	cout << "====";
+//	for (char c : this->getName())
+//	{
+//		cout << "=";
+//	}
+//	cout << "====\n" << endl;
+//}
 
 
 int Actor::sizeOfInventory()
@@ -300,20 +286,20 @@ void Actor::modifyCharisma(const int& modifier)
 	this->charisma += modifier;
 }
 
-void Actor::attack(Actor& target)
-{
-	// TODO this is a basic randomly generated attack concept
-	// eventual goal is to have unique attacks in separate methods (or classes)
-	int tempQuantity{ 1 }; // debug purposes
-	cout << this->name << " is attacking " << target.name << endl;
-	int damage{ rollDice(tempQuantity, attackDice) };
-	if (target.subtractHealth(damage))
-	{
-		cout << this->name << " did " << damage << " damage to " << target.name << "!" << endl;
-	}
-	else if (!target.subtractHealth(damage))
-	{
-		cout << this->name << " killed " << target.name << " with " << damage << " damage!" << endl;
-		target.isAlive = false;
-	}
-}
+//void Actor::attack(Actor& target)
+//{
+//	// TODO this is a basic randomly generated attack concept
+//	// eventual goal is to have unique attacks in separate methods (or classes)
+//	int tempQuantity{ 1 }; // debug purposes
+//	cout << this->name << " is attacking " << target.name << endl;
+//	int damage{ rollDice(tempQuantity, attackDice) };
+//	if (target.subtractHealth(damage))
+//	{
+//		cout << this->name << " did " << damage << " damage to " << target.name << "!" << endl;
+//	}
+//	else if (!target.subtractHealth(damage))
+//	{
+//		cout << this->name << " killed " << target.name << " with " << damage << " damage!" << endl;
+//		target.isAlive = false;
+//	}
+//}

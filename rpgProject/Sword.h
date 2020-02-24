@@ -1,23 +1,32 @@
 #pragma once
 
-#include "Item.h"
+#include "Weapon.h"
 
 class Sword :
-	virtual public Item
+	public Weapon
 {
 public:
+	// constructors
 	Sword();
-	Sword(string name);
+	Sword(string name, int attackDie);
 
+	// destructor
 	virtual ~Sword() override;
 
-	virtual string getName() override;
-	int getAttackDie();
-	int getDurability();
+	// print override
+	virtual void print(ostream& os) const override
+	{
+		os << getName();
+	}
+
+	// getters
+	virtual string getName() const override;
+	virtual int getAttackDie() const override;
+	virtual int getDurability() const override;
 
 private:
-	string name{};
-	int attackDie{ 6 };
-	int durability{ 20 };
+	string name;
+	int attackDie;
+	int durability;
 };
 

@@ -13,16 +13,21 @@ Dwarf::Dwarf(string name)
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
-	this->raceModification();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
 Dwarf::~Dwarf()
 {
 }
 
-string Dwarf::getRace()
+void Dwarf::rollStats()
 {
-	return this->race;
+	this->strength = rollDiceIgnoreLowest(4, 6) + 2;
+	this->dexterity = rollDiceIgnoreLowest(4, 6);
+	this->constitution = rollDiceIgnoreLowest(4, 6) + 2;
+	this->intelligence = rollDiceIgnoreLowest(4, 6);
+	this->wisdom = rollDiceIgnoreLowest(4, 6) + 1;
+	this->charisma = rollDiceIgnoreLowest(4, 6);
 }
 
 void Dwarf::display()
@@ -54,11 +59,4 @@ void Dwarf::display()
 		cout << "=";
 	}
 	cout << "====\n" << endl;
-}
-
-void Dwarf::raceModification()
-{
-	this->strength += 2;
-	this->constitution += 2;
-	this->wisdom += 1;
 }

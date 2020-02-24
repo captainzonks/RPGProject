@@ -13,16 +13,21 @@ Human::Human(string name)
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
-	this->raceModification();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
 Human::~Human()
 {
 }
 
-string Human::getRace()
+void Human::rollStats()
 {
-	return this->race;
+	this->strength = rollDiceIgnoreLowest(4, 6) + 1;
+	this->dexterity = rollDiceIgnoreLowest(4, 6) + 1;
+	this->constitution = rollDiceIgnoreLowest(4, 6) + 1;
+	this->intelligence = rollDiceIgnoreLowest(4, 6) + 1;
+	this->wisdom = rollDiceIgnoreLowest(4, 6) + 1;
+	this->charisma = rollDiceIgnoreLowest(4, 6) + 1;
 }
 
 void Human::display()
@@ -54,14 +59,4 @@ void Human::display()
 		cout << "=";
 	}
 	cout << "====\n" << endl;
-}
-
-void Human::raceModification()
-{
-	this->strength += 1;
-	this->dexterity += 1;
-	this->constitution += 1;
-	this->intelligence += 1;
-	this->wisdom += 1;
-	this->charisma += 1;
 }

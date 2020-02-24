@@ -1,6 +1,7 @@
 // MAIN
 
 #include <iostream>
+#include <memory>
 #include <time.h>
 
 // #include "GameEngine.h"
@@ -23,8 +24,8 @@ int main()
 
     narrator.startGreeting();
 
-    Actor* player{ nullptr };
-
+    std::unique_ptr<Actor> player;
+    
     player = narrator.characterCreator();
 
     player->display();
@@ -32,12 +33,9 @@ int main()
     cout << "Inventory Capacity: " << player->myInventory.getCapacity() << endl;
     cout << player->getName() << "'s Money" << endl;
     player->myCurrency.displayMoney();
-    
-    player->myInventory.addToInventory(narrator.makeAnItem(Narrator::ITEM_TYPES::SWORD));
-    player->myInventory.addToInventory(narrator.makeAnItem(Narrator::ITEM_TYPES::SHIELD));
-    player->myInventory.displayInventory();
 
-    delete player;
+    player->myInventory.addToInventory(narrator.makeAnItem(Narrator::ITEM_TYPES::SWORD));
+    player->myInventory.displayInventory();
 
     return 0;
 }

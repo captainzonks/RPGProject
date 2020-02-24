@@ -13,16 +13,21 @@ Halfling::Halfling(string name)
 	this->health = 100;
 	this->xp = 0;
 	this->rollStats();
-	this->raceModification();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
 Halfling::~Halfling()
 {
 }
 
-string Halfling::getRace()
+void Halfling::rollStats()
 {
-	return this->race;
+	this->strength = rollDiceIgnoreLowest(4, 6);
+	this->dexterity = rollDiceIgnoreLowest(4, 6);
+	this->constitution = rollDiceIgnoreLowest(4, 6) + 1;
+	this->intelligence = rollDiceIgnoreLowest(4, 6);
+	this->wisdom = rollDiceIgnoreLowest(4, 6);
+	this->charisma = rollDiceIgnoreLowest(4, 6) + 1;
 }
 
 void Halfling::display()
@@ -54,10 +59,4 @@ void Halfling::display()
 		cout << "=";
 	}
 	cout << "====\n" << endl;
-}
-
-void Halfling::raceModification()
-{
-	this->constitution += 1;
-	this->charisma += 1;
 }

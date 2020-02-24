@@ -17,22 +17,24 @@ class Inventory
 public:
 	friend class Actor;
 
+	// constructor
 	Inventory();
 
+	// destructor
 	~Inventory();
 
 	void setCapacity(int capacityChange);
-	int getCapacity();
-	int totalItemsInInventory();
+	int getCapacity() const;
+	int totalItemsInInventory() const;
 
-	void addToInventory(Item* item);
-	void displayInventory();
+	void addToInventory(std::unique_ptr<Item> item);
+	void displayInventory() const;
 
 	// Item* selectItemInInventory();
 
 private:
 
-	vector<Item*> inventory{};
+	vector<std::unique_ptr<Item>> inventory{};
 
 	int capacity{ 10 };
 

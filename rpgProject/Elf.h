@@ -18,14 +18,14 @@ public:
 	Elf();
 	Elf(string name);
 
+	// destructor
 	virtual ~Elf() override;
 
-	// getter
-	string getRace();
-	void display();
+	// character creation functions
+	virtual void rollStats() override;
 
-	// race modifier
-	void raceModification();
+	// getter
+	virtual void display();
 
 private:
 
