@@ -154,8 +154,6 @@
     <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Encounter.cpp" />
     <ClCompile Include="Fighter.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Halfling.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -176,8 +174,6 @@
     <ClInclude Include="Elf.h" />
     <ClInclude Include="Encounter.h" />
     <ClInclude Include="Fighter.h" />
-    <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="GameState.h" />
     <ClInclude Include="Halfling.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Inventory.h" />
