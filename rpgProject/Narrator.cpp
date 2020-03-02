@@ -7,7 +7,7 @@ void Narrator::startGreeting()
 	cout << "-----------------------" << endl;
 }
 
-std::unique_ptr<Actor> Narrator::characterCreator()
+Actor* Narrator::characterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
 
@@ -22,27 +22,27 @@ std::unique_ptr<Actor> Narrator::characterCreator()
 	cout << "What's your name? ";
 	cin >> name;
 
-	std::unique_ptr<Actor> player{ nullptr };
+	Actor* new_player{ nullptr };
 
 	switch (choice)
 	{
 	case 1:
-		player = std::make_unique<Human>(name);
+		new_player = new Human(name);
 		break;
 	case 2:
-		player = std::make_unique<Dwarf>(name);
+		new_player = new Dwarf(name);
 		break;
 	case 3:
-		player = std::make_unique<Elf>(name);
+		new_player = new Elf(name);
 		break;
 	case 4:
-		player = std::make_unique<Halfling>(name);
+		new_player = new Halfling(name);
 		break;
 	default:
 		break;
 	}
 
-	return player;
+	return new_player;
 }
 
 //void Narrator::encounter(Actor& player, Actor& enemy)

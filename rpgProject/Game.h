@@ -16,11 +16,16 @@ class Game
 public:
 	void Initialize();
 
+	void GameLoop();
+
 	void GetInput();
-	void Update();
+	void Update(Actor* player);
+
+	bool IsRunning();
 
 	Narrator narrator;
+	
 private:
-	bool isRunning;
+	bool isRunning{ false };
 };
 

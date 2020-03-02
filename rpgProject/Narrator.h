@@ -26,7 +26,7 @@ public:
 	void startGreeting();
 
 	// character creation
-	std::unique_ptr<Actor> characterCreator();
+	Actor* characterCreator();
 
 	// encounters
 	// void encounter(Actor& player, Actor& enemy);

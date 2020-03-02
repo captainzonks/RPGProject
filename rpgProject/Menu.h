@@ -27,12 +27,10 @@ public:
 /*
 MENU CODE TEMPLATE
 
-	Menu* tempMenu = new Menu;
-	const int* decisions = new int{ 2 };
-	vector<string>* decisionList = new vector<string>{ "Select an Item...", "Exit" };
-
-	tempMenu->printMenu(*decisions, *decisionList)
-
-	delete decisions, tempMenu, decisionList;
+int choice{};
+std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
+std::unique_ptr<int> const decisions = std::make_unique<int>(4);
+std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Human", "Dwarf", "Elf", "Halfling" }));
+choice = tempMenu->printMenu(*decisions, *tempDecisions);
 
 */
