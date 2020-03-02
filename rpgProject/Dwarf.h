@@ -17,6 +17,7 @@ public:
 
 	// constructors
 	Dwarf();
+	Dwarf(int identifier);
 	Dwarf(string name);
 
 	// destructor

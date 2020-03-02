@@ -17,6 +17,7 @@ public:
 
 	// constructors
 	Human();
+	Human(int identifier);
 	Human(string name);
 
 	// destructor

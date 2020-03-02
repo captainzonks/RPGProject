@@ -5,6 +5,18 @@ Human::Human()
 	cout << "Human constructor called" << endl; // debug
 }
 
+Human::Human(int identifier)
+{
+	cout << "Human (int identifier) overloaded constructor called" << endl; // debug
+	this->name = "Bad Guy Human"; // temporary debug
+	this->identifier = identifier;
+	this->race = "Human";
+	this->health = 100;
+	this->xp = 0;
+	this->rollStats();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+}
+
 Human::Human(string name)
 {
 	cout << "Human (name) overloaded constructor called" << endl; // debug
@@ -18,6 +30,7 @@ Human::Human(string name)
 
 Human::~Human()
 {
+	std::cout << "Human destructor called" << endl;
 }
 
 void Human::rollStats()

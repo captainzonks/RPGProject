@@ -153,6 +153,7 @@
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Encounter.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Halfling.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
     <ClInclude Include="Encounter.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Fighter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Halfling.h" />

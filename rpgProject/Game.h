@@ -4,6 +4,7 @@
 #include <memory>
 #include <time.h>
 
+#include "EnemyManager.h"
 #include "Actor.h"
 #include "Human.h"
 #include "Elf.h"
@@ -24,6 +25,7 @@ public:
 	bool IsRunning();
 
 	Narrator narrator;
+	EnemyManager manager;
 	
 private:
 	bool isRunning{ false };

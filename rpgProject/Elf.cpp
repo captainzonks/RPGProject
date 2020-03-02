@@ -5,6 +5,18 @@ Elf::Elf()
 	cout << "Elf constructor called" << endl; // debug
 }
 
+Elf::Elf(int identifier)
+{
+	cout << "Elf (int identifier) overloaded constructor called" << endl; // debug
+	this->name = "Bad Guy Elf";
+	this->identifier = identifier;
+	this->race = "Elf";
+	this->health = 100;
+	this->xp = 0;
+	this->rollStats();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+}
+
 Elf::Elf(string name)
 {
 	cout << "Elf (name) overloaded constructor called" << endl; // debug
@@ -18,6 +30,7 @@ Elf::Elf(string name)
 
 Elf::~Elf()
 {
+	std::cout << "Elf destructor called" << endl;
 }
 
 void Elf::rollStats()

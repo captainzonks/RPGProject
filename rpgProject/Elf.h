@@ -16,6 +16,7 @@ public:
 
 	// constructors
 	Elf();
+	Elf(int identifier);
 	Elf(string name);
 
 	// destructor

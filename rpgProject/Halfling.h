@@ -16,6 +16,7 @@ class Halfling
 public:
 	// constructors
 	Halfling();
+	Halfling(int identifier);
 	Halfling(string name);
 
 	// destructor

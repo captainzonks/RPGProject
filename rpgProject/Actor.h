@@ -81,6 +81,8 @@ protected:
 	int xp;
 	bool isAlive{ true };
 
+	int identifier{};
+
 	// stats
 	int strength, dexterity, constitution, intelligence, wisdom, charisma;
 };

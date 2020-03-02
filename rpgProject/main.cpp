@@ -1,15 +1,10 @@
 // MAIN
-
-#include <time.h>
-
 #include "Game.h"
 
 using namespace std;
 
 int main()
 {
-    srand((unsigned int)time(0)); // seed the dice rolls
-
     Game game;
     game.GameLoop();
 

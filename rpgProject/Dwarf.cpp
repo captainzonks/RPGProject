@@ -5,6 +5,18 @@ Dwarf::Dwarf()
 	cout << "Dwarf constructor called" << endl; // debug
 }
 
+Dwarf::Dwarf(int identifier)
+{
+	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
+	this->name = "Bad Guy Dwarf"; // temporary debug value
+	this->identifier = identifier;
+	this->race = "Dwarf";
+	this->health = 100;
+	this->xp = 0;
+	this->rollStats();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+}
+
 Dwarf::Dwarf(string name)
 {
 	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
@@ -18,6 +30,7 @@ Dwarf::Dwarf(string name)
 
 Dwarf::~Dwarf()
 {
+	std::cout << "Dwarf destructor called" << endl;
 }
 
 void Dwarf::rollStats()

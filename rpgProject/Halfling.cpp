@@ -5,6 +5,18 @@ Halfling::Halfling()
 	cout << "Halfling constructor called" << endl; // debug
 }
 
+Halfling::Halfling(int identifier)
+{
+	cout << "Halfling (int identifier) overloaded constructor called" << endl; // debug
+	this->name = "Bad Guy Halfling";
+	this->identifier = identifier;
+	this->race = "Halfling";
+	this->health = 100;
+	this->xp = 0;
+	this->rollStats();
+	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+}
+
 Halfling::Halfling(string name)
 {
 	cout << "Halfling (name) overloaded constructor called" << endl; // debug
@@ -18,6 +30,7 @@ Halfling::Halfling(string name)
 
 Halfling::~Halfling()
 {
+	std::cout << "Halfling destructor called" << endl;
 }
 
 void Halfling::rollStats()
