@@ -4,9 +4,6 @@
 #include <memory>
 #include <time.h>
 
-// #include "GameEngine.h"
-// #include "GameState.h"
-
 #include "Actor.h"
 #include "Human.h"
 #include "Elf.h"
@@ -24,9 +21,7 @@ int main()
 
     narrator.startGreeting();
 
-    std::unique_ptr<Actor> player;
-    
-    player = narrator.characterCreator();
+    std::unique_ptr<Actor> player = narrator.characterCreator();
 
     player->display();
     

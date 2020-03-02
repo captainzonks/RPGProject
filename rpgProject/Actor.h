@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <map>
 
 using std::cout;
 using std::cin;
