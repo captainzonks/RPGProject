@@ -38,9 +38,16 @@ void EnemyManager::AddEnemy(Actor* enemy)
 
 void EnemyManager::DisplayAllEnemies()
 {
-	for (auto& enemy : enemies)
+	if (enemies.size() == 0)
 	{
-		enemy->display();
+		std::cout << "\nThere are no enemies!" << endl;
+	}
+	else
+	{
+		for (auto& enemy : enemies)
+		{
+			enemy->display();
+		}
 	}
 }
 

@@ -38,6 +38,6 @@ public:
 
 private:
 	
-	string version{ "v0.01d" };
+	string version{ "v0.01e" };
 };
 
