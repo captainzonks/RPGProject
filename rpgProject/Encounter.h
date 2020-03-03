@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Actor.h"
-#include "Narrator.h"
+#include "Game.h"
 
 class Encounter
 {
 public:
-	void encounterHandler(Actor& player, Actor& enemy);
+	void encounterHandler(Actor* player, Actor* enemy);
 };
 
