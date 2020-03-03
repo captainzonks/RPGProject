@@ -73,3 +73,8 @@ void Human::display()
 	}
 	cout << "====\n" << endl;
 }
+
+string Human::getRace()
+{
+	return this->race;
+}

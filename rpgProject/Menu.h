@@ -15,12 +15,9 @@ using std::initializer_list;
 class Menu
 {
 public:
-
 	// dynamic menu creation and handling
 	int printMenu(const int& decisions, const vector<string>& listOfDecisions);
 	int choiceHandler(const int& decisions);
-
-	
 
 };
 

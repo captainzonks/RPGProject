@@ -70,7 +70,7 @@ public:
 	/*virtual void attack(Actor& target);*/
 
 protected:
-	friend class Narrator;
+	// friend class Narrator;
 
 	// basic traits
 	string name;

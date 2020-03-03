@@ -27,7 +27,8 @@ public:
 	virtual void rollStats() override;
 
 	// getter
-	virtual void display();
+	virtual void display() override;
+	virtual string getRace() override;
 
 private:
 

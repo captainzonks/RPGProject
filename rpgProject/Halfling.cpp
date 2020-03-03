@@ -73,3 +73,8 @@ void Halfling::display()
 	}
 	cout << "====\n" << endl;
 }
+
+string Halfling::getRace()
+{
+	return this->race;
+}

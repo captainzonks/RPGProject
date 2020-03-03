@@ -73,3 +73,8 @@ void Elf::display()
 	}
 	cout << "====\n" << endl;
 }
+
+string Elf::getRace()
+{
+	return this->race;
+}

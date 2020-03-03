@@ -73,3 +73,8 @@ void Dwarf::display()
 	}
 	cout << "====\n" << endl;
 }
+
+string Dwarf::getRace()
+{
+	return this->race;
+}

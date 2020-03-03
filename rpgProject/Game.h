@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Windows.h>
 #include <iostream>
 #include <memory>
 #include <time.h>
@@ -19,7 +20,7 @@ public:
 
 	void GameLoop();
 
-	void GetInput();
+	void GetInput(Actor* player);
 	void Update(Actor* player);
 
 	bool IsRunning();

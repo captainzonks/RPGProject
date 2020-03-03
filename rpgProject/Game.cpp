@@ -16,7 +16,7 @@ void Game::GameLoop()
 
 	while (IsRunning())
 	{
-		GetInput();
+		GetInput(player);
 		Update(player);
 	}
 
@@ -24,21 +24,25 @@ void Game::GameLoop()
 	manager.CleanUp();
 }
 
-void Game::GetInput()
+void Game::GetInput(Actor* player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Create Enemy", "Quit" }));
+	std::unique_ptr<int> const decisions = std::make_unique<int>(4);
+	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Create Enemy", "Display Enemies", "Quit" }));
 	choice = tempMenu->printMenu(*decisions, *tempDecisions);
-
 	switch (choice)
 	{
 	case 1:
-		manager.AddEnemy(manager.CreateEnemy());
-		manager.DisplayAllEnemies();
+		player->display();
 		break;
 	case 2:
+		manager.AddEnemy(manager.CreateEnemy());
+		break;
+	case 3:
+		manager.DisplayAllEnemies();
+		break;
+	case 4:
 		isRunning = false;
 		break;
 	default:
