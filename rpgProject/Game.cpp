@@ -28,8 +28,8 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(5);
-	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Create Enemy", "Display Enemies", "Attack Enemy", "Quit" }));
+	std::unique_ptr<int> const decisions = std::make_unique<int>(6);
+	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Buy Something", "Create Enemy", "Display Enemies", "Attack Enemy", "Quit" }));
 	choice = tempMenu->printMenu(*decisions, *tempDecisions);
 	switch (choice)
 	{
@@ -37,15 +37,18 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 		player->display();
 		break;
 	case 2:
-		manager.AddEnemy(manager.CreateEnemy());
+		narrator.buySomething(player);
 		break;
 	case 3:
-		manager.DisplayAllEnemies();
+		manager.AddEnemy(manager.CreateEnemy());
 		break;
 	case 4:
-		StartEncounter(player);
+		manager.DisplayAllEnemies();
 		break;
 	case 5:
+		StartEncounter(player);
+		break;
+	case 6:
 		isRunning = false;
 		break;
 	default:

@@ -11,7 +11,7 @@ Dwarf::Dwarf(int identifier)
 	this->name = "Bad Guy Dwarf"; // temporary debug value
 	this->identifier = identifier;
 	this->race = "Dwarf";
-	this->health = rollDice(1, 8);
+	this->health = rollDice(1, 8) + getConstMod();
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -22,7 +22,7 @@ Dwarf::Dwarf(string name)
 	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
 	this->name = name;
 	this->race = "Dwarf";
-	this->health = rollDice(1, 8);
+	this->health = rollDice(1, 8) + getConstMod();
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -51,6 +51,9 @@ void Dwarf::display()
 	// basic stats
 	cout << "   " << this->getRace() << endl;
 	cout << "   " << this->getHealth() << " HP" << endl;
+	cout << "   " << (this->getArmorClass() + this->myInventory.GetArmorBonus()) << " AC" << endl;
+	if (this->myInventory.HasWeapon())
+		cout << "   " << "Has a sword!" << endl;
 	cout << "   " << this->getXP() << " XP" << endl;
 	// ability stats
 	cout << "   " << this->getStrength() << " Strength"

@@ -11,7 +11,7 @@ Human::Human(int identifier)
 	this->name = "Bad Guy Human"; // temporary debug
 	this->identifier = identifier;
 	this->race = "Human";
-	this->health = rollDice(1, 8);
+	this->health = rollDice(1, 8) + getConstMod();
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -22,7 +22,7 @@ Human::Human(string name)
 	cout << "Human (name) overloaded constructor called" << endl; // debug
 	this->name = name;
 	this->race = "Human";
-	this->health = rollDice(1, 8);
+	this->health = rollDice(1, 8) + getConstMod();
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -51,6 +51,9 @@ void Human::display()
 	// basic stats
 	cout << "   " << this->getRace() << endl;
 	cout << "   " << this->getHealth() << " HP" << endl;
+	cout << "   " << (this->getArmorClass() + this->myInventory.GetArmorBonus()) << " AC" << endl;
+	if (this->myInventory.HasWeapon())
+		cout << "   " << "Has a sword!" << endl;
 	cout << "   " << this->getXP() << " XP" << endl;
 	// ability stats
 	cout << "   " << this->getStrength() << " Strength"

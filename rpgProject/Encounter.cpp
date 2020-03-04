@@ -102,7 +102,7 @@ std::shared_ptr<Actor> Encounter::RandomTargetPicker(std::shared_ptr<Actor> atta
 
 bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> defender)
 {
-	if (Attack::AttackAgainstAC(attacker->getStrength(), defender->getArmorClass()))
+	if (Attack::AttackAgainstAC(attacker, defender))
 	{
 		Attack::DealDamage(attacker, defender);
 		if (!defender->livingOrDead())

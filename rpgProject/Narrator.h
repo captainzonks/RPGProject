@@ -32,12 +32,13 @@ public:
 	// void encounter(Actor& player, Actor& enemy);
 
 	// inventory creation
+	void buySomething(std::shared_ptr<Actor> player);
 	std::unique_ptr<Item> makeAnItem(ITEM_TYPES itemType);
 
 	//Sword* makeASword();
 
 private:
 	
-	string version{ "v0.01e" };
+	string version{ "v0.01f" };
 };
 

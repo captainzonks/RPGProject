@@ -12,6 +12,8 @@ using std::cin;
 using std::endl;
 using std::vector;
 
+class Sword;
+
 class Inventory
 {
 public:
@@ -27,15 +29,31 @@ public:
 	int getCapacity() const;
 	int totalItemsInInventory() const;
 
+	// weapon functions
+	void GetWeapon(std::unique_ptr<Item> weapon, int dice);
+	bool HasWeapon();
+	int GetAttackDice();
+
+	// armor functions
+	void GetArmor(std::unique_ptr<Item> armor, int AC);
+	bool HasArmor();
+	int GetArmorBonus();
+
+	// inventory functions
 	void addToInventory(std::unique_ptr<Item> item);
 	void displayInventory() const;
+
+
 
 	// Item* selectItemInInventory();
 
 private:
 
 	vector<std::unique_ptr<Item>> inventory{};
-
+	bool hasWeapon{ false };
+	bool hasArmor{ false };
+	int attackDice{ 4 };
+	int armorBonus{};
 	int capacity{ 10 };
 
 };

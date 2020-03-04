@@ -94,25 +94,29 @@ std::unique_ptr<Item> Narrator::makeAnItem(ITEM_TYPES itemType)
 
 // broken and obsolete - items should be classes
 
-//void Narrator::buySomething(Actor& player)
-//{
-//	cout << "Welcome to fantasy shop " << version << "!" << endl;
-//	cout << "=============================" << endl;
-//	cout << "What would you like to purchase?" << endl;
-//
-//	Actor* storeNPC = new Actor;
-//	vector<string> items{ "Sword", "Shield", "Potion", "Torch" };
-//	storeNPC->addToInventory(items);
-//	storeNPC->displayInventory();
-//
-//	Menu* tempMenu = new Menu;
-//	const int* decisions = new int{ storeNPC->sizeOfInventory() };
-//	vector<string>* tempStoreDecisions = new vector<string>[*decisions]{ storeNPC->inventory };
-//	
-//	player.addToInventory(tempStoreDecisions[tempMenu->printMenu(*decisions, *tempStoreDecisions) - 1]);
-//
-//	player.displayInventory();
-//
-//	delete storeNPC, tempMenu, decisions;
-//	delete[] tempStoreDecisions;
-//}
+void Narrator::buySomething(std::shared_ptr<Actor> player)
+{
+	cout << "Welcome to fantasy shop " << version << "!" << endl;
+	cout << "=============================" << endl;
+	cout << "What would you like to purchase?" << endl;
+	cout << "1) Sword" << endl;
+	cout << "2) Shield" << endl;
+	cout << "---------------" << endl;
+	cout << "Please enter a number: ";
+	std::unique_ptr<Sword> sword = std::make_unique<Sword>();
+	std::unique_ptr<Shield> shield = std::make_unique<Shield>();
+	int choice{};
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		player->myInventory.GetWeapon(std::move(sword), sword->getAttackDie());
+		break;
+	case 2:
+		player->myInventory.GetArmor(std::move(shield), shield->getArmorValue());
+		break;
+	default:
+		cout << "Invalid entry" << endl;
+		break;
+	}
+}

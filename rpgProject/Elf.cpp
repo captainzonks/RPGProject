@@ -11,7 +11,7 @@ Elf::Elf(int identifier)
 	this->name = "Bad Guy Elf";
 	this->identifier = identifier;
 	this->race = "Elf";
-	this->health = rollDice(1, 6);
+	this->health = rollDice(1, 6) + getConstMod();
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -22,7 +22,7 @@ Elf::Elf(string name)
 	cout << "Elf (name) overloaded constructor called" << endl; // debug
 	this->name = name;
 	this->race = "Elf";
-	this->health = rollDice(1, 6);
+	this->health = rollDice(1, 6) + getConstMod();
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -51,6 +51,9 @@ void Elf::display()
 	// basic stats
 	cout << "   " << this->getRace() << endl;
 	cout << "   " << this->getHealth() << " HP" << endl;
+	cout << "   " << (this->getArmorClass() + this->myInventory.GetArmorBonus()) << " AC" << endl;
+	if (this->myInventory.HasWeapon())
+		cout << "   " << "Has a sword!" << endl;
 	cout << "   " << this->getXP() << " XP" << endl;
 	// ability stats
 	cout << "   " << this->getStrength() << " Strength"
