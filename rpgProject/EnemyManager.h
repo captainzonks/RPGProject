@@ -11,10 +11,12 @@
 class EnemyManager
 {
 public:
-	Actor* CreateEnemy();
-	void AddEnemy(Actor* enemy);
+	std::shared_ptr<Actor> CreateEnemy();
+	void AddEnemy(std::shared_ptr<Actor> enemy);
 	void DisplayAllEnemies();
-	Actor* GetEnemy(int identifier);
+	unsigned int GetTotalEnemies();
+	std::vector<std::shared_ptr<Actor>> GetEnemies();
+	std::shared_ptr<Actor> GetEnemy(int identifier);
 
 	int GetIdentifier();
 
@@ -22,7 +24,7 @@ public:
 	void CleanUp();
 
 private:
-	std::vector<Actor*> enemies;
+	std::vector<std::shared_ptr<Actor>> enemies;
 	int identifier{};
 };
 

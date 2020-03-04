@@ -43,6 +43,7 @@ public:
 	virtual int getStrength(), getDexterity(), getConstitution(), getIntelligence(), getWisdom(), getCharisma();
 	virtual int getStrengthMod(), getDexMod(), getConstMod(), getIntelMod(), getWisdomMod(), getCharMod();
 	virtual int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
+	virtual int GetInitiative();
 	virtual bool livingOrDead();
 	virtual void display() = 0;
 	

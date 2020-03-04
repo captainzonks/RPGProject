@@ -20,11 +20,11 @@ void Game::GameLoop()
 		Update(player);
 	}
 
-	delete player;
+	// delete player;
 	manager.CleanUp();
 }
 
-void Game::GetInput(Actor* player)
+void Game::GetInput(std::shared_ptr<Actor> player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
@@ -43,7 +43,7 @@ void Game::GetInput(Actor* player)
 		manager.DisplayAllEnemies();
 		break;
 	case 4:
-		
+		StartEncounter(player);
 		break;
 	case 5:
 		isRunning = false;
@@ -53,9 +53,24 @@ void Game::GetInput(Actor* player)
 	}
 }
 
-void Game::Update(Actor* player)
+void Game::Update(std::shared_ptr<Actor> player)
 {
 	manager.CheckForDead();
+	if (!player->livingOrDead())
+	{
+		std::cout << "You lost! Better luck next time!" << std::endl;
+		isRunning = false;
+	}
+}
+
+void Game::StartEncounter(std::shared_ptr<Actor> player)
+{
+	if (manager.GetTotalEnemies() == 0)
+	{
+		std::cout << "\nThere are no enemies!" << std::endl;
+	}
+	else
+		Encounter newEncounter(manager, player);
 }
 
 bool Game::IsRunning()

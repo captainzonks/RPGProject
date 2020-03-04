@@ -11,9 +11,9 @@ bool Attack::AttackAgainstAC(int modifier, int AC)
 		return true;
 }
 
-void Attack::DealDamage(Actor* target)
+void Attack::DealDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target)
 {
 	int total = rollDice(1, 4);
 	target->subtractHealth(total);
-	std::cout << "Did " << total << " damage!" << std::endl;
+	std::cout << "\n" << attacker->getName() << " did " << total << " damage to " << target->getName() << std::endl;
 }

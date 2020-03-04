@@ -10,7 +10,7 @@ class Attack
 {
 public:
 	static bool AttackAgainstAC(int modifier, int AC);
-	static void DealDamage(Actor* target);
+	static void DealDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
 private:
 	Attack();
 };

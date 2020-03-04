@@ -2,7 +2,7 @@
 
 Actor::Actor()
 {
-	cout << "Actor constructor called" << endl; // debug
+	cout << "\nActor constructor called" << endl; // debug
 	this->name = "Guy";
 	this->health = 100;
 	this->xp = 0;
@@ -140,6 +140,11 @@ int Actor::getPassiveInvestigation()
 {
 	int passiveInvestigation{ 10 + this->getIntelMod() };
 	return passiveInvestigation;
+}
+
+int Actor::GetInitiative()
+{
+	return initiative;
 }
 
 bool Actor::livingOrDead()

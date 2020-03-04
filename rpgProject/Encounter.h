@@ -4,15 +4,22 @@
 #include "Actor.h"
 #include "EnemyManager.h"
 
+#include <vector>
+
 class Encounter
 {
 public:
-	Encounter(EnemyManager& manager, Actor* player);
-	void encounterHandler(Actor* attacker, Actor* defender);
+	Encounter(EnemyManager& manager, std::shared_ptr<Actor> player);
+	~Encounter();
+	void SortInitiativeOrder();
+	void DisplayIniatives(); // debug
+	std::shared_ptr<Actor> RandomTargetPicker(std::shared_ptr<Actor> attacker);
+	bool EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> defender);
 
 private:
-	Actor* player;
+	std::shared_ptr<Actor> player;
 	EnemyManager& manager;
+	std::vector<std::shared_ptr<Actor>> initiativeOrder;
 };
 
 #endif // !ENCOUNTER_H

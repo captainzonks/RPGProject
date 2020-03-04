@@ -21,8 +21,10 @@ public:
 
 	void GameLoop();
 
-	void GetInput(Actor* player);
-	void Update(Actor* player);
+	void GetInput(std::shared_ptr<Actor> player);
+	void Update(std::shared_ptr<Actor> player);
+
+	void StartEncounter(std::shared_ptr<Actor> player);
 
 	bool IsRunning();
 

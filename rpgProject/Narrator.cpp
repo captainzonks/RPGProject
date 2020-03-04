@@ -7,7 +7,7 @@ void Narrator::startGreeting()
 	cout << "-----------------------" << endl;
 }
 
-Actor* Narrator::characterCreator()
+std::shared_ptr<Actor> Narrator::characterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
 
@@ -22,21 +22,21 @@ Actor* Narrator::characterCreator()
 	cout << "What's your name? ";
 	cin >> name;
 
-	Actor* new_player{ nullptr };
+	std::shared_ptr<Actor> new_player{ nullptr };
 
 	switch (choice)
 	{
 	case 1:
-		new_player = new Human(name);
+		new_player = std::make_shared<Human>(name);
 		break;
 	case 2:
-		new_player = new Dwarf(name);
+		new_player = std::make_shared<Dwarf>(name);
 		break;
 	case 3:
-		new_player = new Elf(name);
+		new_player = std::make_shared<Elf>(name);
 		break;
 	case 4:
-		new_player = new Halfling(name);
+		new_player = std::make_shared<Halfling>(name);
 		break;
 	default:
 		break;
