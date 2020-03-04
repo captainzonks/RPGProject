@@ -61,6 +61,23 @@ int EnemyManager::GetIdentifier()
 	return identifier;
 }
 
+void EnemyManager::CheckForDead()
+{
+	for (size_t i{}; i < enemies.size(); ++i)
+	{
+		if (enemies.at(i)->livingOrDead())
+		{
+			return;
+		}
+		else
+		{
+			std::cout << enemies.at(i)->getName() << " died!" << std::endl;
+			delete enemies.at(i);
+			enemies.erase(enemies.begin() + i);
+		}
+	}
+}
+
 void EnemyManager::CleanUp()
 {
 	for (auto& enemy : enemies)

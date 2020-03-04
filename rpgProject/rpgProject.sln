@@ -45,6 +45,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface Classes", "Interf
 		I_Display.h = I_Display.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Attack", "Attack", "{BD885911-51DC-4E4E-B59C-254A3071985E}"
+	ProjectSection(SolutionItems) = preProject
+		Attack.cpp = Attack.cpp
+		Attack.h = Attack.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Melee", "Melee", "{64A12B03-7C53-446E-9E2B-7DB5865CC454}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spell", "Spell", "{9AE69929-81C7-4D8D-AD9E-C2F7793363B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -64,6 +74,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64A12B03-7C53-446E-9E2B-7DB5865CC454} = {BD885911-51DC-4E4E-B59C-254A3071985E}
+		{9AE69929-81C7-4D8D-AD9E-C2F7793363B1} = {BD885911-51DC-4E4E-B59C-254A3071985E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E83138C1-3879-4532-B998-724FCD5EA2C1}

@@ -28,8 +28,8 @@ void Game::GetInput(Actor* player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(4);
-	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Create Enemy", "Display Enemies", "Quit" }));
+	std::unique_ptr<int> const decisions = std::make_unique<int>(5);
+	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Create Enemy", "Display Enemies", "Attack Enemy", "Quit" }));
 	choice = tempMenu->printMenu(*decisions, *tempDecisions);
 	switch (choice)
 	{
@@ -43,6 +43,9 @@ void Game::GetInput(Actor* player)
 		manager.DisplayAllEnemies();
 		break;
 	case 4:
+		
+		break;
+	case 5:
 		isRunning = false;
 		break;
 	default:
@@ -52,7 +55,7 @@ void Game::GetInput(Actor* player)
 
 void Game::Update(Actor* player)
 {
-	
+	manager.CheckForDead();
 }
 
 bool Game::IsRunning()

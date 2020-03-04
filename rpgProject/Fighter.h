@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <map>
 #include <string>
 
 class Fighter
@@ -15,14 +15,11 @@ public:
 
 private:
 
-	std::vector<std::string> listOfAttacks{ "Attack with Sword", "Punch", "Kick" };
-
-	/*
-	Create a vector of types of attacks
-	Create a vector of definitions for those attacks
-	link their indexes so that an attack can be picked
-	and then the definition called for mathematical results
-	*/
+	std::map<std::string, int> listOfAttacks = {
+		{"Weapon", 1},
+		{"Punch", 2},
+		{"Kick", 3}
+	};
 
 };
 

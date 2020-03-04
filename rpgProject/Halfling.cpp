@@ -11,7 +11,7 @@ Halfling::Halfling(int identifier)
 	this->name = "Bad Guy Halfling";
 	this->identifier = identifier;
 	this->race = "Halfling";
-	this->health = 100;
+	this->health = rollDice(1, 6);
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
@@ -22,7 +22,7 @@ Halfling::Halfling(string name)
 	cout << "Halfling (name) overloaded constructor called" << endl; // debug
 	this->name = name;
 	this->race = "Halfling";
-	this->health = 100;
+	this->health = rollDice(1, 6);
 	this->xp = 0;
 	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);

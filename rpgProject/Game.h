@@ -11,6 +11,7 @@
 #include "Elf.h"
 #include "Dwarf.h"
 #include "Narrator.h"
+#include "Encounter.h"
 #include "Item.h"
 
 class Game

@@ -18,6 +18,7 @@ public:
 
 	int GetIdentifier();
 
+	void CheckForDead();
 	void CleanUp();
 
 private:

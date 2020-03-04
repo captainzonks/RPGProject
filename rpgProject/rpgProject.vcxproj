@@ -90,11 +90,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -149,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Armor.cpp" />
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
@@ -171,6 +176,7 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="Currency.h" />
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
@@ -179,6 +185,7 @@
     <ClInclude Include="Fighter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Halfling.h" />
+    <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />

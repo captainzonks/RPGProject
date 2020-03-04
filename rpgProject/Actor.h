@@ -1,8 +1,10 @@
 #pragma once
 
+#include "HelperFunctions.h"
 #include "Menu.h"
 #include "Inventory.h"
 #include "Currency.h"
+#include "Attack.h"
 
 #include <string>
 #include <vector>
@@ -47,10 +49,8 @@ public:
 	virtual int sizeOfInventory();
 
 	// actions
-	virtual bool subtractHealth(int& damage);
+	virtual void subtractHealth(int& damage);
 	virtual void addXP(int& xpGain);
-	virtual int rollDice(const int& quantity, const int& dice),
-		rollDiceIgnoreLowest(const int& quantity, const int& dice);
 
 	// inventory management
 	// virtual void openInventory();
@@ -66,8 +66,9 @@ public:
 		modifyWisdom(const int& modifier),
 		modifyCharisma(const int& modifier);
 
-	// moves (temporary)
-	/*virtual void attack(Actor& target);*/
+	// combat
+	virtual void RollForInitiative();
+	virtual void ClearInitiative();
 
 protected:
 	// friend class Narrator;
@@ -81,6 +82,7 @@ protected:
 	int xp;
 	bool isAlive{ true };
 
+	int initiative{};
 	int identifier{};
 
 	// stats

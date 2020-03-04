@@ -183,58 +183,16 @@ int Actor::sizeOfInventory()
 	return this->myInventory.getCapacity();
 }
 
-bool Actor::subtractHealth(int& damage)
+void Actor::subtractHealth(int& damage)
 {
-	// TODO handling of death won't be here
-
-	bool isAlive{ true };
-	if (this->health > 0)
-	{
-		this->health -= damage;
-		if (this->health <= 0)
-		{
-			isAlive = false;
-		}
-	}
-	else
-	{
+	this->health -= damage;
+	if (health <= 0)
 		isAlive = false;
-	}
-
-	return isAlive;
 }
 
 void Actor::addXP(int& xpGain)
 {
 	this->xp += xpGain;
-}
-
-int Actor::rollDice(const int& quantity, const int& dice)
-{
-	int result{};
-	for (int i{ quantity }; i > 0; --i)
-	{
-		result += ( rand() % dice + 1 );
-	}
-	return result;
-}
-
-// for stat rolls, such as 4d6 and ignore lowest roll
-int Actor::rollDiceIgnoreLowest(const int& quantity, const int& dice)
-{
-	vector<int> result{};
-	int total{};
-	for (int i{ quantity }; i > 0; --i)
-	{
-		result.push_back(rand() % dice + 1);
-	}
-
-	result.erase(std::min_element(std::begin(result), std::end(result)));
-
-	for (auto& i : result)
-		total += i;
-	
-	return total;
 }
 
 //void Actor::openInventory()
@@ -284,6 +242,16 @@ void Actor::modifyWisdom(const int& modifier)
 void Actor::modifyCharisma(const int& modifier)
 {
 	this->charisma += modifier;
+}
+
+void Actor::RollForInitiative()
+{
+	initiative = rollDice(1, 20) + this->getDexMod();
+}
+
+void Actor::ClearInitiative()
+{
+	this->initiative = 0;
 }
 
 //void Actor::attack(Actor& target)
