@@ -3,9 +3,9 @@
 bool Attack::AttackAgainstAC(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target)
 {
 	bool success{ false };
-	std::cout << "\n" << attacker->getName() << " is attacking " << target->getName() << "!" << std::endl;
-	int result{ rollDice(1, 20) + attacker->getStrengthMod() };
-	if (result < (target->getArmorClass() + target->myInventory.GetArmorBonus()))
+	std::cout << "\n" << attacker->GetName() << " is attacking " << target->GetName() << "!" << std::endl;
+	int result{ RollDice(1, 20) + attacker->GetStrengthMod() };
+	if (result < (target->GetArmorClass() + target->myInventory.GetArmorBonus()))
 		return false;
 	else
 		return true;
@@ -13,16 +13,16 @@ bool Attack::AttackAgainstAC(std::shared_ptr<Actor> attacker, std::shared_ptr<Ac
 
 void Attack::DealDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target)
 {
-	int total = rollDice(1, attacker->myInventory.GetAttackDice());
-	target->subtractHealth(total);
-	std::cout << "\n" << attacker->getName() << " did " << total << " damage to " << target->getName() << std::endl;
-	if (!target->livingOrDead())
+	int total = RollDice(1, attacker->myInventory.GetAttackDice());
+	target->SubtractHealth(total);
+	std::cout << "\n" << attacker->GetName() << " did " << total << " damage to " << target->GetName() << std::endl;
+	if (!target->LivingOrDead())
 	{
-		std::cout << attacker->getName() << " killed " << target->getName() << "!" << std::endl;
-		attacker->myCurrency.addMoney(target->myCurrency.getCopper());
-		std::cout << attacker->getName() << " looted " << target->myCurrency.getCopper() << " copper!" << std::endl;
-		int xpGain{ (rand() % 25 + 1) * target->getStrengthMod() };
-		attacker->addXP(xpGain);
-		std::cout << attacker->getName() << " gained " << xpGain << " XP!" << std::endl;
+		std::cout << attacker->GetName() << " killed " << target->GetName() << "!" << std::endl;
+		attacker->myCurrency.AddMoney(target->myCurrency.GetCopper());
+		std::cout << attacker->GetName() << " looted " << target->myCurrency.GetCopper() << " copper!" << std::endl;
+		int xpGain{ (rand() % 25 + 1) * target->GetStrengthMod() };
+		attacker->AddXP(xpGain);
+		std::cout << attacker->GetName() << " gained " << xpGain << " XP!" << std::endl;
 	}
 }

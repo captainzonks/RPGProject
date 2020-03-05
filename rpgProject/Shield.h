@@ -9,25 +9,24 @@ public:
 
 	// constructors
 	Shield();
-	Shield(string name, int armorValue);
+	Shield(string name, int armorValue, int durability, int value);
 
 	// destructor
 	virtual ~Shield() override;
 
-	// print override
-	virtual void print(ostream& os) const override
+	// Print override
+	virtual void Print(ostream& os) const override
 	{
-		os << getName();
+		os << GetName();
 	}
 
 	// getters
-	virtual string getName() const override;
-	virtual int getArmorValue() const override;
-	virtual int getDurability() const override;
+	virtual string GetName() const override;
+	virtual int GetArmorValue() const override;
+	virtual int GetDurability() const override;
+	virtual int GetValue() const override;
 
 private:
-	string name;
-	int durability;
 	int armorValue;
 };
 

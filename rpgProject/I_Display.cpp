@@ -2,6 +2,6 @@
 
 ostream& operator<<(ostream& os, const I_Display& obj)
 {
-	obj.print(os);
+	obj.Print(os);
 	return os;
 }

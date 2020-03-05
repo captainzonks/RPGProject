@@ -24,7 +24,7 @@ int Currency::getSilver()
 	return copper / 10;
 }
 
-int Currency::getCopper()
+int Currency::GetCopper()
 {
 	return copper;
 }
@@ -44,7 +44,7 @@ void Currency::displayMoney()
 	cout << "============" << endl;
 }
 
-void Currency::addMoney(int copper)
+void Currency::AddMoney(int copper)
 {
 	this->copper += copper;
 }

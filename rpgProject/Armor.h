@@ -14,7 +14,7 @@ public:
 	virtual ~Armor() override;
 
 	// getter
-	virtual int getArmorValue() const = 0;
+	virtual int GetArmorValue() const = 0;
 
 private:
 };

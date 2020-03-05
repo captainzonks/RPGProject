@@ -34,38 +34,38 @@ public:
 	virtual ~Actor();
 
 	// setters
-	virtual void rollStats() = 0;
-	virtual void setArmorClass(int armor);
+	virtual void RollStats() = 0;
+	virtual void SetArmorClass(int armor);
 
 	// getters
-	virtual string getName(), getRace();
-	virtual int getHealth(), getArmorClass(), getXP();
-	virtual int getStrength(), getDexterity(), getConstitution(), getIntelligence(), getWisdom(), getCharisma();
-	virtual int getStrengthMod(), getDexMod(), getConstMod(), getIntelMod(), getWisdomMod(), getCharMod();
+	virtual string GetName(), GetRace();
+	virtual int GetHealth(), GetArmorClass(), GetXP();
+	virtual int GetStrength(), GetDexterity(), GetConstitution(), GetIntelligence(), GetWisdom(), GetCharisma();
+	virtual int GetStrengthMod(), GetDexMod(), GetConstMod(), GetIntelMod(), GetWisdomMod(), GetCharMod();
 	virtual int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
 	virtual int GetInitiative();
-	virtual bool livingOrDead();
-	virtual void display() = 0;
+	virtual bool LivingOrDead();
+	virtual void Display() = 0;
 	
-	virtual int sizeOfInventory();
+	virtual int SizeOfInventory();
 
 	// actions
-	virtual void subtractHealth(int& damage);
-	virtual void addXP(int xpGain);
+	virtual void SubtractHealth(int& damage);
+	virtual void AddXP(int xpGain);
 
 	// inventory management
 	// virtual void openInventory();
 
 	// armor related functions
-	virtual void equipArmor(Armor& armor);
+	virtual void EquipArmor(Armor& armor);
 
 	// modify stats
-	virtual void modifyStrength(const int& modifier),
-		modifyDexterity(const int& modifier),
-		modifyConstitution(const int& modifier),
-		modifyIntelligence(const int& modifier),
-		modifyWisdom(const int& modifier),
-		modifyCharisma(const int& modifier);
+	virtual void ModifyStrength(const int& modifier),
+		ModifyDexterity(const int& modifier),
+		ModifyConstitution(const int& modifier),
+		ModifyIntelligence(const int& modifier),
+		ModifyWisdom(const int& modifier),
+		ModifyCharisma(const int& modifier);
 
 	// combat
 	virtual void RollForInitiative();

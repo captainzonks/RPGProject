@@ -10,9 +10,9 @@ void Game::GameLoop()
 {
 	Initialize();
 
-	narrator.startGreeting();
-	auto player = narrator.characterCreator();
-	player->display();
+	narrator.StartGreeting();
+	auto player = narrator.CharacterCreator();
+	player->Display();
 
 	while (IsRunning())
 	{
@@ -30,14 +30,14 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 	std::unique_ptr<int> const decisions = std::make_unique<int>(6);
 	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Buy Something", "Create Enemy", "Display Enemies", "Attack Enemy", "Quit" }));
-	choice = tempMenu->printMenu(*decisions, *tempDecisions);
+	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 	switch (choice)
 	{
 	case 1:
-		player->display();
+		player->Display();
 		break;
 	case 2:
-		narrator.buySomething(player);
+		narrator.BuySomething(player);
 		break;
 	case 3:
 		manager.AddEnemy(manager.CreateEnemy());
@@ -59,7 +59,7 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 void Game::Update(std::shared_ptr<Actor> player)
 {
 	manager.CheckForDead();
-	if (!player->livingOrDead())
+	if (!player->LivingOrDead())
 	{
 		std::cout << "\nYou lost! Better luck next time!" << std::endl;
 		isRunning = false;

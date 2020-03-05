@@ -23,11 +23,11 @@ public:
 	virtual ~Halfling() override;
 
 	// character creation functions
-	virtual void rollStats() override;
+	virtual void RollStats() override;
 
 	// getter
-	virtual void display() override;
-	virtual string getRace() override;
+	virtual void Display() override;
+	virtual string GetRace() override;
 
 private:
 

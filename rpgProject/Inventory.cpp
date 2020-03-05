@@ -10,17 +10,17 @@ Inventory::~Inventory()
 	cout << "Inventory destructor called" << endl;
 }
 
-void Inventory::setCapacity(int capacityChange)
+void Inventory::SetCapacity(int capacityChange)
 {
 	this->capacity += capacityChange;
 }
 
-int Inventory::getCapacity() const
+int Inventory::GetCapacity() const
 {
 	return this->capacity;
 }
 
-int Inventory::totalItemsInInventory() const
+int Inventory::TotalItemsInInventory() const
 {
 	return this->inventory.size();
 }
@@ -28,11 +28,11 @@ int Inventory::totalItemsInInventory() const
 void Inventory::GetWeapon(std::unique_ptr<Weapon> weapon)
 {
 	hasWeapon = true;
-	attackDice = weapon->getAttackDie();
-	addToInventory(std::move(weapon));
+	attackDice = weapon->GetAttackDie();
+	AddToInventory(std::move(weapon));
 }
 
-void Inventory::addToInventory(std::unique_ptr<Item> item)
+void Inventory::AddToInventory(std::unique_ptr<Item> item)
 {
 	if (capacity > 0)
 	{
@@ -43,7 +43,7 @@ void Inventory::addToInventory(std::unique_ptr<Item> item)
 		std::cout << "You don't have enough room!" << std::endl;
 }
 
-void Inventory::displayInventory() const
+void Inventory::DisplayInventory() const
 {
 	cout << "============" << endl;
 	int counter{ 1 };
@@ -67,9 +67,13 @@ int Inventory::GetAttackDice()
 
 void Inventory::GetArmor(std::unique_ptr<Armor> armor)
 {
-	hasArmor = true;
-	armorBonus += armor->getArmorValue();
-	addToInventory(std::move(armor));
+	// need to separate out armor and shield...
+	if (!hasArmor)
+	{
+		hasArmor = true;
+		armorBonus += armor->GetArmorValue();
+		AddToInventory(std::move(armor));
+	}
 }
 
 bool Inventory::HasArmor()

@@ -8,25 +8,24 @@ class Sword :
 public:
 	// constructors
 	Sword();
-	Sword(string name, int attackDie);
+	Sword(string name, int attackDie, int durability, int value);
 
 	// destructor
 	virtual ~Sword() override;
 
-	// print override
-	virtual void print(ostream& os) const override
+	// Print override
+	virtual void Print(ostream& os) const override
 	{
-		os << getName();
+		os << GetName();
 	}
 
 	// getters
-	virtual string getName() const override;
-	virtual int getAttackDie() const override;
-	virtual int getDurability() const override;
+	virtual string GetName() const override;
+	virtual int GetAttackDie() const override;
+	virtual int GetDurability() const override;
+	virtual int GetValue() const override;
 
 private:
-	string name;
 	int attackDie;
-	int durability;
 };
 

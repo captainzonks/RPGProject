@@ -19,13 +19,17 @@ public:
 	// destructor
 	virtual ~Item();
 
-	// print override
-	virtual void print(ostream& os) const override = 0;
+	// Print override
+	virtual void Print(ostream& os) const override = 0;
 
 	// getter
-	virtual string getName() const = 0;
-	virtual int getDurability() const = 0;
+	virtual string GetName() const = 0;
+	virtual int GetValue() const = 0;
+	virtual int GetDurability() const = 0;
 
-private:
+protected:
+	string name{};
+	int durability{};
+	int value{};
 };
 

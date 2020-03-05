@@ -24,9 +24,9 @@ public:
 	// destructor
 	~Inventory();
 
-	void setCapacity(int capacityChange);
-	int getCapacity() const;
-	int totalItemsInInventory() const;
+	void SetCapacity(int capacityChange);
+	int GetCapacity() const;
+	int TotalItemsInInventory() const;
 
 	// weapon functions
 	void GetWeapon(std::unique_ptr<Weapon> weapon);
@@ -39,8 +39,8 @@ public:
 	int GetArmorBonus();
 
 	// inventory functions
-	void addToInventory(std::unique_ptr<Item> item);
-	void displayInventory() const;
+	void AddToInventory(std::unique_ptr<Item> item);
+	void DisplayInventory() const;
 
 
 

@@ -28,7 +28,7 @@ Encounter::Encounter(EnemyManager& manager, std::shared_ptr<Actor> player)
 				{
 					std::cout << "You Died!" << std::endl;
 					std::cout << "\nYou were killed by: " << std::endl;
-					initiativeOrder.at(i)->display();
+					initiativeOrder.at(i)->Display();
 					initiativeOrder.clear();
 					manager.CleanUp();
 					break;
@@ -78,10 +78,10 @@ make sure the orders are sorting properly
 */
 void Encounter::DisplayIniatives()
 {
-	// debug display initiative order to check
+	// debug Display initiative order to check
 	for (auto& actor : initiativeOrder)
 	{
-		std::cout << actor->getName() << " Initiative: " << actor->GetInitiative() << std::endl;
+		std::cout << actor->GetName() << " Initiative: " << actor->GetInitiative() << std::endl;
 	}
 }
 
@@ -105,7 +105,7 @@ bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_pt
 	if (Attack::AttackAgainstAC(attacker, defender))
 	{
 		Attack::DealDamage(attacker, defender);
-		if (!defender->livingOrDead())
+		if (!defender->LivingOrDead())
 		{
 			manager.CheckForDead();
 			return true; // target died
@@ -113,7 +113,7 @@ bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_pt
 	}
 	else
 	{
-		std::cout << "\n" << attacker->getName() << " missed!" << std::endl;
+		std::cout << "\n" << attacker->GetName() << " missed!" << std::endl;
 		return false;
 	}
 	return false;

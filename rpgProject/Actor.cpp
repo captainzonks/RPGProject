@@ -19,107 +19,107 @@ Actor::~Actor()
 {
 }
 
-//void Actor::rollStats()
+//void Actor::RollStats()
 //{
-//	this->strength = rollDiceIgnoreLowest(4, 6);
-//	this->dexterity = rollDiceIgnoreLowest(4, 6);
-//	this->constitution = rollDiceIgnoreLowest(4, 6);
-//	this->intelligence = rollDiceIgnoreLowest(4, 6);
-//	this->wisdom = rollDiceIgnoreLowest(4, 6);
-//	this->charisma = rollDiceIgnoreLowest(4, 6);
+//	this->strength = RollDiceIgnoreLowest(4, 6);
+//	this->dexterity = RollDiceIgnoreLowest(4, 6);
+//	this->constitution = RollDiceIgnoreLowest(4, 6);
+//	this->intelligence = RollDiceIgnoreLowest(4, 6);
+//	this->wisdom = RollDiceIgnoreLowest(4, 6);
+//	this->charisma = RollDiceIgnoreLowest(4, 6);
 //}
 
-void Actor::setArmorClass(int armor)
+void Actor::SetArmorClass(int armor)
 {
 	armorClass += armor;
 }
 
-string Actor::getName()
+string Actor::GetName()
 {
 	return this->name;
 }
 
-string Actor::getRace()
+string Actor::GetRace()
 {
 	return this->race;
 }
 
-int Actor::getHealth()
+int Actor::GetHealth()
 {
 	return this->health;
 }
 
-int Actor::getXP()
+int Actor::GetXP()
 {
 	return this->xp;
 }
 
-int Actor::getArmorClass()
+int Actor::GetArmorClass()
 {
 	return this->armorClass;
 }
 
-int Actor::getStrength()
+int Actor::GetStrength()
 {
 	return this->strength;
 }
 
-int Actor::getDexterity()
+int Actor::GetDexterity()
 {
 	return this->dexterity;
 }
 
-int Actor::getConstitution()
+int Actor::GetConstitution()
 {
 	return this->constitution;
 }
 
-int Actor::getIntelligence()
+int Actor::GetIntelligence()
 {
 	return this->intelligence;
 }
 
-int Actor::getWisdom()
+int Actor::GetWisdom()
 {
 	return this->wisdom;
 }
 
-int Actor::getCharisma()
+int Actor::GetCharisma()
 {
 	return this->charisma;
 }
 
-int Actor::getStrengthMod()
+int Actor::GetStrengthMod()
 {
 	int mod{ (this->strength - 10) / 2 };
 	return mod;
 }
 
-int Actor::getDexMod()
+int Actor::GetDexMod()
 {
 	int mod{ (this->dexterity - 10) / 2 };
 	return mod;
 }
 
-int Actor::getConstMod()
+int Actor::GetConstMod()
 {
 	int mod{ (this->constitution - 10) / 2 };
 	return mod;
 }
 
-int Actor::getIntelMod()
+int Actor::GetIntelMod()
 {
 	int mod{ (this->intelligence - 10) / 2 };
 	return mod;
 }
 
-int Actor::getWisdomMod()
+int Actor::GetWisdomMod()
 {
 	int mod{ (this->wisdom - 10) / 2 };
 	return mod;
 }
 
-int Actor::getCharMod()
+int Actor::GetCharMod()
 {
 	int mod{ (this->charisma - 10) / 2 };
 	return mod;
@@ -127,19 +127,19 @@ int Actor::getCharMod()
 
 int Actor::getPassiveInsight()
 {
-	int passiveInsight{ 10 + this->getWisdomMod() };
+	int passiveInsight{ 10 + this->GetWisdomMod() };
 	return passiveInsight;
 }
 
 int Actor::getPassivePercetion()
 {
-	int passivePerception{ 10 + this->getWisdomMod() };
+	int passivePerception{ 10 + this->GetWisdomMod() };
 	return passivePerception;
 }
 
 int Actor::getPassiveInvestigation()
 {
-	int passiveInvestigation{ 10 + this->getIntelMod() };
+	int passiveInvestigation{ 10 + this->GetIntelMod() };
 	return passiveInvestigation;
 }
 
@@ -148,35 +148,35 @@ int Actor::GetInitiative()
 	return initiative;
 }
 
-bool Actor::livingOrDead()
+bool Actor::LivingOrDead()
 {
 	return isAlive;
 }
 
-//void Actor::display()
+//void Actor::Display()
 //{
 //	cout << endl;
 //	// name header
-//	cout << "====" << this->getName() << "====" << endl;
+//	cout << "====" << this->GetName() << "====" << endl;
 //	// basic stats
-//	cout << "   " << this->getHealth() << " HP" << endl;
-//	cout << "   " << this->getXP() << " XP" << endl;
+//	cout << "   " << this->GetHealth() << " HP" << endl;
+//	cout << "   " << this->GetXP() << " XP" << endl;
 //	// ability stats
-//	cout << "   " << this->getStrength() << " Strength"
-//		<< " (" << this->getStrengthMod() << ")" << endl;
-//	cout << "   " << this->getDexterity() << " Dexterity"
-//		<< " (" << this->getDexMod() << ")" << endl;
-//	cout << "   " << this->getConstitution() << " Constitution"
+//	cout << "   " << this->GetStrength() << " Strength"
+//		<< " (" << this->GetStrengthMod() << ")" << endl;
+//	cout << "   " << this->GetDexterity() << " Dexterity"
+//		<< " (" << this->GetDexMod() << ")" << endl;
+//	cout << "   " << this->GetConstitution() << " Constitution"
 //		<< " (" << this->getConstMod() << ")" << endl;
-//	cout << "   " << this->getIntelligence() << " Intelligence"
-//		<< " (" << this->getIntelMod() << ")" << endl;
-//	cout << "   " << this->getWisdom() << " Wisdom"
-//		<< " (" << this->getWisdomMod() << ")" << endl;
-//	cout << "   " << this->getCharisma() << " Charisma"
-//		<< " (" << this->getCharMod() << ")" << endl;
+//	cout << "   " << this->GetIntelligence() << " Intelligence"
+//		<< " (" << this->GetIntelMod() << ")" << endl;
+//	cout << "   " << this->GetWisdom() << " Wisdom"
+//		<< " (" << this->GetWisdomMod() << ")" << endl;
+//	cout << "   " << this->GetCharisma() << " Charisma"
+//		<< " (" << this->GetCharMod() << ")" << endl;
 //	// footer (matches length of header plus name)
 //	cout << "====";
-//	for (char c : this->getName())
+//	for (char c : this->GetName())
 //	{
 //		cout << "=";
 //	}
@@ -184,19 +184,19 @@ bool Actor::livingOrDead()
 //}
 
 
-int Actor::sizeOfInventory()
+int Actor::SizeOfInventory()
 {
-	return this->myInventory.getCapacity();
+	return this->myInventory.GetCapacity();
 }
 
-void Actor::subtractHealth(int& damage)
+void Actor::SubtractHealth(int& damage)
 {
 	this->health -= damage;
 	if (health <= 0)
 		isAlive = false;
 }
 
-void Actor::addXP(int xpGain)
+void Actor::AddXP(int xpGain)
 {
 	this->xp += xpGain;
 }
@@ -209,50 +209,50 @@ void Actor::addXP(int xpGain)
 //	const int* decisions = new int{ 2 };
 //	vector<string>* decisionList = new vector<string>{ "Equip Armor", "Exit" };
 //
-//	if (tempMenu->printMenu(*decisions, *decisionList) == 1)
+//	if (tempMenu->PrintMenu(*decisions, *decisionList) == 1)
 //	{
-//		equipArmor(myInventory.selectItemInInventory());
+//		EquipArmor(myInventory.selectItemInInventory());
 //	}
 //}
 
-void Actor::equipArmor(Armor& armor)
+void Actor::EquipArmor(Armor& armor)
 {
-	setArmorClass(armor.getArmorValue());
+	SetArmorClass(armor.GetArmorValue());
 }
 
-void Actor::modifyStrength(const int& modifier)
+void Actor::ModifyStrength(const int& modifier)
 {
 	this->strength += modifier;
 }
 
-void Actor::modifyDexterity(const int& modifier)
+void Actor::ModifyDexterity(const int& modifier)
 {
 	this->dexterity += modifier;
 }
 
-void Actor::modifyConstitution(const int& modifier)
+void Actor::ModifyConstitution(const int& modifier)
 {
 	this->constitution += modifier;
 }
 
-void Actor::modifyIntelligence(const int& modifier)
+void Actor::ModifyIntelligence(const int& modifier)
 {
 	this->intelligence += modifier;
 }
 
-void Actor::modifyWisdom(const int& modifier)
+void Actor::ModifyWisdom(const int& modifier)
 {
 	this->wisdom += modifier;
 }
 
-void Actor::modifyCharisma(const int& modifier)
+void Actor::ModifyCharisma(const int& modifier)
 {
 	this->charisma += modifier;
 }
 
 void Actor::RollForInitiative()
 {
-	initiative = rollDice(1, 20) + this->getDexMod();
+	initiative = RollDice(1, 20) + this->GetDexMod();
 }
 
 void Actor::ClearInitiative()
@@ -266,12 +266,12 @@ void Actor::ClearInitiative()
 //	// eventual goal is to have unique attacks in separate methods (or classes)
 //	int tempQuantity{ 1 }; // debug purposes
 //	cout << this->name << " is attacking " << target.name << endl;
-//	int damage{ rollDice(tempQuantity, attackDice) };
-//	if (target.subtractHealth(damage))
+//	int damage{ RollDice(tempQuantity, attackDice) };
+//	if (target.SubtractHealth(damage))
 //	{
 //		cout << this->name << " did " << damage << " damage to " << target.name << "!" << endl;
 //	}
-//	else if (!target.subtractHealth(damage))
+//	else if (!target.SubtractHealth(damage))
 //	{
 //		cout << this->name << " killed " << target.name << " with " << damage << " damage!" << endl;
 //		target.isAlive = false;

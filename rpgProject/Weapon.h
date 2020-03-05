@@ -14,7 +14,7 @@ public:
 	virtual ~Weapon() override;
 
 	// getter
-	virtual int getAttackDie() const = 0;
+	virtual int GetAttackDie() const = 0;
 
 private:
 };

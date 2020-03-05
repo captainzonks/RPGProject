@@ -46,7 +46,7 @@ void EnemyManager::DisplayAllEnemies()
 	{
 		for (auto& enemy : enemies)
 		{
-			enemy->display();
+			enemy->Display();
 		}
 	}
 }
@@ -76,9 +76,9 @@ void EnemyManager::CheckForDead()
 {
 	for (size_t i{}; i < enemies.size(); ++i)
 	{
-		if (!enemies.at(i)->livingOrDead())
+		if (!enemies.at(i)->LivingOrDead())
 		{
-			std::cout << "\n" << enemies.at(i)->getName() << " died!" << std::endl;
+			std::cout << "\n" << enemies.at(i)->GetName() << " died!" << std::endl;
 			enemies.erase(enemies.begin() + i);
 		}
 	}

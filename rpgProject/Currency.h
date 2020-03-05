@@ -24,11 +24,11 @@ public:
     ~Currency();
 
     // getters
-    int getGold(), getSilver(), getCopper();
+    int getGold(), getSilver(), GetCopper();
     void displayMoney();
 
     // add or subtract
-    void addMoney(int copper);
+    void AddMoney(int copper);
     void subtractMoney(int copper);
 
 private:

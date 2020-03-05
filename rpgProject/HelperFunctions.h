@@ -8,7 +8,7 @@
 /*
 Standard dice rolling function; send in quantity of dice, and the d-type
 */
-inline int rollDice(const int& quantity, const int& dice)
+inline int RollDice(const int& quantity, const int& dice)
 {
 	int result{};
 	for (int i{ quantity }; i > 0; --i)
@@ -21,7 +21,7 @@ inline int rollDice(const int& quantity, const int& dice)
 /*
 Dice rolling function for stats; it drops the lowest number from the total
 */
-inline int rollDiceIgnoreLowest(const int& quantity, const int& dice)
+inline int RollDiceIgnoreLowest(const int& quantity, const int& dice)
 {
 	std::vector<int> result{};
 	int total{};

@@ -18,28 +18,17 @@ class Narrator
 {
 public:
 
-	enum class ITEM_TYPES {
-		SWORD = 1,
-		SHIELD
-	};
-
-	void startGreeting();
+	void StartGreeting();
 
 	// character creation
-	std::shared_ptr<Actor> characterCreator();
-
-	// encounters
-	// void encounter(Actor& player, Actor& enemy);
+	std::shared_ptr<Actor> CharacterCreator();
 
 	// inventory creation
-	void buySomething(std::shared_ptr<Actor> player);
+	void BuySomething(std::shared_ptr<Actor> player);
 	bool CheckPrice(std::shared_ptr<Actor> player, int price);
-	std::unique_ptr<Item> makeAnItem(ITEM_TYPES itemType);
-
-	//Sword* makeASword();
 
 private:
 	
-	string version{ "v0.01f" };
+	string version{ "v0.01g" };
 };
 

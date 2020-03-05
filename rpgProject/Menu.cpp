@@ -1,12 +1,25 @@
 #include "Menu.h"
 
-int Menu::printMenu(const int& decisions, const vector<string>& listOfDecisions)
+int Menu::PrintMenu(const int& decisions, const vector<string>& listOfDecisions)
 {
 	cout << "--------" << endl;
 	int count{ 1 };
 	for (int i{}; i != decisions; ++i)
 	{
 		cout << count << ") " << listOfDecisions[i] << endl;
+		count++;
+	}
+	cout << "--------" << endl;
+	return choiceHandler(decisions);
+}
+
+int Menu::PrintMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions)
+{
+	cout << "--------" << endl;
+	int count{ 1 };
+	for (int i{}; i != decisions; ++i)
+	{
+		cout << count << ") " << listOfDecisions.at(i) << " : " << listOfDecisions.at(i)->GetValue() << " copper" << endl;
 		count++;
 	}
 	cout << "--------" << endl;
