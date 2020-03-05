@@ -9,22 +9,22 @@ Human::Human(int identifier)
 {
 	cout << "Human (int identifier) overloaded constructor called" << endl; // debug
 	this->name = "Bad Guy Human"; // temporary debug
+	this->rollStats();
 	this->identifier = identifier;
 	this->race = "Human";
-	this->health = rollDice(1, 8) + getConstMod();
+	this->health = 8 + getConstMod();
 	this->xp = 0;
-	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
 Human::Human(string name)
 {
 	cout << "Human (name) overloaded constructor called" << endl; // debug
+	this->rollStats();
 	this->name = name;
 	this->race = "Human";
-	this->health = rollDice(1, 8) + getConstMod();
+	this->health = 8 + getConstMod();
 	this->xp = 0;
-	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 

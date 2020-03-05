@@ -9,11 +9,11 @@ Dwarf::Dwarf(int identifier)
 {
 	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
 	this->name = "Bad Guy Dwarf"; // temporary debug value
+	this->rollStats();
 	this->identifier = identifier;
 	this->race = "Dwarf";
-	this->health = rollDice(1, 8) + getConstMod();
+	this->health = 8 + getConstMod();
 	this->xp = 0;
-	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
@@ -21,10 +21,10 @@ Dwarf::Dwarf(string name)
 {
 	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
 	this->name = name;
-	this->race = "Dwarf";
-	this->health = rollDice(1, 8) + getConstMod();
-	this->xp = 0;
 	this->rollStats();
+	this->race = "Dwarf";
+	this->health = 8 + getConstMod();
+	this->xp = 0;
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 

@@ -9,11 +9,11 @@ Halfling::Halfling(int identifier)
 {
 	cout << "Halfling (int identifier) overloaded constructor called" << endl; // debug
 	this->name = "Bad Guy Halfling";
+	this->rollStats();
 	this->identifier = identifier;
 	this->race = "Halfling";
-	this->health = rollDice(1, 6) + getConstMod();
+	this->health = 6 + getConstMod();
 	this->xp = 0;
-	this->rollStats();
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 
@@ -21,10 +21,10 @@ Halfling::Halfling(string name)
 {
 	cout << "Halfling (name) overloaded constructor called" << endl; // debug
 	this->name = name;
-	this->race = "Halfling";
-	this->health = rollDice(1, 6) + getConstMod();
-	this->xp = 0;
 	this->rollStats();
+	this->race = "Halfling";
+	this->health = 6 + getConstMod();
+	this->xp = 0;
 	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
 }
 

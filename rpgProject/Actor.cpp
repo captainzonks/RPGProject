@@ -4,7 +4,7 @@ Actor::Actor()
 {
 	cout << "\nActor constructor called" << endl; // debug
 	this->name = "Guy";
-	this->health = 100;
+	this->health = 8;
 	this->xp = 0;
 	this->strength = 0;
 	this->dexterity = 0;
