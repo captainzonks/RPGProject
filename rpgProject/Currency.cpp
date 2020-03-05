@@ -4,21 +4,24 @@ Currency::Currency()
 {
 }
 
-Currency::Currency(int gold, int silver, int copper)
+Currency::~Currency()
 {
-	this->gold = gold;
-	this->silver = silver;
+	std::cout << "Currency destructor called" << std::endl;
+}
+
+Currency::Currency(int copper)
+{
 	this->copper = copper;
 }
 
 int Currency::getGold()
 {
-	return gold;;
+	return copper / 100;
 }
 
 int Currency::getSilver()
 {
-	return silver;
+	return copper / 10;
 }
 
 int Currency::getCopper()
@@ -28,41 +31,30 @@ int Currency::getCopper()
 
 void Currency::displayMoney()
 {
+	int tempCopper = copper;
+	int gold = tempCopper / 100;
+	tempCopper %= 100;
+	int silver = tempCopper / 10;
+	tempCopper %= 10;
+
 	cout << "============" << endl;
-	cout << "Gold   : " << this->getGold() << endl;
-	cout << "Silver : " << this->getSilver() << endl;
-	cout << "Copper : " << this->getCopper() << endl;
+	cout << "Gold   : " << gold << endl;
+	cout << "Silver : " << silver << endl;
+	cout << "Copper : " << tempCopper << endl;
 	cout << "============" << endl;
 }
 
-void Currency::addMoney(int gold, int silver, int copper)
+void Currency::addMoney(int copper)
 {
-	this->gold += gold;
-	this->silver += silver;
 	this->copper += copper;
 }
 
-void Currency::subtractMoney(int gold, int silver, int copper)
+void Currency::subtractMoney(int copper)
 {
-	if (gold != 0 && this->gold >= gold)
-		this->gold -= gold;
-	else if (gold == 0)
+	if (copper > this->copper)
 	{
+		std::cout << "You don't have enough copper!" << std::endl;
 	}
 	else
-		cout << "You don't have enough gold!" << endl;
-	if (silver != 0 && this->silver >= silver)
-		this->silver -= silver;
-	else if (silver == 0)
-	{
-	}
-	else
-		cout << "You don't have enough silver!" << endl;
-	if (copper != 0 && this->copper >= copper)
 		this->copper -= copper;
-	else if (copper == 0)
-	{
-	}
-	else
-		cout << "You don't have enough copper!" << endl;
 }

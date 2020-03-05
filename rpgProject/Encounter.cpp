@@ -37,7 +37,7 @@ Encounter::Encounter(EnemyManager& manager, std::shared_ptr<Actor> player)
 
 			}
 		}
-		std::cout << "\n" << round << " round of combat has passed!" << std::endl; // debug
+		std::cout << "\nRound " << round << " of combat has passed!" << std::endl; // debug
 		round++;
 		std::cout << "=================" << std::endl;
 	}
@@ -113,7 +113,7 @@ bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_pt
 	}
 	else
 	{
-		std::cout << attacker->getName() << " missed!" << std::endl;
+		std::cout << "\n" << attacker->getName() << " missed!" << std::endl;
 		return false;
 	}
 	return false;

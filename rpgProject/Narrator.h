@@ -33,6 +33,7 @@ public:
 
 	// inventory creation
 	void buySomething(std::shared_ptr<Actor> player);
+	bool CheckPrice(std::shared_ptr<Actor> player, int price);
 	std::unique_ptr<Item> makeAnItem(ITEM_TYPES itemType);
 
 	//Sword* makeASword();

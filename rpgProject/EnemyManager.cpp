@@ -78,7 +78,7 @@ void EnemyManager::CheckForDead()
 	{
 		if (!enemies.at(i)->livingOrDead())
 		{
-			std::cout << enemies.at(i)->getName() << " died!" << std::endl;
+			std::cout << "\n" << enemies.at(i)->getName() << " died!" << std::endl;
 			enemies.erase(enemies.begin() + i);
 		}
 	}

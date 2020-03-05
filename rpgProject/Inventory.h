@@ -2,6 +2,7 @@
 
 #include "Item.h"
 #include "Armor.h"
+#include "Weapon.h"
 #include "Menu.h"
 
 #include <vector>
@@ -11,8 +12,6 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::vector;
-
-class Sword;
 
 class Inventory
 {
@@ -30,12 +29,12 @@ public:
 	int totalItemsInInventory() const;
 
 	// weapon functions
-	void GetWeapon(std::unique_ptr<Item> weapon, int dice);
+	void GetWeapon(std::unique_ptr<Weapon> weapon);
 	bool HasWeapon();
 	int GetAttackDice();
 
 	// armor functions
-	void GetArmor(std::unique_ptr<Item> armor, int AC);
+	void GetArmor(std::unique_ptr<Armor> armor);
 	bool HasArmor();
 	int GetArmorBonus();
 

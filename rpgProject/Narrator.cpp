@@ -99,8 +99,8 @@ void Narrator::buySomething(std::shared_ptr<Actor> player)
 	cout << "Welcome to fantasy shop " << version << "!" << endl;
 	cout << "=============================" << endl;
 	cout << "What would you like to purchase?" << endl;
-	cout << "1) Sword" << endl;
-	cout << "2) Shield" << endl;
+	cout << "1) Sword - 2 silver" << endl;
+	cout << "2) Shield - 3 gold" << endl;
 	cout << "---------------" << endl;
 	cout << "Please enter a number: ";
 	std::unique_ptr<Sword> sword = std::make_unique<Sword>();
@@ -110,13 +110,37 @@ void Narrator::buySomething(std::shared_ptr<Actor> player)
 	switch (choice)
 	{
 	case 1:
-		player->myInventory.GetWeapon(std::move(sword), sword->getAttackDie());
-		break;
+		if (CheckPrice(player, 20))
+		{
+			player->myInventory.GetWeapon(std::move(sword));
+			break;
+		}
+		else
+		{
+			std::cout << "You can't afford that." << std::endl;
+			break;
+		}
 	case 2:
-		player->myInventory.GetArmor(std::move(shield), shield->getArmorValue());
-		break;
+		if (CheckPrice(player, 300))
+		{
+			player->myInventory.GetArmor(std::move(shield));
+			break;
+		}
+		else
+		{
+			std::cout << "You can't afford that." << std::endl;
+			break;
+		}
 	default:
 		cout << "Invalid entry" << endl;
 		break;
 	}
+}
+
+bool Narrator::CheckPrice(std::shared_ptr<Actor> player, int price)
+{
+	if (price > player->myCurrency.getCopper())
+		return false;
+	else
+		return true;
 }

@@ -13,8 +13,9 @@ Human::Human(int identifier)
 	this->identifier = identifier;
 	this->race = "Human";
 	this->health = 8 + getConstMod();
+	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+	this->myCurrency.addMoney(rollDice(4, 4) * 100);
 }
 
 Human::Human(string name)
@@ -24,8 +25,9 @@ Human::Human(string name)
 	this->name = name;
 	this->race = "Human";
 	this->health = 8 + getConstMod();
+	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+	this->myCurrency.addMoney(rollDice(4, 4) * 100);
 }
 
 Human::~Human()

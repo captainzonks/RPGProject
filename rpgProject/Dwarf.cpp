@@ -13,8 +13,9 @@ Dwarf::Dwarf(int identifier)
 	this->identifier = identifier;
 	this->race = "Dwarf";
 	this->health = 8 + getConstMod();
+	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+	this->myCurrency.addMoney(rollDice(4, 4) * 100);
 }
 
 Dwarf::Dwarf(string name)
@@ -24,8 +25,9 @@ Dwarf::Dwarf(string name)
 	this->rollStats();
 	this->race = "Dwarf";
 	this->health = 8 + getConstMod();
+	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+	this->myCurrency.addMoney(rollDice(4, 4) * 100);
 }
 
 Dwarf::~Dwarf()

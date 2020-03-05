@@ -51,7 +51,7 @@ public:
 
 	// actions
 	virtual void subtractHealth(int& damage);
-	virtual void addXP(int& xpGain);
+	virtual void addXP(int xpGain);
 
 	// inventory management
 	// virtual void openInventory();
@@ -77,10 +77,11 @@ protected:
 	// basic traits
 	string name;
 	string race;
-	int health;
+	int maxHealth{};
+	int health{};
 	int armorClass{ 10 };
 	int walkingSpeed{ 30 };
-	int xp;
+	int xp{};
 	bool isAlive{ true };
 
 	int initiative{};

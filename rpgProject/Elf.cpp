@@ -13,8 +13,9 @@ Elf::Elf(int identifier)
 	this->identifier = identifier;
 	this->race = "Elf";
 	this->health = 6 + getConstMod();
+	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+	this->myCurrency.addMoney(rollDice(4, 4) * 100);
 }
 
 Elf::Elf(string name)
@@ -24,8 +25,9 @@ Elf::Elf(string name)
 	this->rollStats();
 	this->race = "Elf";
 	this->health = 6 + getConstMod();
+	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.addMoney(rollDice(4, 4), 0, 0);
+	this->myCurrency.addMoney(rollDice(4, 4) * 100);
 }
 
 Elf::~Elf()

@@ -16,17 +16,22 @@ class Currency
 public:
     friend class Actor;
     
+    // constructor
     Currency();
-    Currency(int gold, int silver, int copper);
+    Currency(int copper);
 
+    // destructor
+    ~Currency();
+
+    // getters
     int getGold(), getSilver(), getCopper();
     void displayMoney();
 
-    void addMoney(int gold, int silver, int copper);
-    void subtractMoney(int gold, int silver, int copper);
+    // add or subtract
+    void addMoney(int copper);
+    void subtractMoney(int copper);
 
 private:
-    int gold{};
-    int silver{};
     int copper{};
+
 };

@@ -61,7 +61,7 @@ void Game::Update(std::shared_ptr<Actor> player)
 	manager.CheckForDead();
 	if (!player->livingOrDead())
 	{
-		std::cout << "You lost! Better luck next time!" << std::endl;
+		std::cout << "\nYou lost! Better luck next time!" << std::endl;
 		isRunning = false;
 	}
 }

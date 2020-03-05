@@ -5,6 +5,7 @@ Actor::Actor()
 	cout << "\nActor constructor called" << endl; // debug
 	this->name = "Guy";
 	this->health = 8;
+	this->maxHealth = health;
 	this->xp = 0;
 	this->strength = 0;
 	this->dexterity = 0;
@@ -195,7 +196,7 @@ void Actor::subtractHealth(int& damage)
 		isAlive = false;
 }
 
-void Actor::addXP(int& xpGain)
+void Actor::addXP(int xpGain)
 {
 	this->xp += xpGain;
 }
