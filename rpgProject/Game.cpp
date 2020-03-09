@@ -40,7 +40,7 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 		narrator.BuySomething(player);
 		break;
 	case 3:
-		manager.AddEnemy(manager.CreateEnemy());
+		manager.AddEnemy(manager.CreateEnemy(player->GetAverageItemLevel()));
 		break;
 	case 4:
 		manager.DisplayAllEnemies();

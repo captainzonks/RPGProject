@@ -32,6 +32,9 @@ public:
 	bool CheckPrice(std::shared_ptr<Actor> player, int price);
 	void Upgrader(std::shared_ptr<Actor> actor);
 
+	// get player item level
+	int GetPlayerAverageLevel(std::shared_ptr<Actor> player);
+
 private:
 	
 	string version{ "v0.01g" };

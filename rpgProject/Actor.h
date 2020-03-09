@@ -53,6 +53,8 @@ public:
 	virtual int GetInitiative();
 	virtual bool LivingOrDead();
 	virtual void Display();
+	virtual void UpdateAverageItemLevel();
+	virtual int GetAverageItemLevel();
 	
 	virtual int SizeOfInventory();
 
@@ -103,6 +105,7 @@ protected:
 
 	int initiative{};
 	int identifier{};
+	int averageItemLevel{};
 
 	// stats
 	int strength, dexterity, constitution, intelligence, wisdom, charisma;

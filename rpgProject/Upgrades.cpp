@@ -24,21 +24,36 @@ Upgrades::~Upgrades()
 void Upgrades::DisplayUpgrades()
 {
 	std::cout << "\n===UPGRADES EQUIPPED===" << std::endl;
+	// sword and shield
 	if (WeaponEquipped())
-		std::cout << this->weapon->GetName() << " (d" << this->weapon->GetAttackDie() << ") equipped" << std::endl;
+		std::cout << this->weapon->GetName() <<
+		", Level " << this->weapon->GetLevel() << 
+		" (d" << this->weapon->GetAttackDie() << ") equipped" << std::endl;
 	if (ShieldEquipped())
-		std::cout << this->shield->GetName() << " (+" << this->shield->GetArmorValue() << "AC) equipped" << std::endl;
-
+		std::cout << this->shield->GetName() << 
+		", Level " << this->shield->GetLevel() << 
+		" (+" << this->shield->GetArmorValue() << "AC) equipped" << std::endl;
+	// armor
 	if (HelmetEquipped())
-		std::cout << this->helmet->GetName() << " (+" << this->helmet->GetArmorValue() << "AC) equipped" << std::endl;
+		std::cout << this->helmet->GetName() <<
+		", Level " << this->helmet->GetLevel() << 
+		" (+" << this->helmet->GetArmorValue() << "AC) equipped" << std::endl;
 	if (ChestEquipped())
-		std::cout << this->chest->GetName() << " (+" << this->chest->GetArmorValue() << "AC) equipped" << std::endl;
+		std::cout << this->chest->GetName() <<
+		", Level " << this->chest->GetLevel() << 
+		" (+" << this->chest->GetArmorValue() << "AC) equipped" << std::endl;
 	if (LegsEquipped())
-		std::cout << this->legs->GetName() << " (+" << this->legs->GetArmorValue() << "AC) equipped" << std::endl;
+		std::cout << this->legs->GetName() << 
+		", Level " << this->legs->GetLevel() << 
+		" (+" << this->legs->GetArmorValue() << "AC) equipped" << std::endl;
 	if (HandsEquipped())
-		std::cout << this->hands->GetName() << " (+" << this->hands->GetArmorValue() << "AC) equipped" << std::endl;
+		std::cout << this->hands->GetName() <<
+		", Level " << this->hands->GetLevel() <<
+		" (+" << this->hands->GetArmorValue() << "AC) equipped" << std::endl;
 	if (BootsEquipped())
-		std::cout << this->boots->GetName() << " (+" << this->boots->GetArmorValue() << "AC) equipped" << std::endl;
+		std::cout << this->boots->GetName() <<
+		", Level " << this->boots->GetLevel() << 
+		" (+" << this->boots->GetArmorValue() << "AC) equipped" << std::endl;
 
 	std::cout << "=======================" << std::endl;
 }

@@ -5,13 +5,15 @@
 #include "Dwarf.h"
 #include "Elf.h"
 #include "Halfling.h"
+#include "Upgrades.h"
 
 #include <vector>
 
 class EnemyManager
 {
 public:
-	std::shared_ptr<Actor> CreateEnemy();
+	std::shared_ptr<Actor> CreateEnemy(int playerItemLevel);
+	std::shared_ptr<Actor> GetUpgrades(int playerItemLevel, std::shared_ptr<Actor> enemy);
 	void AddEnemy(std::shared_ptr<Actor> enemy);
 	void DisplayAllEnemies();
 	unsigned int GetTotalEnemies();

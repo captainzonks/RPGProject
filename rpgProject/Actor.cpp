@@ -32,6 +32,7 @@ Actor::~Actor()
 void Actor::Update()
 {
 	UpdateArmorClass();
+	UpdateAverageItemLevel();
 }
 
 void Actor::UpdateArmorClass()
@@ -207,6 +208,58 @@ void Actor::Display()
 	cout << "====" << endl;
 	this->myCurrency.displayMoney();
 }
+
+void Actor::UpdateAverageItemLevel()
+{
+	int totalUpgrades{};
+
+	// armor
+	if (this->myUpgrades.HelmetEquipped())
+	{
+		averageItemLevel += this->myUpgrades.helmet->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.ChestEquipped())
+	{
+		averageItemLevel += this->myUpgrades.chest->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.LegsEquipped())
+	{
+		averageItemLevel += this->myUpgrades.legs->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.HandsEquipped())
+	{
+		averageItemLevel += this->myUpgrades.hands->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.BootsEquipped())
+	{
+		averageItemLevel += this->myUpgrades.boots->GetLevel();
+		totalUpgrades++;
+	}
+
+	// weapons and shiled
+	if (this->myUpgrades.WeaponEquipped())
+	{
+		averageItemLevel += this->myUpgrades.weapon->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.ShieldEquipped())
+	{
+		averageItemLevel += this->myUpgrades.shield->GetLevel();
+		totalUpgrades++;
+	}
+
+	if (totalUpgrades != 0)
+		averageItemLevel /= totalUpgrades;
+}
+int Actor::GetAverageItemLevel()
+{
+	return averageItemLevel;
+}
+
 
 
 int Actor::SizeOfInventory()

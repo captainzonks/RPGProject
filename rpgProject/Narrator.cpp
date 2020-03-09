@@ -327,3 +327,10 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		break;
 	}
 }
+
+int Narrator::GetPlayerAverageLevel(std::shared_ptr<Actor> player)
+{
+	int average{player->GetAverageItemLevel()};
+
+	return average;
+}
