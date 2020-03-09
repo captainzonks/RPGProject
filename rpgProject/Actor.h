@@ -1,7 +1,9 @@
 #pragma once
 
+#include "Constants.h"
 #include "HelperFunctions.h"
 #include "Menu.h"
+#include "Upgrades.h"
 #include "Inventory.h"
 #include "Currency.h"
 #include "Attack.h"
@@ -26,6 +28,7 @@ public:
 
 	Inventory myInventory;
 	Currency myCurrency;
+	Upgrades myUpgrades;
 
 	// constructors
 	Actor();
@@ -35,29 +38,40 @@ public:
 
 	// setters
 	virtual void RollStats() = 0;
-	virtual void SetArmorClass(int armor);
+
+	// updaters
+	virtual void Update();
+	virtual void UpdateArmorClass();
 
 	// getters
 	virtual string GetName(), GetRace();
-	virtual int GetHealth(), GetArmorClass(), GetXP();
+	virtual int GetHealth(), GetArmorClass(), GetXP(), GetLevel();
 	virtual int GetStrength(), GetDexterity(), GetConstitution(), GetIntelligence(), GetWisdom(), GetCharisma();
 	virtual int GetStrengthMod(), GetDexMod(), GetConstMod(), GetIntelMod(), GetWisdomMod(), GetCharMod();
-	virtual int getPassivePercetion(), getPassiveInsight(), getPassiveInvestigation();
+	virtual int GetPassivePerception(), GetPassiveInsight(), GetPassiveInvestigation();
+	virtual DAMAGE_TYPE GetResistance(), GetVulnerability();
 	virtual int GetInitiative();
 	virtual bool LivingOrDead();
-	virtual void Display() = 0;
+	virtual void Display();
 	
 	virtual int SizeOfInventory();
 
 	// actions
 	virtual void SubtractHealth(int& damage);
+	virtual void AddHealth(int& healing);
 	virtual void AddXP(int xpGain);
 
 	// inventory management
 	// virtual void openInventory();
 
 	// armor related functions
-	virtual void EquipArmor(Armor& armor);
+	virtual void EquipHelmet(std::unique_ptr<Armor> helmet), EquipChest(std::unique_ptr<Armor> chest),
+		EquipLegs(std::unique_ptr<Armor> legs), EquipHands(std::unique_ptr<Armor> hands),
+		EquipBoots(std::unique_ptr<Armor> boots);
+
+	// weapon & shiled related functions
+	virtual void EquipWeapon(std::unique_ptr<Weapon> weapon), 
+		EquipShield(std::unique_ptr<Armor> shield);
 
 	// modify stats
 	virtual void ModifyStrength(const int& modifier),
@@ -77,12 +91,15 @@ protected:
 	// basic traits
 	string name;
 	string race;
+	int level{ 1 };
 	int maxHealth{};
 	int health{};
 	int armorClass{ 10 };
 	int walkingSpeed{ 30 };
 	int xp{};
 	bool isAlive{ true };
+	DAMAGE_TYPE resistance{ DAMAGE_TYPE::NONE };
+	DAMAGE_TYPE vulnerability{ DAMAGE_TYPE::NONE };
 
 	int initiative{};
 	int identifier{};

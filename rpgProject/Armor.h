@@ -14,8 +14,12 @@ public:
 	virtual ~Armor() override;
 
 	// getter
-	virtual int GetArmorValue() const = 0;
+	virtual int GetArmorValue() const;
 
-private:
+	// upgrade
+	virtual void UpgradeArmor();
+
+protected:
+	int armorValue{};
 };
 

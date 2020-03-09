@@ -12,6 +12,7 @@ Elf::Elf(int identifier)
 	this->RollStats();
 	this->identifier = identifier;
 	this->race = "Elf";
+	this->level = 1;
 	this->health = 6 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
@@ -24,6 +25,7 @@ Elf::Elf(string name)
 	this->name = name;
 	this->RollStats();
 	this->race = "Elf";
+	this->level = 1;
 	this->health = 6 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
@@ -43,40 +45,6 @@ void Elf::RollStats()
 	this->intelligence = RollDiceIgnoreLowest(4, 6) + 1;
 	this->wisdom = RollDiceIgnoreLowest(4, 6) + 1;
 	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
-}
-
-void Elf::Display()
-{
-	cout << endl;
-	// name header
-	cout << "====" << this->GetName() << "====" << endl;
-	// basic stats
-	cout << "   " << this->GetRace() << endl;
-	cout << "   " << this->GetHealth() << " HP" << endl;
-	cout << "   " << (this->GetArmorClass() + this->myInventory.GetArmorBonus()) << " AC" << endl;
-	if (this->myInventory.HasWeapon())
-		cout << "   " << "Has a sword!" << endl;
-	cout << "   " << this->GetXP() << " XP" << endl;
-	// ability stats
-	cout << "   " << this->GetStrength() << " Strength"
-		<< " (" << this->GetStrengthMod() << ")" << endl;
-	cout << "   " << this->GetDexterity() << " Dexterity"
-		<< " (" << this->GetDexMod() << ")" << endl;
-	cout << "   " << this->GetConstitution() << " Constitution"
-		<< " (" << this->GetConstMod() << ")" << endl;
-	cout << "   " << this->GetIntelligence() << " Intelligence"
-		<< " (" << this->GetIntelMod() << ")" << endl;
-	cout << "   " << this->GetWisdom() << " Wisdom"
-		<< " (" << this->GetWisdomMod() << ")" << endl;
-	cout << "   " << this->GetCharisma() << " Charisma"
-		<< " (" << this->GetCharMod() << ")" << endl;
-	// footer (matches length of header plus name)
-	cout << "====";
-	for (char c : this->GetName())
-	{
-		cout << "=";
-	}
-	cout << "====\n" << endl;
 }
 
 string Elf::GetRace()

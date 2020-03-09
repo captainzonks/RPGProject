@@ -8,24 +8,29 @@
 #include "Dwarf.h"
 #include "Elf.h"
 #include "Halfling.h"
-// #include "Encounter.h"
 #include "Item.h"
+#include "Weapon.h"
 #include "Sword.h"
 #include "Armor.h"
 #include "Shield.h"
+#include "Helmet.h"
+#include "Chest.h"
+#include "Legs.h"
+#include "Hands.h"
+#include "Boots.h"
 
 class Narrator
 {
 public:
-
 	void StartGreeting();
 
 	// character creation
 	std::shared_ptr<Actor> CharacterCreator();
 
-	// inventory creation
+	// upgrades
 	void BuySomething(std::shared_ptr<Actor> player);
 	bool CheckPrice(std::shared_ptr<Actor> player, int price);
+	void Upgrader(std::shared_ptr<Actor> actor);
 
 private:
 	

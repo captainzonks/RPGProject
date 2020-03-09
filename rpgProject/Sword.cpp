@@ -6,36 +6,20 @@ Sword::Sword()
 	attackDie = 6;
 	durability = 20;
 	value = 250;
+	level = 1;
+	type = DAMAGE_TYPE::SLASHING;
 }
 
-Sword::Sword(string name, int attackDie, int durability, int value)
+Sword::Sword(string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level)
 {
 	this->name = name;
 	this->durability = durability;
 	this->value = value;
 	this->attackDie = attackDie;
+	this->level = level;
+	this->type = damageType;
 }
 
 Sword::~Sword()
 {
-}
-
-string Sword::GetName() const
-{
-	return this->name;
-}
-
-int Sword::GetAttackDie() const
-{
-	return this->attackDie;
-}
-
-int Sword::GetDurability() const
-{
-	return this->durability;
-}
-
-int Sword::GetValue() const
-{
-	return this->value;
 }

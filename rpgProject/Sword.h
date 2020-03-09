@@ -8,7 +8,7 @@ class Sword :
 public:
 	// constructors
 	Sword();
-	Sword(string name, int attackDie, int durability, int value);
+	Sword(string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level);
 
 	// destructor
 	virtual ~Sword() override;
@@ -19,13 +19,6 @@ public:
 		os << GetName();
 	}
 
-	// getters
-	virtual string GetName() const override;
-	virtual int GetAttackDie() const override;
-	virtual int GetDurability() const override;
-	virtual int GetValue() const override;
-
 private:
-	int attackDie;
 };
 

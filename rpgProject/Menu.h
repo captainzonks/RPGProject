@@ -20,7 +20,7 @@ class Menu
 public:
 	// dynamic menu creation and handling
 	int PrintMenu(const int& decisions, const vector<string>& listOfDecisions);
-	int PrintMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions);
+	int UpgradeMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions);
 	int choiceHandler(const int& decisions);
 
 };

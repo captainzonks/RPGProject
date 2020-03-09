@@ -1,18 +1,16 @@
 #pragma once
-
 #include "Armor.h"
-
-class Shield :
+class Helmet :
 	public Armor
 {
 public:
 
 	// constructors
-	Shield();
-	Shield(string name, int armorValue, int durability, int value, int level);
+	Helmet();
+	Helmet(string name, int armorValue, int durability, int value, int level);
 
 	// destructor
-	virtual ~Shield() override;
+	virtual ~Helmet() override;
 
 	// Print override
 	virtual void Print(ostream& os) const override

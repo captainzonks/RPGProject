@@ -58,7 +58,13 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 
 void Game::Update(std::shared_ptr<Actor> player)
 {
+	player->Update();
 	manager.CheckForDead();
+	for (auto& enemy : manager.GetEnemies())
+	{
+		enemy->Update();
+	}
+
 	if (!player->LivingOrDead())
 	{
 		std::cout << "\nYou lost! Better luck next time!" << std::endl;

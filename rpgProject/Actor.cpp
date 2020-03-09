@@ -29,9 +29,14 @@ Actor::~Actor()
 //	this->charisma = RollDiceIgnoreLowest(4, 6);
 //}
 
-void Actor::SetArmorClass(int armor)
+void Actor::Update()
 {
-	armorClass += armor;
+	UpdateArmorClass();
+}
+
+void Actor::UpdateArmorClass()
+{
+	armorClass = myUpgrades.TotalArmorValue() + 10;
 }
 
 string Actor::GetName()
@@ -57,6 +62,11 @@ int Actor::GetXP()
 int Actor::GetArmorClass()
 {
 	return this->armorClass;
+}
+
+int Actor::GetLevel()
+{
+	return this->level;
 }
 
 int Actor::GetStrength()
@@ -125,22 +135,32 @@ int Actor::GetCharMod()
 	return mod;
 }
 
-int Actor::getPassiveInsight()
+int Actor::GetPassiveInsight()
 {
 	int passiveInsight{ 10 + this->GetWisdomMod() };
 	return passiveInsight;
 }
 
-int Actor::getPassivePercetion()
+int Actor::GetPassivePerception()
 {
 	int passivePerception{ 10 + this->GetWisdomMod() };
 	return passivePerception;
 }
 
-int Actor::getPassiveInvestigation()
+int Actor::GetPassiveInvestigation()
 {
 	int passiveInvestigation{ 10 + this->GetIntelMod() };
 	return passiveInvestigation;
+}
+
+DAMAGE_TYPE Actor::GetResistance()
+{
+	return resistance;
+}
+
+DAMAGE_TYPE Actor::GetVulnerability()
+{
+	return vulnerability;
 }
 
 int Actor::GetInitiative()
@@ -153,35 +173,40 @@ bool Actor::LivingOrDead()
 	return isAlive;
 }
 
-//void Actor::Display()
-//{
-//	cout << endl;
-//	// name header
-//	cout << "====" << this->GetName() << "====" << endl;
-//	// basic stats
-//	cout << "   " << this->GetHealth() << " HP" << endl;
-//	cout << "   " << this->GetXP() << " XP" << endl;
-//	// ability stats
-//	cout << "   " << this->GetStrength() << " Strength"
-//		<< " (" << this->GetStrengthMod() << ")" << endl;
-//	cout << "   " << this->GetDexterity() << " Dexterity"
-//		<< " (" << this->GetDexMod() << ")" << endl;
-//	cout << "   " << this->GetConstitution() << " Constitution"
-//		<< " (" << this->getConstMod() << ")" << endl;
-//	cout << "   " << this->GetIntelligence() << " Intelligence"
-//		<< " (" << this->GetIntelMod() << ")" << endl;
-//	cout << "   " << this->GetWisdom() << " Wisdom"
-//		<< " (" << this->GetWisdomMod() << ")" << endl;
-//	cout << "   " << this->GetCharisma() << " Charisma"
-//		<< " (" << this->GetCharMod() << ")" << endl;
-//	// footer (matches length of header plus name)
-//	cout << "====";
-//	for (char c : this->GetName())
-//	{
-//		cout << "=";
-//	}
-//	cout << "====\n" << endl;
-//}
+void Actor::Display()
+{
+	cout << endl;
+	// name header
+	cout << "====" << this->GetName() << "====" << endl;
+	// basic stats
+	cout << "   " << this->GetRace() << endl;
+	cout << "   " << this->GetHealth() << " HP" << endl;
+	cout << "   " << (this->GetArmorClass()) << " AC" << endl;
+	cout << "   " << this->GetXP() << " XP" << endl;
+	// ability stats
+	cout << "   " << this->GetStrength() << " Strength"
+		<< " (" << this->GetStrengthMod() << ")" << endl;
+	cout << "   " << this->GetDexterity() << " Dexterity"
+		<< " (" << this->GetDexMod() << ")" << endl;
+	cout << "   " << this->GetConstitution() << " Constitution"
+		<< " (" << this->GetConstMod() << ")" << endl;
+	cout << "   " << this->GetIntelligence() << " Intelligence"
+		<< " (" << this->GetIntelMod() << ")" << endl;
+	cout << "   " << this->GetWisdom() << " Wisdom"
+		<< " (" << this->GetWisdomMod() << ")" << endl;
+	cout << "   " << this->GetCharisma() << " Charisma"
+		<< " (" << this->GetCharMod() << ")" << endl;
+	// footer (matches length of header plus name)
+	cout << "====";
+	for (char c : this->GetName())
+	{
+		cout << "=";
+	}
+	cout << "====" << endl;
+	this->myUpgrades.DisplayUpgrades();
+	cout << "====" << endl;
+	this->myCurrency.displayMoney();
+}
 
 
 int Actor::SizeOfInventory()
@@ -194,6 +219,13 @@ void Actor::SubtractHealth(int& damage)
 	this->health -= damage;
 	if (health <= 0)
 		isAlive = false;
+}
+
+void Actor::AddHealth(int& healing)
+{
+	this->health += healing;
+	if (health > maxHealth)
+		health = maxHealth;
 }
 
 void Actor::AddXP(int xpGain)
@@ -215,9 +247,39 @@ void Actor::AddXP(int xpGain)
 //	}
 //}
 
-void Actor::EquipArmor(Armor& armor)
+void Actor::EquipHelmet(std::unique_ptr<Armor> helmet)
 {
-	SetArmorClass(armor.GetArmorValue());
+	myUpgrades.EquipHelmet(std::move(helmet));
+}
+
+void Actor::EquipChest(std::unique_ptr<Armor> chest)
+{
+	myUpgrades.EquipChest(std::move(chest));
+}
+
+void Actor::EquipLegs(std::unique_ptr<Armor> legs)
+{
+	myUpgrades.EquipLegs(std::move(legs));
+}
+
+void Actor::EquipHands(std::unique_ptr<Armor> hands)
+{
+	myUpgrades.EquipHands(std::move(hands));
+}
+
+void Actor::EquipBoots(std::unique_ptr<Armor> boots)
+{
+	myUpgrades.EquipBoots(std::move(boots));
+}
+
+void Actor::EquipWeapon(std::unique_ptr<Weapon> weapon)
+{
+	myUpgrades.EquipWeapon(std::move(weapon));
+}
+
+void Actor::EquipShield(std::unique_ptr<Armor> shield)
+{
+	myUpgrades.EquipShield(std::move(shield));
 }
 
 void Actor::ModifyStrength(const int& modifier)

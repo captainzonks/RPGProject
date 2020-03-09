@@ -13,13 +13,13 @@ int Menu::PrintMenu(const int& decisions, const vector<string>& listOfDecisions)
 	return choiceHandler(decisions);
 }
 
-int Menu::PrintMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions)
+int Menu::UpgradeMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions)
 {
 	cout << "--------" << endl;
 	int count{ 1 };
 	for (int i{}; i != decisions; ++i)
 	{
-		cout << count << ") " << listOfDecisions.at(i) << " : " << listOfDecisions.at(i)->GetValue() << " copper" << endl;
+		cout << count << ") " << *(listOfDecisions.at(i)) << " : " << listOfDecisions.at(i)->GetValue() / 100 << " gold" << endl;
 		count++;
 	}
 	cout << "--------" << endl;

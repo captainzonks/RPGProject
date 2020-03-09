@@ -154,6 +154,8 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="Boots.cpp" />
+    <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
@@ -162,21 +164,28 @@
     <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Halfling.cpp" />
+    <ClCompile Include="Hands.cpp" />
+    <ClCompile Include="Helmet.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="I_Display.cpp" />
+    <ClCompile Include="Legs.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Narrator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="Upgrades.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Attack.h" />
+    <ClInclude Include="Boots.h" />
+    <ClInclude Include="Chest.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Currency.h" />
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
@@ -185,15 +194,19 @@
     <ClInclude Include="Fighter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Halfling.h" />
+    <ClInclude Include="Hands.h" />
+    <ClInclude Include="Helmet.h" />
     <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="I_Display.h" />
+    <ClInclude Include="Legs.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Narrator.h" />
     <ClInclude Include="Shield.h" />
     <ClInclude Include="Sword.h" />
+    <ClInclude Include="Upgrades.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

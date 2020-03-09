@@ -2,24 +2,23 @@
 
 #include "Armor.h"
 
-class Shield :
+class Chest :
 	public Armor
 {
 public:
 
 	// constructors
-	Shield();
-	Shield(string name, int armorValue, int durability, int value, int level);
+	Chest();
+	Chest(string name, int armorValue, int durability, int value, int level);
 
 	// destructor
-	virtual ~Shield() override;
+	virtual ~Chest() override;
 
 	// Print override
 	virtual void Print(ostream& os) const override
 	{
 		os << GetName();
 	}
-
 private:
 };
 

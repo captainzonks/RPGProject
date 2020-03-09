@@ -14,8 +14,14 @@ public:
 	virtual ~Weapon() override;
 
 	// getter
-	virtual int GetAttackDie() const = 0;
+	virtual int GetAttackDie() const;
+	virtual int GetModifier() const;
 
-private:
+	// upgrade
+	virtual void UpgradeWeapon();
+
+protected:
+	int attackDie{};
+	int attackModifier{};
 };
 

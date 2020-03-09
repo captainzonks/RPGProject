@@ -53,7 +53,7 @@ void Currency::subtractMoney(int copper)
 {
 	if (copper > this->copper)
 	{
-		std::cout << "You don't have enough copper!" << std::endl;
+		std::cout << "You don't have enough money!" << std::endl;
 	}
 	else
 		this->copper -= copper;

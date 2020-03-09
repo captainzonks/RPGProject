@@ -1,6 +1,7 @@
 #pragma once
 
 #include "I_Display.h"
+#include "Constants.h"
 
 #include <iostream>
 #include <string>
@@ -23,13 +24,32 @@ public:
 	virtual void Print(ostream& os) const override = 0;
 
 	// getter
-	virtual string GetName() const = 0;
-	virtual int GetValue() const = 0;
-	virtual int GetDurability() const = 0;
+	virtual string GetName() const
+	{
+		return this->name;
+	}
+	virtual int GetValue() const
+	{
+		return this->value;
+	}
+	virtual int GetDurability() const
+	{
+		return this->durability;
+	}
+	virtual int GetLevel() const
+	{
+		return this->level;
+	}
+	virtual DAMAGE_TYPE GetDamageType()
+	{
+		return this->type;
+	}
 
 protected:
 	string name{};
 	int durability{};
 	int value{};
+	int level{};
+	DAMAGE_TYPE type{ DAMAGE_TYPE::NONE };
 };
 
