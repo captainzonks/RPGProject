@@ -26,9 +26,19 @@ void Upgrades::DisplayUpgrades()
 	std::cout << "\n===UPGRADES EQUIPPED===" << std::endl;
 	// sword and shield
 	if (WeaponEquipped())
+	{
 		std::cout << this->weapon->GetName() <<
-		", Level " << this->weapon->GetLevel() << 
-		" (d" << this->weapon->GetAttackDie() << ") equipped" << std::endl;
+			", Level " << this->weapon->GetLevel() <<
+			" (d" << this->weapon->GetAttackDie() << ")";
+
+		if (this->weapon->GetLevel() > 1)
+		{
+			std::cout << " +" <<
+				this->weapon->GetModifier() << " equipped" << std::endl;
+		}
+		else
+			std:: cout << " equipped" << std::endl;
+	}
 	if (ShieldEquipped())
 		std::cout << this->shield->GetName() << 
 		", Level " << this->shield->GetLevel() << 

@@ -31,6 +31,7 @@ Actor::~Actor()
 
 void Actor::Update()
 {
+	CheckLevelUpThreshold();
 	UpdateArmorClass();
 	UpdateAverageItemLevel();
 }
@@ -206,7 +207,7 @@ void Actor::Display()
 	cout << "====" << endl;
 	this->myUpgrades.DisplayUpgrades();
 	cout << "====" << endl;
-	this->myCurrency.displayMoney();
+	this->myCurrency.DisplayMoney();
 }
 
 void Actor::UpdateAverageItemLevel()
@@ -260,8 +261,6 @@ int Actor::GetAverageItemLevel()
 	return averageItemLevel;
 }
 
-
-
 int Actor::SizeOfInventory()
 {
 	return this->myInventory.GetCapacity();
@@ -284,6 +283,42 @@ void Actor::AddHealth(int& healing)
 void Actor::AddXP(int xpGain)
 {
 	this->xp += xpGain;
+}
+
+void Actor::CheckLevelUpThreshold()
+{
+	int levelTwo{ 300 };
+	int levelThree{ 900 };
+	int levelFour{ 2700 };
+	int levelFive{ 6500 };
+
+	if (this->GetXP() >= levelTwo)
+	{
+		this->LevelUp();
+		cout << this->GetName() << " has reached LEVEL TWO!!!" << endl;
+	}
+
+	if (this->GetXP() >= levelThree)
+	{
+		this->LevelUp();
+		cout << this->GetName() << " has reached LEVEL THREE!!!" << endl;
+	}
+	if (this->GetXP() >= levelFour)
+	{
+		this->LevelUp();
+		cout << this->GetName() << " has reached LEVEL FOUR!!!" << endl;
+	}
+	if (this->GetXP() >= levelFive)
+	{
+		this->LevelUp();
+		cout << this->GetName() << " has reached LEVEL FIVE!!!" << endl;
+	}
+}
+
+void Actor::LevelUp()
+{
+	maxHealth += 5 + GetConstMod();
+	health = maxHealth;
 }
 
 //void Actor::openInventory()

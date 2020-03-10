@@ -5,6 +5,8 @@
 #include <vector>
 #include <memory>
 #include <initializer_list>
+#include <cctype>
+#include <limits>
 
 using std::cout;
 using std::cin;

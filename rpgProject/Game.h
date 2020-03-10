@@ -24,6 +24,7 @@ public:
 	void GetInput(std::shared_ptr<Actor> player);
 	void Update(std::shared_ptr<Actor> player);
 
+	void RandomEncounter(std::shared_ptr<Actor> player);
 	void StartEncounter(std::shared_ptr<Actor> player);
 
 	bool IsRunning();

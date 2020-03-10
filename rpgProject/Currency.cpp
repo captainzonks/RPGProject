@@ -14,12 +14,12 @@ Currency::Currency(int copper)
 	this->copper = copper;
 }
 
-int Currency::getGold()
+int Currency::GetGold()
 {
 	return copper / 100;
 }
 
-int Currency::getSilver()
+int Currency::GetSilver()
 {
 	return copper / 10;
 }
@@ -29,7 +29,7 @@ int Currency::GetCopper()
 	return copper;
 }
 
-void Currency::displayMoney()
+void Currency::DisplayMoney()
 {
 	int tempCopper = copper;
 	int gold = tempCopper / 100;
@@ -49,7 +49,7 @@ void Currency::AddMoney(int copper)
 	this->copper += copper;
 }
 
-void Currency::subtractMoney(int copper)
+void Currency::SubtractMoney(int copper)
 {
 	if (copper > this->copper)
 	{

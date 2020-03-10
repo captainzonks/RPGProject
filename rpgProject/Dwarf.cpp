@@ -16,7 +16,7 @@ Dwarf::Dwarf(int identifier)
 	this->health = 8 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 100);
+	this->myCurrency.AddMoney(RollDice(4, 4));
 	this->resistance = DAMAGE_TYPE::POISON;
 }
 
@@ -30,7 +30,7 @@ Dwarf::Dwarf(string name)
 	this->health = 8 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 100);
+	this->myCurrency.AddMoney(RollDice(4, 4));
 	this->resistance = DAMAGE_TYPE::POISON;
 }
 

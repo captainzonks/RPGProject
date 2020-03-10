@@ -28,8 +28,8 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(6);
-	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Buy Something", "Create Enemy", "Display Enemies", "Attack Enemy", "Quit" }));
+	std::unique_ptr<int> const decisions = std::make_unique<int>(5);
+	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Buy Something", "Display Enemies", "End Turn", "Quit" }));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 	switch (choice)
 	{
@@ -40,15 +40,13 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 		narrator.BuySomething(player);
 		break;
 	case 3:
-		manager.AddEnemy(manager.CreateEnemy(player->GetAverageItemLevel()));
-		break;
-	case 4:
 		manager.DisplayAllEnemies();
 		break;
-	case 5:
-		StartEncounter(player);
+	case 4:
+		std::cout << "Ending Turn" << std::endl;
+		RandomEncounter(player);
 		break;
-	case 6:
+	case 5:
 		isRunning = false;
 		break;
 	default:
@@ -70,6 +68,21 @@ void Game::Update(std::shared_ptr<Actor> player)
 		std::cout << "\nYou lost! Better luck next time!" << std::endl;
 		isRunning = false;
 	}
+}
+
+void Game::RandomEncounter(std::shared_ptr<Actor> player)
+{
+	int randomStart{ rand() % 3 };
+	int randomCount{ rand() % 3 };
+	if (randomStart == 0)
+	{
+		for (int i{}; i != randomCount; ++i)
+		{
+			manager.AddEnemy(manager.CreateEnemy(player->GetAverageItemLevel()));
+		}
+	}
+	if (manager.GetTotalEnemies() > 0)
+		Encounter newEncounter(manager, player);
 }
 
 void Game::StartEncounter(std::shared_ptr<Actor> player)

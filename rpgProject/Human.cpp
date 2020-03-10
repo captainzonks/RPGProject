@@ -16,7 +16,7 @@ Human::Human(int identifier)
 	this->health = 8 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 100);
+	this->myCurrency.AddMoney(RollDice(4, 4));
 }
 
 Human::Human(string name)
@@ -29,7 +29,7 @@ Human::Human(string name)
 	this->health = 8 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 100);
+	this->myCurrency.AddMoney(RollDice(4, 4));
 }
 
 Human::~Human()

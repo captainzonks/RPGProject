@@ -39,8 +39,17 @@ void Attack::DealDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> 
 	if (!target->LivingOrDead())
 	{
 		std::cout << attacker->GetName() << " killed " << target->GetName() << "!" << std::endl;
+		
+		// loot the moneys
 		attacker->myCurrency.AddMoney(target->myCurrency.GetCopper());
-		std::cout << attacker->GetName() << " looted " << target->myCurrency.GetCopper() << " copper!" << std::endl;
+		if (target->myCurrency.GetGold() >= 1)
+			std::cout << attacker->GetName() << " looted " << target->myCurrency.GetCopper() / 100 << " gold!" << std::endl;
+		if (target->myCurrency.GetGold() == 0 && target->myCurrency.GetSilver() >= 1)
+			std::cout << attacker->GetName() << " looted " << target->myCurrency.GetCopper() / 10 << " silver!" << std::endl;
+		if (target->myCurrency.GetGold() == 0 && target->myCurrency.GetSilver() == 0)
+			std::cout << attacker->GetName() << " looted " << target->myCurrency.GetCopper() << " copper!" << std::endl;
+
+		// get the XP gains
 		int xpGain{ (rand() % 25 + 1) * target->GetLevel() };
 		attacker->AddXP(xpGain);
 		std::cout << attacker->GetName() << " gained " << xpGain << " XP!" << std::endl;

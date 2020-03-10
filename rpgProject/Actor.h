@@ -62,6 +62,8 @@ public:
 	virtual void SubtractHealth(int& damage);
 	virtual void AddHealth(int& healing);
 	virtual void AddXP(int xpGain);
+	virtual void CheckLevelUpThreshold();
+	virtual void LevelUp();
 
 	// inventory management
 	// virtual void openInventory();
