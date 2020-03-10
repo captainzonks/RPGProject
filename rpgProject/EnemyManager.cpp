@@ -35,53 +35,58 @@ std::shared_ptr<Actor> EnemyManager::CreateEnemy(int playerItemLevel)
 
 std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::shared_ptr<Actor> enemy)
 {
-	// armor
 	int random{ (rand() % 2) };
-	if (random == 1)
+	// obtain new gear
+	if (playerItemLevel > 1 && static_cast<int>(enemies.size()) < (playerItemLevel + 1))
 	{
-		std::unique_ptr<Helmet> helmet = std::make_unique<Helmet>();
-		enemy->EquipHelmet(std::move(helmet));
-	}
-	random = (rand() % 3);
-	if (random == 1)
-	{
-		std::unique_ptr<Chest> chest = std::make_unique<Chest>();
-		enemy->EquipChest(std::move(chest));
-	}
-	random = (rand() % 2);
-	if (random == 1)
-	{
-		std::unique_ptr<Legs> legs = std::make_unique<Legs>();
-		enemy->EquipLegs(std::move(legs));
-	}
-	random = (rand() % 3);
-	if (random == 1)
-	{
-		std::unique_ptr<Hands> hands = std::make_unique<Hands>();
-		enemy->EquipHands(std::move(hands));
-	}
-	random = (rand() % 2);
-	if (random == 1)
-	{
-		std::unique_ptr<Boots> boots = std::make_unique<Boots>();
-		enemy->EquipBoots(std::move(boots));
+		// armor
+		if (random == 1)
+		{
+			std::unique_ptr<Helmet> helmet = std::make_unique<Helmet>();
+			enemy->EquipHelmet(std::move(helmet));
+		}
+		random = (rand() % 3);
+		if (random == 1)
+		{
+			std::unique_ptr<Chest> chest = std::make_unique<Chest>();
+			enemy->EquipChest(std::move(chest));
+		}
+		random = (rand() % 2);
+		if (random == 1)
+		{
+			std::unique_ptr<Legs> legs = std::make_unique<Legs>();
+			enemy->EquipLegs(std::move(legs));
+		}
+		random = (rand() % 3);
+		if (random == 1)
+		{
+			std::unique_ptr<Hands> hands = std::make_unique<Hands>();
+			enemy->EquipHands(std::move(hands));
+		}
+		random = (rand() % 2);
+		if (random == 1)
+		{
+			std::unique_ptr<Boots> boots = std::make_unique<Boots>();
+			enemy->EquipBoots(std::move(boots));
+		}
+
+		// sword and shield
+		random = (rand() % 2);
+		if (random == 1)
+		{
+			std::unique_ptr<Sword> sword = std::make_unique<Sword>();
+			enemy->EquipWeapon(std::move(sword));
+		}
+		random = (rand() % 2);
+		if (random == 1)
+		{
+			std::unique_ptr<Shield> shield = std::make_unique<Shield>();
+			enemy->EquipShield(std::move(shield));
+		}
 	}
 
-	// sword and shield
-	random = (rand() % 2);
-	if (random == 1)
-	{
-		std::unique_ptr<Sword> sword = std::make_unique<Sword>();
-		enemy->EquipWeapon(std::move(sword));
-	}
-	random = (rand() % 2);
-	if (random == 1)
-	{
-		std::unique_ptr<Shield> shield = std::make_unique<Shield>();
-		enemy->EquipShield(std::move(shield));
-	}
-
-	if (playerItemLevel > 2)
+	// upgrade gear
+	if (playerItemLevel > 2 && static_cast<int>(enemies.size()) < (playerItemLevel + 3))
 	{
 		// upgrade armor
 		if (enemy->myUpgrades.HelmetEquipped())
