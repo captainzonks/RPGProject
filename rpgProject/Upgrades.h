@@ -3,6 +3,13 @@
 #include "Item.h"
 #include "Weapon.h"
 #include "Armor.h"
+#include "Helmet.h"
+#include "Chest.h"
+#include "Legs.h"
+#include "Hands.h"
+#include "Boots.h"
+#include "Sword.h"
+#include "Shield.h"
 
 class Upgrades
 {

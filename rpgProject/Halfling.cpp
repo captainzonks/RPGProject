@@ -16,7 +16,7 @@ Halfling::Halfling(int identifier)
 	this->health = 6 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 100);
+	this->myCurrency.AddMoney(RollDice(4, 4));
 }
 
 Halfling::Halfling(string name)
@@ -29,7 +29,7 @@ Halfling::Halfling(string name)
 	this->health = 6 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 100);
+	this->myCurrency.AddMoney(RollDice(4, 4));
 }
 
 Halfling::~Halfling()

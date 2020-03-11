@@ -4,43 +4,7 @@ Encounter::Encounter(EnemyManager& manager, std::shared_ptr<Actor> player)
 	: manager(manager), player(player)
 {
 	std::cout << "\nEncounter (manager, player) overloaded constructor called" << std::endl; // debug
-	std::cout << "Roll for initiative!" << std::endl;
-	player->RollForInitiative();
-	initiativeOrder.push_back(player);
-	for (auto& enemy : manager.GetEnemies())
-	{
-		enemy->RollForInitiative();
-		initiativeOrder.push_back(enemy);
-	}
-	SortInitiativeOrder();
-	DisplayIniatives();
-	int round{ 1 };
-	while (manager.GetTotalEnemies() > 0)
-	{
-		std::cout << "\n====ROUND " << round << "====" << std::endl;
-		for (size_t i{}; i < initiativeOrder.size(); ++i)
-		{
-			std::shared_ptr<Actor> target{ RandomTargetPicker(initiativeOrder.at(i)) };
-			std::vector<std::shared_ptr<Actor>>::iterator itr{ std::find(initiativeOrder.begin(), initiativeOrder.end(), target) };
-			if (EncounterHandler(initiativeOrder.at(i), target))
-			{
-				if (target == player)
-				{
-					std::cout << "You Died!" << std::endl;
-					std::cout << "\nYou were killed by: " << std::endl;
-					initiativeOrder.at(i)->Display();
-					initiativeOrder.clear();
-					manager.CleanUp();
-					break;
-				}
-				initiativeOrder.erase(initiativeOrder.begin() + std::distance(initiativeOrder.begin(), itr));
-
-			}
-		}
-		std::cout << "\nRound " << round << " of combat has passed!" << std::endl; // debug
-		round++;
-		std::cout << "=================" << std::endl;
-	}
+	BeginEncounter(manager, player);
 }
 
 Encounter::~Encounter()
@@ -82,6 +46,47 @@ void Encounter::DisplayIniatives()
 	for (auto& actor : initiativeOrder)
 	{
 		std::cout << actor->GetName() << " Initiative: " << actor->GetInitiative() << std::endl;
+	}
+}
+
+void Encounter::BeginEncounter(EnemyManager& manager, std::shared_ptr<Actor> player)
+{
+	std::cout << "Roll for initiative!" << std::endl;
+	player->RollForInitiative();
+	initiativeOrder.push_back(player);
+	for (auto& enemy : manager.GetEnemies())
+	{
+		enemy->RollForInitiative();
+		initiativeOrder.push_back(enemy);
+	}
+	SortInitiativeOrder();
+	DisplayIniatives();
+	int round{ 1 };
+	while (manager.GetTotalEnemies() > 0)
+	{
+		std::cout << "\n====ROUND " << round << "====" << std::endl;
+		for (size_t i{}; i < initiativeOrder.size(); ++i)
+		{
+			std::shared_ptr<Actor> target{ RandomTargetPicker(initiativeOrder.at(i)) };
+			std::vector<std::shared_ptr<Actor>>::iterator itr{ std::find(initiativeOrder.begin(), initiativeOrder.end(), target) };
+			if (EncounterHandler(initiativeOrder.at(i), target))
+			{
+				if (target == player)
+				{
+					std::cout << "You Died!" << std::endl;
+					std::cout << "\nYou were killed by: " << std::endl;
+					initiativeOrder.at(i)->Display();
+					initiativeOrder.clear();
+					manager.CleanUp();
+					break;
+				}
+				initiativeOrder.erase(initiativeOrder.begin() + std::distance(initiativeOrder.begin(), itr));
+
+			}
+		}
+		std::cout << "\nRound " << round << " of combat has passed!" << std::endl; // debug
+		round++;
+		std::cout << "=================" << std::endl;
 	}
 }
 

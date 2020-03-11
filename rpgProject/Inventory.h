@@ -17,7 +17,6 @@ class Inventory
 {
 public:
 	friend class Actor;
-
 	// constructor
 	Inventory();
 
@@ -40,8 +39,8 @@ public:
 
 	// inventory functions
 	void AddToInventory(std::unique_ptr<Item> item);
+	void RemoveFromInventory(std::unique_ptr<Item> item);
 	void DisplayInventory() const;
-
 
 
 	// Item* selectItemInInventory();

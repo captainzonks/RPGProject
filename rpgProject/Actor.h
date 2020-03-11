@@ -53,6 +53,8 @@ public:
 	virtual int GetInitiative();
 	virtual bool LivingOrDead();
 	virtual void Display();
+	virtual void UpdateAverageItemLevel();
+	virtual int GetAverageItemLevel();
 	
 	virtual int SizeOfInventory();
 
@@ -60,6 +62,8 @@ public:
 	virtual void SubtractHealth(int& damage);
 	virtual void AddHealth(int& healing);
 	virtual void AddXP(int xpGain);
+	virtual void CheckLevelUpThreshold();
+	virtual void LevelUp();
 
 	// inventory management
 	// virtual void openInventory();
@@ -103,6 +107,7 @@ protected:
 
 	int initiative{};
 	int identifier{};
+	int averageItemLevel{};
 
 	// stats
 	int strength, dexterity, constitution, intelligence, wisdom, charisma;

@@ -29,17 +29,20 @@ int Menu::UpgradeMenu(const int& decisions, const vector<std::unique_ptr<Item>>&
 int Menu::choiceHandler(const int& decisions)
 {
 	int choice{};
-	while (choice == 0 || (choice < decisions && choice > decisions))
+	bool valid_input{ false };
+
+	do
 	{
 		cout << "Please enter a number: ";
 		cin >> choice;
-		if (choice < 1 || choice > decisions)
+
+		if (!(valid_input = cin.good()) || choice > decisions || choice < 1)
 		{
 			cout << "That's not a valid choice." << endl;
-			choice = 0;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
-		else
-			return choice;
-	}
+	} while (!valid_input || choice > decisions || choice < 1);
+
 	return choice;
 }

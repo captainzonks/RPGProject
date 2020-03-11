@@ -13,6 +13,7 @@ public:
 	~Encounter();
 	void SortInitiativeOrder();
 	void DisplayIniatives(); // debug
+	void BeginEncounter(EnemyManager& manager, std::shared_ptr<Actor> player);
 	std::shared_ptr<Actor> RandomTargetPicker(std::shared_ptr<Actor> attacker);
 	bool EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> defender);
 
