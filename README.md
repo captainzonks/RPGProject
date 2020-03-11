@@ -1,12 +1,14 @@
-## Welcome to GitHub Pages
+## RPG Project
 
-You can use the [editor on GitHub](https://github.com/captainzonks/RPGProject/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Personal project to create an RPG text game. Eventual goals may be to put this to some graphical engine, Unity or Unreal, but for now it's just a little D&D-inspired text adventure.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### What's it do?
 
-### Markdown
+Some stuff. Like randomly rolling stats and generating a player character. Enemies randomly spawn between "turns" and attack in a free-for-all brawl til either they're all dead or the player dies. An upgrade system is implemented that requires money (gold, silver, copper) which can be looted off the corpses of foes murdered in combat. There's a simple level-up system implemented based on XP (all it does is boost the max HP and auto-heal). Enemies have random upgrades based on a VERY simple check of the player's average item level and the total number of enemies.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Lot of stuff to do, but things happen and it isn't terrible.
+
+I'm keeping the crap below in case I ever want to know how to format this readme... but this is the end.
 
 ```markdown
 Syntax highlighted code block
