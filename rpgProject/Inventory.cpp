@@ -43,6 +43,12 @@ void Inventory::AddToInventory(std::unique_ptr<Item> item)
 		std::cout << "You don't have enough room!" << std::endl;
 }
 
+void Inventory::RemoveFromInventory(std::unique_ptr<Item> item)
+{
+	std::vector<std::unique_ptr<Item>>::iterator itr{ std::find(inventory.begin(), inventory.end(), item) };
+	this->inventory.erase(inventory.begin() + std::distance(inventory.begin(), itr));
+}
+
 void Inventory::DisplayInventory() const
 {
 	cout << "============" << endl;
