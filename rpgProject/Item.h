@@ -42,7 +42,11 @@ public:
 	}
 	virtual DAMAGE_TYPE GetDamageType()
 	{
-		return this->type;
+		return this->damageType;
+	}
+	virtual ITEM_TYPE GetItemType()
+	{
+		return this->itemType;
 	}
 
 protected:
@@ -50,6 +54,7 @@ protected:
 	int durability{};
 	int value{};
 	int level{};
-	DAMAGE_TYPE type{ DAMAGE_TYPE::NONE };
+	DAMAGE_TYPE damageType{ DAMAGE_TYPE::NONE };
+	ITEM_TYPE itemType{ ITEM_TYPE::NONE };
 };
 

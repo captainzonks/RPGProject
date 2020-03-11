@@ -17,3 +17,11 @@ enum class DAMAGE_TYPE
 	SLASHING = 12,
 	THUNDER = 13
 };
+
+enum class ITEM_TYPE
+{
+	NONE = 0,
+	POTION = 1,
+	ARMOR = 2,
+	WEAPON = 3
+};

@@ -34,10 +34,21 @@ void Inventory::GetWeapon(std::unique_ptr<Weapon> weapon)
 
 void Inventory::AddToInventory(std::unique_ptr<Item> item)
 {
-	if (capacity > 0)
+	if (this->capacity > 0)
 	{
 		this->inventory.push_back(std::move(item));
-		capacity--;
+		this->capacity--;
+	}
+	else
+		std::cout << "You don't have enough room!" << std::endl;
+}
+
+void Inventory::AddPotionToInventory(std::unique_ptr<Potion> potion)
+{
+	if (this->potionCapacity > 0)
+	{
+		this->potionInventory.push_back(std::move(potion));
+		this->potionCapacity--;
 	}
 	else
 		std::cout << "You don't have enough room!" << std::endl;
@@ -47,6 +58,14 @@ void Inventory::RemoveFromInventory(std::unique_ptr<Item> item)
 {
 	std::vector<std::unique_ptr<Item>>::iterator itr{ std::find(inventory.begin(), inventory.end(), item) };
 	this->inventory.erase(inventory.begin() + std::distance(inventory.begin(), itr));
+	capacity++;
+}
+
+void Inventory::RemovePotionFromInventory(std::unique_ptr<Potion> potion)
+{
+	std::vector<std::unique_ptr<Potion>>::iterator itr{ std::find(potionInventory.begin(), potionInventory.end(), potion) };
+	this->potionInventory.erase(potionInventory.begin() + std::distance(potionInventory.begin(), itr));
+	potionCapacity++;
 }
 
 void Inventory::DisplayInventory() const
@@ -59,6 +78,28 @@ void Inventory::DisplayInventory() const
 		counter++;
 	}
 	cout << "============" << endl;
+}
+
+void Inventory::DisplayPotions() const
+{
+	cout << "============" << endl;
+	int counter{ 1 };
+	for (auto& i : this->potionInventory)
+	{
+		cout << counter << ": " << *i << endl;
+		counter++;
+	}
+	cout << "============" << endl;
+}
+
+std::unique_ptr<Item> Inventory::GetItem(int itemNumber)
+{
+	return std::move(inventory.at(static_cast<size_t>(itemNumber - 1)));
+}
+
+std::unique_ptr<Potion> Inventory::GetPotion(int itemNumber)
+{
+	return std::move(potionInventory.at(static_cast<size_t>(itemNumber - 1)));
 }
 
 bool Inventory::HasWeapon()

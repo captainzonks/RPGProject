@@ -8,16 +8,22 @@ public:
 	Potion(int healthValue);
 
 	// destructor
-	~Potion();
+	virtual ~Potion() override;
+
+	// print function
+	virtual void Print(ostream& os) const override
+	{
+		os << GetName();
+	}
 	
 	// getter
 	int GetHealthValue();
 
 	// use
-	int UsePotion();
 	void Destroy();
 
 private:
 	int healthValue{};
+	ITEM_TYPE itemType{ ITEM_TYPE::POTION };
 };
 

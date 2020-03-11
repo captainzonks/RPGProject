@@ -3,6 +3,7 @@
 #include "Item.h"
 #include "Armor.h"
 #include "Weapon.h"
+#include "Potion.h"
 #include "Menu.h"
 
 #include <vector>
@@ -39,8 +40,13 @@ public:
 
 	// inventory functions
 	void AddToInventory(std::unique_ptr<Item> item);
+	void AddPotionToInventory(std::unique_ptr<Potion> potion);
 	void RemoveFromInventory(std::unique_ptr<Item> item);
+	void RemovePotionFromInventory(std::unique_ptr<Potion> potion);
 	void DisplayInventory() const;
+	void DisplayPotions() const;
+	std::unique_ptr<Item> GetItem(int itemNumber);
+	std::unique_ptr<Potion> GetPotion(int itemNumber);
 
 
 	// Item* selectItemInInventory();
@@ -48,10 +54,12 @@ public:
 private:
 
 	vector<std::unique_ptr<Item>> inventory{};
+	vector<std::unique_ptr<Potion>> potionInventory{};
 	bool hasWeapon{ false };
 	bool hasArmor{ false };
 	int attackDice{ 4 };
 	int armorBonus{};
 	int capacity{ 10 };
+	int potionCapacity{ 5 };
 
 };

@@ -7,7 +7,7 @@ Sword::Sword()
 	durability = 20;
 	value = 250;
 	level = 1;
-	type = DAMAGE_TYPE::SLASHING;
+	damageType = DAMAGE_TYPE::SLASHING;
 }
 
 Sword::Sword(string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level)
@@ -17,7 +17,7 @@ Sword::Sword(string name, int attackDie, DAMAGE_TYPE damageType, int durability,
 	this->value = value;
 	this->attackDie = attackDie;
 	this->level = level;
-	this->type = damageType;
+	this->damageType = damageType;
 }
 
 Sword::~Sword()

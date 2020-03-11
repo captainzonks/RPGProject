@@ -266,6 +266,36 @@ int Actor::SizeOfInventory()
 	return this->myInventory.GetCapacity();
 }
 
+void Actor::UsePotion()
+{
+	this->myInventory.DisplayPotions();
+	std::cout << "------------" << std::endl;
+	std::cout << "0) to Exit" << std::endl;
+
+	int choice{};
+	bool valid_input{ false };
+
+	do
+	{
+		std::cout << "Please enter a number: ";
+		cin >> choice;
+
+		if (!(valid_input = cin.good()) || choice > (this->myInventory.potionCapacity - 1) || choice < 0)
+		{
+			std::cout << "That's not a valid choice." << std::endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	} while (!valid_input || choice > (this->myInventory.potionCapacity - 1) || choice < 0);
+
+	if (choice != 0)
+	{
+		this->AddHealth(this->myInventory.GetPotion(choice)->GetHealthValue());
+		this->myInventory.GetPotion(choice)->Destroy();
+		this->myInventory.RemovePotionFromInventory(this->myInventory.GetPotion(choice));
+	}
+}
+
 void Actor::SubtractHealth(int& damage)
 {
 	this->health -= damage;
@@ -273,7 +303,7 @@ void Actor::SubtractHealth(int& damage)
 		isAlive = false;
 }
 
-void Actor::AddHealth(int& healing)
+void Actor::AddHealth(int healing)
 {
 	this->health += healing;
 	if (health > maxHealth)

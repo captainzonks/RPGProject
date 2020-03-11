@@ -18,6 +18,7 @@
 #include "Legs.h"
 #include "Hands.h"
 #include "Boots.h"
+#include "Potion.h"
 
 class Narrator
 {

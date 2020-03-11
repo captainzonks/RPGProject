@@ -16,7 +16,7 @@ Elf::Elf(int identifier)
 	this->health = 6 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4));
+	this->myCurrency.AddMoney(RollDice(4, 4) * 10);
 }
 
 Elf::Elf(string name)
@@ -29,7 +29,7 @@ Elf::Elf(string name)
 	this->health = 6 + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
-	this->myCurrency.AddMoney(RollDice(4, 4));
+	this->myCurrency.AddMoney(RollDice(4, 4) * 10);
 }
 
 Elf::~Elf()

@@ -23,5 +23,6 @@ public:
 protected:
 	int attackDie{};
 	int attackModifier{};
+	ITEM_TYPE itemType{ ITEM_TYPE::WEAPON };
 };
 

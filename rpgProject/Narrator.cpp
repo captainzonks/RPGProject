@@ -82,10 +82,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	std::unique_ptr<Boots> boots_ptr{ nullptr };
 	std::unique_ptr<Sword> sword_ptr{ nullptr };
 	std::unique_ptr<Shield> shield_ptr{ nullptr };
+	std::unique_ptr<Potion> potion_ptr{ nullptr };
 
+	// ARMOR
 	std::cout << "\nARMOR FOR SALE" << std::endl;
 	std::cout << "--------------" << std::endl;
-
 	if (!helmetState)
 	{
 		// new helmet
@@ -182,7 +183,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 			" : " << (actor->myUpgrades.shield->GetValue() + 200) / 100 <<
 			" gold " << std::endl;
 	}
+	/*********************************************************************/
 
+	// WEAPONS
 	std::cout << "\nWEAPONS FOR SALE" << std::endl;
 	std::cout << "--------------" << std::endl;
 	if (!swordState)
@@ -201,6 +204,17 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 			" : " << (actor->myUpgrades.weapon->GetValue() + 200) / 100 <<
 			" gold " << std::endl;
 	}
+	/*********************************************************************/
+
+	// POTIONS
+	std::cout << "\nPOTIONS FOR SALE" << std::endl;
+	std::cout << "--------------" << std::endl;
+	// new potion
+	int randomHeals{ rand() % 12 + 2 };
+	potion_ptr = std::make_unique<Potion>(randomHeals);
+	std::cout << "8) Buy a " << potion_ptr->GetName() <<
+		" : " << potion_ptr->GetValue() << " copper" << std::endl;
+	/****************************************************************/
 
 	std::cout << "--------------" << std::endl;
 	std::cout << "0) - Exit" << std::endl;
@@ -420,6 +434,27 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 				std::cout << "You can't afford that." << std::endl;
 				break;
 			}
+		}
+	case 8:
+		if (actor->myInventory.GetCapacity() != 0)
+		{
+			if (CheckPrice(actor, potion_ptr->GetValue()))
+			{
+				actor->myCurrency.SubtractMoney(potion_ptr->GetValue());
+				cout << "Obtained a +" << potion_ptr->GetHealthValue() << "HP Healing Potion!" << endl;
+				actor->myInventory.AddPotionToInventory(std::move(potion_ptr));
+				break;
+			}
+			else
+			{
+				std::cout << "You can't afford that." << std::endl;
+				break;
+			}
+		}
+		else
+		{
+			std::cout << "You don't have enough bag space." << std::endl;
+			break;
 		}
 	case 0:
 		break;

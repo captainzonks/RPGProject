@@ -6,7 +6,7 @@
 #include <vector>
 
 /*
-Standard dice rolling function; send in quantity of dice, and the d-type
+Standard dice rolling function; send in quantity of dice, and the d-damageType
 */
 inline int RollDice(const int& quantity, const int& dice)
 {

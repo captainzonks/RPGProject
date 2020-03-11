@@ -7,6 +7,7 @@
 #include "Inventory.h"
 #include "Currency.h"
 #include "Attack.h"
+#include "Potion.h"
 
 #include <string>
 #include <vector>
@@ -57,10 +58,11 @@ public:
 	virtual int GetAverageItemLevel();
 	
 	virtual int SizeOfInventory();
+	virtual void UsePotion();
 
 	// actions
 	virtual void SubtractHealth(int& damage);
-	virtual void AddHealth(int& healing);
+	virtual void AddHealth(int healing);
 	virtual void AddXP(int xpGain);
 	virtual void CheckLevelUpThreshold();
 	virtual void LevelUp();

@@ -2,7 +2,9 @@
 
 Potion::Potion(int healthValue)
 {
+	this->name = "Healing Potion";
 	this->healthValue = healthValue;
+	this->value = 50;
 }
 
 Potion::~Potion()
@@ -12,11 +14,6 @@ Potion::~Potion()
 int Potion::GetHealthValue()
 {
 	return this->healthValue;
-}
-
-int Potion::UsePotion()
-{
-	return this->GetHealthValue();
 }
 
 void Potion::Destroy()
