@@ -2,6 +2,7 @@
 
 #include "Constants.h"
 #include "HelperFunctions.h"
+#include "CombatClass.h"
 #include "Menu.h"
 #include "Upgrades.h"
 #include "Inventory.h"
@@ -27,6 +28,7 @@ class Actor
 {
 public:
 
+	CombatClass myCombatClass;
 	Inventory myInventory;
 	Currency myCurrency;
 	Upgrades myUpgrades;
@@ -46,7 +48,7 @@ public:
 
 	// getters
 	virtual string GetName(), GetRace();
-	virtual int GetHealth(), GetArmorClass(), GetXP(), GetLevel();
+	virtual int GetHealth(), GetArmorClass(), GetXP(), GetLevel(), GetProficiency();
 	virtual int GetStrength(), GetDexterity(), GetConstitution(), GetIntelligence(), GetWisdom(), GetCharisma();
 	virtual int GetStrengthMod(), GetDexMod(), GetConstMod(), GetIntelMod(), GetWisdomMod(), GetCharMod();
 	virtual int GetPassivePerception(), GetPassiveInsight(), GetPassiveInvestigation();
@@ -101,6 +103,7 @@ protected:
 	int maxHealth{};
 	int health{};
 	int armorClass{ 10 };
+	int proficiencyBonus{ 2 };
 	int walkingSpeed{ 30 };
 	int xp{};
 	bool isAlive{ true };

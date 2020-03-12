@@ -2,16 +2,11 @@
 
 Fighter::Fighter()
 {
+	this->hitDice = 10;
+	this->hitDiceQuantity = 1;
 }
 
 Fighter::~Fighter()
 {
-}
-
-int Fighter::attack(int decision)
-{
-
-
-
-	return 0;
+	std::cout << "Fighter destructor called" << std::endl; // debug
 }

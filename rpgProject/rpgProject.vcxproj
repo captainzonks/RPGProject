@@ -156,6 +156,7 @@
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Boots.cpp" />
     <ClCompile Include="Chest.cpp" />
+    <ClCompile Include="CombatClass.cpp" />
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Attack.h" />
     <ClInclude Include="Boots.h" />
     <ClInclude Include="Chest.h" />
+    <ClInclude Include="CombatClass.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Currency.h" />
     <ClInclude Include="Dwarf.h" />

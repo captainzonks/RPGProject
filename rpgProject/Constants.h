@@ -25,3 +25,14 @@ enum class ITEM_TYPE
 	ARMOR = 2,
 	WEAPON = 3
 };
+
+enum class ABILITIES
+{
+	NONE = 0,
+	STRENGTH = 1,
+	DEXTERITY = 2,
+	CONSTITUTION = 3,
+	INTELLIGENCE = 4,
+	WISDOM = 5,
+	CHARISMA = 6
+};

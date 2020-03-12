@@ -1,24 +1,25 @@
 #pragma once
-
-#include <map>
-#include <string>
-
-class Fighter
+#include "CombatClass.h"
+class Fighter :
+	public CombatClass
 {
 public:
 
+	// constructor
 	Fighter();
-
-	~Fighter();
-
-	int attack(int decision);
+	virtual ~Fighter() override;
 
 private:
+	std::vector<ABILITIES> savingThrows{ ABILITIES::STRENGTH, ABILITIES::CONSTITUTION };
 
-	std::map<std::string, int> listOfAttacks = {
-		{"Weapon", 1},
-		{"Punch", 2},
-		{"Kick", 3}
+	enum class FIGHTING_STYLE
+	{
+		ARCHERY = 1,
+		DEFENSE = 2,
+		DUELING = 3,
+		GREAT_WEAPON_FIGHTING = 4,
+		PROTECTION = 5,
+		TWO_WEAPON_FIGHTING = 6
 	};
 
 };

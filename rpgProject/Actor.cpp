@@ -4,7 +4,7 @@ Actor::Actor()
 {
 	cout << "\nActor constructor called" << endl; // debug
 	this->name = "Guy";
-	this->health = 8;
+	this->health = myCombatClass.GetHitDice() + GetConstMod();
 	this->maxHealth = health;
 	this->xp = 0;
 	this->strength = 0;
@@ -69,6 +69,11 @@ int Actor::GetArmorClass()
 int Actor::GetLevel()
 {
 	return this->level;
+}
+
+int Actor::GetProficiency()
+{
+	return this->proficiencyBonus;
 }
 
 int Actor::GetStrength()
@@ -346,8 +351,16 @@ void Actor::CheckLevelUpThreshold()
 
 void Actor::LevelUp()
 {
-	maxHealth += 5 + GetConstMod();
+	maxHealth += RollDice(1, myCombatClass.GetHitDice()) + GetConstMod();
 	health = maxHealth;
+	if (level >= 5)
+		proficiencyBonus = 3;
+	if (level >= 9)
+		proficiencyBonus = 4;
+	if (level >= 13)
+		proficiencyBonus = 5;
+	if (level >= 17)
+		proficiencyBonus = 6;
 }
 
 //void Actor::openInventory()
