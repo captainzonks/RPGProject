@@ -28,7 +28,7 @@ class Actor
 {
 public:
 
-	CombatClass myCombatClass;
+	std::unique_ptr<CombatClass> myCombatClass;
 	Inventory myInventory;
 	Currency myCurrency;
 	Upgrades myUpgrades;
