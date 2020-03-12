@@ -37,11 +37,11 @@ void Currency::DisplayMoney()
 	int silver = tempCopper / 10;
 	tempCopper %= 10;
 
-	cout << "============" << endl;
+	cout << "====MONEY====" << endl;
 	cout << "Gold   : " << gold << endl;
 	cout << "Silver : " << silver << endl;
 	cout << "Copper : " << tempCopper << endl;
-	cout << "============" << endl;
+	cout << "=============" << endl;
 }
 
 void Currency::AddMoney(int copper)

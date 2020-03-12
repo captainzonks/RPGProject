@@ -204,9 +204,8 @@ void Actor::Display()
 	{
 		cout << "=";
 	}
-	cout << "====" << endl;
 	this->myUpgrades.DisplayUpgrades();
-	cout << "====" << endl;
+	this->myInventory.DisplayPotions();
 	this->myCurrency.DisplayMoney();
 }
 
@@ -280,13 +279,13 @@ void Actor::UsePotion()
 		std::cout << "Please enter a number: ";
 		cin >> choice;
 
-		if (!(valid_input = cin.good()) || choice > (this->myInventory.potionCapacity - 1) || choice < 0)
+		if (!(valid_input = cin.good()) || choice > static_cast<int>(this->myInventory.potionInventory.size()) || choice < 0)
 		{
 			std::cout << "That's not a valid choice." << std::endl;
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
-	} while (!valid_input || choice > (this->myInventory.potionCapacity - 1) || choice < 0);
+	} while (!valid_input || choice > static_cast<int>(this->myInventory.potionInventory.size()) || choice < 0);
 
 	if (choice != 0)
 	{

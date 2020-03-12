@@ -70,26 +70,40 @@ void Inventory::RemovePotionFromInventory(std::unique_ptr<Potion> potion)
 
 void Inventory::DisplayInventory() const
 {
-	cout << "============" << endl;
+	cout << "=====INVENTORY=====" << endl;
 	int counter{ 1 };
-	for (auto& i : this->inventory)
+	if (this->inventory.size() == 0)
 	{
-		cout << counter << ": " << *i << endl;
-		counter++;
+		cout << "EMPTY" << endl;
 	}
-	cout << "============" << endl;
+	else
+	{
+		for (auto& i : this->inventory)
+		{
+			cout << counter << ": " << *i << endl;
+			counter++;
+		}
+	}
+	cout << "===================" << endl;
 }
 
 void Inventory::DisplayPotions() const
 {
-	cout << "============" << endl;
+	cout << "=====POTION BAG=====" << endl;
 	int counter{ 1 };
-	for (auto& i : this->potionInventory)
+	if (this->potionInventory.size() == 0)
 	{
-		cout << counter << ": " << *i << endl;
-		counter++;
+		cout << "EMPTY" << endl;
 	}
-	cout << "============" << endl;
+	else
+	{
+		for (auto& i : this->potionInventory)
+		{
+			cout << counter << ": " << *i << endl;
+			counter++;
+		}
+	}
+	cout << "====================" << endl;
 }
 
 std::unique_ptr<Item> Inventory::GetItem(int itemNumber)

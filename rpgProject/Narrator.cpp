@@ -89,19 +89,21 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	std::cout << "--------------" << std::endl;
 	if (!helmetState)
 	{
+		int tempSilver{}, tempCopper{};
 		// new helmet
 		helmet_ptr = std::make_unique<Helmet>();
 		std::cout << "1) Buy " << helmet_ptr->GetName() <<
 			" : Level " << helmet_ptr->GetLevel() <<
-			" : " << helmet_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(helmet_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade helmet
 		std::cout << "1) Upgrade to Helmet Level " <<
 			actor->myUpgrades.GetHelmetLevel() + 1 <<
-			" : " << (actor->myUpgrades.helmet->GetValue() + 150) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(helmet_ptr->GetValue() + 150);
 	}
 	if (!chestState)
 	{
@@ -109,15 +111,16 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		chest_ptr = std::make_unique<Chest>();
 		std::cout << "2) Buy " << chest_ptr->GetName() <<
 			" : Level " << chest_ptr->GetLevel() <<
-			" : " << chest_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(chest_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade chest
 		std::cout << "2) Upgrade to Chest Armor Level " <<
 			actor->myUpgrades.GetChestLevel() + 1 <<
-			" : " << (actor->myUpgrades.chest->GetValue() + 300) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(chest_ptr->GetValue() + 300);
 	}
 	if (!legsState)
 	{
@@ -125,15 +128,16 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		legs_ptr = std::make_unique<Legs>();
 		std::cout << "3) Buy " << legs_ptr->GetName() <<
 			" : Level " << legs_ptr->GetLevel() <<
-			" : " << legs_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(legs_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade legs
 		std::cout << "3) Upgrade to Leg Armor Level " <<
 			actor->myUpgrades.GetLegsLevel() + 1 <<
-			" : " << (actor->myUpgrades.legs->GetValue() + 250) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(legs_ptr->GetValue() + 250);
 	}
 	if (!handsState)
 	{
@@ -141,15 +145,16 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		hands_ptr = std::make_unique<Hands>();
 		std::cout << "4) Buy " << hands_ptr->GetName() <<
 			" : Level " << hands_ptr->GetLevel() <<
-			" : " << hands_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(hands_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade hands
 		std::cout << "4) Upgrade to Gauntlets Level " <<
 			actor->myUpgrades.GetHandsLevel() + 1 <<
-			" : " << (actor->myUpgrades.hands->GetValue() + 150) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(hands_ptr->GetValue() + 150);
 	}
 	if (!bootsState)
 	{
@@ -157,15 +162,16 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		boots_ptr = std::make_unique<Boots>();
 		std::cout << "5) Buy " << boots_ptr->GetName() <<
 			" : Level " << boots_ptr->GetLevel() <<
-			" : " << boots_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(boots_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade boots
 		std::cout << "5) Upgrade to Boots Level " <<
 			actor->myUpgrades.GetBootsLevel() + 1 <<
-			" : " << (actor->myUpgrades.boots->GetValue() + 200) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(boots_ptr->GetValue() + 200);
 	}
 	if (!shieldState)
 	{
@@ -173,15 +179,16 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		shield_ptr = std::make_unique<Shield>();
 		std::cout << "6) Buy " << shield_ptr->GetName() <<
 			" : Level " << shield_ptr->GetLevel() <<
-			" : " << shield_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(shield_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade shield
 		std::cout << "6) Upgrade to Shield Level " <<
 			actor->myUpgrades.GetShieldLevel() + 1 <<
-			" : " << (actor->myUpgrades.shield->GetValue() + 200) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(shield_ptr->GetValue() + 200);
 	}
 	/*********************************************************************/
 
@@ -194,15 +201,16 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		sword_ptr = std::make_unique<Sword>();
 		std::cout << "7) Buy " << sword_ptr->GetName() <<
 			" : Level " << sword_ptr->GetLevel() <<
-			" : " << sword_ptr->GetValue() / 100 << " gold" << std::endl;
+			" :";
+		DisplayPrice(sword_ptr->GetValue());
 	}
 	else
 	{
 		// upgrade sword
 		std::cout << "7) Upgrade to Sword Level " <<
 			actor->myUpgrades.GetWeaponLevel() + 1 <<
-			" : " << (actor->myUpgrades.weapon->GetValue() + 200) / 100 <<
-			" gold " << std::endl;
+			" :";
+		DisplayPrice(sword_ptr->GetValue() + 250);
 	}
 	/*********************************************************************/
 
@@ -213,7 +221,8 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	int randomHeals{ rand() % 12 + 2 };
 	potion_ptr = std::make_unique<Potion>(randomHeals);
 	std::cout << "8) Buy a " << potion_ptr->GetName() <<
-		" : " << potion_ptr->GetValue() << " copper" << std::endl;
+		" :";
+	DisplayPrice(potion_ptr->GetValue());
 	/****************************************************************/
 
 	std::cout << "--------------" << std::endl;
@@ -462,6 +471,22 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		cout << "Invalid entry" << endl;
 		break;
 	}
+}
+
+void Narrator::DisplayPrice(const int copper) const
+{
+	int tempGold{}, tempSilver{}, tempCopper{ copper };
+	tempGold = copper / 100;
+	tempCopper %= 100;
+	tempSilver = tempCopper / 10;
+	tempCopper %= 10;
+	if (tempGold != 0)
+		cout << " " << tempGold << "g";
+	if (tempSilver != 0)
+		cout << " " << tempSilver << "s";
+	if (tempCopper != 0)
+		cout << " " << tempCopper << "c";
+	cout << endl;
 }
 
 int Narrator::GetPlayerAverageLevel(std::shared_ptr<Actor> player)

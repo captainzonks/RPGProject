@@ -33,6 +33,9 @@ public:
 	bool CheckPrice(std::shared_ptr<Actor> player, int price);
 	void Upgrader(std::shared_ptr<Actor> actor);
 
+	// shop function
+	void DisplayPrice(const int copper) const;
+
 	// get player item level
 	int GetPlayerAverageLevel(std::shared_ptr<Actor> player);
 

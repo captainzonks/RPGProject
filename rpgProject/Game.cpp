@@ -72,7 +72,7 @@ void Game::Update(std::shared_ptr<Actor> player)
 
 void Game::RandomEncounter(std::shared_ptr<Actor> player)
 {
-	int randomStart{ rand() % 2 + 1 };
+	int randomStart{ rand() % 2 };
 	int randomCount{ rand() % (player->GetAverageItemLevel() + 1) };
 	if (randomStart == 1 && player->GetAverageItemLevel() != 0)
 	{

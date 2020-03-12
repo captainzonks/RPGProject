@@ -5,6 +5,7 @@ bool Attack::AttackAgainstAC(std::shared_ptr<Actor> attacker, std::shared_ptr<Ac
 	bool success{ false };
 	std::cout << "\n" << attacker->GetName() << " is attacking " << target->GetName() << "!" << std::endl;
 	int result{ RollDice(1, 20) + attacker->GetStrengthMod() };
+	std::cout << "\n" << attacker->GetName() << " rolled a " << result << " vs " << target->GetArmorClass() << " AC" << std::endl;
 	if (result < (target->GetArmorClass() + target->myInventory.GetArmorBonus()))
 		return false;
 	else
