@@ -103,7 +103,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "1) Upgrade to Helmet Level " <<
 			actor->myUpgrades.GetHelmetLevel() + 1 <<
 			" :";
-		DisplayPrice(helmet_ptr->GetValue() + 150);
+		DisplayPrice(actor->myUpgrades.helmet->GetValue() + 150);
 	}
 	if (!chestState)
 	{
@@ -120,7 +120,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "2) Upgrade to Chest Armor Level " <<
 			actor->myUpgrades.GetChestLevel() + 1 <<
 			" :";
-		DisplayPrice(chest_ptr->GetValue() + 300);
+		DisplayPrice(actor->myUpgrades.chest->GetValue() + 300);
 	}
 	if (!legsState)
 	{
@@ -137,7 +137,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "3) Upgrade to Leg Armor Level " <<
 			actor->myUpgrades.GetLegsLevel() + 1 <<
 			" :";
-		DisplayPrice(legs_ptr->GetValue() + 250);
+		DisplayPrice(actor->myUpgrades.legs->GetValue() + 250);
 	}
 	if (!handsState)
 	{
@@ -154,7 +154,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "4) Upgrade to Gauntlets Level " <<
 			actor->myUpgrades.GetHandsLevel() + 1 <<
 			" :";
-		DisplayPrice(hands_ptr->GetValue() + 150);
+		DisplayPrice(actor->myUpgrades.hands->GetValue() + 150);
 	}
 	if (!bootsState)
 	{
@@ -171,7 +171,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "5) Upgrade to Boots Level " <<
 			actor->myUpgrades.GetBootsLevel() + 1 <<
 			" :";
-		DisplayPrice(boots_ptr->GetValue() + 200);
+		DisplayPrice(actor->myUpgrades.boots->GetValue() + 200);
 	}
 	if (!shieldState)
 	{
@@ -188,7 +188,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "6) Upgrade to Shield Level " <<
 			actor->myUpgrades.GetShieldLevel() + 1 <<
 			" :";
-		DisplayPrice(shield_ptr->GetValue() + 200);
+		DisplayPrice(actor->myUpgrades.shield->GetValue() + 200);
 	}
 	/*********************************************************************/
 
@@ -210,7 +210,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		std::cout << "7) Upgrade to Sword Level " <<
 			actor->myUpgrades.GetWeaponLevel() + 1 <<
 			" :";
-		DisplayPrice(sword_ptr->GetValue() + 250);
+		DisplayPrice(actor->myUpgrades.weapon->GetValue() + 250);
 	}
 	/*********************************************************************/
 

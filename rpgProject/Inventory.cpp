@@ -99,7 +99,7 @@ void Inventory::DisplayPotions() const
 	{
 		for (auto& i : this->potionInventory)
 		{
-			cout << counter << ": " << *i << endl;
+			cout << counter << ": " << *i << " +" << i->GetHealthValue() << "HP" << endl;
 			counter++;
 		}
 	}
