@@ -2,33 +2,20 @@
 
 std::shared_ptr<Actor> EnemyManager::CreateEnemy(int playerItemLevel)
 {
-	int random{ rand() % 4 + 1 };
+	int random{ rand() % 1 + 1 };
 
 	std::shared_ptr<Actor> new_enemy{ nullptr };
 
 	switch (random)
 	{
 	case 1:
-		new_enemy = std::make_shared<Human>(identifier);
-		identifier++;
-		break;
-	case 2:
-		new_enemy = std::make_shared<Dwarf>(identifier);
-		identifier++;
-		break;
-	case 3:
-		new_enemy = std::make_shared<Elf>(identifier);
-		identifier++;
-		break;
-	case 4:
-		new_enemy = std::make_shared<Halfling>(identifier);
+		new_enemy = std::make_shared<Fighter>(identifier);
+		new_enemy = GetUpgrades(playerItemLevel, new_enemy);
 		identifier++;
 		break;
 	default:
 		break;
 	}
-
-	new_enemy = GetUpgrades(playerItemLevel, new_enemy);
 
 	return new_enemy;
 }
@@ -222,6 +209,7 @@ void EnemyManager::CheckForDead()
 		{
 			std::cout << "\n" << enemies.at(i)->GetName() << " died!" << std::endl;
 			enemies.erase(enemies.begin() + i);
+			identifier--;
 		}
 	}
 }

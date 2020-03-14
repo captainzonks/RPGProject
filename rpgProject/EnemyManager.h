@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Actor.h"
-#include "Human.h"
-#include "Dwarf.h"
-#include "Elf.h"
-#include "Halfling.h"
+#include "Fighter.h"
+//#include "Human.h"
+//#include "Dwarf.h"
+//#include "Elf.h"
+//#include "Halfling.h"
 #include "Upgrades.h"
 
 #include <vector>

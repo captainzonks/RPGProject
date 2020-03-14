@@ -11,6 +11,7 @@ class Attack
 public:
 	static bool AttackAgainstAC(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
 	static void DealDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
+	static void DealCriticalDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
 private:
 	Attack();
 };

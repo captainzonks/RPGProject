@@ -2,7 +2,6 @@
 
 #include "Constants.h"
 #include "HelperFunctions.h"
-#include "CombatClass.h"
 #include "Menu.h"
 #include "Upgrades.h"
 #include "Inventory.h"
@@ -28,19 +27,18 @@ class Actor
 {
 public:
 
-	std::unique_ptr<CombatClass> myCombatClass;
 	Inventory myInventory;
 	Currency myCurrency;
 	Upgrades myUpgrades;
 
-	// constructors
+	// constructor
 	Actor();
 
 	// destructors
 	virtual ~Actor();
 
 	// setters
-	virtual void RollStats() = 0;
+	virtual void RollHumanStats() = 0, RollDwarfStats() = 0, RollElfStats() = 0, RollHalflingStats() = 0;
 
 	// updaters
 	virtual void Update();
@@ -67,7 +65,7 @@ public:
 	virtual void AddHealth(int healing);
 	virtual void AddXP(int xpGain);
 	virtual void CheckLevelUpThreshold();
-	virtual void LevelUp();
+	virtual void LevelUp() = 0;
 
 	// inventory management
 	// virtual void openInventory();
@@ -93,6 +91,9 @@ public:
 	virtual void RollForInitiative();
 	virtual void ClearInitiative();
 
+	// combatclass related virtual functions
+	virtual void DisplayClassInformation() = 0;
+
 protected:
 	// friend class Narrator;
 
@@ -115,6 +116,6 @@ protected:
 	int averageItemLevel{};
 
 	// stats
-	int strength, dexterity, constitution, intelligence, wisdom, charisma;
+	int strength{}, dexterity{}, constitution{}, intelligence{}, wisdom{}, charisma{};
 };
 

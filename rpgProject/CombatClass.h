@@ -2,18 +2,20 @@
 
 #include "Constants.h"
 #include "Menu.h"
+#include "Actor.h"
 #include <iostream>
 #include <vector>
 #include <limits>
 
 class CombatClass
+	: public Actor
 {
 public:
-
+	CombatClass();
 	virtual ~CombatClass();
 
-	virtual int GetHitDice() = 0;
-	virtual int GetHitDiceQuantity() = 0;
+	virtual int GetHitDice();
+	virtual int GetHitDiceQuantity();
 
 protected:
 	int hitDice{};

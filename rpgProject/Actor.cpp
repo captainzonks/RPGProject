@@ -2,32 +2,13 @@
 
 Actor::Actor()
 {
-	cout << "\nActor constructor called" << endl; // debug
-	this->name = "Guy";
-	this->health = myCombatClass->GetHitDice() + GetConstMod();
-	this->maxHealth = health;
-	this->xp = 0;
-	this->strength = 0;
-	this->dexterity = 0;
-	this->constitution = 0;
-	this->intelligence = 0;
-	this->wisdom = 0;
-	this->charisma = 0;
+	cout << "Actor constructor called" << endl; // debug
 }
 
 Actor::~Actor()
 {
+	cout << "Actor destructor called" << endl;
 }
-
-//void Actor::RollStats()
-//{
-//	this->strength = RollDiceIgnoreLowest(4, 6);
-//	this->dexterity = RollDiceIgnoreLowest(4, 6);
-//	this->constitution = RollDiceIgnoreLowest(4, 6);
-//	this->intelligence = RollDiceIgnoreLowest(4, 6);
-//	this->wisdom = RollDiceIgnoreLowest(4, 6);
-//	this->charisma = RollDiceIgnoreLowest(4, 6);
-//}
 
 void Actor::Update()
 {
@@ -209,9 +190,7 @@ void Actor::Display()
 	{
 		cout << "=";
 	}
-	this->myUpgrades.DisplayUpgrades();
-	this->myInventory.DisplayPotions();
-	this->myCurrency.DisplayMoney();
+	cout << endl;
 }
 
 void Actor::UpdateAverageItemLevel()
@@ -349,20 +328,6 @@ void Actor::CheckLevelUpThreshold()
 	}
 }
 
-void Actor::LevelUp()
-{
-	maxHealth += RollDice(1, myCombatClass->GetHitDice()) + GetConstMod();
-	health = maxHealth;
-	if (level >= 5)
-		proficiencyBonus = 3;
-	if (level >= 9)
-		proficiencyBonus = 4;
-	if (level >= 13)
-		proficiencyBonus = 5;
-	if (level >= 17)
-		proficiencyBonus = 6;
-}
-
 //void Actor::openInventory()
 //{
 //	myInventory.displayInventory();
@@ -451,21 +416,3 @@ void Actor::ClearInitiative()
 {
 	this->initiative = 0;
 }
-
-//void Actor::attack(Actor& target)
-//{
-//	// TODO this is a basic randomly generated attack concept
-//	// eventual goal is to have unique attacks in separate methods (or classes)
-//	int tempQuantity{ 1 }; // debug purposes
-//	cout << this->name << " is attacking " << target.name << endl;
-//	int damage{ RollDice(tempQuantity, attackDice) };
-//	if (target.SubtractHealth(damage))
-//	{
-//		cout << this->name << " did " << damage << " damage to " << target.name << "!" << endl;
-//	}
-//	else if (!target.SubtractHealth(damage))
-//	{
-//		cout << this->name << " killed " << target.name << " with " << damage << " damage!" << endl;
-//		target.isAlive = false;
-//	}
-//}

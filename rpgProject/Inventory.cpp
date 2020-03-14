@@ -89,7 +89,7 @@ void Inventory::DisplayInventory() const
 
 void Inventory::DisplayPotions() const
 {
-	cout << "=====POTION BAG=====" << endl;
+	cout << "\n=====POTION BAG=====" << endl;
 	int counter{ 1 };
 	if (this->potionInventory.size() == 0)
 	{

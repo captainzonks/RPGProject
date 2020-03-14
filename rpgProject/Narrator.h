@@ -3,11 +3,10 @@
 #include <memory>
 
 #include "Menu.h"
-#include "Actor.h"
-#include "Human.h"
-#include "Dwarf.h"
-#include "Elf.h"
-#include "Halfling.h"
+//#include "Human.h"
+//#include "Dwarf.h"
+//#include "Elf.h"
+//#include "Halfling.h"
 #include "Item.h"
 #include "Weapon.h"
 #include "Sword.h"
@@ -19,6 +18,7 @@
 #include "Hands.h"
 #include "Boots.h"
 #include "Potion.h"
+#include "Fighter.h"
 
 class Narrator
 {

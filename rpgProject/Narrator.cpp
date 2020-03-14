@@ -11,32 +11,49 @@ std::shared_ptr<Actor> Narrator::CharacterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
 
-	cout << "What are you?" << endl;
+	cout << "\nWhat race are you?" << endl;
 	int choice{};
+	string race;
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 	std::unique_ptr<int> const decisions = std::make_unique<int>(4);
 	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Human", "Dwarf", "Elf", "Halfling" }));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
+	switch (choice)
+	{
+	case 1:
+		race = "Human";
+		break;
+	case 2:
+		race = "Dwarf";
+		break;
+	case 3:
+		race = "Elf";
+		break;
+	case 4:
+		race = "Halfling";
+		break;
+	default:
+		break;
+	}
+
 	string name{};
-	cout << "What's your name? ";
+	cout << "\nWhat's your name? ";
 	cin >> name;
+
+	cout << "\nWhat class are you?" << endl;
+	choice = 0;
+	std::unique_ptr<Menu> tempMenu2 = std::make_unique<Menu>();
+	std::unique_ptr<int> const decisions2 = std::make_unique<int>(1);
+	std::unique_ptr<vector<string>> tempDecisions2 = std::make_unique<vector<string>>(std::initializer_list<string>({ "Fighter" }));
+	choice = tempMenu2->PrintMenu(*decisions2, *tempDecisions2);
 
 	std::shared_ptr<Actor> new_player{ nullptr };
 
 	switch (choice)
 	{
 	case 1:
-		new_player = std::make_shared<Human>(name);
-		break;
-	case 2:
-		new_player = std::make_shared<Dwarf>(name);
-		break;
-	case 3:
-		new_player = std::make_shared<Elf>(name);
-		break;
-	case 4:
-		new_player = std::make_shared<Halfling>(name);
+		new_player = std::make_shared<Fighter>(name, race);
 		break;
 	default:
 		break;

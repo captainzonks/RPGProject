@@ -2,6 +2,8 @@
 
 Upgrades::Upgrades()
 {
+	nothingEquipped = true;
+
 	hasHelmet = false;
 	hasChest = false;
 	hasLegs = false;
@@ -24,47 +26,55 @@ Upgrades::~Upgrades()
 void Upgrades::DisplayUpgrades()
 {
 	std::cout << "\n===UPGRADES EQUIPPED===" << std::endl;
-	// sword and shield
-	if (WeaponEquipped())
+
+	if (IsAnythingEquipped())
 	{
-		std::cout << this->weapon->GetName() <<
-			", Level " << this->weapon->GetLevel() <<
-			" (d" << this->weapon->GetAttackDie() << ")";
-
-		if (this->weapon->GetLevel() > 1)
-		{
-			std::cout << " +" <<
-				this->weapon->GetModifier() << " equipped" << std::endl;
-		}
-		else
-			std:: cout << " equipped" << std::endl;
+		std::cout << "NONE" << std::endl;
 	}
-	if (ShieldEquipped())
-		std::cout << this->shield->GetName() << 
-		", Level " << this->shield->GetLevel() << 
-		" (+" << this->shield->GetArmorValue() << "AC) equipped" << std::endl;
-	// armor
-	if (HelmetEquipped())
-		std::cout << this->helmet->GetName() <<
-		", Level " << this->helmet->GetLevel() << 
-		" (+" << this->helmet->GetArmorValue() << "AC) equipped" << std::endl;
-	if (ChestEquipped())
-		std::cout << this->chest->GetName() <<
-		", Level " << this->chest->GetLevel() << 
-		" (+" << this->chest->GetArmorValue() << "AC) equipped" << std::endl;
-	if (LegsEquipped())
-		std::cout << this->legs->GetName() << 
-		", Level " << this->legs->GetLevel() << 
-		" (+" << this->legs->GetArmorValue() << "AC) equipped" << std::endl;
-	if (HandsEquipped())
-		std::cout << this->hands->GetName() <<
-		", Level " << this->hands->GetLevel() <<
-		" (+" << this->hands->GetArmorValue() << "AC) equipped" << std::endl;
-	if (BootsEquipped())
-		std::cout << this->boots->GetName() <<
-		", Level " << this->boots->GetLevel() << 
-		" (+" << this->boots->GetArmorValue() << "AC) equipped" << std::endl;
+	else
+	{
+		// sword and shield
+		if (WeaponEquipped())
+		{
+			std::cout << this->weapon->GetName() <<
+				", Level " << this->weapon->GetLevel() <<
+				" (d" << this->weapon->GetAttackDie() << ")";
 
+			if (this->weapon->GetLevel() > 1)
+			{
+				std::cout << " +" <<
+					this->weapon->GetModifier() << " equipped" << std::endl;
+			}
+			else
+				std::cout << " equipped" << std::endl;
+		}
+		if (ShieldEquipped())
+			std::cout << this->shield->GetName() <<
+			", Level " << this->shield->GetLevel() <<
+			" (+" << this->shield->GetArmorValue() << "AC) equipped" << std::endl;
+		// armor
+		if (HelmetEquipped())
+			std::cout << this->helmet->GetName() <<
+			", Level " << this->helmet->GetLevel() <<
+			" (+" << this->helmet->GetArmorValue() << "AC) equipped" << std::endl;
+		if (ChestEquipped())
+			std::cout << this->chest->GetName() <<
+			", Level " << this->chest->GetLevel() <<
+			" (+" << this->chest->GetArmorValue() << "AC) equipped" << std::endl;
+		if (LegsEquipped())
+			std::cout << this->legs->GetName() <<
+			", Level " << this->legs->GetLevel() <<
+			" (+" << this->legs->GetArmorValue() << "AC) equipped" << std::endl;
+		if (HandsEquipped())
+			std::cout << this->hands->GetName() <<
+			", Level " << this->hands->GetLevel() <<
+			" (+" << this->hands->GetArmorValue() << "AC) equipped" << std::endl;
+		if (BootsEquipped())
+			std::cout << this->boots->GetName() <<
+			", Level " << this->boots->GetLevel() <<
+			" (+" << this->boots->GetArmorValue() << "AC) equipped" << std::endl;
+	}
+	
 	std::cout << "=======================" << std::endl;
 }
 
@@ -256,4 +266,25 @@ void Upgrades::UnequipBoots()
 {
 	this->boots = nullptr;
 	hasBoots = false;
+}
+
+bool Upgrades::IsAnythingEquipped()
+{
+	if (!HelmetEquipped() &&
+		!ChestEquipped() &&
+		!LegsEquipped() &&
+		!HandsEquipped() &&
+		!BootsEquipped() &&
+		!WeaponEquipped() &&
+		!ShieldEquipped()
+		)
+	{
+		nothingEquipped = true;
+	}
+	else
+	{
+		nothingEquipped = false;
+	}
+
+	return nothingEquipped;
 }

@@ -60,7 +60,13 @@ public:
 		EquipBoots(std::unique_ptr<Armor> boots);
 	void UnequipHelmet(), UnequipChest(), UnequipLegs(), UnequipHands(), UnequipBoots();
 
+	// nothing getter
+	bool IsAnythingEquipped();
+
 private:
+	// initial null
+	bool nothingEquipped{ true };
+
 	// armor booleans
 	bool hasHelmet{ false };
 	bool hasChest{ false };

@@ -28,8 +28,13 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(5);
-	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Display Player", "Buy Something", "Use A Potion", "End Turn", "Quit" }));
+	std::unique_ptr<int> const decisions = std::make_unique<int>(9);
+	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
+		{ 
+		"Display Player", "Display Class Information", "Display Money", 
+		"Display Upgrades", "Display Potions", "Buy Something", 
+		"Use A Potion", "End Turn", "Quit" 
+		}));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 	switch (choice)
 	{
@@ -37,16 +42,28 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 		player->Display();
 		break;
 	case 2:
-		narrator.BuySomething(player);
+		player->DisplayClassInformation();
 		break;
 	case 3:
-		player->UsePotion();
+		player->myCurrency.DisplayMoney();
 		break;
 	case 4:
-		std::cout << "Ending Turn" << std::endl;
-		RandomEncounter(player);
+		player->myUpgrades.DisplayUpgrades();
 		break;
 	case 5:
+		player->myInventory.DisplayPotions();
+		break;
+	case 6:
+		narrator.BuySomething(player);
+		break;
+	case 7:
+		player->UsePotion();
+		break;
+	case 8:
+		std::cout << "Ending Turn\n" << std::endl;
+		RandomEncounter(player);
+		break;
+	case 9:
 		isRunning = false;
 		break;
 	default:
@@ -65,7 +82,7 @@ void Game::Update(std::shared_ptr<Actor> player)
 
 	if (!player->LivingOrDead())
 	{
-		std::cout << "\nYou lost! Better luck next time!" << std::endl;
+		std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
 		isRunning = false;
 	}
 }
@@ -91,7 +108,7 @@ void Game::StartEncounter(std::shared_ptr<Actor> player)
 {
 	if (manager.GetTotalEnemies() == 0)
 	{
-		std::cout << "\nThere are no enemies!" << std::endl;
+		std::cout << "\nThere are no enemies!\n" << std::endl;
 	}
 	else
 		Encounter newEncounter(manager, player);

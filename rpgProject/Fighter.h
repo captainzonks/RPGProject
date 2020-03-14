@@ -2,18 +2,33 @@
 
 #include "CombatClass.h"
 
-class Fighter :
-	public CombatClass
+class Fighter 
+	: public CombatClass
 {
 public:
 
-	// constructor
-	Fighter();
+	// constructors
+		// player constructor
+	Fighter(string name, string race);
+		// enemy constructor
+	Fighter(int identifier);
+
 	// destructor
 	virtual ~Fighter() override;
 
-	// fighting style
+	// roll racial stats
+	virtual void RollHumanStats() override, RollDwarfStats() override, RollElfStats() override, RollHalflingStats() override;
+
+	// player fighting style
 	void SetFightingStyle();
+	// enemy fighting style
+	void SetEnemyFightingStyle();
+
+	// display
+	virtual void DisplayClassInformation() override;
+
+	// level up
+	void LevelUp() override;
 
 private:
 	std::vector<ABILITIES> savingThrows{ ABILITIES::STRENGTH, ABILITIES::CONSTITUTION };

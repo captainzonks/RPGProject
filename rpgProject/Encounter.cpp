@@ -109,7 +109,6 @@ bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_pt
 {
 	if (Attack::AttackAgainstAC(attacker, defender))
 	{
-		Attack::DealDamage(attacker, defender);
 		if (!defender->LivingOrDead())
 		{
 			manager.CheckForDead();
