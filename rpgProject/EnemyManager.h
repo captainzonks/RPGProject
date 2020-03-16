@@ -12,21 +12,22 @@
 class EnemyManager
 {
 public:
-	std::shared_ptr<Actor> CreateEnemy(int playerItemLevel);
-	std::shared_ptr<Actor> GetUpgrades(int playerItemLevel, std::shared_ptr<Actor> enemy);
-	void AddEnemy(std::shared_ptr<Actor> enemy);
+	Actor* CreateEnemy(int playerItemLevel);
+	void GetUpgrades(int playerItemLevel, Actor& enemy);
+	void AddEnemy(Actor* enemy);
 	void DisplayAllEnemies();
 	unsigned int GetTotalEnemies();
-	std::vector<std::shared_ptr<Actor>> GetEnemies();
-	std::shared_ptr<Actor> GetEnemy(int identifier);
+	std::vector<Actor*> GetEnemies();
+	Actor* GetEnemy(int identifier);
 
 	int GetIdentifier();
 
 	void CheckForDead();
+	void CleanUpDead();
 	void CleanUp();
 
 private:
-	std::vector<std::shared_ptr<Actor>> enemies;
+	std::vector<Actor*> enemies;
 	int identifier{};
 };
 

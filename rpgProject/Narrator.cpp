@@ -7,7 +7,7 @@ void Narrator::StartGreeting()
 	cout << "-----------------------" << endl;
 }
 
-std::shared_ptr<Actor> Narrator::CharacterCreator()
+Actor* Narrator::CharacterCreator()
 {
 	cout << "\nLet's create a character!" << endl;
 
@@ -48,12 +48,12 @@ std::shared_ptr<Actor> Narrator::CharacterCreator()
 	std::unique_ptr<vector<string>> tempDecisions2 = std::make_unique<vector<string>>(std::initializer_list<string>({ "Fighter" }));
 	choice = tempMenu2->PrintMenu(*decisions2, *tempDecisions2);
 
-	std::shared_ptr<Actor> new_player{ nullptr };
+	Actor* new_player{ nullptr };
 
 	switch (choice)
 	{
 	case 1:
-		new_player = std::make_shared<Fighter>(name, race);
+		new_player = new Fighter(name, race);
 		break;
 	default:
 		break;
@@ -62,34 +62,33 @@ std::shared_ptr<Actor> Narrator::CharacterCreator()
 	return new_player;
 }
 
-void Narrator::BuySomething(std::shared_ptr<Actor> player)
+void Narrator::BuySomething(Actor& player)
 {
 	cout << "Welcome to fantasy shop " << version << "!" << endl;
 	cout << "=============================" << endl;
 	cout << "What would you like to purchase?" << endl;
 
 	Upgrader(player);
-	
 }
 
-bool Narrator::CheckPrice(std::shared_ptr<Actor> player, int price)
+bool Narrator::CheckPrice(Actor& player, int price) const
 {
-	if (price > player->myCurrency.GetCopper())
+	if (price > player.myCurrency.GetCopper())
 		return false;
 	else
 		return true;
 }
 
-void Narrator::Upgrader(std::shared_ptr<Actor> actor)
+void Narrator::Upgrader(Actor& actor)
 {
 	// false(0) for new purchase, true(1) for upgrading
-	bool helmetState{ actor->myUpgrades.HelmetEquipped() };
-	bool chestState{ actor->myUpgrades.ChestEquipped() };
-	bool legsState{ actor->myUpgrades.LegsEquipped() };
-	bool handsState{ actor->myUpgrades.HandsEquipped() };
-	bool bootsState{ actor->myUpgrades.BootsEquipped() };
-	bool swordState{ actor->myUpgrades.WeaponEquipped() };
-	bool shieldState{ actor->myUpgrades.ShieldEquipped() };
+	bool helmetState{ actor.myUpgrades.HelmetEquipped() };
+	bool chestState{ actor.myUpgrades.ChestEquipped() };
+	bool legsState{ actor.myUpgrades.LegsEquipped() };
+	bool handsState{ actor.myUpgrades.HandsEquipped() };
+	bool bootsState{ actor.myUpgrades.BootsEquipped() };
+	bool swordState{ actor.myUpgrades.WeaponEquipped() };
+	bool shieldState{ actor.myUpgrades.ShieldEquipped() };
 
 	// the pointers
 	std::unique_ptr<Helmet> helmet_ptr{ nullptr };
@@ -118,9 +117,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade helmet
 		std::cout << "1) Upgrade to Helmet Level " <<
-			actor->myUpgrades.GetHelmetLevel() + 1 <<
+			actor.myUpgrades.GetHelmetLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.helmet->GetValue() + 150);
+		DisplayPrice(actor.myUpgrades.helmet->GetValue() + 150);
 	}
 	if (!chestState)
 	{
@@ -135,9 +134,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade chest
 		std::cout << "2) Upgrade to Chest Armor Level " <<
-			actor->myUpgrades.GetChestLevel() + 1 <<
+			actor.myUpgrades.GetChestLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.chest->GetValue() + 300);
+		DisplayPrice(actor.myUpgrades.chest->GetValue() + 300);
 	}
 	if (!legsState)
 	{
@@ -152,9 +151,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade legs
 		std::cout << "3) Upgrade to Leg Armor Level " <<
-			actor->myUpgrades.GetLegsLevel() + 1 <<
+			actor.myUpgrades.GetLegsLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.legs->GetValue() + 250);
+		DisplayPrice(actor.myUpgrades.legs->GetValue() + 250);
 	}
 	if (!handsState)
 	{
@@ -169,9 +168,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade hands
 		std::cout << "4) Upgrade to Gauntlets Level " <<
-			actor->myUpgrades.GetHandsLevel() + 1 <<
+			actor.myUpgrades.GetHandsLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.hands->GetValue() + 150);
+		DisplayPrice(actor.myUpgrades.hands->GetValue() + 150);
 	}
 	if (!bootsState)
 	{
@@ -186,9 +185,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade boots
 		std::cout << "5) Upgrade to Boots Level " <<
-			actor->myUpgrades.GetBootsLevel() + 1 <<
+			actor.myUpgrades.GetBootsLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.boots->GetValue() + 200);
+		DisplayPrice(actor.myUpgrades.boots->GetValue() + 200);
 	}
 	if (!shieldState)
 	{
@@ -203,9 +202,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade shield
 		std::cout << "6) Upgrade to Shield Level " <<
-			actor->myUpgrades.GetShieldLevel() + 1 <<
+			actor.myUpgrades.GetShieldLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.shield->GetValue() + 200);
+		DisplayPrice(actor.myUpgrades.shield->GetValue() + 200);
 	}
 	/*********************************************************************/
 
@@ -225,9 +224,9 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 	{
 		// upgrade sword
 		std::cout << "7) Upgrade to Sword Level " <<
-			actor->myUpgrades.GetWeaponLevel() + 1 <<
+			actor.myUpgrades.GetWeaponLevel() + 1 <<
 			" :";
-		DisplayPrice(actor->myUpgrades.weapon->GetValue() + 250);
+		DisplayPrice(actor.myUpgrades.weapon->GetValue() + 250);
 	}
 	/*********************************************************************/
 
@@ -254,8 +253,8 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, helmet_ptr->GetValue()))
 			{
-				actor->myCurrency.SubtractMoney(helmet_ptr->GetValue());
-				actor->EquipHelmet(std::move(helmet_ptr));
+				actor.myCurrency.SubtractMoney(helmet_ptr->GetValue());
+				actor.EquipHelmet(std::move(helmet_ptr));
 				cout << "Obtained a Helmet!" << endl;
 				break;
 			}
@@ -267,11 +266,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.helmet->GetValue() + 150))
+			if (CheckPrice(actor, actor.myUpgrades.helmet->GetValue() + 150))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.helmet->GetValue() + 150);
-				actor->myUpgrades.helmet->UpgradeArmor();
-				cout << "Upgraded Helmet to Level " << actor->myUpgrades.GetHelmetLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.helmet->GetValue() + 150);
+				actor.myUpgrades.helmet->UpgradeArmor();
+				cout << "Upgraded Helmet to Level " << actor.myUpgrades.GetHelmetLevel() << endl;
 				break;
 			}
 			else
@@ -285,8 +284,8 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, chest_ptr->GetValue()))
 			{
-				actor->myCurrency.SubtractMoney(chest_ptr->GetValue());
-				actor->EquipChest(std::move(chest_ptr));
+				actor.myCurrency.SubtractMoney(chest_ptr->GetValue());
+				actor.EquipChest(std::move(chest_ptr));
 				cout << "Obtained Chest Armor!" << endl;
 				break;
 			}
@@ -298,11 +297,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.chest->GetValue() + 300))
+			if (CheckPrice(actor, actor.myUpgrades.chest->GetValue() + 300))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.chest->GetValue() + 300);
-				actor->myUpgrades.chest->UpgradeArmor();
-				cout << "Upgraded Chest Armor to Level " << actor->myUpgrades.GetChestLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.chest->GetValue() + 300);
+				actor.myUpgrades.chest->UpgradeArmor();
+				cout << "Upgraded Chest Armor to Level " << actor.myUpgrades.GetChestLevel() << endl;
 				break;
 			}
 			else
@@ -316,7 +315,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, legs_ptr->GetValue()))
 			{
-				actor->EquipLegs(std::move(legs_ptr));
+				actor.EquipLegs(std::move(legs_ptr));
 				cout << "Obtained Leg Armor!" << endl;
 				break;
 			}
@@ -328,11 +327,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.legs->GetValue() + 250))
+			if (CheckPrice(actor, actor.myUpgrades.legs->GetValue() + 250))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.legs->GetValue() + 250);
-				actor->myUpgrades.legs->UpgradeArmor();
-				cout << "Upgraded Leg Armor to Level " << actor->myUpgrades.GetLegsLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.legs->GetValue() + 250);
+				actor.myUpgrades.legs->UpgradeArmor();
+				cout << "Upgraded Leg Armor to Level " << actor.myUpgrades.GetLegsLevel() << endl;
 				break;
 			}
 			else
@@ -346,7 +345,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, hands_ptr->GetValue()))
 			{
-				actor->EquipHands(std::move(hands_ptr));
+				actor.EquipHands(std::move(hands_ptr));
 				cout << "Obtained Gauntlets!" << endl;
 				break;
 			}
@@ -358,11 +357,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.hands->GetValue() + 150))
+			if (CheckPrice(actor, actor.myUpgrades.hands->GetValue() + 150))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.hands->GetValue() + 150);
-				actor->myUpgrades.hands->UpgradeArmor();
-				cout << "Upgraded Gauntlets to Level " << actor->myUpgrades.GetHandsLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.hands->GetValue() + 150);
+				actor.myUpgrades.hands->UpgradeArmor();
+				cout << "Upgraded Gauntlets to Level " << actor.myUpgrades.GetHandsLevel() << endl;
 				break;
 			}
 			else
@@ -376,7 +375,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, boots_ptr->GetValue()))
 			{
-				actor->EquipBoots(std::move(boots_ptr));
+				actor.EquipBoots(std::move(boots_ptr));
 				cout << "Obtained Boots!" << endl;
 				break;
 			}
@@ -388,11 +387,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.boots->GetValue() + 200))
+			if (CheckPrice(actor, actor.myUpgrades.boots->GetValue() + 200))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.boots->GetValue() + 200);
-				actor->myUpgrades.boots->UpgradeArmor();
-				cout << "Upgraded Boots to Level " << actor->myUpgrades.GetBootsLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.boots->GetValue() + 200);
+				actor.myUpgrades.boots->UpgradeArmor();
+				cout << "Upgraded Boots to Level " << actor.myUpgrades.GetBootsLevel() << endl;
 				break;
 			}
 			else
@@ -406,7 +405,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, shield_ptr->GetValue()))
 			{
-				actor->EquipShield(std::move(shield_ptr));
+				actor.EquipShield(std::move(shield_ptr));
 				cout << "Obtained a Shield!" << endl;
 				break;
 			}
@@ -418,11 +417,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.shield->GetValue() + 200))
+			if (CheckPrice(actor, actor.myUpgrades.shield->GetValue() + 200))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.shield->GetValue() + 200);
-				actor->myUpgrades.shield->UpgradeArmor();
-				cout << "Upgraded Shield to Level " << actor->myUpgrades.GetShieldLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.shield->GetValue() + 200);
+				actor.myUpgrades.shield->UpgradeArmor();
+				cout << "Upgraded Shield to Level " << actor.myUpgrades.GetShieldLevel() << endl;
 				break;
 			}
 			else
@@ -436,7 +435,7 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		{
 			if (CheckPrice(actor, sword_ptr->GetValue()))
 			{
-				actor->EquipWeapon(std::move(sword_ptr));
+				actor.EquipWeapon(std::move(sword_ptr));
 				cout << "Obtained a Sword!" << endl;
 				break;
 			}
@@ -448,11 +447,11 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor->myUpgrades.weapon->GetValue() + 200))
+			if (CheckPrice(actor, actor.myUpgrades.weapon->GetValue() + 200))
 			{
-				actor->myCurrency.SubtractMoney(actor->myUpgrades.weapon->GetValue() + 200);
-				actor->myUpgrades.weapon->UpgradeWeapon();
-				cout << "Upgraded Sword to Level " << actor->myUpgrades.GetWeaponLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.weapon->GetValue() + 200);
+				actor.myUpgrades.weapon->UpgradeWeapon();
+				cout << "Upgraded Sword to Level " << actor.myUpgrades.GetWeaponLevel() << endl;
 				break;
 			}
 			else
@@ -462,13 +461,13 @@ void Narrator::Upgrader(std::shared_ptr<Actor> actor)
 			}
 		}
 	case 8:
-		if (actor->myInventory.GetCapacity() != 0)
+		if (actor.myInventory.GetCapacity() != 0)
 		{
 			if (CheckPrice(actor, potion_ptr->GetValue()))
 			{
-				actor->myCurrency.SubtractMoney(potion_ptr->GetValue());
+				actor.myCurrency.SubtractMoney(potion_ptr->GetValue());
 				cout << "Obtained a +" << potion_ptr->GetHealthValue() << "HP Healing Potion!" << endl;
-				actor->myInventory.AddPotionToInventory(std::move(potion_ptr));
+				actor.myInventory.AddPotionToInventory(std::move(potion_ptr));
 				break;
 			}
 			else
@@ -506,9 +505,9 @@ void Narrator::DisplayPrice(const int copper) const
 	cout << endl;
 }
 
-int Narrator::GetPlayerAverageLevel(std::shared_ptr<Actor> player)
+int Narrator::GetPlayerAverageLevel(Actor& player) const
 {
-	int average{player->GetAverageItemLevel()};
+	int average{player.GetAverageItemLevel()};
 
 	return average;
 }

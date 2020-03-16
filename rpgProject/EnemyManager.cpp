@@ -1,16 +1,16 @@
 #include "EnemyManager.h"
 
-std::shared_ptr<Actor> EnemyManager::CreateEnemy(int playerItemLevel)
+Actor* EnemyManager::CreateEnemy(int playerItemLevel)
 {
 	int random{ rand() % 1 + 1 };
 
-	std::shared_ptr<Actor> new_enemy{ nullptr };
+	Actor* new_enemy{ nullptr };
 
 	switch (random)
 	{
 	case 1:
-		new_enemy = std::make_shared<Fighter>(identifier);
-		new_enemy = GetUpgrades(playerItemLevel, new_enemy);
+		new_enemy = new Fighter(identifier);
+		GetUpgrades(playerItemLevel, *new_enemy);
 		identifier++;
 		break;
 	default:
@@ -20,7 +20,7 @@ std::shared_ptr<Actor> EnemyManager::CreateEnemy(int playerItemLevel)
 	return new_enemy;
 }
 
-std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::shared_ptr<Actor> enemy)
+void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 {
 	int random{ (rand() % 2) };
 	// obtain new gear
@@ -30,31 +30,31 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 		if (random == 1)
 		{
 			std::unique_ptr<Helmet> helmet = std::make_unique<Helmet>();
-			enemy->EquipHelmet(std::move(helmet));
+			enemy.EquipHelmet(std::move(helmet));
 		}
 		random = (rand() % 3);
 		if (random == 1)
 		{
 			std::unique_ptr<Chest> chest = std::make_unique<Chest>();
-			enemy->EquipChest(std::move(chest));
+			enemy.EquipChest(std::move(chest));
 		}
 		random = (rand() % 2);
 		if (random == 1)
 		{
 			std::unique_ptr<Legs> legs = std::make_unique<Legs>();
-			enemy->EquipLegs(std::move(legs));
+			enemy.EquipLegs(std::move(legs));
 		}
 		random = (rand() % 3);
 		if (random == 1)
 		{
 			std::unique_ptr<Hands> hands = std::make_unique<Hands>();
-			enemy->EquipHands(std::move(hands));
+			enemy.EquipHands(std::move(hands));
 		}
 		random = (rand() % 2);
 		if (random == 1)
 		{
 			std::unique_ptr<Boots> boots = std::make_unique<Boots>();
-			enemy->EquipBoots(std::move(boots));
+			enemy.EquipBoots(std::move(boots));
 		}
 
 		// sword and shield
@@ -62,13 +62,13 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 		if (random == 1)
 		{
 			std::unique_ptr<Sword> sword = std::make_unique<Sword>();
-			enemy->EquipWeapon(std::move(sword));
+			enemy.EquipWeapon(std::move(sword));
 		}
 		random = (rand() % 2);
 		if (random == 1)
 		{
 			std::unique_ptr<Shield> shield = std::make_unique<Shield>();
-			enemy->EquipShield(std::move(shield));
+			enemy.EquipShield(std::move(shield));
 		}
 	}
 
@@ -76,7 +76,7 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 	if (playerItemLevel > 2 && static_cast<int>(enemies.size()) < (playerItemLevel + 3))
 	{
 		// upgrade armor
-		if (enemy->myUpgrades.HelmetEquipped())
+		if (enemy.myUpgrades.HelmetEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -84,10 +84,10 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.helmet->UpgradeArmor();
+						enemy.myUpgrades.helmet->UpgradeArmor();
 				}
 		}
-		if (enemy->myUpgrades.ChestEquipped())
+		if (enemy.myUpgrades.ChestEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -95,10 +95,10 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.chest->UpgradeArmor();
+						enemy.myUpgrades.chest->UpgradeArmor();
 				}
 		}
-		if (enemy->myUpgrades.LegsEquipped())
+		if (enemy.myUpgrades.LegsEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -106,10 +106,10 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.legs->UpgradeArmor();
+						enemy.myUpgrades.legs->UpgradeArmor();
 				}
 		}
-		if (enemy->myUpgrades.HandsEquipped())
+		if (enemy.myUpgrades.HandsEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -117,10 +117,10 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.hands->UpgradeArmor();
+						enemy.myUpgrades.hands->UpgradeArmor();
 				}
 		}
-		if (enemy->myUpgrades.BootsEquipped())
+		if (enemy.myUpgrades.BootsEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -128,12 +128,12 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.boots->UpgradeArmor();
+						enemy.myUpgrades.boots->UpgradeArmor();
 				}
 		}
 
 		// upgrade weapons and shield
-		if (enemy->myUpgrades.WeaponEquipped())
+		if (enemy.myUpgrades.WeaponEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -141,10 +141,10 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.weapon->UpgradeWeapon();
+						enemy.myUpgrades.weapon->UpgradeWeapon();
 				}
 		}
-		if (enemy->myUpgrades.ShieldEquipped())
+		if (enemy.myUpgrades.ShieldEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -152,15 +152,13 @@ std::shared_ptr<Actor> EnemyManager::GetUpgrades(int playerItemLevel, std::share
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy->myUpgrades.shield->UpgradeArmor();
+						enemy.myUpgrades.shield->UpgradeArmor();
 				}
 		}
 	}
-
-	return enemy;
 }
 
-void EnemyManager::AddEnemy(std::shared_ptr<Actor> enemy)
+void EnemyManager::AddEnemy(Actor* enemy)
 {
 	enemies.push_back(enemy);
 }
@@ -186,12 +184,12 @@ unsigned int EnemyManager::GetTotalEnemies()
 	return total;
 }
 
-std::vector<std::shared_ptr<Actor>> EnemyManager::GetEnemies()
+std::vector<Actor*> EnemyManager::GetEnemies()
 {
 	return enemies;
 }
 
-std::shared_ptr<Actor> EnemyManager::GetEnemy(int identifier)
+Actor* EnemyManager::GetEnemy(int identifier)
 {
 	return enemies.at(identifier);
 }
@@ -214,8 +212,27 @@ void EnemyManager::CheckForDead()
 	}
 }
 
+void EnemyManager::CleanUpDead()
+{
+	if (enemies.size() != 0)
+	{
+		for (auto enemy : enemies)
+		{
+			if (!enemy->LivingOrDead())
+				delete enemy;
+		}
+	}
+}
+
 void EnemyManager::CleanUp()
 {
+	if (enemies.size() != 0)
+	{
+		for (auto enemy : enemies)
+		{
+			delete enemy;
+		}
+	}
 	enemies.clear();
 	identifier = 0;
 }

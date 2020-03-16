@@ -26,18 +26,18 @@ public:
 	void StartGreeting();
 
 	// character creation
-	std::shared_ptr<Actor> CharacterCreator();
+	Actor* CharacterCreator();
 
 	// upgrades
-	void BuySomething(std::shared_ptr<Actor> player);
-	bool CheckPrice(std::shared_ptr<Actor> player, int price);
-	void Upgrader(std::shared_ptr<Actor> actor);
+	void BuySomething(Actor& player);
+	bool CheckPrice(Actor& player, int price) const;
+	void Upgrader(Actor& actor);
 
 	// shop function
 	void DisplayPrice(const int copper) const;
 
 	// get player item level
-	int GetPlayerAverageLevel(std::shared_ptr<Actor> player);
+	int GetPlayerAverageLevel(Actor& player) const;
 
 private:
 	

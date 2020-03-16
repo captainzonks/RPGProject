@@ -9,9 +9,9 @@ class Actor;
 class Attack
 {
 public:
-	static bool AttackAgainstAC(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
-	static void DealDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
-	static void DealCriticalDamage(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> target);
+	static bool AttackAgainstAC(Actor& attacker, Actor& target);
+	static void DealDamage(Actor& attacker, Actor& target);
+	static void DealCriticalDamage(Actor& attacker, Actor& target);
 private:
 	Attack();
 };

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Actor.h"
 #include "Item.h"
 #include "Armor.h"
 #include "Weapon.h"

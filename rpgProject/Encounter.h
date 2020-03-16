@@ -9,18 +9,18 @@
 class Encounter
 {
 public:
-	Encounter(EnemyManager& manager, std::shared_ptr<Actor> player);
+	Encounter(EnemyManager& manager, Actor& player);
 	~Encounter();
 	void SortInitiativeOrder();
 	void DisplayIniatives(); // debug
-	void BeginEncounter(EnemyManager& manager, std::shared_ptr<Actor> player);
-	std::shared_ptr<Actor> RandomTargetPicker(std::shared_ptr<Actor> attacker);
-	bool EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> defender);
+	void BeginEncounter(EnemyManager& manager, Actor& player);
+	Actor* RandomTargetPicker(Actor& attacker);
+	bool EncounterHandler(Actor& attacker, Actor& defender);
 
 private:
-	std::shared_ptr<Actor> player;
+	Actor* player;
 	EnemyManager& manager;
-	std::vector<std::shared_ptr<Actor>> initiativeOrder;
+	std::vector<Actor*> initiativeOrder;
 };
 
 #endif // !ENCOUNTER_H

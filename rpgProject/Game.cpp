@@ -16,15 +16,15 @@ void Game::GameLoop()
 
 	while (IsRunning())
 	{
-		GetInput(player);
-		Update(player);
+		GetInput(*player);
+		Update(*player);
 	}
 
-	// delete player;
+	delete player;
 	manager.CleanUp();
 }
 
-void Game::GetInput(std::shared_ptr<Actor> player)
+void Game::GetInput(Actor& player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
@@ -39,25 +39,25 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 	switch (choice)
 	{
 	case 1:
-		player->Display();
+		player.Display();
 		break;
 	case 2:
-		player->DisplayClassInformation();
+		player.DisplayClassInformation();
 		break;
 	case 3:
-		player->myCurrency.DisplayMoney();
+		player.myCurrency.DisplayMoney();
 		break;
 	case 4:
-		player->myUpgrades.DisplayUpgrades();
+		player.myUpgrades.DisplayUpgrades();
 		break;
 	case 5:
-		player->myInventory.DisplayPotions();
+		player.myInventory.DisplayPotions();
 		break;
 	case 6:
 		narrator.BuySomething(player);
 		break;
 	case 7:
-		player->UsePotion();
+		player.UsePotion();
 		break;
 	case 8:
 		std::cout << "Ending Turn\n" << std::endl;
@@ -71,40 +71,40 @@ void Game::GetInput(std::shared_ptr<Actor> player)
 	}
 }
 
-void Game::Update(std::shared_ptr<Actor> player)
+void Game::Update(Actor& player)
 {
-	player->Update();
+	player.Update();
 	manager.CheckForDead();
 	for (auto& enemy : manager.GetEnemies())
 	{
 		enemy->Update();
 	}
 
-	if (!player->LivingOrDead())
+	if (!player.LivingOrDead())
 	{
 		std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
 		isRunning = false;
 	}
 }
 
-void Game::RandomEncounter(std::shared_ptr<Actor> player)
+void Game::RandomEncounter(Actor& player)
 {
 	int randomStart{ rand() % 2 };
-	int randomCount{ rand() % (player->GetAverageItemLevel() + 1) };
-	if (randomStart == 1 && player->GetAverageItemLevel() != 0)
+	int randomCount{ rand() % (player.GetAverageItemLevel() + 1) };
+	if (randomStart == 1 && player.GetAverageItemLevel() != 0)
 	{
 		for (int i{}; i != randomCount; ++i)
 		{
-			manager.AddEnemy(manager.CreateEnemy(player->GetAverageItemLevel()));
+			manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
 		}
 	}
-	else if (randomStart == 1 && player->GetAverageItemLevel() == 0)
-		manager.AddEnemy(manager.CreateEnemy(player->GetAverageItemLevel()));
+	else if (randomStart == 1 && player.GetAverageItemLevel() == 0)
+		manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
 	if (manager.GetTotalEnemies() > 0)
 		Encounter newEncounter(manager, player);
 }
 
-void Game::StartEncounter(std::shared_ptr<Actor> player)
+void Game::StartEncounter(Actor& player)
 {
 	if (manager.GetTotalEnemies() == 0)
 	{

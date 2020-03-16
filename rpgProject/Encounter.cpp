@@ -1,7 +1,7 @@
 #include "Encounter.h"
 
-Encounter::Encounter(EnemyManager& manager, std::shared_ptr<Actor> player)
-	: manager(manager), player(player)
+Encounter::Encounter(EnemyManager& manager, Actor& player)
+	: manager(manager), player(&player)
 {
 	std::cout << "\nEncounter (manager, player) overloaded constructor called" << std::endl; // debug
 	BeginEncounter(manager, player);
@@ -19,7 +19,7 @@ Encounter::~Encounter()
 
 void Encounter::SortInitiativeOrder()
 {
-	std::shared_ptr<Actor> temp{ nullptr };
+	Actor* temp{ nullptr };
 	for (size_t i{}; i < initiativeOrder.size(); ++i)
 	{
 		for (size_t j{ i + 1 }; j < initiativeOrder.size(); ++j)
@@ -32,7 +32,7 @@ void Encounter::SortInitiativeOrder()
 			}
 		}
 	}
-	temp = nullptr;
+	delete temp;
 }
 
 /*
@@ -49,12 +49,12 @@ void Encounter::DisplayIniatives()
 	}
 }
 
-void Encounter::BeginEncounter(EnemyManager& manager, std::shared_ptr<Actor> player)
+void Encounter::BeginEncounter(EnemyManager& manager, Actor& player)
 {
 	std::cout << "Roll for initiative!" << std::endl;
-	player->RollForInitiative();
-	initiativeOrder.push_back(player);
-	for (auto& enemy : manager.GetEnemies())
+	player.RollForInitiative();
+	initiativeOrder.push_back(&player);
+	for (auto enemy : manager.GetEnemies())
 	{
 		enemy->RollForInitiative();
 		initiativeOrder.push_back(enemy);
@@ -65,18 +65,19 @@ void Encounter::BeginEncounter(EnemyManager& manager, std::shared_ptr<Actor> pla
 	while (manager.GetTotalEnemies() > 0)
 	{
 		std::cout << "\n====ROUND " << round << "====" << std::endl;
-		for (size_t i{}; i < initiativeOrder.size(); ++i)
+		for (auto attacker : initiativeOrder)
 		{
-			std::shared_ptr<Actor> target{ RandomTargetPicker(initiativeOrder.at(i)) };
-			std::vector<std::shared_ptr<Actor>>::iterator itr{ std::find(initiativeOrder.begin(), initiativeOrder.end(), target) };
-			if (EncounterHandler(initiativeOrder.at(i), target))
+			Actor* target{ RandomTargetPicker(*attacker) };
+			std::vector<Actor*>::iterator itr{ std::find(initiativeOrder.begin(), initiativeOrder.end(), target) };
+			if (EncounterHandler(*attacker, *target))
 			{
-				if (target == player)
+				if (target->GetName() == player.GetName())
 				{
 					std::cout << "You Died!" << std::endl;
 					std::cout << "\nYou were killed by: " << std::endl;
-					initiativeOrder.at(i)->Display();
+					attacker->Display();
 					initiativeOrder.clear();
+					manager.CleanUpDead();
 					manager.CleanUp();
 					break;
 				}
@@ -96,20 +97,20 @@ but checks to see if the target is not the same
 as the attacker... this is a debug function,
 to be rewritten and redone later
 */
-std::shared_ptr<Actor> Encounter::RandomTargetPicker(std::shared_ptr<Actor> attacker)
+Actor* Encounter::RandomTargetPicker(Actor& attacker)
 {
-	std::shared_ptr<Actor> target{ initiativeOrder.at(rand() % initiativeOrder.size()) };
-	if (target == attacker)
+	Actor* target{ initiativeOrder.at(rand() % initiativeOrder.size()) };
+	if ((target->GetInitiative() + target->GetDexMod()) == (attacker.GetInitiative() + attacker.GetDexMod()))
 		return RandomTargetPicker(attacker);
 
 	return target;
 }
 
-bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_ptr<Actor> defender)
+bool Encounter::EncounterHandler(Actor& attacker, Actor& defender)
 {
 	if (Attack::AttackAgainstAC(attacker, defender))
 	{
-		if (!defender->LivingOrDead())
+		if (!defender.LivingOrDead())
 		{
 			manager.CheckForDead();
 			return true; // target died
@@ -117,7 +118,7 @@ bool Encounter::EncounterHandler(std::shared_ptr<Actor> attacker, std::shared_pt
 	}
 	else
 	{
-		std::cout << "\n" << attacker->GetName() << " missed!" << std::endl;
+		std::cout << "\n" << attacker.GetName() << " missed!" << std::endl;
 		return false;
 	}
 	return false;

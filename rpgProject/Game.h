@@ -21,11 +21,11 @@ public:
 
 	void GameLoop();
 
-	void GetInput(std::shared_ptr<Actor> player);
-	void Update(std::shared_ptr<Actor> player);
+	void GetInput(Actor& player);
+	void Update(Actor& player);
 
-	void RandomEncounter(std::shared_ptr<Actor> player);
-	void StartEncounter(std::shared_ptr<Actor> player);
+	void RandomEncounter(Actor& player);
+	void StartEncounter(Actor& player);
 
 	bool IsRunning();
 
