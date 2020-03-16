@@ -26,6 +26,29 @@ enum class ITEM_TYPE
 	WEAPON = 3
 };
 
+enum class WEAPON_TYPE
+{
+	NONE = 0,
+	MELEE = 1,
+	RANGED = 2
+};
+
+enum class WEAPON_PROFICIENCY
+{
+	NONE = 0,
+	SIMPLE = 1,
+	MARTIAL = 2
+};
+
+enum class ARMOR_TYPE
+{
+	NONE = 0,
+	LIGHT_ARMOR = 1,
+	MEDIUM_ARMOR = 2,
+	HEAVY_ARMOR = 3,
+	SHIELD = 4
+};
+
 enum class ABILITIES
 {
 	NONE = 0,

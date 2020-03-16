@@ -154,6 +154,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="Blacksmith.cpp" />
     <ClCompile Include="Boots.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="CombatClass.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Attack.h" />
+    <ClInclude Include="Blacksmith.h" />
     <ClInclude Include="Boots.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="CombatClass.h" />

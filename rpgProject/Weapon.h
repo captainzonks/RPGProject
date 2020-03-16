@@ -24,5 +24,7 @@ protected:
 	int attackDie{};
 	int attackModifier{};
 	ITEM_TYPE itemType{ ITEM_TYPE::WEAPON };
+	WEAPON_TYPE weaponType{ WEAPON_TYPE::NONE };
+	WEAPON_PROFICIENCY weaponProficiency{ WEAPON_PROFICIENCY::NONE };
 };
 

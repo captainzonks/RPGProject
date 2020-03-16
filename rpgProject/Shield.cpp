@@ -7,6 +7,7 @@ Shield::Shield()
 	this->durability = 20;
 	this->value = 450;
 	this->level = 1;
+	this->armorType = ARMOR_TYPE::SHIELD;
 }
 
 Shield::Shield(string name, int armorValue, int durability, int value, int level)
@@ -16,6 +17,7 @@ Shield::Shield(string name, int armorValue, int durability, int value, int level
 	this->durability = durability;
 	this->value = value;
 	this->level = level;
+	this->armorType = ARMOR_TYPE::SHIELD;
 }
 
 Shield::~Shield()
