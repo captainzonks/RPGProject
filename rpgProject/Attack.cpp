@@ -14,8 +14,8 @@ bool Attack::AttackAgainstAC(Actor& attacker, Actor& target)
 	}
 	else
 	{
-		std::cout << "\n\t" << attacker.GetName() << " rolled a " << result << " vs " << target.GetArmorClass() << " AC" << std::endl;
-		if (result < (target.GetArmorClass() + target.myInventory.GetArmorBonus()))
+		std::cout << "\n\t" << attacker.GetName() << " rolled a " << result << " vs " << (target.GetArmorClass() + CheckForACModifier(target)) << " AC" << std::endl;
+		if (result < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 			return false;
 		else
 			DealDamage(attacker, target);
@@ -124,6 +124,29 @@ int Attack::CheckForAttackModifier(Actor& attacker)
 			if (attacker.myUpgrades.weapon->GetWeaponType() == WEAPON_TYPE::RANGED)
 			{
 				modifier = 2;
+			}
+		}
+	}
+
+	return modifier;
+}
+
+int Attack::CheckForACModifier(Actor& target)
+{
+	int modifier{};
+
+	if (target.GetCombatClass() == COMBAT_CLASS::FIGHTER)
+	{
+		if (target.GetFightingStyle() == FIGHTING_STYLE::DEFENSE)
+		{
+			if (target.myUpgrades.ChestEquipped() ||
+				target.myUpgrades.HelmetEquipped() ||
+				target.myUpgrades.LegsEquipped() ||
+				target.myUpgrades.HandsEquipped() ||
+				target.myUpgrades.BootsEquipped() ||
+				target.myUpgrades.ShieldEquipped())
+			{
+				modifier = 1;
 			}
 		}
 	}

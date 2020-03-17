@@ -14,6 +14,7 @@ public:
 	static void DealCriticalDamage(Actor& attacker, Actor& target);
 
 	static int CheckForAttackModifier(Actor& attacker);
+	static int CheckForACModifier(Actor& target);
 private:
 	Attack();
 };
