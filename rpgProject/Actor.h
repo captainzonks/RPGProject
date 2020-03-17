@@ -56,6 +56,7 @@ public:
 	virtual void Display();
 	virtual void UpdateAverageItemLevel();
 	virtual int GetAverageItemLevel();
+	virtual COMBAT_CLASS GetCombatClass();
 	
 	virtual int SizeOfInventory();
 	virtual void UsePotion();
@@ -94,8 +95,12 @@ public:
 	// combatclass related virtual functions
 	virtual void DisplayClassInformation() = 0;
 
+	// fighter functions
+	virtual FIGHTING_STYLE GetFightingStyle();
+
 protected:
-	// friend class Narrator;
+	// combat class
+	COMBAT_CLASS combatClass{ COMBAT_CLASS::NONE };
 
 	// basic traits
 	string name;
@@ -117,5 +122,10 @@ protected:
 
 	// stats
 	int strength{}, dexterity{}, constitution{}, intelligence{}, wisdom{}, charisma{};
+
+	// fighter class things
+	std::vector<ABILITIES> savingThrows{ ABILITIES::NONE };
+
+	FIGHTING_STYLE fightingStyle{};
 };
 

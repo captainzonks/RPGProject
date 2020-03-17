@@ -9,7 +9,7 @@ public:
 
 	// constructors
 	Chest();
-	Chest(string name, int armorValue, int durability, int value, int level);
+	Chest(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
 
 	// destructor
 	virtual ~Chest() override;
@@ -20,5 +20,6 @@ public:
 		os << GetName();
 	}
 private:
+
 };
 

@@ -23,8 +23,8 @@ public:
 	~Blacksmith();
 
 	// functions
-	void MakeArmor();
-	void MakeWeapon();
+	void MakeArmor(Actor& actor);
+	void MakeWeapon(Actor& actor);
 
 private:
 

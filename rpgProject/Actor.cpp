@@ -244,6 +244,11 @@ int Actor::GetAverageItemLevel()
 	return averageItemLevel;
 }
 
+COMBAT_CLASS Actor::GetCombatClass()
+{
+	return combatClass;
+}
+
 int Actor::SizeOfInventory()
 {
 	return this->myInventory.GetCapacity();
@@ -415,4 +420,9 @@ void Actor::RollForInitiative()
 void Actor::ClearInitiative()
 {
 	this->initiative = 0;
+}
+
+FIGHTING_STYLE Actor::GetFightingStyle()
+{
+	return fightingStyle;
 }

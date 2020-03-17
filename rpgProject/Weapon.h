@@ -16,6 +16,7 @@ public:
 	// getter
 	virtual int GetAttackDie() const;
 	virtual int GetModifier() const;
+	virtual WEAPON_TYPE GetWeaponType() const;
 
 	// upgrade
 	virtual void UpgradeWeapon();

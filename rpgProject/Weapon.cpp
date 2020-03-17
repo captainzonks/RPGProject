@@ -18,6 +18,11 @@ int Weapon::GetModifier() const
 	return attackModifier;
 }
 
+WEAPON_TYPE Weapon::GetWeaponType() const
+{
+	return weaponType;
+}
+
 void Weapon::UpgradeWeapon()
 {
 	this->level++;

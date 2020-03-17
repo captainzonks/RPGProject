@@ -7,6 +7,8 @@ Fighter::Fighter(string name, string race)
 
 	this->name = name;
 	this->race = race;
+	this->combatClass = COMBAT_CLASS::FIGHTER;
+	this->savingThrows = { ABILITIES::STRENGTH, ABILITIES::CONSTITUTION };
 
 	if (race == "Human")
 	{
@@ -43,6 +45,8 @@ Fighter::Fighter(int identifier)
 	std::cout << "Bad Guy Fighter constructor called" << std::endl;
 
 	this->identifier = identifier;
+	this->combatClass = COMBAT_CLASS::FIGHTER;
+	this->savingThrows = { ABILITIES::STRENGTH, ABILITIES::CONSTITUTION };
 
 	int randomRaceChoice{ rand() % 4 + 1 };
 	if (randomRaceChoice == 1)

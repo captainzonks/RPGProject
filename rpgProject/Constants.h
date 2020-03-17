@@ -1,5 +1,23 @@
 #pragma once
 
+enum class COMBAT_CLASS
+{
+	NONE = 0,
+	FIGHTER = 1
+};
+
+// fighter related enum
+enum class FIGHTING_STYLE
+{
+	NONE = 0,
+	ARCHERY = 1,
+	DEFENSE = 2,
+	DUELING = 3,
+	GREAT_WEAPON_FIGHTING = 4,
+	PROTECTION = 5,
+	TWO_WEAPON_FIGHTING = 6
+};
+
 enum class DAMAGE_TYPE
 {
 	NONE = 0,

@@ -118,7 +118,7 @@ bool Encounter::EncounterHandler(Actor& attacker, Actor& defender)
 	}
 	else
 	{
-		std::cout << "\n" << attacker.GetName() << " missed!" << std::endl;
+		std::cout << "\t" << attacker.GetName() << " missed!" << std::endl;
 		return false;
 	}
 	return false;

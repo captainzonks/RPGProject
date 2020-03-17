@@ -21,6 +21,7 @@ public:
 
 protected:
 	int armorValue{};
+	bool stealthDisadvantage{ false };
 	ITEM_TYPE itemType{ ITEM_TYPE::ARMOR };
 	ARMOR_TYPE armorType{ ARMOR_TYPE::NONE };
 };

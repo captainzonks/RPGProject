@@ -9,7 +9,7 @@ public:
 
 	// constructors
 	Boots();
-	Boots(string name, int armorValue, int durability, int value, int level);
+	Boots(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
 
 	// destructor
 	virtual ~Boots() override;

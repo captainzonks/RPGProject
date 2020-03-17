@@ -4,7 +4,7 @@ bool Attack::AttackAgainstAC(Actor& attacker, Actor& target)
 {
 	bool success{ false };
 	std::cout << "\n" << attacker.GetName() << " is attacking " << target.GetName() << "!" << std::endl;
-	int result{ RollDice(1, 20) };
+	int result{ RollDice(1, 20) + CheckForAttackModifier(attacker)};
 	if (result >= 20)
 	{
 		result += attacker.GetStrengthMod();
@@ -111,4 +111,22 @@ void Attack::DealCriticalDamage(Actor& attacker, Actor& target)
 		attacker.AddXP(xpGain);
 		std::cout << "\t" << attacker.GetName() << " gained " << xpGain << " XP!" << std::endl;
 	}
+}
+
+int Attack::CheckForAttackModifier(Actor& attacker)
+{
+	int modifier{};
+
+	if (attacker.GetCombatClass() == COMBAT_CLASS::FIGHTER)
+	{
+		if (attacker.GetFightingStyle() == FIGHTING_STYLE::ARCHERY)
+		{
+			if (attacker.myUpgrades.weapon->GetWeaponType() == WEAPON_TYPE::RANGED)
+			{
+				modifier = 2;
+			}
+		}
+	}
+
+	return modifier;
 }
