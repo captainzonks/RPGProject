@@ -9,7 +9,7 @@ Encounter::Encounter(EnemyManager& manager, Actor& player)
 
 Encounter::~Encounter()
 {
-	for (auto& actor : initiativeOrder)
+	for (auto actor : initiativeOrder)
 	{
 		actor->ClearInitiative();
 	}
@@ -32,7 +32,7 @@ void Encounter::SortInitiativeOrder()
 			}
 		}
 	}
-	delete temp;
+	temp = nullptr;
 }
 
 /*
@@ -43,7 +43,7 @@ make sure the orders are sorting properly
 void Encounter::DisplayIniatives()
 {
 	// debug Display initiative order to check
-	for (auto& actor : initiativeOrder)
+	for (auto actor : initiativeOrder)
 	{
 		std::cout << actor->GetName() << " Initiative: " << actor->GetInitiative() << std::endl;
 	}
