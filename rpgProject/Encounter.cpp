@@ -32,7 +32,6 @@ void Encounter::SortInitiativeOrder()
 			}
 		}
 	}
-	temp = nullptr;
 }
 
 /*
