@@ -76,8 +76,9 @@ public:
 		EquipLegs(std::unique_ptr<Armor> legs), EquipHands(std::unique_ptr<Armor> hands),
 		EquipBoots(std::unique_ptr<Armor> boots);
 
-	// weapon & shiled related functions
-	virtual void EquipWeapon(std::unique_ptr<Weapon> weapon), 
+	// weaponL & shiled related functions
+	virtual void EquipWeaponL(std::unique_ptr<Weapon> weaponL), 
+		EquipWeaponR(std::unique_ptr<Weapon> weaponR),
 		EquipShield(std::unique_ptr<Armor> shield);
 
 	// modify stats

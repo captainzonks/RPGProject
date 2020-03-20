@@ -8,7 +8,7 @@ Weapon::~Weapon()
 {
 }
 
-int Weapon::GetAttackDie() const
+int Weapon::GetAttackDieWeapon() const
 {
 	return attackDie;
 }
@@ -21,6 +21,11 @@ int Weapon::GetModifier() const
 WEAPON_TYPE Weapon::GetWeaponType() const
 {
 	return weaponType;
+}
+
+bool Weapon::IsFinesse()
+{
+	return isFinesse;
 }
 
 void Weapon::UpgradeWeapon()

@@ -21,7 +21,9 @@ public:
 	~Upgrades();
 
 	// pointers
-	std::unique_ptr<Weapon> weapon{ nullptr };
+	std::unique_ptr<Weapon> weaponL{ nullptr };
+	std::unique_ptr<Weapon> weaponR{ nullptr };
+	std::unique_ptr<Weapon> rangedWeapon{ nullptr };
 	std::unique_ptr<Armor> shield{ nullptr };
 
 	std::unique_ptr<Armor> helmet{ nullptr };
@@ -41,14 +43,17 @@ public:
 	int GetHelmetLevel(), GetChestLevel(), GetLegsLevel(), GetHandsLevel(), GetBootsLevel();
 
 	// weapon getters
-	bool WeaponEquipped(), ShieldEquipped();
-	int GetWeaponLevel(), GetShieldLevel();
-	int GetAttackDie();
-	DAMAGE_TYPE GetAttackDamageType();
+	bool IsDualWielding(), IsRangedWeapon();
+	bool WeaponLEquipped(), WeaponREquipped(), RangedWeaponEquipped(), ShieldEquipped();
+	int GetWeaponLLevel(), GetWeaponRLevel(), GetRangedWeaponLevel(), GetShieldLevel();
+	int GetAttackDieWeaponL(), GetAttackDieWeaponR(), GetRangedAttackDie();
+	DAMAGE_TYPE GetAttackDamageTypeWeaponL(), GetAttackDamageTypeWeaponR(), GetRangedAttackDamageType();
 
 	// weapon setter
-	void EquipWeapon(std::unique_ptr<Weapon> weapon);
-	void UnequipWeapon();
+	void EquipWeaponL(std::unique_ptr<Weapon> weaponL);
+	void EquipWeaponR(std::unique_ptr<Weapon> weaponR);
+	void EquipRangedWeapon(std::unique_ptr<Weapon> rangedWeapon);
+	void UnequipWeaponL(), UnequipWeaponR(), UnequipRangedWeapon();
 
 	// shield setter
 	void EquipShield(std::unique_ptr<Armor> shield);
@@ -75,7 +80,10 @@ private:
 	bool hasBoots{ false };
 
 	// weapon & shield booleans
-	bool hasWeapon{ false };
+	bool isDualWielding{ false };
+	bool hasRangedWeapon{ false };
+	bool hasWeaponL{ false };
+	bool hasWeaponR{ false };
 	bool hasShield{ false };
 
 	int unarmedAttackDie{ 4 };

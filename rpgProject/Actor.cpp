@@ -168,7 +168,7 @@ void Actor::Display()
 	cout << "====" << this->GetName() << "====" << endl;
 	// basic stats
 	cout << "   " << this->GetRace() << endl;
-	cout << "   " << this->GetHealth() << " HP" << endl;
+	cout << "   " << this->GetHealth() << " HP / " << this->maxHealth << " HP" << endl;
 	cout << "   " << (this->GetArmorClass()) << " AC" << endl;
 	cout << "   " << this->GetXP() << " XP" << endl;
 	// ability stats
@@ -225,9 +225,14 @@ void Actor::UpdateAverageItemLevel()
 	}
 
 	// weapons and shiled
-	if (this->myUpgrades.WeaponEquipped())
+	if (this->myUpgrades.WeaponLEquipped())
 	{
-		averageItemLevel += this->myUpgrades.weapon->GetLevel();
+		averageItemLevel += this->myUpgrades.weaponL->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.WeaponREquipped())
+	{
+		averageItemLevel += this->myUpgrades.weaponR->GetLevel();
 		totalUpgrades++;
 	}
 	if (this->myUpgrades.ShieldEquipped())
@@ -372,9 +377,14 @@ void Actor::EquipBoots(std::unique_ptr<Armor> boots)
 	myUpgrades.EquipBoots(std::move(boots));
 }
 
-void Actor::EquipWeapon(std::unique_ptr<Weapon> weapon)
+void Actor::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
 {
-	myUpgrades.EquipWeapon(std::move(weapon));
+	myUpgrades.EquipWeaponL(std::move(weaponL));
+}
+
+void Actor::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
+{
+	myUpgrades.EquipWeaponR(std::move(weaponR));
 }
 
 void Actor::EquipShield(std::unique_ptr<Armor> shield)

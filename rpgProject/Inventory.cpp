@@ -25,11 +25,11 @@ int Inventory::TotalItemsInInventory() const
 	return this->inventory.size();
 }
 
-void Inventory::GetWeapon(std::unique_ptr<Weapon> weapon)
+void Inventory::GetWeapon(std::unique_ptr<Weapon> weaponL)
 {
-	hasWeapon = true;
-	attackDice = weapon->GetAttackDie();
-	AddToInventory(std::move(weapon));
+	hasWeaponL = true;
+	attackDice = weaponL->GetAttackDieWeaponL();
+	AddToInventory(std::move(weaponL));
 }
 
 void Inventory::AddToInventory(std::unique_ptr<Item> item)
@@ -118,7 +118,7 @@ std::unique_ptr<Potion> Inventory::GetPotion(int itemNumber)
 
 bool Inventory::HasWeapon()
 {
-	return hasWeapon;
+	return hasWeaponL;
 }
 
 int Inventory::GetAttackDice()

@@ -62,7 +62,7 @@ void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 		if (random == 1)
 		{
 			std::unique_ptr<Sword> sword = std::make_unique<Sword>();
-			enemy.EquipWeapon(std::move(sword));
+			enemy.EquipWeaponL(std::move(sword));
 		}
 		random = (rand() % 2);
 		if (random == 1)
@@ -133,7 +133,7 @@ void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 		}
 
 		// upgrade weapons and shield
-		if (enemy.myUpgrades.WeaponEquipped())
+		if (enemy.myUpgrades.WeaponLEquipped())
 		{
 			random = (rand() % 2);
 			if (random == 1)
@@ -141,7 +141,7 @@ void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 				{
 					random = (rand() % 3);
 					if (random == 1)
-						enemy.myUpgrades.weapon->UpgradeWeapon();
+						enemy.myUpgrades.weaponL->UpgradeWeapon();
 				}
 		}
 		if (enemy.myUpgrades.ShieldEquipped())

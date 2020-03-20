@@ -87,7 +87,7 @@ void Narrator::Upgrader(Actor& actor)
 	bool legsState{ actor.myUpgrades.LegsEquipped() };
 	bool handsState{ actor.myUpgrades.HandsEquipped() };
 	bool bootsState{ actor.myUpgrades.BootsEquipped() };
-	bool swordState{ actor.myUpgrades.WeaponEquipped() };
+	bool swordState{ actor.myUpgrades.WeaponLEquipped() };
 	bool shieldState{ actor.myUpgrades.ShieldEquipped() };
 
 	// the pointers
@@ -224,9 +224,9 @@ void Narrator::Upgrader(Actor& actor)
 	{
 		// upgrade sword
 		std::cout << "7) Upgrade to Sword Level " <<
-			actor.myUpgrades.GetWeaponLevel() + 1 <<
+			actor.myUpgrades.GetWeaponLLevel() + 1 <<
 			" :";
-		DisplayPrice(actor.myUpgrades.weapon->GetValue() + 250);
+		DisplayPrice(actor.myUpgrades.weaponL->GetValue() + 250);
 	}
 	/*********************************************************************/
 
@@ -435,7 +435,7 @@ void Narrator::Upgrader(Actor& actor)
 		{
 			if (CheckPrice(actor, sword_ptr->GetValue()))
 			{
-				actor.EquipWeapon(std::move(sword_ptr));
+				actor.EquipWeaponL(std::move(sword_ptr));
 				cout << "Obtained a Sword!" << endl;
 				break;
 			}
@@ -447,11 +447,11 @@ void Narrator::Upgrader(Actor& actor)
 		}
 		else
 		{
-			if (CheckPrice(actor, actor.myUpgrades.weapon->GetValue() + 200))
+			if (CheckPrice(actor, actor.myUpgrades.weaponL->GetValue() + 200))
 			{
-				actor.myCurrency.SubtractMoney(actor.myUpgrades.weapon->GetValue() + 200);
-				actor.myUpgrades.weapon->UpgradeWeapon();
-				cout << "Upgraded Sword to Level " << actor.myUpgrades.GetWeaponLevel() << endl;
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.weaponL->GetValue() + 200);
+				actor.myUpgrades.weaponL->UpgradeWeapon();
+				cout << "Upgraded Sword to Level " << actor.myUpgrades.GetWeaponLLevel() << endl;
 				break;
 			}
 			else

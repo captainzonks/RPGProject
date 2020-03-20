@@ -14,9 +14,10 @@ public:
 	virtual ~Weapon() override;
 
 	// getter
-	virtual int GetAttackDie() const;
+	virtual int GetAttackDieWeapon() const;
 	virtual int GetModifier() const;
 	virtual WEAPON_TYPE GetWeaponType() const;
+	virtual bool IsFinesse();
 
 	// upgrade
 	virtual void UpgradeWeapon();
@@ -24,6 +25,7 @@ public:
 protected:
 	int attackDie{};
 	int attackModifier{};
+	bool isFinesse{};
 	ITEM_TYPE itemType{ ITEM_TYPE::WEAPON };
 	WEAPON_TYPE weaponType{ WEAPON_TYPE::NONE };
 	WEAPON_PROFICIENCY weaponProficiency{ WEAPON_PROFICIENCY::NONE };
