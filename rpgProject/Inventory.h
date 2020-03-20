@@ -29,9 +29,11 @@ public:
 	int TotalItemsInInventory() const;
 
 	// weaponL functions
-	void GetWeapon(std::unique_ptr<Weapon> weaponL);
+	void GetWeaponL(std::unique_ptr<Weapon> weaponL);
+	void GetWeaponR(std::unique_ptr<Weapon> weaponR);
 	bool HasWeapon();
-	int GetAttackDice();
+	int GetAttackDiceL();
+	int GetAttackDiceR();
 
 	// armor functions
 	void GetArmor(std::unique_ptr<Armor> armor);
@@ -56,8 +58,10 @@ private:
 	vector<std::unique_ptr<Item>> inventory{};
 	vector<std::unique_ptr<Potion>> potionInventory{};
 	bool hasWeaponL{ false };
+	bool hasWeaponR{ false };
 	bool hasArmor{ false };
-	int attackDice{ 4 };
+	int attackDiceL{ 4 };
+	int attackDiceR{ 4 };
 	int armorBonus{};
 	int capacity{ 10 };
 	int potionCapacity{ 5 };

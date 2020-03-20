@@ -25,11 +25,18 @@ int Inventory::TotalItemsInInventory() const
 	return this->inventory.size();
 }
 
-void Inventory::GetWeapon(std::unique_ptr<Weapon> weaponL)
+void Inventory::GetWeaponL(std::unique_ptr<Weapon> weaponL)
 {
 	hasWeaponL = true;
-	attackDice = weaponL->GetAttackDieWeaponL();
+	attackDiceL = weaponL->GetAttackDieWeapon();
 	AddToInventory(std::move(weaponL));
+}
+
+void Inventory::GetWeaponR(std::unique_ptr<Weapon> weaponR)
+{
+	hasWeaponR = true;
+	attackDiceR = weaponR->GetAttackDieWeapon();
+	AddToInventory(std::move(weaponR));
 }
 
 void Inventory::AddToInventory(std::unique_ptr<Item> item)
@@ -121,9 +128,14 @@ bool Inventory::HasWeapon()
 	return hasWeaponL;
 }
 
-int Inventory::GetAttackDice()
+int Inventory::GetAttackDiceL()
 {
-	return attackDice;
+	return attackDiceL;
+}
+
+int Inventory::GetAttackDiceR()
+{
+	return attackDiceR;
 }
 
 void Inventory::GetArmor(std::unique_ptr<Armor> armor)

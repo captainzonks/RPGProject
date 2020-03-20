@@ -371,7 +371,7 @@ void Upgrades::UnequipWeaponR()
 void Upgrades::UnequipRangedWeapon()
 {
 	this->rangedWeapon = nullptr;
-	rangedWeapon = false;
+	hasRangedWeapon = false;
 }
 
 void Upgrades::EquipShield(std::unique_ptr<Armor> shield)

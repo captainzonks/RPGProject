@@ -107,7 +107,7 @@ Actor* Encounter::RandomTargetPicker(Actor& attacker)
 
 bool Encounter::EncounterHandler(Actor& attacker, Actor& defender)
 {
-	if (Attack::AttackAgainstAC(attacker, defender))
+	if (Attack::MakeAnAttack(attacker, defender))
 	{
 		if (!defender.LivingOrDead())
 		{
