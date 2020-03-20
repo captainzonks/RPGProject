@@ -62,7 +62,7 @@ public:
 	virtual void UsePotion();
 
 	// actions
-	virtual void SubtractHealth(int& damage);
+	virtual void SubtractHealth(unsigned int damage);
 	virtual void AddHealth(int healing);
 	virtual void AddXP(int xpGain);
 	virtual void CheckLevelUpThreshold();

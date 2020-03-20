@@ -289,7 +289,7 @@ void Actor::UsePotion()
 	}
 }
 
-void Actor::SubtractHealth(int& damage)
+void Actor::SubtractHealth(unsigned int damage)
 {
 	this->health -= damage;
 	if (health <= 0)

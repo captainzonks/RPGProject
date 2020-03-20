@@ -28,12 +28,12 @@ void Game::GetInput(Actor& player)
 {
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(9);
+	std::unique_ptr<int> const decisions = std::make_unique<int>(11);
 	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
 		{ 
 		"Display Player", "Display Class Information", "Display Money", 
 		"Display Upgrades", "Display Potions", "Buy Something", 
-		"Use A Potion", "End Turn", "Quit" 
+		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" 
 		}));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 	switch (choice)
@@ -60,10 +60,16 @@ void Game::GetInput(Actor& player)
 		player.UsePotion();
 		break;
 	case 8:
+		manager.DisplayAllEnemies();
+		break;
+	case 9:
+		StartEncounter(player);
+		break;
+	case 10:
 		std::cout << "Ending Turn\n" << std::endl;
 		RandomEncounter(player);
 		break;
-	case 9:
+	case 11:
 		isRunning = false;
 		break;
 	default:
@@ -102,6 +108,8 @@ void Game::RandomEncounter(Actor& player)
 		manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
 	if (manager.GetTotalEnemies() > 0)
 		Encounter newEncounter(manager, player);
+	else
+		std::cout << "\nThe night passed peacefully. It's a new day." << std::endl;
 }
 
 void Game::StartEncounter(Actor& player)

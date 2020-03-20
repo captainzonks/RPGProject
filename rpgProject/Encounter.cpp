@@ -60,8 +60,9 @@ void Encounter::BeginEncounter(EnemyManager& manager, Actor& player)
 	}
 	SortInitiativeOrder();
 	DisplayIniatives();
-	int round{ 1 };
-	while (manager.GetTotalEnemies() > 0)
+	static int round{ 1 };
+	int count{};
+	while (count != 1)
 	{
 		std::cout << "\n====ROUND " << round << "====" << std::endl;
 		for (auto attacker : initiativeOrder)
@@ -86,6 +87,7 @@ void Encounter::BeginEncounter(EnemyManager& manager, Actor& player)
 		}
 		std::cout << "\nRound " << round << " of combat has passed!" << std::endl; // debug
 		round++;
+		count++;
 		std::cout << "=================" << std::endl;
 	}
 }

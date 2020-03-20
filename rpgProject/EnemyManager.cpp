@@ -57,18 +57,23 @@ void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 			enemy.EquipBoots(std::move(boots));
 		}
 
-		// sword and shield
+		// sword/duel-wield and/or shield
 		random = (rand() % 2);
 		if (random == 1)
 		{
-			std::unique_ptr<Sword> sword = std::make_unique<Sword>();
-			enemy.EquipWeaponL(std::move(sword));
-		}
-		random = (rand() % 2);
-		if (random == 1)
-		{
-			std::unique_ptr<Shield> shield = std::make_unique<Shield>();
-			enemy.EquipShield(std::move(shield));
+			std::unique_ptr<Sword> swordL = std::make_unique<Sword>();
+			enemy.EquipWeaponL(std::move(swordL));
+			random = (rand() % 2);
+			if (enemy.GetFightingStyle() == FIGHTING_STYLE::DUELING)
+			{
+				std::unique_ptr<Sword> swordR = std::make_unique<Sword>();
+				enemy.EquipWeaponL(std::move(swordR));
+			}
+			else if (random == 0)
+			{
+				std::unique_ptr<Shield> shield = std::make_unique<Shield>();
+				enemy.EquipShield(std::move(shield));
+			}
 		}
 	}
 
@@ -174,6 +179,7 @@ void EnemyManager::DisplayAllEnemies()
 		for (auto& enemy : enemies)
 		{
 			enemy->Display();
+			enemy->myUpgrades.DisplayUpgrades();
 		}
 	}
 }

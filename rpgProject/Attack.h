@@ -16,14 +16,9 @@ public:
 	static void DealDamage(Actor& attacker, Actor& target, char hand, bool finesse);
 	static void DealCriticalDamage(Actor& attacker, Actor& target, char hand, bool finesse);
 
-	static void DealDamageDualWielding(Actor& attacker, Actor& target, char hand);
-	static void DealCriticalDamageDualWielding(Actor& attacker, Actor& target);
-
+	// attack helper functions
 	static int CheckForAttackModifier(Actor& attacker);
 	static int CheckForACModifier(Actor& target);
-
-	// death check
-	static bool TargetKilled(Actor& attacker, Actor& target);
 
 	// loot function
 	static void LootCorpse(Actor& attacker, Actor& target);
