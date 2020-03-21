@@ -178,6 +178,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Shield.cpp" />
+    <ClCompile Include="ShortBow.cpp" />
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="Upgrades.cpp" />
     <ClCompile Include="Weapon.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="Narrator.h" />
     <ClInclude Include="Potion.h" />
     <ClInclude Include="Shield.h" />
+    <ClInclude Include="ShortBow.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="Upgrades.h" />
     <ClInclude Include="Weapon.h" />

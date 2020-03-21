@@ -77,9 +77,10 @@ public:
 		EquipBoots(std::unique_ptr<Armor> boots);
 
 	// weaponL & shiled related functions
-	virtual void EquipWeaponL(std::unique_ptr<Weapon> weaponL), 
+	virtual void EquipWeaponL(std::unique_ptr<Weapon> weaponL),
 		EquipWeaponR(std::unique_ptr<Weapon> weaponR),
-		EquipShield(std::unique_ptr<Armor> shield);
+		EquipShield(std::unique_ptr<Armor> shield),
+		EquipRanged(std::unique_ptr<Weapon> rangedWeapon);
 
 	// modify stats
 	virtual void ModifyStrength(const int& modifier),
@@ -117,6 +118,7 @@ protected:
 	DAMAGE_TYPE resistance{ DAMAGE_TYPE::NONE };
 	DAMAGE_TYPE vulnerability{ DAMAGE_TYPE::NONE };
 
+	// combat stuff
 	int initiative{};
 	int identifier{};
 	int averageItemLevel{};

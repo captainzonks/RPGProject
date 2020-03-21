@@ -9,6 +9,7 @@
 #include "Hands.h"
 #include "Boots.h"
 #include "Sword.h"
+#include "ShortBow.h"
 #include "Shield.h"
 
 class Upgrades

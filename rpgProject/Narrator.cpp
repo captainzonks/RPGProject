@@ -89,6 +89,7 @@ void Narrator::Upgrader(Actor& actor)
 	bool bootsState{ actor.myUpgrades.BootsEquipped() };
 	bool swordLState{ actor.myUpgrades.WeaponLEquipped() };
 	bool swordRState{ actor.myUpgrades.WeaponREquipped() };
+	bool rangedState{ actor.myUpgrades.RangedWeaponEquipped() };
 	bool shieldState{ actor.myUpgrades.ShieldEquipped() };
 
 	// the pointers
@@ -98,6 +99,7 @@ void Narrator::Upgrader(Actor& actor)
 	std::unique_ptr<Hands> hands_ptr{ nullptr };
 	std::unique_ptr<Boots> boots_ptr{ nullptr };
 	std::unique_ptr<Sword> sword_ptr{ nullptr };
+	std::unique_ptr<ShortBow> bow_ptr{ nullptr };
 	std::unique_ptr<Shield> shield_ptr{ nullptr };
 	std::unique_ptr<Potion> potion_ptr{ nullptr };
 
@@ -190,7 +192,7 @@ void Narrator::Upgrader(Actor& actor)
 			" :";
 		DisplayPrice(actor.myUpgrades.boots->GetValue() + 200);
 	}
-	if (!shieldState)
+	if (!shieldState && !rangedState)
 	{
 		// new shield
 		shield_ptr = std::make_unique<Shield>();
@@ -199,7 +201,7 @@ void Narrator::Upgrader(Actor& actor)
 			" :";
 		DisplayPrice(shield_ptr->GetValue());
 	}
-	else
+	else if (shieldState)
 	{
 		// upgrade shield
 		std::cout << "6) Upgrade to Shield Level " <<
@@ -212,7 +214,7 @@ void Narrator::Upgrader(Actor& actor)
 	// WEAPONS
 	std::cout << "\nWEAPONS FOR SALE" << std::endl;
 	std::cout << "--------------" << std::endl;
-	if (!swordLState)
+	if (!swordLState && !rangedState)
 	{
 		// new swordL
 		sword_ptr = std::make_unique<Sword>();
@@ -221,7 +223,7 @@ void Narrator::Upgrader(Actor& actor)
 			" :";
 		DisplayPrice(sword_ptr->GetValue());
 	}
-	if ((swordLState && !shieldState) && !swordRState)
+	if ((swordLState && !shieldState) && !swordRState && !rangedState)
 	{
 		// new swordR
 		sword_ptr = std::make_unique<Sword>();
@@ -230,7 +232,7 @@ void Narrator::Upgrader(Actor& actor)
 			" :";
 		DisplayPrice(sword_ptr->GetValue());
 	}
-	else
+	else if (swordLState || swordRState)
 	{
 		// upgrade swordL
 		if (swordLState)
@@ -249,6 +251,27 @@ void Narrator::Upgrader(Actor& actor)
 			DisplayPrice(actor.myUpgrades.weaponR->GetValue() + 250);
 		}
 	}
+	if (!rangedState)
+	{
+		// new shortbow
+		bow_ptr = std::make_unique<ShortBow>();
+		std::cout << "9) Buy " << bow_ptr->GetName() <<
+			" : Level " << bow_ptr->GetLevel() <<
+			" : ";
+		DisplayPrice(bow_ptr->GetValue());
+	}
+	else
+	{
+		// upgrade shortbow
+		if (rangedState)
+		{
+			std::cout << "9) Upgrade to Shortbow Level " <<
+				actor.myUpgrades.GetRangedWeaponLevel() + 1 <<
+				" :";
+			DisplayPrice(actor.myUpgrades.rangedWeapon->GetValue() + 200);
+		}
+
+	}
 	/*********************************************************************/
 
 	// POTIONS
@@ -257,7 +280,7 @@ void Narrator::Upgrader(Actor& actor)
 	// new potion
 	int randomHeals{ rand() % 12 + 2 };
 	potion_ptr = std::make_unique<Potion>(randomHeals);
-	std::cout << "9) Buy a " << potion_ptr->GetName() <<
+	std::cout << "10) Buy a " << potion_ptr->GetName() <<
 		" :";
 	DisplayPrice(potion_ptr->GetValue());
 	/****************************************************************/
@@ -422,7 +445,7 @@ void Narrator::Upgrader(Actor& actor)
 			}
 		}
 	case 6:
-		if (!shieldState && !(swordLState && swordRState))
+		if (!shieldState && !rangedState && !(swordLState && swordRState))
 		{
 			if (CheckPrice(actor, shield_ptr->GetValue()))
 			{
@@ -435,6 +458,11 @@ void Narrator::Upgrader(Actor& actor)
 				std::cout << "You can't afford that." << std::endl;
 				break;
 			}
+		}
+		else if (rangedState || (swordLState && swordRState))
+		{
+			std::cout << "You don't have room to equip a Shield." << std::endl;
+			break;
 		}
 		else
 		{
@@ -452,7 +480,7 @@ void Narrator::Upgrader(Actor& actor)
 			}
 		}
 	case 7:
-		if (!swordLState && !(swordRState && shieldState))
+		if (!swordLState && !rangedState && !(swordRState && shieldState))
 		{
 			if (CheckPrice(actor, sword_ptr->GetValue()))
 			{
@@ -465,6 +493,11 @@ void Narrator::Upgrader(Actor& actor)
 				std::cout << "You can't afford that." << std::endl;
 				break;
 			}
+		}
+		else if (rangedState || (swordRState && shieldState))
+		{
+			std::cout << "You don't have room to equip a Sword." << std::endl;
+			break;
 		}
 		else
 		{
@@ -482,7 +515,7 @@ void Narrator::Upgrader(Actor& actor)
 			}
 		}
 	case 8:
-		if (!swordRState && !(swordLState && shieldState))
+		if (!swordRState && !rangedState && !(swordLState && shieldState))
 		{
 			if (CheckPrice(actor, sword_ptr->GetValue()))
 			{
@@ -495,6 +528,11 @@ void Narrator::Upgrader(Actor& actor)
 				std::cout << "You can't afford that." << std::endl;
 				break;
 			}
+		}
+		else if (rangedState || (swordLState && shieldState))
+		{
+			std::cout << "You don't have room to equip a Sword." << std::endl;
+			break;
 		}
 		else
 		{
@@ -512,6 +550,41 @@ void Narrator::Upgrader(Actor& actor)
 			}
 		}
 	case 9:
+		if (!rangedState && !(swordLState && swordRState) && !(swordLState && shieldState) && !(swordRState && shieldState))
+		{
+			if (CheckPrice(actor, bow_ptr->GetValue()))
+			{
+				actor.EquipRanged(std::move(bow_ptr));
+				cout << "Obtained a Shortbow!" << endl;
+				break;
+			}
+			else
+			{
+				std::cout << "You can't afford that." << std::endl;
+				break;
+			}
+		}
+		else if (!rangedState && (swordLState || swordRState || shieldState))
+		{
+			std::cout << "You don't have room to carry a bow." << std::endl;
+			break;
+		}
+		else
+		{
+			if (CheckPrice(actor, actor.myUpgrades.rangedWeapon->GetValue() + 200))
+			{
+				actor.myCurrency.SubtractMoney(actor.myUpgrades.rangedWeapon->GetValue() + 200);
+				actor.myUpgrades.rangedWeapon->UpgradeWeapon();
+				cout << "Upgraded Shortbow to Level " << actor.myUpgrades.GetRangedWeaponLevel() << endl;
+				break;
+			}
+			else
+			{
+				std::cout << "You can't afford that." << std::endl;
+				break;
+			}
+		}
+	case 10:
 		if (actor.myInventory.GetCapacity() != 0)
 		{
 			if (CheckPrice(actor, potion_ptr->GetValue()))

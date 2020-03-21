@@ -59,7 +59,7 @@ void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 
 		// sword/duel-wield and/or shield
 		random = (rand() % 2);
-		if (random == 1)
+		if (random == 1 && enemy.GetFightingStyle() != FIGHTING_STYLE::ARCHERY)
 		{
 			std::unique_ptr<Sword> swordL = std::make_unique<Sword>();
 			enemy.EquipWeaponL(std::move(swordL));
@@ -74,6 +74,11 @@ void EnemyManager::GetUpgrades(int playerItemLevel, Actor& enemy)
 				std::unique_ptr<Shield> shield = std::make_unique<Shield>();
 				enemy.EquipShield(std::move(shield));
 			}
+		}
+		else if (random == 0)
+		{
+			std::unique_ptr<ShortBow> bow = std::make_unique<ShortBow>();
+			enemy.EquipRanged(std::move(bow));
 		}
 	}
 

@@ -10,6 +10,7 @@
 #include "Item.h"
 #include "Weapon.h"
 #include "Sword.h"
+#include "ShortBow.h"
 #include "Armor.h"
 #include "Shield.h"
 #include "Helmet.h"

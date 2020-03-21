@@ -382,6 +382,11 @@ void Actor::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
 	myUpgrades.EquipWeaponL(std::move(weaponL));
 }
 
+void Actor::EquipRanged(std::unique_ptr<Weapon> rangedWeapon)
+{
+	myUpgrades.EquipRangedWeapon(std::move(rangedWeapon));
+}
+
 void Actor::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
 {
 	myUpgrades.EquipWeaponR(std::move(weaponR));

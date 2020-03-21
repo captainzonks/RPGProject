@@ -5,7 +5,7 @@ Sword::Sword()
 	this->name = "Sword";
 	this->attackDie = 6;
 	this->durability = 20;
-	this->value = 250;
+	this->value = 1000;
 	this->level = 1;
 	this->damageType = DAMAGE_TYPE::SLASHING;
 	this->weaponType = WEAPON_TYPE::MELEE;

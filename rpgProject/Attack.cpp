@@ -1,5 +1,6 @@
 #include "Attack.h"
 
+// returns TRUE if at least one attack succeeds (FALSE for complete miss)
 bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 {
 	bool success{ false };
@@ -37,9 +38,18 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 			DealCriticalDamage(attacker, target, 'L', weaponLfinesse);
 			if (target.LivingOrDead())
 			{
-				DealDamage(attacker, target, 'R', weaponRfinesse);
-				if (!target.LivingOrDead())
-					LootCorpse(attacker, target);
+				// check for hit with R attack
+				if (resultR < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+				{
+					std::cout << "\tSecond attack missed!" << std::endl;
+				}
+
+				else if (resultR >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+				{
+					DealDamage(attacker, target, 'R', weaponRfinesse);
+					if (!target.LivingOrDead())
+						LootCorpse(attacker, target);
+				}
 			}
 			else
 			{
@@ -48,13 +58,26 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 			success = true;
 		}
 		// check right hand for critical hit
-		else if (resultR == 20 && resultL != 20)
+		else if (resultR == 20 && resultL != 20 && resultL > 0)
 		{
-			std::cout << "\n\t" << attacker.GetName() << " rolled a natural 20 with the second attack! Critical hit!" << std::endl;
-			DealCriticalDamage(attacker, target, 'R', weaponRfinesse);
-			if (target.LivingOrDead())
+			// handle first L attack
+			if (resultL < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+			{
+				std::cout << "\tFirst attack missed!" << std::endl;
+			}
+
+			else if (resultL >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 			{
 				DealDamage(attacker, target, 'L', weaponLfinesse);
+				if (!target.LivingOrDead())
+					LootCorpse(attacker, target);
+			}
+
+			// check for living or dead then handle the R critical attack
+			if (target.LivingOrDead())
+			{
+				std::cout << "\n\t" << attacker.GetName() << " rolled a natural 20 with the second attack! Critical hit!" << std::endl;
+				DealCriticalDamage(attacker, target, 'R', weaponRfinesse);
 				if (!target.LivingOrDead())
 					LootCorpse(attacker, target);
 			}
@@ -76,14 +99,15 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 				resultL += attacker.GetStrengthMod();
 				resultR += attacker.GetStrengthMod();
 			}
+			// first attack
 			std::cout << "\n\t" << "1st attack: " << attacker.GetName() << " rolled a " << resultL
 				<< " vs " << (target.GetArmorClass() + CheckForACModifier(target)) << " AC" << std::endl;
-			std::cout << "\n\t" << "2nd attack: " << attacker.GetName() << " rolled a " << resultR
-				<< " vs " << (target.GetArmorClass() + CheckForACModifier(target)) << " AC" << std::endl;
-
 			// check results and deal damage
 			if (resultL < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+			{
 				success = false;
+				std::cout << "\tFirst attack missed!" << std::endl;
+			}
 			else if (resultL >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 			{
 				DealDamage(attacker, target, 'L', weaponLfinesse);
@@ -92,14 +116,25 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 				success = true;
 			}
 
-			if (resultR < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
-				success = false;
-			else if (resultR >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+			// second attack (check for death from first attack)
+			if (target.LivingOrDead())
 			{
-				DealDamage(attacker, target, 'R', weaponRfinesse);
-				if (!target.LivingOrDead())
-					LootCorpse(attacker, target);
-				success = true;
+				std::cout << "\n\t" << "2nd attack: " << attacker.GetName() << " rolled a " << resultR
+					<< " vs " << (target.GetArmorClass() + CheckForACModifier(target)) << " AC" << std::endl;
+				// check results and deal damage
+				if (resultR < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+				{
+					success = false;
+					std::cout << "\tSecond attack missed!" << std::endl;
+				}
+
+				else if (resultR >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+				{
+					DealDamage(attacker, target, 'R', weaponRfinesse);
+					if (!target.LivingOrDead())
+						LootCorpse(attacker, target);
+					success = true;
+				}
 			}
 		}
 		return success;
@@ -150,7 +185,11 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 		// handle regular hit or miss
 		std::cout << "\n\t" << attacker.GetName() << " rolled a " << result << " vs " << (target.GetArmorClass() + CheckForACModifier(target)) << " AC" << std::endl;
 		if (result < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
+		{
+			std::cout << "\t" << attacker.GetName() << " missed!" << std::endl;
 			success = false;
+		}
+
 		else if (result >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 		{
 			DealDamage(attacker, target, weaponHand, weaponHandFinesse);

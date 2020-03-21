@@ -31,7 +31,7 @@ Fighter::Fighter(string name, string race)
 
 	this->xp = 0;
 	this->level = 1;
-	this->myCurrency.AddMoney(RollDice(4, 4) * 10);
+	this->myCurrency.AddMoney(RollDice(4, 4) * 10000);
 
 	SetFightingStyle();
 	this->hitDice = 10;
@@ -70,7 +70,7 @@ Fighter::Fighter(int identifier)
 		RollHalflingStats();
 	}
 
-	this->name = "Bad Guy " + race;
+	this->name = "Bad Guy " + std::to_string(identifier) + " (" + race + ")";
 	this->xp = 0;
 	this->level = 1;
 	this->myCurrency.AddMoney(RollDice(4, 4) * 10);

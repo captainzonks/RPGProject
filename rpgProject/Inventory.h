@@ -49,7 +49,11 @@ public:
 	void DisplayPotions() const;
 	std::unique_ptr<Item> GetItem(int itemNumber);
 	std::unique_ptr<Potion> GetPotion(int itemNumber);
-
+	
+	// ammunition
+	int ReturnAmmo();
+	void SubtractAmmo();
+	void AddAmmo(int amount);
 
 	// Item* selectItemInInventory();
 
@@ -64,6 +68,7 @@ private:
 	int attackDiceR{ 4 };
 	int armorBonus{};
 	int capacity{ 10 };
+	int ammunition{ 100 };
 	int potionCapacity{ 5 };
 
 };

@@ -123,6 +123,21 @@ std::unique_ptr<Potion> Inventory::GetPotion(int itemNumber)
 	return std::move(potionInventory.at(static_cast<size_t>(itemNumber - 1)));
 }
 
+int Inventory::ReturnAmmo()
+{
+	return ammunition;
+}
+
+void Inventory::SubtractAmmo()
+{
+	ammunition--;
+}
+
+void Inventory::AddAmmo(int amount)
+{
+	ammunition += amount;
+}
+
 bool Inventory::HasWeapon()
 {
 	return hasWeaponL;

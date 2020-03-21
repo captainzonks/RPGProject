@@ -28,6 +28,6 @@ public:
 
 private:
 	std::vector<Actor*> enemies;
-	int identifier{};
+	int identifier{ 1 };
 };
 

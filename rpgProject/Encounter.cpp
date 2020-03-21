@@ -81,8 +81,14 @@ void Encounter::BeginEncounter(EnemyManager& manager, Actor& player)
 					manager.CleanUp();
 					break;
 				}
+				else
+				{
+					initiativeOrder.clear();
+					manager.CleanUpDead();
+					manager.CleanUp();
+					break;
+				}
 				initiativeOrder.erase(initiativeOrder.begin() + std::distance(initiativeOrder.begin(), itr));
-
 			}
 		}
 		std::cout << "\nRound " << round << " of combat has passed!" << std::endl; // debug
@@ -101,12 +107,13 @@ to be rewritten and redone later
 Actor* Encounter::RandomTargetPicker(Actor& attacker)
 {
 	Actor* target{ initiativeOrder.at(rand() % initiativeOrder.size()) };
-	if ((target->GetInitiative() + target->GetDexMod()) == (attacker.GetInitiative() + attacker.GetDexMod()))
+	if (target->GetName() == attacker.GetName())
 		return RandomTargetPicker(attacker);
 
 	return target;
 }
 
+// returns TRUE if defender dies, FALSE if defender still lives
 bool Encounter::EncounterHandler(Actor& attacker, Actor& defender)
 {
 	if (Attack::MakeAnAttack(attacker, defender))
@@ -116,10 +123,10 @@ bool Encounter::EncounterHandler(Actor& attacker, Actor& defender)
 			manager.CheckForDead();
 			return true; // target died
 		}
+		return false;
 	}
 	else
 	{
-		std::cout << "\t" << attacker.GetName() << " missed!" << std::endl;
 		return false;
 	}
 	return false;
