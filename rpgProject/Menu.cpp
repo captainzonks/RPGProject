@@ -1,5 +1,22 @@
 #include "Menu.h"
 
+void Menu::Print()
+{
+	cout << "----" << this->name << "----" << endl;
+	int count{ 1 };
+	for (int i{}; i != options.size(); ++i)
+	{
+		cout << count << ") " << options[i] << endl;
+		count++;
+	}
+	cout << "----";
+	for (int i{}; i != this->name.length(); i++)
+	{
+		cout << "-";
+	}
+	cout << "----" << endl;
+}
+
 int Menu::PrintMenu(const int& decisions, const vector<string>& listOfDecisions)
 {
 	cout << "--------" << endl;

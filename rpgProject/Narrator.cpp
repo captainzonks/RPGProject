@@ -219,7 +219,7 @@ void Narrator::Upgrader(Actor& actor)
 		// new swordL
 		sword_ptr = std::make_unique<Sword>();
 		std::cout << "7) Buy " << sword_ptr->GetName() <<
-			" : Level " << sword_ptr->GetLevel() <<
+			"(L) : Level " << sword_ptr->GetLevel() <<
 			" :";
 		DisplayPrice(sword_ptr->GetValue());
 	}
@@ -228,7 +228,7 @@ void Narrator::Upgrader(Actor& actor)
 		// new swordR
 		sword_ptr = std::make_unique<Sword>();
 		std::cout << "8) Buy " << sword_ptr->GetName() <<
-			" : Level " << sword_ptr->GetLevel() <<
+			"(R) : Level " << sword_ptr->GetLevel() <<
 			" :";
 		DisplayPrice(sword_ptr->GetValue());
 	}
@@ -239,7 +239,7 @@ void Narrator::Upgrader(Actor& actor)
 		{
 			std::cout << "7) Upgrade to Sword Level " <<
 				actor.myUpgrades.GetWeaponLLevel() + 1 <<
-				" :";
+				"(L) :";
 			DisplayPrice(actor.myUpgrades.weaponL->GetValue() + 250);
 		}
 		// upgrade swordR
@@ -247,7 +247,7 @@ void Narrator::Upgrader(Actor& actor)
 		{
 			std::cout << "8) Upgrade to Sword Level " <<
 				actor.myUpgrades.GetWeaponLLevel() + 1 <<
-				" :";
+				"(R) :";
 			DisplayPrice(actor.myUpgrades.weaponR->GetValue() + 250);
 		}
 	}
@@ -290,7 +290,7 @@ void Narrator::Upgrader(Actor& actor)
 	std::cout << "Please enter a number: " << std::endl;
 	int choice{};
 	cin >> choice;
-	switch (choice)
+	switch (std::toupper(choice))
 	{
 	case 1:
 		if (!helmetState)

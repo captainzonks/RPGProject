@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <time.h>
+#include <stack>
 
 #include "EnemyManager.h"
 #include "Actor.h"
@@ -34,5 +35,6 @@ public:
 	
 private:
 	bool isRunning{ false };
+	std::stack<Menu> menuStack;
 };
 

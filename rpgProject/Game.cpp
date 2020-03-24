@@ -26,17 +26,25 @@ void Game::GameLoop()
 
 void Game::GetInput(Actor& player)
 {
-	int choice{};
-	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(11);
-	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
-		{ 
-		"Display Player", "Display Class Information", "Display Money", 
-		"Display Upgrades", "Display Potions", "Buy Something", 
-		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" 
-		}));
-	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
-	switch (choice)
+	//int choice{};
+	//std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
+	//std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
+	//	{
+	//	"Display Player", "Display Class Information", "Display Money",
+	//	"Display Upgrades", "Display Potions", "Buy Something",
+	//	"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit"
+	//	}));
+	//std::unique_ptr<int> const decisions = std::make_unique<int>(tempDecisions->size());
+	//choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+
+	std::unique_ptr<Menu> mainMenu = std::make_unique<Menu>("Main Menu");
+	std::vector<string> options{ "Display Player", "Display Class Information",
+		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
+		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" };
+	mainMenu->AddOptions(options);
+	mainMenu->Print();
+
+	switch (mainMenu->choiceHandler(mainMenu->GetMenuSize()))
 	{
 	case 1:
 		player.Display();
@@ -73,6 +81,7 @@ void Game::GetInput(Actor& player)
 		isRunning = false;
 		break;
 	default:
+		std::cout << "That's not a valid choice." << std::endl;
 		break;
 	}
 }

@@ -40,6 +40,8 @@ public:
 	// get player item level
 	int GetPlayerAverageLevel(Actor& player) const;
 
+
+
 private:
 	
 	string version{ "v0.01g" };

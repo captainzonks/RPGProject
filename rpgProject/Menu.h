@@ -19,12 +19,54 @@ using std::initializer_list;
 
 class Menu
 {
+
 public:
+
+	Menu() {}
+
+	Menu(const std::string& name)
+		: name(name) {}
+
+	Menu(const std::string& name, Menu* parent)
+		: name(name)
+	{
+		parent->children.push_back(this);
+	}
+
+	Menu subMenu(const std::string& name)
+	{
+		return Menu(name, this);
+	}
+
+	Menu* getChild(int i)
+	{
+		return children[i];
+	}
+
+	void AddOptions(const std::vector<string> options)
+	{
+		for (auto option : options)
+			this->options.push_back(option);
+	}
+
+	int GetMenuSize()
+	{
+		return options.size();
+	}
+
+	void Print();
+	int choiceHandler(const int& decisions);
+
+	std::vector<Menu*> children;
+
 	// dynamic menu creation and handling
 	int PrintMenu(const int& decisions, const vector<string>& listOfDecisions);
 	int UpgradeMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions);
-	int choiceHandler(const int& decisions);
 
+
+private:
+	std::vector<string> options;
+	const string name;
 };
 
 /*
