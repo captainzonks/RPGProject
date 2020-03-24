@@ -6,18 +6,71 @@ void Game::Initialize()
 	isRunning = true;
 }
 
+void Game::Cleanup()
+{
+	// cleanup all the states
+	while (!states.empty())
+	{
+		states.back()->Cleanup();
+		states.pop_back();
+	}
+}
+
+void Game::ChangeState(GameState* state)
+{
+	// cleanup the current state
+	if (!states.empty())
+	{
+		states.back()->Cleanup();
+		states.pop_back();
+	}
+
+	// store and init the new state
+	states.push_back(state);
+	states.back()->Init();
+}
+
+void Game::PushState(GameState* state)
+{
+	// pause current state
+	if (!states.empty())
+	{
+		states.back()->Pause();
+	}
+
+	// store and init the new state
+	states.push_back(state);
+	states.back()->Init();
+}
+
+void Game::PopState()
+{
+	// cleanup the current state
+	if (!states.empty())
+	{
+		states.back()->Cleanup();
+		states.pop_back();
+	}
+
+	// resume previous state
+	if (!states.empty())
+	{
+		states.back()->Resume();
+	}
+}
+
 void Game::GameLoop()
 {
 	Initialize();
 
 	narrator.StartGreeting();
-	auto player = narrator.CharacterCreator();
+	player = narrator.CharacterCreator();
 	player->Display();
 
 	while (IsRunning())
 	{
-		GetInput(*player);
-		Update(*player);
+		GetInput(player);
+		Update(player);
 	}
 
 	delete player;
@@ -86,20 +139,35 @@ void Game::GetInput(Actor& player)
 	}
 }
 
-void Game::Update(Actor& player)
+void Game::HandleEvents()
 {
-	player.Update();
-	manager.CheckForDead();
-	for (auto& enemy : manager.GetEnemies())
-	{
-		enemy->Update();
-	}
+	// let the state handle events
+	states.back()->HandleEvents(this);
+}
 
-	if (!player.LivingOrDead())
-	{
-		std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
-		isRunning = false;
-	}
+void Game::Update()
+{
+	// let the state update the game
+	states.back()->Update(this);
+
+	//player.Update();
+	//manager.CheckForDead();
+	//for (auto& enemy : manager.GetEnemies())
+	//{
+	//	enemy->Update();
+	//}
+
+	//if (!player.LivingOrDead())
+	//{
+	//	std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
+	//	isRunning = false;
+	//}
+}
+
+void Game::Draw()
+{
+	// let the state draw the screen
+	states.back()->Draw(this);
 }
 
 void Game::RandomEncounter(Actor& player)
