@@ -117,10 +117,7 @@
     <ClCompile Include="ShopMenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponShopMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ArmorShopMenu.cpp">
+    <ClCompile Include="CharacterCreatorState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -230,10 +227,7 @@
     <ClInclude Include="ShopMenuState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponShopMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArmorShopMenu.h">
+    <ClInclude Include="CharacterCreatorState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

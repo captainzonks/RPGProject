@@ -153,10 +153,10 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="ArmorShopMenu.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Blacksmith.cpp" />
     <ClCompile Include="Boots.cpp" />
+    <ClCompile Include="CharacterCreatorState.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="CombatClass.cpp" />
     <ClCompile Include="Currency.cpp" />
@@ -186,15 +186,14 @@
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="Upgrades.cpp" />
     <ClCompile Include="Weapon.cpp" />
-    <ClCompile Include="WeaponShopMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Armor.h" />
-    <ClInclude Include="ArmorShopMenu.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="Blacksmith.h" />
     <ClInclude Include="Boots.h" />
+    <ClInclude Include="CharacterCreatorState.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="CombatClass.h" />
     <ClInclude Include="Constants.h" />
@@ -225,7 +224,6 @@
     <ClInclude Include="Sword.h" />
     <ClInclude Include="Upgrades.h" />
     <ClInclude Include="Weapon.h" />
-    <ClInclude Include="WeaponShopMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

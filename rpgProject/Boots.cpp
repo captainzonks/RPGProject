@@ -11,7 +11,7 @@ Boots::Boots()
 	this->value = 300;
 }
 
-Boots::Boots(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
+Boots::Boots(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorType = armorType;

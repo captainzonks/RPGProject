@@ -1,5 +1,8 @@
 #pragma once
+
 #include "GameState.h"
+#include "ShopMenuState.h"
+
 class MainMenuState :
 	public GameState
 {
@@ -21,13 +24,11 @@ public:
 
 protected:
 	MainMenuState() {}
-
-private:
 	int choice{};
 	static MainMenuState m_MainMenuState;
-	std::vector<string> options{ "Display Player", "Display Class Information",
+	std::vector<std::string> options{ "Display Player", "Display Class Information",
 		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
-		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" };
-	const string name{ "Main Menu" };
+		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Exit Game" };
+	const std::string name{ "Main Menu" };
 };
 

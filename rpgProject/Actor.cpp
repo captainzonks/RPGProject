@@ -22,12 +22,12 @@ void Actor::UpdateArmorClass()
 	armorClass = myUpgrades.TotalArmorValue() + 10;
 }
 
-string Actor::GetName()
+std::string Actor::GetName()
 {
 	return this->name;
 }
 
-string Actor::GetRace()
+std::string Actor::GetRace()
 {
 	return this->race;
 }

@@ -1,7 +1,7 @@
 #include "Fighter.h"
 
 // Player Constructor
-Fighter::Fighter(string name, string race)
+Fighter::Fighter(std::string name, std::string race)
 {
 	std::cout << "Player Fighter constructor called" << std::endl;
 
@@ -134,8 +134,8 @@ void Fighter::SetFightingStyle()
 	int choice{};
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 	std::unique_ptr<int> const decisions = std::make_unique<int>(6);
-	std::unique_ptr<vector<string>> tempDecisions = 
-		std::make_unique<vector<string>>(std::initializer_list<string>(
+	std::unique_ptr<vector<std::string>> tempDecisions = 
+		std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 			{ "Archery", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Two Weapon Fighting" }));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -144,8 +144,8 @@ void Fighter::SetFightingStyle()
 		choice = 0;
 		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
+		std::unique_ptr<vector<std::string>> tempDecisions =
+			std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 				{ "Learn more about Archery", "Choose this Fighting Style" }));
 		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -159,8 +159,8 @@ void Fighter::SetFightingStyle()
 			choice = 0;
 			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
+			std::unique_ptr<vector<std::string>> tempDecisions =
+				std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
 			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -176,8 +176,8 @@ void Fighter::SetFightingStyle()
 		choice = 0;
 		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
+		std::unique_ptr<vector<std::string>> tempDecisions =
+			std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 				{ "Learn more about Defense", "Choose this Fighting Style" }));
 		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -191,8 +191,8 @@ void Fighter::SetFightingStyle()
 			choice = 0;
 			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
+			std::unique_ptr<vector<std::string>> tempDecisions =
+				std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
 			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -208,8 +208,8 @@ void Fighter::SetFightingStyle()
 		choice = 0;
 		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
+		std::unique_ptr<vector<std::string>> tempDecisions =
+			std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 				{ "Learn more about Dueling", "Choose this Fighting Style" }));
 		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -225,8 +225,8 @@ void Fighter::SetFightingStyle()
 			choice = 0;
 			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
+			std::unique_ptr<vector<std::string>> tempDecisions =
+				std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
 			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -242,8 +242,8 @@ void Fighter::SetFightingStyle()
 		choice = 0;
 		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
+		std::unique_ptr<vector<std::string>> tempDecisions =
+			std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 				{ "Learn more about Great Weapon Fighting", "Choose this Fighting Style" }));
 		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -263,8 +263,8 @@ void Fighter::SetFightingStyle()
 			choice = 0;
 			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
+			std::unique_ptr<vector<std::string>> tempDecisions =
+				std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
 			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -280,8 +280,8 @@ void Fighter::SetFightingStyle()
 	choice = 0;
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 	std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-	std::unique_ptr<vector<string>> tempDecisions =
-		std::make_unique<vector<string>>(std::initializer_list<string>(
+	std::unique_ptr<vector<std::string>> tempDecisions =
+		std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 			{ "Learn more about Protection", "Choose this Fighting Style" }));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -298,8 +298,8 @@ void Fighter::SetFightingStyle()
 		choice = 0;
 		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
+		std::unique_ptr<vector<std::string>> tempDecisions =
+			std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 				{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
 		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -315,8 +315,8 @@ void Fighter::SetFightingStyle()
 	choice = 0;
 	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 	std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-	std::unique_ptr<vector<string>> tempDecisions =
-		std::make_unique<vector<string>>(std::initializer_list<string>(
+	std::unique_ptr<vector<std::string>> tempDecisions =
+		std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 			{ "Learn more about Two-Weapon Fighting", "Choose this Fighting Style" }));
 	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 
@@ -331,8 +331,8 @@ void Fighter::SetFightingStyle()
 		choice = 0;
 		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
+		std::unique_ptr<vector<std::string>> tempDecisions =
+			std::make_unique<vector<std::string>>(std::initializer_list<std::string>(
 				{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
 		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
 

@@ -18,7 +18,6 @@
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 using std::vector;
 
 // Abstract Base Class
@@ -45,7 +44,7 @@ public:
 	virtual void UpdateArmorClass();
 
 	// getters
-	virtual string GetName(), GetRace();
+	virtual std::string GetName(), GetRace();
 	virtual int GetHealth(), GetArmorClass(), GetXP(), GetLevel(), GetProficiency();
 	virtual int GetStrength(), GetDexterity(), GetConstitution(), GetIntelligence(), GetWisdom(), GetCharisma();
 	virtual int GetStrengthMod(), GetDexMod(), GetConstMod(), GetIntelMod(), GetWisdomMod(), GetCharMod();
@@ -105,8 +104,8 @@ protected:
 	COMBAT_CLASS combatClass{ COMBAT_CLASS::NONE };
 
 	// basic traits
-	string name;
-	string race;
+	std::string name;
+	std::string race;
 	int level{ 1 };
 	int maxHealth{};
 	int health{};

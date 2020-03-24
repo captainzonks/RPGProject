@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "GameState.h"
 
 void Game::Initialize()
 {
@@ -14,6 +15,7 @@ void Game::Cleanup()
 		states.back()->Cleanup();
 		states.pop_back();
 	}
+	delete player;
 }
 
 void Game::ChangeState(GameState* state)
@@ -59,85 +61,83 @@ void Game::PopState()
 	}
 }
 
-void Game::GameLoop()
-{
-	Initialize();
+//void Game::GameLoop()
+//{
+//	Initialize();
+//	
+//	player->Display();
+//
+//	while (IsRunning())
+//	{
+//		GetInput(player);
+//		Update(player);
+//	}
+//
+//	delete player;
+//	manager.CleanUp();
+//}
 
-	narrator.StartGreeting();
-	player = narrator.CharacterCreator();
-	player->Display();
-
-	while (IsRunning())
-	{
-		GetInput(player);
-		Update(player);
-	}
-
-	delete player;
-	manager.CleanUp();
-}
-
-void Game::GetInput(Actor& player)
-{
-	//int choice{};
-	//std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	//std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
-	//	{
-	//	"Display Player", "Display Class Information", "Display Money",
-	//	"Display Upgrades", "Display Potions", "Buy Something",
-	//	"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit"
-	//	}));
-	//std::unique_ptr<int> const decisions = std::make_unique<int>(tempDecisions->size());
-	//choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
-
-	std::unique_ptr<Menu> mainMenu = std::make_unique<Menu>("Main Menu");
-	std::vector<string> options{ "Display Player", "Display Class Information",
-		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
-		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" };
-	mainMenu->AddOptions(options);
-	mainMenu->Print();
-
-	switch (mainMenu->choiceHandler(mainMenu->GetMenuSize()))
-	{
-	case 1:
-		player.Display();
-		break;
-	case 2:
-		player.DisplayClassInformation();
-		break;
-	case 3:
-		player.myCurrency.DisplayMoney();
-		break;
-	case 4:
-		player.myUpgrades.DisplayUpgrades();
-		break;
-	case 5:
-		player.myInventory.DisplayPotions();
-		break;
-	case 6:
-		narrator.BuySomething(player);
-		break;
-	case 7:
-		player.UsePotion();
-		break;
-	case 8:
-		manager.DisplayAllEnemies();
-		break;
-	case 9:
-		StartEncounter(player);
-		break;
-	case 10:
-		std::cout << "Ending Turn\n" << std::endl;
-		RandomEncounter(player);
-		break;
-	case 11:
-		isRunning = false;
-		break;
-	default:
-		std::cout << "That's not a valid choice." << std::endl;
-		break;
-	}
-}
+//void Game::GetInput(Actor& player)
+//{
+//	//int choice{};
+//	//std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
+//	//std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
+//	//	{
+//	//	"Display Player", "Display Class Information", "Display Money",
+//	//	"Display Upgrades", "Display Potions", "Buy Something",
+//	//	"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit"
+//	//	}));
+//	//std::unique_ptr<int> const decisions = std::make_unique<int>(tempDecisions->size());
+//	//choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+//
+//	std::unique_ptr<Menu> mainMenu = std::make_unique<Menu>("Main Menu");
+//	std::vector<string> options{ "Display Player", "Display Class Information",
+//		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
+//		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" };
+//	mainMenu->AddOptions(options);
+//	mainMenu->Print();
+//
+//	switch (mainMenu->choiceHandler(mainMenu->GetMenuSize()))
+//	{
+//	case 1:
+//		player.Display();
+//		break;
+//	case 2:
+//		player.DisplayClassInformation();
+//		break;
+//	case 3:
+//		player.myCurrency.DisplayMoney();
+//		break;
+//	case 4:
+//		player.myUpgrades.DisplayUpgrades();
+//		break;
+//	case 5:
+//		player.myInventory.DisplayPotions();
+//		break;
+//	case 6:
+//		narrator.BuySomething(player);
+//		break;
+//	case 7:
+//		player.UsePotion();
+//		break;
+//	case 8:
+//		manager.DisplayAllEnemies();
+//		break;
+//	case 9:
+//		StartEncounter(player);
+//		break;
+//	case 10:
+//		std::cout << "Ending Turn\n" << std::endl;
+//		RandomEncounter(player);
+//		break;
+//	case 11:
+//		isRunning = false;
+//		break;
+//	default:
+//		std::cout << "That's not a valid choice." << std::endl;
+//		break;
+//	}
+//}
 
 void Game::HandleEvents()
 {

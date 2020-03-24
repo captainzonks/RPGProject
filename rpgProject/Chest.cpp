@@ -11,7 +11,7 @@ Chest::Chest()
 	this->value = 750;
 }
 
-Chest::Chest(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
+Chest::Chest(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorType = armorType;

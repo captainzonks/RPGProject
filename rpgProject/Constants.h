@@ -1,5 +1,9 @@
 #pragma once
 
+#include <string>
+
+static std::string version{"v0.01h"};
+
 enum class COMBAT_CLASS
 {
 	NONE = 0,

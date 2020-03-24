@@ -1,25 +1,27 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
-#include <Windows.h>
 #include <iostream>
 #include <memory>
 #include <time.h>
-#include <stack>
+#include <string>
+#include <vector>
 
-#include "GameState.h"
 #include "EnemyManager.h"
 #include "Actor.h"
 #include "Human.h"
 #include "Elf.h"
 #include "Dwarf.h"
-#include "Narrator.h"
+//#include "Narrator.h"
 #include "Encounter.h"
 #include "Item.h"
+
+class GameState;
 
 class Game
 {
 public:
-	Actor* player;
+	Actor* player{ nullptr };
 
 	void Initialize();
 	void Cleanup();
@@ -32,9 +34,9 @@ public:
 	void Update();
 	void Draw();
 
-	void GameLoop();
+	/*void GameLoop();*/
 
-	void GetInput(Actor& player);
+	/*void GetInput(Actor& player);*/
 
 
 	void RandomEncounter(Actor& player);
@@ -43,11 +45,12 @@ public:
 	bool IsRunning();
 	void Quit() { isRunning = false; };
 
-	Narrator narrator;
+	/*Narrator narrator;*/
 	EnemyManager manager;
-	
+
 private:
 	bool isRunning{ false };
 	std::vector<GameState*> states;
 };
 
+#endif // !GAME_H

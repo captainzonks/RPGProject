@@ -12,7 +12,7 @@ Sword::Sword()
 	this->weaponProficiency = WEAPON_PROFICIENCY::MARTIAL;
 }
 
-Sword::Sword(string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level)
+Sword::Sword(std::string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level)
 {
 	this->name = name;
 	this->durability = durability;

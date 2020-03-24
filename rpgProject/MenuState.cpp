@@ -1,5 +1,7 @@
 #include "MenuState.h"
 
+MainMenuState MainMenuState::m_MainMenuState;
+
 void MainMenuState::Init()
 {
 }
@@ -20,45 +22,47 @@ void MainMenuState::Resume()
 
 void MainMenuState::HandleEvents(Game* game)
 {
-	switch (choice)
+	if (choice != 0)
 	{
-	case 1:
-		game->player->Display();
-		break;
-	case 2:
-		game->player->DisplayClassInformation();
-		break;
-	case 3:
-		game->player->myCurrency.DisplayMoney();
-		break;
-	case 4:
-		game->player->myUpgrades.DisplayUpgrades();
-		break;
-	case 5:
-		game->player->myInventory.DisplayPotions();
-		break;
-	case 6:
-		game->narrator.BuySomething(*game->player);
-		break;
-	case 7:
-		game->player->UsePotion();
-		break;
-	case 8:
-		game->manager.DisplayAllEnemies();
-		break;
-	case 9:
-		game->StartEncounter(*game->player);
-		break;
-	case 10:
-		std::cout << "Ending Turn\n" << std::endl;
-		game->RandomEncounter(*game->player);
-		break;
-	case 11:
-		game->Quit();
-		break;
-	default:
-		std::cout << "That's not a valid choice." << std::endl;
-		break;
+		switch (choice)
+		{
+		case 1:
+			game->player->Display();
+			break;
+		case 2:
+			game->player->DisplayClassInformation();
+			break;
+		case 3:
+			game->player->myCurrency.DisplayMoney();
+			break;
+		case 4:
+			game->player->myUpgrades.DisplayUpgrades();
+			break;
+		case 5:
+			game->player->myInventory.DisplayPotions();
+			break;
+		case 6:
+			game->PushState(ShopMenuState::Instance());
+			break;
+		case 7:
+			game->player->UsePotion();
+			break;
+		case 8:
+			game->manager.DisplayAllEnemies();
+			break;
+		case 9:
+			game->StartEncounter(*game->player);
+			break;
+		case 10:
+			std::cout << "Ending Turn\n" << std::endl;
+			game->RandomEncounter(*game->player);
+			break;
+		case 11:
+			game->Quit();
+			break;
+		default:
+			break;
+		}
 	}
 }
 
@@ -83,6 +87,7 @@ void MainMenuState::Draw(Game* game)
 	}
 	cout << "----" << endl;
 
+	choice = 0;
 	bool valid_input{ false };
 
 	do
@@ -90,11 +95,11 @@ void MainMenuState::Draw(Game* game)
 		cout << "Please enter a number: ";
 		cin >> choice;
 
-		if (!(valid_input = cin.good()) || choice > options.size() || choice < 1)
+		if (!(valid_input = cin.good()) || choice > (int)options.size() || choice < 1)
 		{
 			cout << "That's not a valid choice." << endl;
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
-	} while (!valid_input || choice > options.size() || choice < 1);
+	} while (!valid_input || choice > (int)options.size() || choice < 1);
 }

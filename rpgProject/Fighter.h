@@ -9,7 +9,7 @@ public:
 
 	// constructors
 		// player constructor
-	Fighter(string name, string race);
+	Fighter(std::string name, std::string race);
 		// enemy constructor
 	Fighter(int identifier);
 

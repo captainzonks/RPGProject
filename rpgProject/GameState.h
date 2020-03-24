@@ -1,5 +1,7 @@
-#pragma once
-#define NOMINMAX
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
+
+class Game;
 #include "Game.h"
 
 class GameState
@@ -14,7 +16,6 @@ public:
 	virtual void Resume() = 0;
 
 	// the three important actions within a game loop
-	// (handled by the top state in the stack)
 	virtual void HandleEvents(Game* game) = 0;
 	virtual void Update(Game* game) = 0;
 	virtual void Draw(Game* game) = 0;
@@ -28,3 +29,4 @@ protected:
 	GameState() {}
 };
 
+#endif // !GAMESTATE_H

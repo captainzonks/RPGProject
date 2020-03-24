@@ -10,7 +10,7 @@ Shield::Shield()
 	this->armorType = ARMOR_TYPE::SHIELD;
 }
 
-Shield::Shield(string name, int armorValue, int durability, int value, int level)
+Shield::Shield(std::string name, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorValue = armorValue;

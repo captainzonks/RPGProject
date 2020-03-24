@@ -11,7 +11,7 @@ Helmet::Helmet()
 	this->value = 300;
 }
 
-Helmet::Helmet(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
+Helmet::Helmet(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorType = armorType;

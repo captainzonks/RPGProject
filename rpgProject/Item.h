@@ -7,7 +7,6 @@
 #include <string>
 
 using std::ostream;
-using std::string;
 
 class Item
 	: public I_Display
@@ -24,7 +23,7 @@ public:
 	virtual void Print(ostream& os) const override = 0;
 
 	// getter
-	virtual string GetName() const
+	virtual std::string GetName() const
 	{
 		return this->name;
 	}
@@ -50,7 +49,7 @@ public:
 	}
 
 protected:
-	string name{};
+	std::string name{};
 	int durability{};
 	int value{};
 	int level{};

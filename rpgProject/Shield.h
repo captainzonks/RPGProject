@@ -9,7 +9,7 @@ public:
 
 	// constructors
 	Shield();
-	Shield(string name, int armorValue, int durability, int value, int level);
+	Shield(std::string name, int armorValue, int durability, int value, int level);
 
 	// destructor
 	virtual ~Shield() override;
