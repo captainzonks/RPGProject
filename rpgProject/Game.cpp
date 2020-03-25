@@ -148,7 +148,10 @@ void Game::HandleEvents()
 void Game::Update()
 {
 	// let the state update the game
-	states.back()->Update(this);
+	if (IsRunning())
+	{
+		states.back()->Update(this);
+	}
 
 	//player.Update();
 	//manager.CheckForDead();
@@ -167,7 +170,10 @@ void Game::Update()
 void Game::Draw()
 {
 	// let the state draw the screen
-	states.back()->Draw(this);
+	if (IsRunning())
+	{
+		states.back()->Draw(this);
+	}
 }
 
 void Game::RandomEncounter(Actor& player)

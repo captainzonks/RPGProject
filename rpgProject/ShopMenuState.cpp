@@ -294,7 +294,7 @@ void ShopMenuState::HandleEvents(Game* game)
 			}
 		case 9:
 			// ranged
-			if (!rangedState && !(swordLState && swordRState) && !(swordLState && shieldState) && !(swordRState && shieldState))
+			if (!rangedState && (!swordLState && !swordRState && !shieldState))
 			{
 				if (CheckPrice(*game->player, bow_ptr->GetValue()))
 				{
@@ -308,7 +308,7 @@ void ShopMenuState::HandleEvents(Game* game)
 					break;
 				}
 			}
-			else if (!rangedState && (swordLState || swordRState || shieldState))
+			else if (swordLState || swordRState || shieldState)
 			{
 				std::cout << "You don't have room to carry a bow." << std::endl;
 				break;
@@ -463,7 +463,7 @@ void ShopMenuState::Draw(Game* game)
 			" :";
 		DisplayPrice(game->player->myUpgrades.boots->GetValue() + 200);
 	}
-	if (!shieldState && !rangedState)
+	if (!shieldState && !rangedState && (!game->player->IsDualWielding()))
 	{
 		// new shield
 		shield_ptr = std::make_unique<Shield>();
@@ -522,7 +522,7 @@ void ShopMenuState::Draw(Game* game)
 			DisplayPrice(game->player->myUpgrades.weaponR->GetValue() + 250);
 		}
 	}
-	if (!rangedState)
+	if (!rangedState && !swordLState && !swordRState && !shieldState)
 	{
 		// new shortbow
 		bow_ptr = std::make_unique<ShortBow>();

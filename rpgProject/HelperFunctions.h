@@ -58,4 +58,42 @@ inline void DisplayPrice(const int copper)
 	std::cout << std::endl;
 }
 
+inline void PrintMenu(std::string name, std::vector<std::string> options)
+{
+	std::cout << "\n----" << name << "----" << std::endl;
+	int count{ 1 };
+	for (int i{}; i != options.size(); ++i)
+	{
+		std::cout << count << ") " << options[i] << std::endl;
+		count++;
+	}
+	std::cout << "----";
+	for (int i{}; i != name.length(); i++)
+	{
+		std::cout << "-";
+	}
+	std::cout << "----" << std::endl;
+}
+
+inline int MenuChoice(std::vector<std::string> options)
+{
+	int choice{};
+	bool valid_input{ false };
+
+	do
+	{
+		std::cout << "Please enter a number: ";
+		std::cin >> choice;
+
+		if (!(valid_input = std::cin.good()) || choice > static_cast<int>(options.size()) || choice < 1)
+		{
+			std::cout << "That's not a valid choice." << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	} while (!valid_input || choice > static_cast<int>(options.size()) || choice < 1);
+
+	return choice;
+}
+
 #endif // !HELPERFUNCTIONS_H

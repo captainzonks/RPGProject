@@ -66,66 +66,16 @@ void CharacterCreatorState::Draw(Game* game)
 {
 	std::cout << "\nWhat race are you?" << std::endl;
 
-	std::cout << "----" << this->races << "----" << std::endl;
-	int count{ 1 };
-	for (int i{}; i != raceOptions.size(); ++i)
-	{
-		std::cout << count << ") " << raceOptions[i] << std::endl;
-		count++;
-	}
-	std::cout << "----";
-	for (int i{}; i != this->races.length(); i++)
-	{
-		std::cout << "-";
-	}
-	std::cout << "----" << std::endl;
+	PrintMenu(races, raceOptions);
 
-	bool valid_input{ false };
-
-	do
-	{
-		std::cout << "Please enter a number: ";
-		std::cin >> raceChoice;
-
-		if (!(valid_input = cin.good()) || raceChoice > (int)raceOptions.size() || raceChoice < 1)
-		{
-			std::cout << "That's not a valid choice." << std::endl;
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-	} while (!valid_input || raceChoice > (int)raceOptions.size() || raceChoice < 1);
+	raceChoice = MenuChoice(raceOptions);
 
 	std::cout << "\nWhat's your name? ";
 	std::cin >> charName;
 
 	std::cout << "\nWhat class are you?" << std::endl;
 
-	std::cout << "----" << this->classes << "----" << std::endl;
-	int count2{ 1 };
-	for (int i{}; i != classOptions.size(); ++i)
-	{
-		std::cout << count2 << ") " << classOptions[i] << std::endl;
-		count2++;
-	}
-	std::cout << "----";
-	for (int i{}; i != this->classes.length(); i++)
-	{
-		std::cout << "-";
-	}
-	std::cout << "----" << endl;
+	PrintMenu(classes, classOptions);
 
-	valid_input = false;
-
-	do
-	{
-		std::cout << "Please enter a number: ";
-		std::cin >> classChoice;
-
-		if (!(valid_input = cin.good()) || classChoice > (int)classOptions.size() || classChoice < 1)
-		{
-			std::cout << "That's not a valid choice." << std::endl;
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-	} while (!valid_input || classChoice > (int)classOptions.size() || classChoice < 1);
+	classChoice = MenuChoice(classOptions);
 }

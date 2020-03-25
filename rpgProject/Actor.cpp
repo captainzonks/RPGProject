@@ -161,6 +161,11 @@ bool Actor::LivingOrDead()
 	return isAlive;
 }
 
+bool Actor::IsDualWielding()
+{
+	return isDualWielding;
+}
+
 void Actor::Display()
 {
 	cout << endl;
@@ -224,7 +229,7 @@ void Actor::UpdateAverageItemLevel()
 		totalUpgrades++;
 	}
 
-	// weapons and shiled
+	// weapons and shield
 	if (this->myUpgrades.WeaponLEquipped())
 	{
 		averageItemLevel += this->myUpgrades.weaponL->GetLevel();
@@ -233,6 +238,11 @@ void Actor::UpdateAverageItemLevel()
 	if (this->myUpgrades.WeaponREquipped())
 	{
 		averageItemLevel += this->myUpgrades.weaponR->GetLevel();
+		totalUpgrades++;
+	}
+	if (this->myUpgrades.RangedWeaponEquipped())
+	{
+		averageItemLevel += this->myUpgrades.rangedWeapon->GetLevel();
 		totalUpgrades++;
 	}
 	if (this->myUpgrades.ShieldEquipped())
@@ -380,6 +390,8 @@ void Actor::EquipBoots(std::unique_ptr<Armor> boots)
 void Actor::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
 {
 	myUpgrades.EquipWeaponL(std::move(weaponL));
+	if (this->myUpgrades.WeaponREquipped())
+		isDualWielding = true;
 }
 
 void Actor::EquipRanged(std::unique_ptr<Weapon> rangedWeapon)
@@ -390,6 +402,8 @@ void Actor::EquipRanged(std::unique_ptr<Weapon> rangedWeapon)
 void Actor::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
 {
 	myUpgrades.EquipWeaponR(std::move(weaponR));
+	if (this->myUpgrades.WeaponLEquipped())
+		isDualWielding = true;
 }
 
 void Actor::EquipShield(std::unique_ptr<Armor> shield)

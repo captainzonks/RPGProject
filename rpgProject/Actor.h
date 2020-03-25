@@ -51,7 +51,7 @@ public:
 	virtual int GetPassivePerception(), GetPassiveInsight(), GetPassiveInvestigation();
 	virtual DAMAGE_TYPE GetResistance(), GetVulnerability();
 	virtual int GetInitiative();
-	virtual bool LivingOrDead();
+	virtual bool LivingOrDead(), IsDualWielding();
 	virtual void Display();
 	virtual void UpdateAverageItemLevel();
 	virtual int GetAverageItemLevel();
@@ -114,6 +114,7 @@ protected:
 	int walkingSpeed{ 30 };
 	int xp{};
 	bool isAlive{ true };
+	bool isDualWielding{ false };
 	DAMAGE_TYPE resistance{ DAMAGE_TYPE::NONE };
 	DAMAGE_TYPE vulnerability{ DAMAGE_TYPE::NONE };
 
