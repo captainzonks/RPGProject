@@ -145,10 +145,7 @@ void Fighter::SetFightingStyle()
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Archery==" << std::endl;
-			std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
-			std::cout << "you make with ranged weapons." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintArcheryDef();
 
 			PrintMenu("", pickThis);
 			choice = MenuChoice(pickThis);
@@ -171,10 +168,7 @@ void Fighter::SetFightingStyle()
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Defense==" << std::endl;
-			std::cout << "While you are wearing armor," << std::endl;
-			std::cout << "you gain a +1 bonus to AC." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintDefenseDef();
 
 			PrintMenu("", pickThis);
 			choice = MenuChoice(pickThis);
@@ -197,12 +191,7 @@ void Fighter::SetFightingStyle()
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Dueling==" << std::endl;
-			std::cout << "When you are wielding a melee" << std::endl;
-			std::cout << "weapon in one hand and no other" << std::endl;
-			std::cout << "weapons, you gain a +2 bonus to" << std::endl;
-			std::cout << "damage rolls with that weapon." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintDuelingDef();
 
 			PrintMenu("", pickThis);
 			choice = MenuChoice(pickThis);
@@ -225,16 +214,7 @@ void Fighter::SetFightingStyle()
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Great Weapon Fighting==" << std::endl;
-			std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
-			std::cout << "die for an attack you make with a" << std::endl;
-			std::cout << "melee weapon that you are wielding with" << std::endl;
-			std::cout << "two hands, you can reroll the die and must" << std::endl;
-			std::cout << "use the new roll, even if the new roll is" << std::endl;
-			std::cout << "a 1 or a 2. The weapon must have the" << std::endl;
-			std::cout << "two-handed or versatile property for you" << std::endl;
-			std::cout << "to gain this benefit." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintGWFDef();
 
 			PrintMenu("", pickThis);
 			choice = MenuChoice(pickThis);
@@ -257,13 +237,7 @@ void Fighter::SetFightingStyle()
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Protection==" << std::endl;
-			std::cout << "When a creature you can see attacks a" << std::endl;
-			std::cout << "target other than you that is within" << std::endl;
-			std::cout << "5 feet of you, you can use your reaction" << std::endl;
-			std::cout << "to impose disadvantage on the attack roll." << std::endl;
-			std::cout << "You must be wielding a shield." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintProtectionDef();
 
 			PrintMenu("", pickThis);
 			choice = MenuChoice(pickThis);
@@ -286,11 +260,7 @@ void Fighter::SetFightingStyle()
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Two-Weapon Fighting==" << std::endl;
-			std::cout << "When you engage in two-weapon fighting," << std::endl;
-			std::cout << "you can add your ability modifier to" << std::endl;
-			std::cout << "the damage of the second attack." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintTWFDef();
 
 			PrintMenu("", pickThis);
 			choice = MenuChoice(pickThis);
@@ -305,6 +275,66 @@ void Fighter::SetFightingStyle()
 		if (choice == 3)
 			SetFightingStyle();
 	}
+}
+
+void Fighter::PrintTWFDef()
+{
+	std::cout << "\n==Two-Weapon Fighting==" << std::endl;
+	std::cout << "When you engage in two-weapon fighting," << std::endl;
+	std::cout << "you can add your ability modifier to" << std::endl;
+	std::cout << "the damage of the second attack." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintProtectionDef()
+{
+	std::cout << "\n==Protection==" << std::endl;
+	std::cout << "When a creature you can see attacks a" << std::endl;
+	std::cout << "target other than you that is within" << std::endl;
+	std::cout << "5 feet of you, you can use your reaction" << std::endl;
+	std::cout << "to impose disadvantage on the attack roll." << std::endl;
+	std::cout << "You must be wielding a shield." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintGWFDef()
+{
+	std::cout << "\n==Great Weapon Fighting==" << std::endl;
+	std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
+	std::cout << "die for an attack you make with a" << std::endl;
+	std::cout << "melee weapon that you are wielding with" << std::endl;
+	std::cout << "two hands, you can reroll the die and must" << std::endl;
+	std::cout << "use the new roll, even if the new roll is" << std::endl;
+	std::cout << "a 1 or a 2. The weapon must have the" << std::endl;
+	std::cout << "two-handed or versatile property for you" << std::endl;
+	std::cout << "to gain this benefit." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintDuelingDef()
+{
+	std::cout << "\n==Dueling==" << std::endl;
+	std::cout << "When you are wielding a melee" << std::endl;
+	std::cout << "weapon in one hand and no other" << std::endl;
+	std::cout << "weapons, you gain a +2 bonus to" << std::endl;
+	std::cout << "damage rolls with that weapon." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintDefenseDef()
+{
+	std::cout << "\n==Defense==" << std::endl;
+	std::cout << "While you are wearing armor," << std::endl;
+	std::cout << "you gain a +1 bonus to AC." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintArcheryDef()
+{
+	std::cout << "\n==Archery==" << std::endl;
+	std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
+	std::cout << "you make with ranged weapons." << std::endl;
+	std::cout << "-----------" << std::endl;
 }
 
 void Fighter::SetEnemyFightingStyle()
@@ -330,57 +360,27 @@ void Fighter::DisplayClassInformation()
 	std::cout << "\n\n******FIGHTER lvl " << this->GetLevel() << "******" << std::endl;
 	if (fightingStyle == FIGHTING_STYLE::ARCHERY)
 	{
-		std::cout << "\n==Archery==" << std::endl;
-		std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
-		std::cout << "you make with ranged weapons." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintArcheryDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::DEFENSE)
 	{
-		std::cout << "\n==Defense==" << std::endl;
-		std::cout << "While you are wearing armor," << std::endl;
-		std::cout << "you gain a +1 bonus to AC." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintDefenseDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::DUELING)
 	{
-		std::cout << "\n==Dueling==" << std::endl;
-		std::cout << "When you are wielding a melee" << std::endl;
-		std::cout << "weapon in one hand and no other" << std::endl;
-		std::cout << "weapons, you gain a +2 bonus to" << std::endl;
-		std::cout << "damage rolls with that weapon." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintDuelingDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::GREAT_WEAPON_FIGHTING)
 	{
-		std::cout << "\n==Great Weapon Fighting==" << std::endl;
-		std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
-		std::cout << "die for an attack you make with a" << std::endl;
-		std::cout << "melee weapon that you are wielding with" << std::endl;
-		std::cout << "two hands, you can reroll the die and must" << std::endl;
-		std::cout << "use the new roll, even if the new roll is" << std::endl;
-		std::cout << "a 1 or a 2. The weapon must have the" << std::endl;
-		std::cout << "two-handed or versatile property for you" << std::endl;
-		std::cout << "to gain this benefit." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintGWFDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::PROTECTION)
 	{
-		std::cout << "\n==Protection==" << std::endl;
-		std::cout << "When a creature you can see attacks a" << std::endl;
-		std::cout << "target other than you that is within" << std::endl;
-		std::cout << "5 feet of you, you can use your reaction" << std::endl;
-		std::cout << "to impose disadvantage on the attack roll." << std::endl;
-		std::cout << "You must be wielding a shield." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintProtectionDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::TWO_WEAPON_FIGHTING)
 	{
-		std::cout << "\n==Two-Weapon Fighting==" << std::endl;
-		std::cout << "When you engage in two-weapon fighting," << std::endl;
-		std::cout << "you can add your ability modifier to" << std::endl;
-		std::cout << "the damage of the second attack." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintTWFDef();
 	}
 }
 

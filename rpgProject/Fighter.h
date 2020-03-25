@@ -21,6 +21,12 @@ public:
 
 	// player fighting style
 	void SetFightingStyle();
+	void PrintTWFDef();
+	void PrintProtectionDef();
+	void PrintGWFDef();
+	void PrintDuelingDef();
+	void PrintDefenseDef();
+	void PrintArcheryDef();
 	// enemy fighting style
 	void SetEnemyFightingStyle();
 
