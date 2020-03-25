@@ -159,6 +159,7 @@
     <ClCompile Include="CharacterCreatorState.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="CombatClass.cpp" />
+    <ClCompile Include="CombatState.cpp" />
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="CharacterCreatorState.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="CombatClass.h" />
+    <ClInclude Include="CombatState.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Currency.h" />
     <ClInclude Include="Dwarf.h" />
