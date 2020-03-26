@@ -39,8 +39,8 @@ public:
 	/*void GetInput(Actor& player);*/
 
 
-	void RandomEncounter(Actor& player);
-	void StartEncounter(Actor& player);
+	//void RandomEncounter(Actor& player);
+	//void StartEncounter(Actor& player);
 
 	bool IsRunning();
 	void Quit() { isRunning = false; };

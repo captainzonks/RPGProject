@@ -1,8 +1,11 @@
 #pragma once
+
 #include "GameState.h"
+
 class CombatState :
 	public GameState
 {
+public:
 	void Init();
 	void Cleanup();
 
@@ -26,12 +29,16 @@ class CombatState :
 
 protected:
 	CombatState() {}
-	bool firstRound{ true };
-	int choice{};
+
 	static CombatState m_CombatState;
+	EnemyManager* manager{ nullptr };
+	Actor* target{ nullptr };
+
+	bool firstRound{ true };
+	std::vector<Actor*> initiativeOrder;
+
+	int choice{};
 	std::vector<std::string> options{ "Attack", "Use Potion" };
 	const std::string name{ "Combat" };
-
-	std::vector<Actor*> initiativeOrder;
 };
 

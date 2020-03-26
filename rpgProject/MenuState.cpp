@@ -51,11 +51,16 @@ void MainMenuState::HandleEvents(Game* game)
 			game->manager.DisplayAllEnemies();
 			break;
 		case 9:
-			game->StartEncounter(*game->player);
+			if (game->manager.GetTotalEnemies() != 0)
+			{
+				game->PushState(CombatState::Instance());
+				break;
+			}
+			else
+				std::cout << "There are no enemies!" << std::endl;
 			break;
 		case 10:
-			std::cout << "Ending Turn\n" << std::endl;
-			game->RandomEncounter(*game->player);
+			game->manager.AddEnemy(game->manager.CreateEnemy(game->player->GetAverageItemLevel()));
 			break;
 		case 11:
 			game->Quit();
@@ -68,7 +73,7 @@ void MainMenuState::HandleEvents(Game* game)
 
 void MainMenuState::Update(Game* game)
 {
-
+	game->player->Update();
 }
 
 void MainMenuState::Draw(Game* game)

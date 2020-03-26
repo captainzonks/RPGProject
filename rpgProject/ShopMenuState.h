@@ -1,5 +1,7 @@
 #pragma once
+
 #include "GameState.h"
+
 class ShopMenuState :
 	public GameState
 {

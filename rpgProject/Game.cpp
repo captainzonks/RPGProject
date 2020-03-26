@@ -142,7 +142,10 @@ void Game::PopState()
 void Game::HandleEvents()
 {
 	// let the state handle events
-	states.back()->HandleEvents(this);
+	if (IsRunning())
+	{
+		states.back()->HandleEvents(this);
+	}
 }
 
 void Game::Update()
@@ -154,13 +157,13 @@ void Game::Update()
 	}
 
 	//player.Update();
-	//manager.CheckForDead();
+	//manager.CleanUpDead();
 	//for (auto& enemy : manager.GetEnemies())
 	//{
 	//	enemy->Update();
 	//}
 
-	//if (!player.LivingOrDead())
+	//if (!player.IsAlive())
 	//{
 	//	std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
 	//	isRunning = false;
@@ -176,34 +179,34 @@ void Game::Draw()
 	}
 }
 
-void Game::RandomEncounter(Actor& player)
-{
-	int randomStart{ rand() % 2 };
-	int randomCount{ rand() % (player.GetAverageItemLevel() + 1) };
-	if (randomStart == 1 && player.GetAverageItemLevel() != 0)
-	{
-		for (int i{}; i != randomCount; ++i)
-		{
-			manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
-		}
-	}
-	else if (randomStart == 1 && player.GetAverageItemLevel() == 0)
-		manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
-	if (manager.GetTotalEnemies() > 0)
-		Encounter newEncounter(manager, player);
-	else
-		std::cout << "\nThe night passed peacefully. It's a new day." << std::endl;
-}
+//void Game::RandomEncounter(Actor& player)
+//{
+//	int randomStart{ rand() % 2 };
+//	int randomCount{ rand() % (player.GetAverageItemLevel() + 1) };
+//	if (randomStart == 1 && player.GetAverageItemLevel() != 0)
+//	{
+//		for (int i{}; i != randomCount; ++i)
+//		{
+//			manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
+//		}
+//	}
+//	else if (randomStart == 1 && player.GetAverageItemLevel() == 0)
+//		manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
+//	if (manager.GetTotalEnemies() > 0)
+//		Encounter newEncounter(manager, player);
+//	else
+//		std::cout << "\nThe night passed peacefully. It's a new day." << std::endl;
+//}
 
-void Game::StartEncounter(Actor& player)
-{
-	if (manager.GetTotalEnemies() == 0)
-	{
-		std::cout << "\nThere are no enemies!\n" << std::endl;
-	}
-	else
-		Encounter newEncounter(manager, player);
-}
+//void Game::StartEncounter(Actor& player)
+//{
+//	if (manager.GetTotalEnemies() == 0)
+//	{
+//		std::cout << "\nThere are no enemies!\n" << std::endl;
+//	}
+//	else
+//		Encounter newEncounter(manager, player);
+//}
 
 bool Game::IsRunning()
 {

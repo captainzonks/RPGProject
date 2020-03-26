@@ -2,6 +2,7 @@
 
 #include "GameState.h"
 #include "ShopMenuState.h"
+#include "CombatState.h"
 
 class MainMenuState :
 	public GameState
@@ -28,7 +29,7 @@ protected:
 	static MainMenuState m_MainMenuState;
 	std::vector<std::string> options{ "Display Player", "Display Class Information",
 		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
-		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Exit Game" };
+		"Use A Potion", "Display Enemies", "Attack", "Add Enemy", "Exit Game" };
 	const std::string name{ "Main Menu" };
 };
 

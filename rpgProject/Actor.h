@@ -51,7 +51,7 @@ public:
 	virtual int GetPassivePerception(), GetPassiveInsight(), GetPassiveInvestigation();
 	virtual DAMAGE_TYPE GetResistance(), GetVulnerability();
 	virtual int GetInitiative();
-	virtual bool LivingOrDead(), IsDualWielding();
+	virtual bool IsAlive(), IsDualWielding();
 	virtual void Display();
 	virtual void UpdateAverageItemLevel();
 	virtual int GetAverageItemLevel();

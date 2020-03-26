@@ -517,7 +517,7 @@ void ShopMenuState::Draw(Game* game)
 		if (swordRState)
 		{
 			std::cout << "8) Upgrade to Sword Level " <<
-				game->player->myUpgrades.GetWeaponLLevel() + 1 <<
+				game->player->myUpgrades.GetWeaponRLevel() + 1 <<
 				"(R) :";
 			DisplayPrice(game->player->myUpgrades.weaponR->GetValue() + 250);
 		}

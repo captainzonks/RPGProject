@@ -156,7 +156,7 @@ int Actor::GetInitiative()
 	return initiative;
 }
 
-bool Actor::LivingOrDead()
+bool Actor::IsAlive()
 {
 	return isAlive;
 }

@@ -12,6 +12,7 @@
 class EnemyManager
 {
 public:
+	~EnemyManager();
 	Actor* CreateEnemy(int playerItemLevel);
 	void GetUpgrades(int playerItemLevel, Actor& enemy);
 	void AddEnemy(Actor* enemy);
@@ -22,7 +23,6 @@ public:
 
 	int GetIdentifier();
 
-	void CheckForDead();
 	void CleanUpDead();
 	void CleanUp();
 

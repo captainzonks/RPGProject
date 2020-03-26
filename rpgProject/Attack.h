@@ -10,7 +10,7 @@ class Attack
 {
 public:
 	// the primary attack function
-	static bool MakeAnAttack(Actor& attacker, Actor& target);
+	static void MakeAnAttack(Actor& attacker, Actor& target);
 
 	// the damage functions
 	static void DealDamage(Actor& attacker, Actor& target, char hand, bool finesse);
