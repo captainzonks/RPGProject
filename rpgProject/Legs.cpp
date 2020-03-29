@@ -11,7 +11,7 @@ Legs::Legs()
 	this->value = 580;
 }
 
-Legs::Legs(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
+Legs::Legs(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorType = armorType;

@@ -30,7 +30,7 @@ Upgrades::~Upgrades()
 
 void Upgrades::DisplayUpgrades()
 {
-	std::cout << "\n===UPGRADES EQUIPPED===" << std::endl;
+	std::cout << "\n====UPGRADES EQUIPPED====" << std::endl;
 
 	if (IsAnythingEquipped())
 	{

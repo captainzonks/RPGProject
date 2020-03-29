@@ -1,5 +1,10 @@
 #include "EnemyManager.h"
 
+EnemyManager::~EnemyManager()
+{
+	this->CleanUp();
+}
+
 Actor* EnemyManager::CreateEnemy(int playerItemLevel)
 {
 	int random{ rand() % 1 + 1 };
@@ -202,7 +207,7 @@ std::vector<Actor*> EnemyManager::GetEnemies()
 
 Actor* EnemyManager::GetEnemy(int identifier)
 {
-	return enemies.at(identifier);
+	return enemies.at(identifier - 1);
 }
 
 int EnemyManager::GetIdentifier()
@@ -210,31 +215,29 @@ int EnemyManager::GetIdentifier()
 	return identifier;
 }
 
-void EnemyManager::CheckForDead()
+/*
+Checks for dead enemies in the vector and removes and deletes their pointer/object
+*/
+void EnemyManager::CleanUpDead()
 {
 	for (size_t i{}; i < enemies.size(); ++i)
 	{
-		if (!enemies.at(i)->LivingOrDead())
+		if (!enemies.at(i)->IsAlive())
 		{
-			std::cout << "\n" << enemies.at(i)->GetName() << " died!" << std::endl;
+			Actor* temp_ptr = enemies.at(i);
 			enemies.erase(enemies.begin() + i);
-			identifier--;
+			delete temp_ptr;
+			if (identifier == 1)
+				identifier = 1;
+			else
+				identifier--;
 		}
 	}
 }
 
-void EnemyManager::CleanUpDead()
-{
-	if (enemies.size() != 0)
-	{
-		for (auto enemy : enemies)
-		{
-			if (!enemy->LivingOrDead())
-				delete enemy;
-		}
-	}
-}
-
+/*
+Deletes all Actor pointers in the enemies vector
+*/
 void EnemyManager::CleanUp()
 {
 	if (enemies.size() != 0)
@@ -245,5 +248,5 @@ void EnemyManager::CleanUp()
 		}
 	}
 	enemies.clear();
-	identifier = 0;
+	identifier = 1;
 }

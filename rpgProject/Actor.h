@@ -18,7 +18,6 @@
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 using std::vector;
 
 // Abstract Base Class
@@ -45,14 +44,14 @@ public:
 	virtual void UpdateArmorClass();
 
 	// getters
-	virtual string GetName(), GetRace();
+	virtual std::string GetName(), GetRace();
 	virtual int GetHealth(), GetArmorClass(), GetXP(), GetLevel(), GetProficiency();
 	virtual int GetStrength(), GetDexterity(), GetConstitution(), GetIntelligence(), GetWisdom(), GetCharisma();
 	virtual int GetStrengthMod(), GetDexMod(), GetConstMod(), GetIntelMod(), GetWisdomMod(), GetCharMod();
 	virtual int GetPassivePerception(), GetPassiveInsight(), GetPassiveInvestigation();
 	virtual DAMAGE_TYPE GetResistance(), GetVulnerability();
 	virtual int GetInitiative();
-	virtual bool LivingOrDead();
+	virtual bool IsAlive(), IsDualWielding();
 	virtual void Display();
 	virtual void UpdateAverageItemLevel();
 	virtual int GetAverageItemLevel();
@@ -105,8 +104,8 @@ protected:
 	COMBAT_CLASS combatClass{ COMBAT_CLASS::NONE };
 
 	// basic traits
-	string name;
-	string race;
+	std::string name;
+	std::string race;
 	int level{ 1 };
 	int maxHealth{};
 	int health{};
@@ -115,6 +114,7 @@ protected:
 	int walkingSpeed{ 30 };
 	int xp{};
 	bool isAlive{ true };
+	bool isDualWielding{ false };
 	DAMAGE_TYPE resistance{ DAMAGE_TYPE::NONE };
 	DAMAGE_TYPE vulnerability{ DAMAGE_TYPE::NONE };
 

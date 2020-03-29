@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "GameState.h"
 
 void Game::Initialize()
 {
@@ -6,130 +7,206 @@ void Game::Initialize()
 	isRunning = true;
 }
 
-void Game::GameLoop()
+void Game::Cleanup()
 {
-	Initialize();
-
-	narrator.StartGreeting();
-	auto player = narrator.CharacterCreator();
-	player->Display();
-
-	while (IsRunning())
+	// cleanup all the states
+	while (!states.empty())
 	{
-		GetInput(*player);
-		Update(*player);
+		states.back()->Cleanup();
+		states.pop_back();
 	}
-
 	delete player;
-	manager.CleanUp();
 }
 
-void Game::GetInput(Actor& player)
+void Game::ChangeState(GameState* state)
 {
-	//int choice{};
-	//std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	//std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
-	//	{
-	//	"Display Player", "Display Class Information", "Display Money",
-	//	"Display Upgrades", "Display Potions", "Buy Something",
-	//	"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit"
-	//	}));
-	//std::unique_ptr<int> const decisions = std::make_unique<int>(tempDecisions->size());
-	//choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
-
-	std::unique_ptr<Menu> mainMenu = std::make_unique<Menu>("Main Menu");
-	std::vector<string> options{ "Display Player", "Display Class Information",
-		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
-		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" };
-	mainMenu->AddOptions(options);
-	mainMenu->Print();
-
-	switch (mainMenu->choiceHandler(mainMenu->GetMenuSize()))
+	// cleanup the current state
+	if (!states.empty())
 	{
-	case 1:
-		player.Display();
-		break;
-	case 2:
-		player.DisplayClassInformation();
-		break;
-	case 3:
-		player.myCurrency.DisplayMoney();
-		break;
-	case 4:
-		player.myUpgrades.DisplayUpgrades();
-		break;
-	case 5:
-		player.myInventory.DisplayPotions();
-		break;
-	case 6:
-		narrator.BuySomething(player);
-		break;
-	case 7:
-		player.UsePotion();
-		break;
-	case 8:
-		manager.DisplayAllEnemies();
-		break;
-	case 9:
-		StartEncounter(player);
-		break;
-	case 10:
-		std::cout << "Ending Turn\n" << std::endl;
-		RandomEncounter(player);
-		break;
-	case 11:
-		isRunning = false;
-		break;
-	default:
-		std::cout << "That's not a valid choice." << std::endl;
-		break;
+		states.back()->Cleanup();
+		states.pop_back();
 	}
+
+	// store and init the new state
+	states.push_back(state);
+	states.back()->Init();
 }
 
-void Game::Update(Actor& player)
+void Game::PushState(GameState* state)
 {
-	player.Update();
-	manager.CheckForDead();
-	for (auto& enemy : manager.GetEnemies())
+	// pause current state
+	if (!states.empty())
 	{
-		enemy->Update();
+		states.back()->Pause();
 	}
 
-	if (!player.LivingOrDead())
-	{
-		std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
-		isRunning = false;
-	}
+	// store and init the new state
+	states.push_back(state);
+	states.back()->Init();
 }
 
-void Game::RandomEncounter(Actor& player)
+void Game::PopState()
 {
-	int randomStart{ rand() % 2 };
-	int randomCount{ rand() % (player.GetAverageItemLevel() + 1) };
-	if (randomStart == 1 && player.GetAverageItemLevel() != 0)
+	// cleanup the current state
+	if (!states.empty())
 	{
-		for (int i{}; i != randomCount; ++i)
-		{
-			manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
-		}
+		states.back()->Cleanup();
+		states.pop_back();
 	}
-	else if (randomStart == 1 && player.GetAverageItemLevel() == 0)
-		manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
-	if (manager.GetTotalEnemies() > 0)
-		Encounter newEncounter(manager, player);
-	else
-		std::cout << "\nThe night passed peacefully. It's a new day." << std::endl;
+
+	// resume previous state
+	if (!states.empty())
+	{
+		states.back()->Resume();
+	}
 }
 
-void Game::StartEncounter(Actor& player)
+//void Game::GameLoop()
+//{
+//	Initialize();
+//	
+//	player->Display();
+//
+//	while (IsRunning())
+//	{
+//		GetInput(player);
+//		Update(player);
+//	}
+//
+//	delete player;
+//	manager.CleanUp();
+//}
+
+//void Game::GetInput(Actor& player)
+//{
+//	//int choice{};
+//	//std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
+//	//std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>(
+//	//	{
+//	//	"Display Player", "Display Class Information", "Display Money",
+//	//	"Display Upgrades", "Display Potions", "Buy Something",
+//	//	"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit"
+//	//	}));
+//	//std::unique_ptr<int> const decisions = std::make_unique<int>(tempDecisions->size());
+//	//choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+//
+//	std::unique_ptr<Menu> mainMenu = std::make_unique<Menu>("Main Menu");
+//	std::vector<string> options{ "Display Player", "Display Class Information",
+//		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
+//		"Use A Potion", "Display Enemies", "Attack", "Random Encounter", "Quit" };
+//	mainMenu->AddOptions(options);
+//	mainMenu->Print();
+//
+//	switch (mainMenu->choiceHandler(mainMenu->GetMenuSize()))
+//	{
+//	case 1:
+//		player.Display();
+//		break;
+//	case 2:
+//		player.DisplayClassInformation();
+//		break;
+//	case 3:
+//		player.myCurrency.DisplayMoney();
+//		break;
+//	case 4:
+//		player.myUpgrades.DisplayUpgrades();
+//		break;
+//	case 5:
+//		player.myInventory.DisplayPotions();
+//		break;
+//	case 6:
+//		narrator.BuySomething(player);
+//		break;
+//	case 7:
+//		player.UsePotion();
+//		break;
+//	case 8:
+//		manager.DisplayAllEnemies();
+//		break;
+//	case 9:
+//		StartEncounter(player);
+//		break;
+//	case 10:
+//		std::cout << "Ending Turn\n" << std::endl;
+//		RandomEncounter(player);
+//		break;
+//	case 11:
+//		isRunning = false;
+//		break;
+//	default:
+//		std::cout << "That's not a valid choice." << std::endl;
+//		break;
+//	}
+//}
+
+void Game::HandleEvents()
 {
-	if (manager.GetTotalEnemies() == 0)
+	// let the state handle events
+	if (IsRunning())
 	{
-		std::cout << "\nThere are no enemies!\n" << std::endl;
+		states.back()->HandleEvents(this);
 	}
-	else
-		Encounter newEncounter(manager, player);
 }
+
+void Game::Update()
+{
+	// let the state update the game
+	if (IsRunning())
+	{
+		states.back()->Update(this);
+	}
+
+	//player.Update();
+	//manager.CleanUpDead();
+	//for (auto& enemy : manager.GetEnemies())
+	//{
+	//	enemy->Update();
+	//}
+
+	//if (!player.IsAlive())
+	//{
+	//	std::cout << "\nYou lost! Better luck next time!\n" << std::endl;
+	//	isRunning = false;
+	//}
+}
+
+void Game::Draw()
+{
+	// let the state draw the screen
+	if (IsRunning())
+	{
+		states.back()->Draw(this);
+	}
+}
+
+//void Game::RandomEncounter(Actor& player)
+//{
+//	int randomStart{ rand() % 2 };
+//	int randomCount{ rand() % (player.GetAverageItemLevel() + 1) };
+//	if (randomStart == 1 && player.GetAverageItemLevel() != 0)
+//	{
+//		for (int i{}; i != randomCount; ++i)
+//		{
+//			manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
+//		}
+//	}
+//	else if (randomStart == 1 && player.GetAverageItemLevel() == 0)
+//		manager.AddEnemy(manager.CreateEnemy(player.GetAverageItemLevel()));
+//	if (manager.GetTotalEnemies() > 0)
+//		Encounter newEncounter(manager, player);
+//	else
+//		std::cout << "\nThe night passed peacefully. It's a new day." << std::endl;
+//}
+
+//void Game::StartEncounter(Actor& player)
+//{
+//	if (manager.GetTotalEnemies() == 0)
+//	{
+//		std::cout << "\nThere are no enemies!\n" << std::endl;
+//	}
+//	else
+//		Encounter newEncounter(manager, player);
+//}
 
 bool Game::IsRunning()
 {

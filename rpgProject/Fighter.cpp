@@ -1,7 +1,7 @@
 #include "Fighter.h"
 
 // Player Constructor
-Fighter::Fighter(string name, string race)
+Fighter::Fighter(std::string name, std::string race)
 {
 	std::cout << "Player Fighter constructor called" << std::endl;
 
@@ -129,221 +129,212 @@ void Fighter::RollHalflingStats()
 
 void Fighter::SetFightingStyle()
 {
+	std::vector<std::string> pickThis{ "Pick this Fighting Style", "Choose a different Fighting Style" };
+
 	std::cout << "\nWhat Fighting Style are you?" << std::endl;
 
-	int choice{};
-	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(6);
-	std::unique_ptr<vector<string>> tempDecisions = 
-		std::make_unique<vector<string>>(std::initializer_list<string>(
-			{ "Archery", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Two Weapon Fighting" }));
-	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+	std::vector<std::string> fightingStyles{ "Archery", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Two Weapon Fighting" };
+	PrintMenu("Fighting Styles", fightingStyles);
+	int choice = MenuChoice(fightingStyles);
 
 	if (choice == 1)
 	{
-		choice = 0;
-		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
-				{ "Learn more about Archery", "Choose this Fighting Style" }));
-		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+		std::vector<std::string> archeryMenu{ "Learn more about Archery", "Choose this Fighting Style", "Go Back" };
+		PrintMenu("Archery", archeryMenu);
+		choice = MenuChoice(archeryMenu);
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Archery==" << std::endl;
-			std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
-			std::cout << "you make with ranged weapons." << std::endl;
-			std::cout << "-----------" << std::endl;
-			
-			choice = 0;
-			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
-					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
-			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+			PrintArcheryDef();
+
+			PrintMenu("", pickThis);
+			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
 				fightingStyle = FIGHTING_STYLE::ARCHERY;
 			else
 				SetFightingStyle();
 		}
-		fightingStyle = FIGHTING_STYLE::ARCHERY;
+		if (choice == 2)
+			fightingStyle = FIGHTING_STYLE::ARCHERY;
+		if (choice == 3)
+			SetFightingStyle();
 	}
 	else if (choice == 2)
 	{
-		choice = 0;
-		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
-				{ "Learn more about Defense", "Choose this Fighting Style" }));
-		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+		std::vector<std::string> defenseMenu{ "Learn more about Defense", "Choose this Fighting Style", "Go Back" };
+		PrintMenu("Defense", defenseMenu);
+		choice = MenuChoice(defenseMenu);
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Defense==" << std::endl;
-			std::cout << "While you are wearing armor," << std::endl;
-			std::cout << "you gain a +1 bonus to AC." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintDefenseDef();
 
-			choice = 0;
-			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
-					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
-			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+			PrintMenu("", pickThis);
+			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
 				fightingStyle = FIGHTING_STYLE::DEFENSE;
 			else
 				SetFightingStyle();
 		}
-		fightingStyle = FIGHTING_STYLE::DEFENSE;
+		if (choice == 2)
+			fightingStyle = FIGHTING_STYLE::DEFENSE;
+		if (choice == 3)
+			SetFightingStyle();
 	}
 	else if (choice == 3)
 	{
-		choice = 0;
-		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
-				{ "Learn more about Dueling", "Choose this Fighting Style" }));
-		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+		std::vector<std::string> duelingMenu{ "Learn more about Dueling", "Choose this Fighting Style", "Go Back" };
+		PrintMenu("Dueling", duelingMenu);
+		choice = MenuChoice(duelingMenu);
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Dueling==" << std::endl;
-			std::cout << "When you are wielding a melee" << std::endl;
-			std::cout << "weapon in one hand and no other" << std::endl;
-			std::cout << "weapons, you gain a +2 bonus to" << std::endl;
-			std::cout << "damage rolls with that weapon." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintDuelingDef();
 
-			choice = 0;
-			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
-					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
-			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+			PrintMenu("", pickThis);
+			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
 				fightingStyle = FIGHTING_STYLE::DUELING;
 			else
 				SetFightingStyle();
 		}
-		fightingStyle = FIGHTING_STYLE::DUELING;
+		if (choice == 2)
+			fightingStyle = FIGHTING_STYLE::DUELING;
+		if (choice == 3)
+			SetFightingStyle();
 	}
 	else if (choice == 4)
 	{
-		choice = 0;
-		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
-				{ "Learn more about Great Weapon Fighting", "Choose this Fighting Style" }));
-		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+		std::vector<std::string> gwfMenu{ "Learn more about Great Weapon Fighting", "Choose this Fighting Style", "Go Back" };
+		PrintMenu("Great Weapon Fighting", gwfMenu);
+		choice = MenuChoice(gwfMenu);
 
 		if (choice == 1)
 		{
-			std::cout << "\n==Great Weapon Fighting==" << std::endl;
-			std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
-			std::cout << "die for an attack you make with a" << std::endl;
-			std::cout << "melee weapon that you are wielding with" << std::endl;
-			std::cout << "two hands, you can reroll the die and must" << std::endl;
-			std::cout << "use the new roll, even if the new roll is" << std::endl;
-			std::cout << "a 1 or a 2. The weapon must have the" << std::endl;
-			std::cout << "two-handed or versatile property for you" << std::endl;
-			std::cout << "to gain this benefit." << std::endl;
-			std::cout << "-----------" << std::endl;
+			PrintGWFDef();
 
-			choice = 0;
-			std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-			std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-			std::unique_ptr<vector<string>> tempDecisions =
-				std::make_unique<vector<string>>(std::initializer_list<string>(
-					{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
-			choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+			PrintMenu("", pickThis);
+			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
 				fightingStyle = FIGHTING_STYLE::GREAT_WEAPON_FIGHTING;
 			else
 				SetFightingStyle();
 		}
-		fightingStyle = FIGHTING_STYLE::GREAT_WEAPON_FIGHTING;
+		if (choice == 2)
+			fightingStyle = FIGHTING_STYLE::GREAT_WEAPON_FIGHTING;
+		if (choice == 3)
+			SetFightingStyle();
 	}
 	else if (choice == 5)
 	{
-	choice = 0;
-	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-	std::unique_ptr<vector<string>> tempDecisions =
-		std::make_unique<vector<string>>(std::initializer_list<string>(
-			{ "Learn more about Protection", "Choose this Fighting Style" }));
-	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
-
-	if (choice == 1)
-	{
-		std::cout << "\n==Protection==" << std::endl;
-		std::cout << "When a creature you can see attacks a" << std::endl;
-		std::cout << "target other than you that is within" << std::endl;
-		std::cout << "5 feet of you, you can use your reaction" << std::endl;
-		std::cout << "to impose disadvantage on the attack roll." << std::endl;
-		std::cout << "You must be wielding a shield." << std::endl;
-		std::cout << "-----------" << std::endl;
-
-		choice = 0;
-		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
-				{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
-		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+		std::vector<std::string> protectionMenu{ "Learn more about Protection", "Choose this Fighting Style", "Go Back" };
+		PrintMenu("Protection", protectionMenu);
+		choice = MenuChoice(protectionMenu);
 
 		if (choice == 1)
+		{
+			PrintProtectionDef();
+
+			PrintMenu("", pickThis);
+			choice = MenuChoice(pickThis);
+
+			if (choice == 1)
+				fightingStyle = FIGHTING_STYLE::PROTECTION;
+			else
+				SetFightingStyle();
+		}
+		if (choice == 2)
 			fightingStyle = FIGHTING_STYLE::PROTECTION;
-		else
+		if (choice == 3)
 			SetFightingStyle();
-	}
-	fightingStyle = FIGHTING_STYLE::PROTECTION;
 	}
 	else if (choice == 6)
 	{
-	choice = 0;
-	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-	std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-	std::unique_ptr<vector<string>> tempDecisions =
-		std::make_unique<vector<string>>(std::initializer_list<string>(
-			{ "Learn more about Two-Weapon Fighting", "Choose this Fighting Style" }));
-	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
-
-	if (choice == 1)
-	{
-		std::cout << "\n==Two-Weapon Fighting==" << std::endl;
-		std::cout << "When you engage in two-weapon fighting," << std::endl;
-		std::cout << "you can add your ability modifier to" << std::endl;
-		std::cout << "the damage of the second attack." << std::endl;
-		std::cout << "-----------" << std::endl;
-
-		choice = 0;
-		std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
-		std::unique_ptr<int> const decisions = std::make_unique<int>(2);
-		std::unique_ptr<vector<string>> tempDecisions =
-			std::make_unique<vector<string>>(std::initializer_list<string>(
-				{ "Pick this Fighting Style", "Choose a different Fighting Style" }));
-		choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+		std::vector<std::string> twfMenu{ "Learn more about Two-Weapon Fighting", "Choose this Fighting Style", "Go Back" };
+		PrintMenu("Two-Weapon Fighting", twfMenu);
+		choice = MenuChoice(twfMenu);
 
 		if (choice == 1)
+		{
+			PrintTWFDef();
+
+			PrintMenu("", pickThis);
+			choice = MenuChoice(pickThis);
+
+			if (choice == 1)
+				fightingStyle = FIGHTING_STYLE::TWO_WEAPON_FIGHTING;
+			else
+				SetFightingStyle();
+		}
+		if (choice == 2)
 			fightingStyle = FIGHTING_STYLE::TWO_WEAPON_FIGHTING;
-		else
+		if (choice == 3)
 			SetFightingStyle();
 	}
-	fightingStyle = FIGHTING_STYLE::TWO_WEAPON_FIGHTING;
-	}
+}
 
+void Fighter::PrintTWFDef()
+{
+	std::cout << "\n==Two-Weapon Fighting==" << std::endl;
+	std::cout << "When you engage in two-weapon fighting," << std::endl;
+	std::cout << "you can add your ability modifier to" << std::endl;
+	std::cout << "the damage of the second attack." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintProtectionDef()
+{
+	std::cout << "\n==Protection==" << std::endl;
+	std::cout << "When a creature you can see attacks a" << std::endl;
+	std::cout << "target other than you that is within" << std::endl;
+	std::cout << "5 feet of you, you can use your reaction" << std::endl;
+	std::cout << "to impose disadvantage on the attack roll." << std::endl;
+	std::cout << "You must be wielding a shield." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintGWFDef()
+{
+	std::cout << "\n==Great Weapon Fighting==" << std::endl;
+	std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
+	std::cout << "die for an attack you make with a" << std::endl;
+	std::cout << "melee weapon that you are wielding with" << std::endl;
+	std::cout << "two hands, you can reroll the die and must" << std::endl;
+	std::cout << "use the new roll, even if the new roll is" << std::endl;
+	std::cout << "a 1 or a 2. The weapon must have the" << std::endl;
+	std::cout << "two-handed or versatile property for you" << std::endl;
+	std::cout << "to gain this benefit." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintDuelingDef()
+{
+	std::cout << "\n==Dueling==" << std::endl;
+	std::cout << "When you are wielding a melee" << std::endl;
+	std::cout << "weapon in one hand and no other" << std::endl;
+	std::cout << "weapons, you gain a +2 bonus to" << std::endl;
+	std::cout << "damage rolls with that weapon." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintDefenseDef()
+{
+	std::cout << "\n==Defense==" << std::endl;
+	std::cout << "While you are wearing armor," << std::endl;
+	std::cout << "you gain a +1 bonus to AC." << std::endl;
+	std::cout << "-----------" << std::endl;
+}
+
+void Fighter::PrintArcheryDef()
+{
+	std::cout << "\n==Archery==" << std::endl;
+	std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
+	std::cout << "you make with ranged weapons." << std::endl;
+	std::cout << "-----------" << std::endl;
 }
 
 void Fighter::SetEnemyFightingStyle()
@@ -366,60 +357,30 @@ void Fighter::SetEnemyFightingStyle()
 
 void Fighter::DisplayClassInformation()
 {
-	std::cout << "\n\n******FIGHTER lvl " + this->GetLevel() << "******" << std::endl;
+	std::cout << "\n\n******FIGHTER lvl " << this->GetLevel() << "******" << std::endl;
 	if (fightingStyle == FIGHTING_STYLE::ARCHERY)
 	{
-		std::cout << "\n==Archery==" << std::endl;
-		std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
-		std::cout << "you make with ranged weapons." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintArcheryDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::DEFENSE)
 	{
-		std::cout << "\n==Defense==" << std::endl;
-		std::cout << "While you are wearing armor," << std::endl;
-		std::cout << "you gain a +1 bonus to AC." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintDefenseDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::DUELING)
 	{
-		std::cout << "\n==Dueling==" << std::endl;
-		std::cout << "When you are wielding a melee" << std::endl;
-		std::cout << "weapon in one hand and no other" << std::endl;
-		std::cout << "weapons, you gain a +2 bonus to" << std::endl;
-		std::cout << "damage rolls with that weapon." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintDuelingDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::GREAT_WEAPON_FIGHTING)
 	{
-		std::cout << "\n==Great Weapon Fighting==" << std::endl;
-		std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
-		std::cout << "die for an attack you make with a" << std::endl;
-		std::cout << "melee weapon that you are wielding with" << std::endl;
-		std::cout << "two hands, you can reroll the die and must" << std::endl;
-		std::cout << "use the new roll, even if the new roll is" << std::endl;
-		std::cout << "a 1 or a 2. The weapon must have the" << std::endl;
-		std::cout << "two-handed or versatile property for you" << std::endl;
-		std::cout << "to gain this benefit." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintGWFDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::PROTECTION)
 	{
-		std::cout << "\n==Protection==" << std::endl;
-		std::cout << "When a creature you can see attacks a" << std::endl;
-		std::cout << "target other than you that is within" << std::endl;
-		std::cout << "5 feet of you, you can use your reaction" << std::endl;
-		std::cout << "to impose disadvantage on the attack roll." << std::endl;
-		std::cout << "You must be wielding a shield." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintProtectionDef();
 	}
 	if (fightingStyle == FIGHTING_STYLE::TWO_WEAPON_FIGHTING)
 	{
-		std::cout << "\n==Two-Weapon Fighting==" << std::endl;
-		std::cout << "When you engage in two-weapon fighting," << std::endl;
-		std::cout << "you can add your ability modifier to" << std::endl;
-		std::cout << "the damage of the second attack." << std::endl;
-		std::cout << "-----------" << std::endl;
+		PrintTWFDef();
 	}
 }
 

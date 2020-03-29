@@ -9,7 +9,7 @@ public:
 
 	// constructors
 	Legs();
-	Legs(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
+	Legs(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
 
 	// destructor
 	virtual ~Legs() override;

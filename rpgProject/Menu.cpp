@@ -2,44 +2,44 @@
 
 void Menu::Print()
 {
-	cout << "----" << this->name << "----" << endl;
+	std::cout << "----" << this->name << "----" << std::endl;
 	int count{ 1 };
 	for (int i{}; i != options.size(); ++i)
 	{
-		cout << count << ") " << options[i] << endl;
+		std::cout << count << ") " << options[i] << std::endl;
 		count++;
 	}
-	cout << "----";
+	std::cout << "----";
 	for (int i{}; i != this->name.length(); i++)
 	{
 		cout << "-";
 	}
-	cout << "----" << endl;
+	std::cout << "----" << std::endl;
 }
 
-int Menu::PrintMenu(const int& decisions, const vector<string>& listOfDecisions)
+int Menu::PrintMenu(const int& decisions, const std::vector<std::string>& listOfDecisions)
 {
-	cout << "--------" << endl;
+	std::cout << "--------" << std::endl;
 	int count{ 1 };
 	for (int i{}; i != decisions; ++i)
 	{
-		cout << count << ") " << listOfDecisions[i] << endl;
+		cout << count << ") " << listOfDecisions[i] << std::endl;
 		count++;
 	}
-	cout << "--------" << endl;
+	std::cout << "--------" << std::endl;
 	return choiceHandler(decisions);
 }
 
-int Menu::UpgradeMenu(const int& decisions, const vector<std::unique_ptr<Item>>& listOfDecisions)
+int Menu::UpgradeMenu(const int& decisions, const std::vector<std::unique_ptr<Item>>& listOfDecisions)
 {
-	cout << "--------" << endl;
+	cout << "--------" << std::endl;
 	int count{ 1 };
 	for (int i{}; i != decisions; ++i)
 	{
 		cout << count << ") " << *(listOfDecisions.at(i)) << " : " << listOfDecisions.at(i)->GetValue() / 100 << " gold" << endl;
 		count++;
 	}
-	cout << "--------" << endl;
+	std::cout << "--------" << std::endl;
 	return choiceHandler(decisions);
 }
 
@@ -50,14 +50,14 @@ int Menu::choiceHandler(const int& decisions)
 
 	do
 	{
-		cout << "Please enter a number: ";
-		cin >> choice;
+		std::cout << "Please enter a number: ";
+		std::cin >> choice;
 
-		if (!(valid_input = cin.good()) || choice > decisions || choice < 1)
+		if (!(valid_input = std::cin.good()) || choice > decisions || choice < 1)
 		{
-			cout << "That's not a valid choice." << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "That's not a valid choice." << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	} while (!valid_input || choice > decisions || choice < 1);
 

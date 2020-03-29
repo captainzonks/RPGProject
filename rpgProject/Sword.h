@@ -8,7 +8,7 @@ class Sword :
 public:
 	// constructors
 	Sword();
-	Sword(string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level);
+	Sword(std::string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level);
 
 	// destructor
 	virtual ~Sword() override;

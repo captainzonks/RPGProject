@@ -9,7 +9,7 @@ public:
 
 	// constructors
 		// player constructor
-	Fighter(string name, string race);
+	Fighter(std::string name, std::string race);
 		// enemy constructor
 	Fighter(int identifier);
 
@@ -21,6 +21,12 @@ public:
 
 	// player fighting style
 	void SetFightingStyle();
+	void PrintTWFDef();
+	void PrintProtectionDef();
+	void PrintGWFDef();
+	void PrintDuelingDef();
+	void PrintDefenseDef();
+	void PrintArcheryDef();
 	// enemy fighting style
 	void SetEnemyFightingStyle();
 

@@ -1,14 +1,12 @@
 #include "Attack.h"
 
-// returns TRUE if at least one attack succeeds (FALSE for complete miss)
-bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
+void Attack::MakeAnAttack(Actor& attacker, Actor& target)
 {
-	bool success{ false };
 
 	std::cout << "\n" << attacker.GetName() << " is attacking " << target.GetName() << "!" << std::endl;
 
 	// check if dual wielding
-	if (attacker.myUpgrades.IsDualWielding())
+	if (attacker.IsDualWielding())
 	{
 		int resultL{ RollDice(1, 20) };
 		int resultR{ RollDice(1, 20) };
@@ -19,43 +17,46 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 		{
 			std::cout << "\n\t" << attacker.GetName() << " rolled a natural 20 with the both hits! Double critical hit!" << std::endl;
 			DealCriticalDamage(attacker, target, 'L', weaponLfinesse);
-			if (target.LivingOrDead())
+			if (target.IsAlive())
 			{
 				DealCriticalDamage(attacker, target, 'R', weaponRfinesse);
-				if (!target.LivingOrDead())
+				if (!target.IsAlive())
 					LootCorpse(attacker, target);
+				return;
 			}
 			else
 			{
 				LootCorpse(attacker, target);
+				return;
 			}
-			success = true;
 		}
 		// check left hand for critical hit
 		else if (resultL == 20 && resultR != 20)
 		{
 			std::cout << "\n\t" << attacker.GetName() << " rolled a natural 20 with the first attack! Critical hit!" << std::endl;
 			DealCriticalDamage(attacker, target, 'L', weaponLfinesse);
-			if (target.LivingOrDead())
+			if (target.IsAlive())
 			{
 				// check for hit with R attack
 				if (resultR < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 				{
 					std::cout << "\tSecond attack missed!" << std::endl;
+					return;
 				}
 
 				else if (resultR >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 				{
 					DealDamage(attacker, target, 'R', weaponRfinesse);
-					if (!target.LivingOrDead())
+					if (!target.IsAlive())
 						LootCorpse(attacker, target);
+					return;
 				}
 			}
 			else
 			{
 				LootCorpse(attacker, target);
+				return;
 			}
-			success = true;
 		}
 		// check right hand for critical hit
 		else if (resultR == 20 && resultL != 20 && resultL > 0)
@@ -69,23 +70,27 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 			else if (resultL >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 			{
 				DealDamage(attacker, target, 'L', weaponLfinesse);
-				if (!target.LivingOrDead())
+				if (!target.IsAlive())
+				{
 					LootCorpse(attacker, target);
+					return;
+				}
 			}
 
 			// check for living or dead then handle the R critical attack
-			if (target.LivingOrDead())
+			if (target.IsAlive())
 			{
 				std::cout << "\n\t" << attacker.GetName() << " rolled a natural 20 with the second attack! Critical hit!" << std::endl;
 				DealCriticalDamage(attacker, target, 'R', weaponRfinesse);
-				if (!target.LivingOrDead())
+				if (!target.IsAlive())
 					LootCorpse(attacker, target);
+				return;
 			}
 			else
 			{
 				LootCorpse(attacker, target);
+				return;
 			}
-			success = true;
 		}
 		else
 		{
@@ -105,39 +110,40 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 			// check results and deal damage
 			if (resultL < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 			{
-				success = false;
 				std::cout << "\tFirst attack missed!" << std::endl;
 			}
 			else if (resultL >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 			{
 				DealDamage(attacker, target, 'L', weaponLfinesse);
-				if (!target.LivingOrDead())
+				if (!target.IsAlive())
+				{
 					LootCorpse(attacker, target);
-				success = true;
+					return;
+				}
+
 			}
 
 			// second attack (check for death from first attack)
-			if (target.LivingOrDead())
+			if (target.IsAlive())
 			{
 				std::cout << "\n\t" << "2nd attack: " << attacker.GetName() << " rolled a " << resultR
 					<< " vs " << (target.GetArmorClass() + CheckForACModifier(target)) << " AC" << std::endl;
 				// check results and deal damage
 				if (resultR < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 				{
-					success = false;
 					std::cout << "\tSecond attack missed!" << std::endl;
+					return;
 				}
 
 				else if (resultR >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 				{
 					DealDamage(attacker, target, 'R', weaponRfinesse);
-					if (!target.LivingOrDead())
+					if (!target.IsAlive())
 						LootCorpse(attacker, target);
-					success = true;
+					return;
 				}
 			}
 		}
-		return success;
 	}
 
 	// if not dual wielding, then do a single weapon attack
@@ -168,9 +174,9 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 		{
 			std::cout << "\n\t" << attacker.GetName() << " rolled a natural 20! Critical hit!" << std::endl;
 			DealCriticalDamage(attacker, target, weaponHand, weaponHandFinesse);
-			if (!target.LivingOrDead())
+			if (!target.IsAlive())
 				LootCorpse(attacker, target);
-			success = true;
+			return;
 		}
 
 		// if not a crit, add on modifiers
@@ -187,24 +193,21 @@ bool Attack::MakeAnAttack(Actor& attacker, Actor& target)
 		if (result < (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 		{
 			std::cout << "\t" << attacker.GetName() << " missed!" << std::endl;
-			success = false;
 		}
 
 		else if (result >= (target.GetArmorClass() + CheckForACModifier(target) + target.myInventory.GetArmorBonus()))
 		{
 			DealDamage(attacker, target, weaponHand, weaponHandFinesse);
-			if (!target.LivingOrDead())
+			if (!target.IsAlive())
 				LootCorpse(attacker, target);
-			success = true;
 		}
-		return success;
 	}
 }
 
 void Attack::DealDamage(Actor& attacker, Actor& target, char hand, bool finesse)
 {
 	unsigned int total{};
-	if (target.LivingOrDead())
+	if (target.IsAlive())
 	{
 		// left hand
 		if (hand == 'L')
@@ -277,7 +280,7 @@ void Attack::DealDamage(Actor& attacker, Actor& target, char hand, bool finesse)
 
 void Attack::DealCriticalDamage(Actor& attacker, Actor& target, char hand, bool finesse)
 {
-	if (target.LivingOrDead())
+	if (target.IsAlive())
 	{
 		int total{};
 		// left hand

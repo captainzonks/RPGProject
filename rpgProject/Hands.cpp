@@ -11,7 +11,7 @@ Hands::Hands()
 	this->value = 300;
 }
 
-Hands::Hands(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
+Hands::Hands(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorType = armorType;

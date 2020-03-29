@@ -7,7 +7,7 @@ public:
 
 	// constructors
 	Helmet();
-	Helmet(string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
+	Helmet(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
 
 	// destructor
 	virtual ~Helmet() override;
