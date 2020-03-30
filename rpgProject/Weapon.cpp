@@ -28,6 +28,11 @@ bool Weapon::IsFinesse()
 	return isFinesse;
 }
 
+bool Weapon::IsTwoHanded()
+{
+	return isTwoHanded;
+}
+
 void Weapon::UpgradeWeapon()
 {
 	this->level++;

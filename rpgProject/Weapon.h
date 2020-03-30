@@ -17,7 +17,7 @@ public:
 	virtual int GetAttackDieWeapon() const;
 	virtual int GetModifier() const;
 	virtual WEAPON_TYPE GetWeaponType() const;
-	virtual bool IsFinesse();
+	virtual bool IsFinesse(), IsTwoHanded();
 
 	// upgrade
 	virtual void UpgradeWeapon();
@@ -26,6 +26,7 @@ protected:
 	int attackDie{};
 	int attackModifier{};
 	bool isFinesse{};
+	bool isTwoHanded{};
 	ITEM_TYPE itemType{ ITEM_TYPE::WEAPON };
 	WEAPON_TYPE weaponType{ WEAPON_TYPE::NONE };
 	WEAPON_PROFICIENCY weaponProficiency{ WEAPON_PROFICIENCY::NONE };

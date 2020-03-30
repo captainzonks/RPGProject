@@ -166,6 +166,11 @@ bool Actor::IsDualWielding()
 	return isDualWielding;
 }
 
+bool Actor::IsTwoHandedMelee()
+{
+	return isTwoHanded;
+}
+
 void Actor::Display()
 {
 	cout << endl;

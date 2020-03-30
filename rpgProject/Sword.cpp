@@ -12,16 +12,31 @@ Sword::Sword()
 	this->weaponProficiency = WEAPON_PROFICIENCY::MARTIAL;
 }
 
-Sword::Sword(std::string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level)
+Sword::Sword(std::string swordType)
 {
-	this->name = name;
-	this->durability = durability;
-	this->value = value;
-	this->attackDie = attackDie;
-	this->level = level;
-	this->damageType = damageType;
-	this->weaponType = WEAPON_TYPE::MELEE;
-	this->weaponProficiency = WEAPON_PROFICIENCY::MARTIAL;
+	if (swordType == "Shortsword")
+	{
+		this->name = "Shortsword";
+		this->durability = 20;
+		this->value = 1000;
+		this->level = 1;
+		this->isFinesse = true;
+		this->isTwoHanded = false;
+		this->attackDie = 6;
+		this->damageType = DAMAGE_TYPE::PIERCING;
+		this->weaponType = WEAPON_TYPE::MELEE;
+		this->weaponProficiency = WEAPON_PROFICIENCY::MARTIAL;
+	}
+	else if (swordType == "Greatsword")
+	{
+		this->name = "Greatsword";
+		this->durability = 20;
+		this->value = 5000;
+		this->level = 1;
+		this->isFinesse = false;
+		this->isTwoHanded = true;
+		this->attackDie = 6;
+	}
 }
 
 Sword::~Sword()
