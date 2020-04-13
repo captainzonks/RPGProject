@@ -6,7 +6,7 @@ class ShortBow :
 public:
 	// constructors
 	ShortBow();
-	ShortBow(std::string name, int attackDie, DAMAGE_TYPE damageType, int durability, int value, int level);
+	ShortBow(std::string name, int attackDie, damage_type damageType, int durability, int value, int level);
 
 	// destructor
 	virtual ~ShortBow() override;

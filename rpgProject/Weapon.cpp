@@ -18,7 +18,7 @@ int Weapon::GetModifier() const
 	return attackModifier;
 }
 
-WEAPON_TYPE Weapon::GetWeaponType() const
+weapon_type Weapon::GetWeaponType() const
 {
 	return weaponType;
 }

@@ -8,12 +8,12 @@ Blacksmith::~Blacksmith()
 {
 }
 
-void Blacksmith::MakeArmor(Actor& actor)
+void Blacksmith::MakeArmor(actor& actor)
 {
 
 }
 
-void Blacksmith::MakeWeapon(Actor& actor)
+void Blacksmith::MakeWeapon(actor& actor)
 {
 
 }

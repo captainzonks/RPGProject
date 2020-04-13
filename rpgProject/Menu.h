@@ -54,7 +54,7 @@ public:
 
 	// dynamic menu creation and handling
 	int PrintMenu(const int& decisions, const std::vector<std::string>& listOfDecisions);
-	int UpgradeMenu(const int& decisions, const std::vector<std::unique_ptr<Item>>& listOfDecisions);
+	int UpgradeMenu(const int& decisions, const std::vector<std::unique_ptr<item>>& listOfDecisions);
 
 
 private:
@@ -69,6 +69,6 @@ int choice{};
 std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 std::unique_ptr<int> const decisions = std::make_unique<int>(4);
 std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Human", "Dwarf", "Elf", "Halfling" }));
-choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+choice = tempMenu->print_menu(*decisions, *tempDecisions);
 
 */

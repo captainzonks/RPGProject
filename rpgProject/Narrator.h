@@ -7,7 +7,7 @@
 ////#include "Dwarf.h"
 ////#include "Elf.h"
 ////#include "Halfling.h"
-//#include "Item.h"
+//#include "item.h"
 //#include "Weapon.h"
 //#include "Sword.h"
 //#include "ShortBow.h"
@@ -27,18 +27,18 @@
 //	void StartGreeting();
 //
 //	// character creation
-//	Actor* CharacterCreator();
+//	actor* CharacterCreator();
 //
 //	// upgrades
-//	void BuySomething(Actor& player);
-//	bool CheckPrice(Actor& player, int price) const;
-//	void Upgrader(Actor& actor);
+//	void BuySomething(actor& player);
+//	bool CheckPrice(actor& player, int price) const;
+//	void Upgrader(actor& actor);
 //
 //	// shop function
-//	void DisplayPrice(const int copper) const;
+//	void display_price(const int copper_) const;
 //
-//	// get player item level
-//	int GetPlayerAverageLevel(Actor& player) const;
+//	// get player item level_
+//	int GetPlayerAverageLevel(actor& player) const;
 //
 //
 //

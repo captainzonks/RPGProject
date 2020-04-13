@@ -155,7 +155,7 @@ make sure the orders are sorting properly
 */
 void CombatState::DisplayIniatives()
 {
-	// debug Display initiative order to check
+	// debug display initiative order to check
 	for (auto actor : initiativeOrder)
 	{
 		std::cout << actor->GetName() << " Initiative: " << actor->GetInitiative() << std::endl;

@@ -18,6 +18,87 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="actor.cpp" />
+    <ClCompile Include="armor.cpp" />
+    <ClCompile Include="attack.cpp" />
+    <ClCompile Include="attributes.cpp" />
+    <ClCompile Include="blacksmith.cpp" />
+    <ClCompile Include="boots.cpp" />
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="character_creator_state.cpp" />
+    <ClCompile Include="chest.cpp" />
+    <ClCompile Include="combat_class.cpp" />
+    <ClCompile Include="combat_state.cpp" />
+    <ClCompile Include="currency.cpp" />
+    <ClCompile Include="dwarf.cpp" />
+    <ClCompile Include="elf.cpp" />
+    <ClCompile Include="encounter.cpp" />
+    <ClCompile Include="enemy_manager.cpp" />
+    <ClCompile Include="fighter.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_state.cpp" />
+    <ClCompile Include="halfling.cpp" />
+    <ClCompile Include="hands.cpp" />
+    <ClCompile Include="helmet.cpp" />
+    <ClCompile Include="human.cpp" />
+    <ClCompile Include="inventory.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="i_display.cpp" />
+    <ClCompile Include="legs.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="menu_state.cpp" />
+    <ClCompile Include="narrator.cpp" />
+    <ClCompile Include="potion.cpp" />
+    <ClCompile Include="shield.cpp" />
+    <ClCompile Include="shop_menu_state.cpp" />
+    <ClCompile Include="short_bow.cpp" />
+    <ClCompile Include="sword.cpp" />
+    <ClCompile Include="upgrades.cpp" />
+    <ClCompile Include="weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="actor.h" />
+    <ClInclude Include="armor.h" />
+    <ClInclude Include="attack.h" />
+    <ClInclude Include="attributes.h" />
+    <ClInclude Include="blacksmith.h" />
+    <ClInclude Include="boots.h" />
+    <ClInclude Include="character.h" />
+    <ClInclude Include="character_creator_state.h" />
+    <ClInclude Include="chest.h" />
+    <ClInclude Include="combat_class.h" />
+    <ClInclude Include="combat_state.h" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="currency.h" />
+    <ClInclude Include="dwarf.h" />
+    <ClInclude Include="elf.h" />
+    <ClInclude Include="encounter.h" />
+    <ClInclude Include="enemy_manager.h" />
+    <ClInclude Include="fighter.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="game_state.h" />
+    <ClInclude Include="halfling.h" />
+    <ClInclude Include="hands.h" />
+    <ClInclude Include="helmet.h" />
+    <ClInclude Include="helper_functions.h" />
+    <ClInclude Include="human.h" />
+    <ClInclude Include="inventory.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="i_display.h" />
+    <ClInclude Include="legs.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="menu_state.h" />
+    <ClInclude Include="narrator.h" />
+    <ClInclude Include="potion.h" />
+    <ClInclude Include="shield.h" />
+    <ClInclude Include="shop_menu_state.h" />
+    <ClInclude Include="short_bow.h" />
+    <ClInclude Include="sword.h" />
+    <ClInclude Include="upgrades.h" />
+    <ClInclude Include="weapon.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{D4CB675C-78F1-4EE6-B522-AC4EEB69337E}</ProjectGuid>
@@ -150,83 +231,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="Attack.cpp" />
-    <ClCompile Include="Blacksmith.cpp" />
-    <ClCompile Include="Boots.cpp" />
-    <ClCompile Include="CharacterCreatorState.cpp" />
-    <ClCompile Include="Chest.cpp" />
-    <ClCompile Include="CombatClass.cpp" />
-    <ClCompile Include="CombatState.cpp" />
-    <ClCompile Include="Currency.cpp" />
-    <ClCompile Include="Dwarf.cpp" />
-    <ClCompile Include="Elf.cpp" />
-    <ClCompile Include="Encounter.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
-    <ClCompile Include="Fighter.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="Halfling.cpp" />
-    <ClCompile Include="Hands.cpp" />
-    <ClCompile Include="Helmet.cpp" />
-    <ClCompile Include="Human.cpp" />
-    <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="I_Display.cpp" />
-    <ClCompile Include="Legs.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="MenuState.cpp" />
-    <ClCompile Include="Narrator.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Potion.cpp" />
-    <ClCompile Include="Shield.cpp" />
-    <ClCompile Include="ShopMenuState.cpp" />
-    <ClCompile Include="ShortBow.cpp" />
-    <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="Upgrades.cpp" />
-    <ClCompile Include="Weapon.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="Armor.h" />
-    <ClInclude Include="Attack.h" />
-    <ClInclude Include="Blacksmith.h" />
-    <ClInclude Include="Boots.h" />
-    <ClInclude Include="CharacterCreatorState.h" />
-    <ClInclude Include="Chest.h" />
-    <ClInclude Include="CombatClass.h" />
-    <ClInclude Include="CombatState.h" />
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="Currency.h" />
-    <ClInclude Include="Dwarf.h" />
-    <ClInclude Include="Elf.h" />
-    <ClInclude Include="Encounter.h" />
-    <ClInclude Include="EnemyManager.h" />
-    <ClInclude Include="Fighter.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="Halfling.h" />
-    <ClInclude Include="Hands.h" />
-    <ClInclude Include="Helmet.h" />
-    <ClInclude Include="HelperFunctions.h" />
-    <ClInclude Include="Human.h" />
-    <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="I_Display.h" />
-    <ClInclude Include="Legs.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="MenuState.h" />
-    <ClInclude Include="Narrator.h" />
-    <ClInclude Include="Potion.h" />
-    <ClInclude Include="Shield.h" />
-    <ClInclude Include="ShopMenuState.h" />
-    <ClInclude Include="ShortBow.h" />
-    <ClInclude Include="Sword.h" />
-    <ClInclude Include="Upgrades.h" />
-    <ClInclude Include="Weapon.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

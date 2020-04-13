@@ -3,7 +3,7 @@
 #include "Item.h"
 
 class Weapon :
-	public Item
+	public item
 {
 public:
 
@@ -16,7 +16,7 @@ public:
 	// getter
 	virtual int GetAttackDieWeapon() const;
 	virtual int GetModifier() const;
-	virtual WEAPON_TYPE GetWeaponType() const;
+	virtual weapon_type GetWeaponType() const;
 	virtual bool IsFinesse(), IsTwoHanded();
 
 	// upgrade
@@ -27,8 +27,8 @@ protected:
 	int attackModifier{};
 	bool isFinesse{};
 	bool isTwoHanded{};
-	ITEM_TYPE itemType{ ITEM_TYPE::WEAPON };
-	WEAPON_TYPE weaponType{ WEAPON_TYPE::NONE };
-	WEAPON_PROFICIENCY weaponProficiency{ WEAPON_PROFICIENCY::NONE };
+	item_type itemType{ item_type::weapon };
+	weapon_type weaponType{ weapon_type::none };
+	weapon_proficiency weaponProficiency{ weapon_proficiency::none };
 };
 

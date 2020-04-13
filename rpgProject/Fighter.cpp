@@ -7,37 +7,37 @@ Fighter::Fighter(std::string name, std::string race)
 
 	this->name = name;
 	this->race = race;
-	this->combatClass = COMBAT_CLASS::FIGHTER;
-	this->savingThrows = { ABILITIES::STRENGTH, ABILITIES::CONSTITUTION };
+	this->combatClass = character_class::fighter;
+	this->savingThrows = { abilities::strength, abilities::constitution };
 
 	if (race == "Human")
 	{
-		RollHumanStats();
+		roll_human_stats();
 	}
 	else if (race == "Dwarf")
 	{
-		RollDwarfStats();
+		roll_dwarf_stats();
 		this->walkingSpeed = 25;
 	}
 	else if (race == "Elf")
 	{
-		RollElfStats();
+		roll_elf_stats();
 	}
 	else if (race == "Halfling")
 	{
-		RollHalflingStats();
+		roll_halfling_stats();
 		this->walkingSpeed = 25;
 	}
 
 	this->xp = 0;
-	this->level = 1;
+	this->level_ = 1;
 	this->myCurrency.AddMoney(RollDice(4, 4) * 10000);
 
 	SetFightingStyle();
 	this->hitDice = 10;
 	this->hitDiceQuantity = 1;
-	this->health = GetHitDice() + GetConstMod();
-	this->maxHealth = health;
+	this->health = GetHitDice() + get_const_mod();
+	this->max_health_ = health;
 }
 
 Fighter::Fighter(int identifier)
@@ -45,41 +45,41 @@ Fighter::Fighter(int identifier)
 	std::cout << "Bad Guy Fighter constructor called" << std::endl;
 
 	this->identifier = identifier;
-	this->combatClass = COMBAT_CLASS::FIGHTER;
-	this->savingThrows = { ABILITIES::STRENGTH, ABILITIES::CONSTITUTION };
+	this->combatClass = character_class::fighter;
+	this->savingThrows = { abilities::strength, abilities::constitution };
 
 	int randomRaceChoice{ rand() % 4 + 1 };
 	if (randomRaceChoice == 1)
 	{
 		this->race = "Human";
-		RollHumanStats();
+		roll_human_stats();
 	}
 	else if (randomRaceChoice == 2)
 	{
 		this->race = "Dwarf";
-		RollDwarfStats();
+		roll_dwarf_stats();
 	}
 	else if (randomRaceChoice == 3)
 	{
 		this->race = "Elf";
-		RollElfStats();
+		roll_elf_stats();
 	}
 	else if (randomRaceChoice == 4)
 	{
 		this->race = "Halfling";
-		RollHalflingStats();
+		roll_halfling_stats();
 	}
 
 	this->name = "Bad Guy " + std::to_string(identifier) + " (" + race + ")";
 	this->xp = 0;
-	this->level = 1;
+	this->level_ = 1;
 	this->myCurrency.AddMoney(RollDice(4, 4) * 10);
 
 	SetEnemyFightingStyle();
 	this->hitDice = 10;
 	this->hitDiceQuantity = 1;
-	this->health = GetHitDice() + GetConstMod();
-	this->maxHealth = health;
+	this->health = GetHitDice() + get_const_mod();
+	this->max_health_ = health;
 }
 
 Fighter::~Fighter()
@@ -87,7 +87,7 @@ Fighter::~Fighter()
 	std::cout << "Fighter destructor called" << std::endl; // debug
 }
 
-void Fighter::RollHumanStats()
+void Fighter::roll_human_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6) + 1;
 	this->dexterity = RollDiceIgnoreLowest(4, 6) + 1;
@@ -97,7 +97,7 @@ void Fighter::RollHumanStats()
 	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
 }
 
-void Fighter::RollDwarfStats()
+void Fighter::roll_dwarf_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6) + 2;
 	this->dexterity = RollDiceIgnoreLowest(4, 6);
@@ -107,7 +107,7 @@ void Fighter::RollDwarfStats()
 	this->charisma = RollDiceIgnoreLowest(4, 6);
 }
 
-void Fighter::RollElfStats()
+void Fighter::roll_elf_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6);
 	this->dexterity = RollDiceIgnoreLowest(4, 6) + 2;
@@ -117,7 +117,7 @@ void Fighter::RollElfStats()
 	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
 }
 
-void Fighter::RollHalflingStats()
+void Fighter::roll_halfling_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6);
 	this->dexterity = RollDiceIgnoreLowest(4, 6);
@@ -151,12 +151,12 @@ void Fighter::SetFightingStyle()
 			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
-				fightingStyle = FIGHTING_STYLE::ARCHERY;
+				fightingStyle = fighting_style::archery;
 			else
 				SetFightingStyle();
 		}
 		if (choice == 2)
-			fightingStyle = FIGHTING_STYLE::ARCHERY;
+			fightingStyle = fighting_style::archery;
 		if (choice == 3)
 			SetFightingStyle();
 	}
@@ -174,12 +174,12 @@ void Fighter::SetFightingStyle()
 			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
-				fightingStyle = FIGHTING_STYLE::DEFENSE;
+				fightingStyle = fighting_style::defense;
 			else
 				SetFightingStyle();
 		}
 		if (choice == 2)
-			fightingStyle = FIGHTING_STYLE::DEFENSE;
+			fightingStyle = fighting_style::defense;
 		if (choice == 3)
 			SetFightingStyle();
 	}
@@ -197,12 +197,12 @@ void Fighter::SetFightingStyle()
 			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
-				fightingStyle = FIGHTING_STYLE::DUELING;
+				fightingStyle = fighting_style::dueling;
 			else
 				SetFightingStyle();
 		}
 		if (choice == 2)
-			fightingStyle = FIGHTING_STYLE::DUELING;
+			fightingStyle = fighting_style::dueling;
 		if (choice == 3)
 			SetFightingStyle();
 	}
@@ -220,12 +220,12 @@ void Fighter::SetFightingStyle()
 			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
-				fightingStyle = FIGHTING_STYLE::GREAT_WEAPON_FIGHTING;
+				fightingStyle = fighting_style::great_weapon_fighting;
 			else
 				SetFightingStyle();
 		}
 		if (choice == 2)
-			fightingStyle = FIGHTING_STYLE::GREAT_WEAPON_FIGHTING;
+			fightingStyle = fighting_style::great_weapon_fighting;
 		if (choice == 3)
 			SetFightingStyle();
 	}
@@ -243,12 +243,12 @@ void Fighter::SetFightingStyle()
 			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
-				fightingStyle = FIGHTING_STYLE::PROTECTION;
+				fightingStyle = fighting_style::protection;
 			else
 				SetFightingStyle();
 		}
 		if (choice == 2)
-			fightingStyle = FIGHTING_STYLE::PROTECTION;
+			fightingStyle = fighting_style::protection;
 		if (choice == 3)
 			SetFightingStyle();
 	}
@@ -266,12 +266,12 @@ void Fighter::SetFightingStyle()
 			choice = MenuChoice(pickThis);
 
 			if (choice == 1)
-				fightingStyle = FIGHTING_STYLE::TWO_WEAPON_FIGHTING;
+				fightingStyle = fighting_style::two_weapon_fighting;
 			else
 				SetFightingStyle();
 		}
 		if (choice == 2)
-			fightingStyle = FIGHTING_STYLE::TWO_WEAPON_FIGHTING;
+			fightingStyle = fighting_style::two_weapon_fighting;
 		if (choice == 3)
 			SetFightingStyle();
 	}
@@ -342,58 +342,58 @@ void Fighter::SetEnemyFightingStyle()
 	int randomFightingStyle{ rand() % 6 + 1 };
 
 	if (randomFightingStyle == 1)
-		this->fightingStyle = FIGHTING_STYLE::ARCHERY;
+		this->fightingStyle = fighting_style::archery;
 	else if (randomFightingStyle == 2)
-		this->fightingStyle = FIGHTING_STYLE::DEFENSE;
+		this->fightingStyle = fighting_style::defense;
 	else if (randomFightingStyle == 3)
-		this->fightingStyle = FIGHTING_STYLE::DUELING;
+		this->fightingStyle = fighting_style::dueling;
 	else if (randomFightingStyle == 4)
-		this->fightingStyle = FIGHTING_STYLE::GREAT_WEAPON_FIGHTING;
+		this->fightingStyle = fighting_style::great_weapon_fighting;
 	else if (randomFightingStyle == 5)
-		this->fightingStyle = FIGHTING_STYLE::PROTECTION;
+		this->fightingStyle = fighting_style::protection;
 	else if (randomFightingStyle == 6)
-		this->fightingStyle = FIGHTING_STYLE::TWO_WEAPON_FIGHTING;
+		this->fightingStyle = fighting_style::two_weapon_fighting;
 }
 
 void Fighter::DisplayClassInformation()
 {
-	std::cout << "\n\n******FIGHTER lvl " << this->GetLevel() << "******" << std::endl;
-	if (fightingStyle == FIGHTING_STYLE::ARCHERY)
+	std::cout << "\n\n******fighter lvl " << this->get_level() << "******" << std::endl;
+	if (fightingStyle == fighting_style::archery)
 	{
 		PrintArcheryDef();
 	}
-	if (fightingStyle == FIGHTING_STYLE::DEFENSE)
+	if (fightingStyle == fighting_style::defense)
 	{
 		PrintDefenseDef();
 	}
-	if (fightingStyle == FIGHTING_STYLE::DUELING)
+	if (fightingStyle == fighting_style::dueling)
 	{
 		PrintDuelingDef();
 	}
-	if (fightingStyle == FIGHTING_STYLE::GREAT_WEAPON_FIGHTING)
+	if (fightingStyle == fighting_style::great_weapon_fighting)
 	{
 		PrintGWFDef();
 	}
-	if (fightingStyle == FIGHTING_STYLE::PROTECTION)
+	if (fightingStyle == fighting_style::protection)
 	{
 		PrintProtectionDef();
 	}
-	if (fightingStyle == FIGHTING_STYLE::TWO_WEAPON_FIGHTING)
+	if (fightingStyle == fighting_style::two_weapon_fighting)
 	{
 		PrintTWFDef();
 	}
 }
 
-void Fighter::LevelUp()
+void Fighter::level_up()
 {
-	this->maxHealth += RollDice(1, GetHitDice()) + GetConstMod();
-	this->health = this->maxHealth;
-	if (level >= 5)
+	this->max_health_ += RollDice(1, GetHitDice()) + get_const_mod();
+	this->health = this->max_health_;
+	if (level_ >= 5)
 		this->proficiencyBonus = 3;
-	if (level >= 9)
+	if (level_ >= 9)
 		this->proficiencyBonus = 4;
-	if (level >= 13)
+	if (level_ >= 13)
 		this->proficiencyBonus = 5;
-	if (level >= 17)
+	if (level_ >= 17)
 		this->proficiencyBonus = 6;
 }

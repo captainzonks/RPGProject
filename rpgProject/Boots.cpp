@@ -4,14 +4,14 @@ Boots::Boots()
 {
 	// default constructor makes light armor
 	this->name = "Boots";
-	this->armorType = ARMOR_TYPE::LIGHT_ARMOR;
+	this->armorType = armor_type::light_armor;
 	this->armorValue = 2;
 	this->level = 1;
 	this->durability = 20;
 	this->value = 300;
 }
 
-Boots::Boots(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level)
+Boots::Boots(std::string name, armor_type armorType, int armorValue, int durability, int value, int level)
 {
 	this->name = name;
 	this->armorType = armorType;
@@ -20,7 +20,7 @@ Boots::Boots(std::string name, ARMOR_TYPE armorType, int armorValue, int durabil
 	this->value = value;
 	this->level = level;
 
-	if (armorType == ARMOR_TYPE::HEAVY_ARMOR)
+	if (armorType == armor_type::heavy_armor)
 		stealthDisadvantage = true;
 }
 

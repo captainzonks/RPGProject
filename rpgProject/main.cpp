@@ -1,28 +1,28 @@
 // MAIN
 
-#include "Game.h"
-#include "CharacterCreatorState.h"
+#include "game.h"
+#include "character_creator_state.h"
 
 int main()
 {
-    Game game;
+    game game;
 
     // initialize
-    game.Initialize();
+    game.initialize();
 
     // start the character creator
-    game.ChangeState(CharacterCreatorState::Instance());
+    game.change_state(character_creator_state::instance());
 
     // main loop
-    while (game.IsRunning())
+    while (game.is_running())
     {
-        game.HandleEvents();
-        game.Update();
-        game.Draw();
+        game.handle_events();
+        game.update();
+        game.draw();
     }
 
     // cleanup
-    game.Cleanup();
+    game.cleanup();
 
     return 0;
 }

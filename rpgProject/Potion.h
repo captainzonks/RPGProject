@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 class Potion :
-	public Item
+	public item
 {
 public:
 	// constructor
@@ -24,6 +24,6 @@ public:
 
 private:
 	int healthValue{};
-	ITEM_TYPE itemType{ ITEM_TYPE::POTION };
+	item_type itemType{ item_type::consumable };
 };
 

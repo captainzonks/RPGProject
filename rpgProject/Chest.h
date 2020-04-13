@@ -9,7 +9,7 @@ public:
 
 	// constructors
 	Chest();
-	Chest(std::string name, ARMOR_TYPE armorType, int armorValue, int durability, int value, int level);
+	Chest(std::string name, armor_type armorType, int armorValue, int durability, int value, int level);
 
 	// destructor
 	virtual ~Chest() override;

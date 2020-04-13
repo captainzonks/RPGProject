@@ -1,83 +1,86 @@
-#pragma once
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #include <string>
 
-static std::string version{"v0.01h"};
+static std::string game_version{"v0.02"};
 
-enum class COMBAT_CLASS
+enum class character_class
 {
-	NONE = 0,
-	FIGHTER = 1
+	none = 0,
+	fighter = 1
 };
 
 // fighter related enum
-enum class FIGHTING_STYLE
+enum class fighting_style
 {
-	NONE = 0,
-	ARCHERY = 1,
-	DEFENSE = 2,
-	DUELING = 3,
-	GREAT_WEAPON_FIGHTING = 4,
-	PROTECTION = 5,
-	TWO_WEAPON_FIGHTING = 6
+	none = 0,
+	archery = 1,
+	defense = 2,
+	dueling = 3,
+	great_weapon_fighting = 4,
+	protection = 5,
+	two_weapon_fighting = 6
 };
 
-enum class DAMAGE_TYPE
+enum class damage_type
 {
-	NONE = 0,
-	ACID = 1,
-	BLUDGEONING = 2,
-	COLD = 3,
-	FIRE = 4,
-	FORCE = 5,
-	LIGHTNING = 6,
-	NECROTIC = 7,
-	PIERCING = 8,
-	POISON = 9,
-	PSYCHIC = 10,
-	RADIANT = 11,
-	SLASHING = 12,
-	THUNDER = 13
+	none = 0,
+	acid = 1,
+	bludgeoning = 2,
+	cold = 3,
+	fire = 4,
+	force = 5,
+	lightning = 6,
+	necrotic = 7,
+	piercing = 8,
+	poison = 9,
+	psychic = 10,
+	radiant = 11,
+	slashing = 12,
+	thunder = 13
 };
 
-enum class ITEM_TYPE
+enum class item_type
 {
-	NONE = 0,
-	POTION = 1,
-	ARMOR = 2,
-	WEAPON = 3
+	none = 0,
+	consumable = 1,
+	armor = 2,
+	weapon = 3
 };
 
-enum class WEAPON_TYPE
+enum class weapon_type
 {
-	NONE = 0,
-	MELEE = 1,
-	RANGED = 2
+	none = 0,
+	melee = 1,
+	ranged = 2
 };
 
-enum class WEAPON_PROFICIENCY
+enum class weapon_proficiency
 {
-	NONE = 0,
-	SIMPLE = 1,
-	MARTIAL = 2
+	none = 0,
+	simple = 1,
+	martial = 2
 };
 
-enum class ARMOR_TYPE
+enum class armor_type
 {
-	NONE = 0,
-	LIGHT_ARMOR = 1,
-	MEDIUM_ARMOR = 2,
-	HEAVY_ARMOR = 3,
-	SHIELD = 4
+	none = 0,
+	light_armor = 1,
+	medium_armor = 2,
+	heavy_armor = 3,
+	shield = 4
 };
 
-enum class ABILITIES
+enum class abilities
 {
-	NONE = 0,
-	STRENGTH = 1,
-	DEXTERITY = 2,
-	CONSTITUTION = 3,
-	INTELLIGENCE = 4,
-	WISDOM = 5,
-	CHARISMA = 6
+	none = 0,
+	strength = 1,
+	dexterity = 2,
+	constitution = 3,
+	intelligence = 4,
+	wisdom = 5,
+	charisma = 6
 };
+
+#endif

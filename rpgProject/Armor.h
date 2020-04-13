@@ -3,7 +3,7 @@
 #include "Item.h"
 
 class Armor :
-	public Item
+	public item
 {
 public:
 
@@ -22,7 +22,7 @@ public:
 protected:
 	int armorValue{};
 	bool stealthDisadvantage{ false };
-	ITEM_TYPE itemType{ ITEM_TYPE::ARMOR };
-	ARMOR_TYPE armorType{ ARMOR_TYPE::NONE };
+	item_type itemType{ item_type::armor };
+	armor_type armorType{ armor_type::none };
 };
 

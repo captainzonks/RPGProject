@@ -1,74 +1,71 @@
-#pragma once
+#ifndef INVENTORY_H
+#define INVENTORY_H
 
-#include "Item.h"
-#include "Armor.h"
-#include "Weapon.h"
-#include "Potion.h"
-#include "Menu.h"
-
+#include <memory>
+#include <string>
 #include <vector>
-#include <algorithm>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::vector;
+class item;
 
-class Inventory
+class inventory
 {
 public:
-	friend class Actor;
+	inventory(const inventory& other) = default;
+
+	inventory(inventory&& other) noexcept
+		: the_inventory_(std::move(other.the_inventory_)),
+		  capacity_(other.capacity_),
+		  ammunition_(other.ammunition_)
+	{
+	}
+
+	inventory& operator=(const inventory& other)
+	{
+		if (this == &other)
+			return *this;
+		the_inventory_ = other.the_inventory_;
+		capacity_ = other.capacity_;
+		ammunition_ = other.ammunition_;
+		return *this;
+	}
+
+	inventory& operator=(inventory&& other) noexcept
+	{
+		if (this == &other)
+			return *this;
+		the_inventory_ = std::move(other.the_inventory_);
+		capacity_ = other.capacity_;
+		ammunition_ = other.ammunition_;
+		return *this;
+	}
+
 	// constructor
-	Inventory();
+	inventory() = default;
 
 	// destructor
-	~Inventory();
+	~inventory();
 
-	void SetCapacity(int capacityChange);
-	int GetCapacity() const;
-	int TotalItemsInInventory() const;
-
-	// weaponL functions
-	void GetWeaponL(std::unique_ptr<Weapon> weaponL);
-	void GetWeaponR(std::unique_ptr<Weapon> weaponR);
-	bool HasWeapon();
-	int GetAttackDiceL();
-	int GetAttackDiceR();
-
-	// armor functions
-	void GetArmor(std::unique_ptr<Armor> armor);
-	bool HasArmor();
-	int GetArmorBonus();
+	void set_capacity(int new_capacity);
+	unsigned int get_capacity() const;
+	int total_items_in_inventory() const;
 
 	// inventory functions
-	void AddToInventory(std::unique_ptr<Item> item);
-	void AddPotionToInventory(std::unique_ptr<Potion> potion);
-	void RemoveFromInventory(std::unique_ptr<Item> item);
-	void RemovePotionFromInventory(std::unique_ptr<Potion> potion);
-	void DisplayInventory() const;
-	void DisplayPotions() const;
-	std::unique_ptr<Item> GetItem(int itemNumber);
-	std::unique_ptr<Potion> GetPotion(int itemNumber);
+	void add_to_inventory(std::unique_ptr<item> item);
+	void remove_from_inventory(const std::string& item_name);
+	void display_inventory() const;
+	std::unique_ptr<item> get_item(const std::string& item_name);
 	
-	// ammunition
-	int ReturnAmmo();
-	void SubtractAmmo();
-	void AddAmmo(int amount);
-
-	// Item* selectItemInInventory();
+	// ammunition_
+	int return_ammo() const;
+	void subtract_ammo();
+	void add_ammo(int amount);
 
 private:
 
-	vector<std::unique_ptr<Item>> inventory{};
-	vector<std::unique_ptr<Potion>> potionInventory{};
-	bool hasWeaponL{ false };
-	bool hasWeaponR{ false };
-	bool hasArmor{ false };
-	int attackDiceL{ 4 };
-	int attackDiceR{ 4 };
-	int armorBonus{};
-	int capacity{ 10 };
-	int ammunition{ 100 };
-	int potionCapacity{ 5 };
+	std::vector<std::unique_ptr<item>> the_inventory_{};
+	unsigned int capacity_{};
+	int ammunition_{};
 
 };
+
+#endif

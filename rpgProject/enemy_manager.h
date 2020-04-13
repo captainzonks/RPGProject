@@ -5,7 +5,7 @@
 //#include "Dwarf.h"
 //#include "Elf.h"
 //#include "Halfling.h"
-#include "Upgrades.h"
+#include "upgrades.h"
 
 #include <vector>
 
@@ -13,13 +13,13 @@ class EnemyManager
 {
 public:
 	~EnemyManager();
-	Actor* CreateEnemy(int playerItemLevel);
-	void GetUpgrades(int playerItemLevel, Actor& enemy);
-	void AddEnemy(Actor* enemy);
+	actor* CreateEnemy(int playerItemLevel);
+	void GetUpgrades(int playerItemLevel, actor& enemy);
+	void AddEnemy(actor* enemy);
 	void DisplayAllEnemies();
 	unsigned int GetTotalEnemies();
-	std::vector<Actor*> GetEnemies();
-	Actor* GetEnemy(int identifier);
+	std::vector<actor*> GetEnemies();
+	actor* GetEnemy(int identifier);
 
 	int GetIdentifier();
 
@@ -27,7 +27,7 @@ public:
 	void CleanUp();
 
 private:
-	std::vector<Actor*> enemies;
+	std::vector<actor*> enemies;
 	int identifier{ 1 };
 };
 

@@ -5,56 +5,6 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpgProject", "rpgProject.vcxproj", "{D4CB675C-78F1-4EE6-B522-AC4EEB69337E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actor Classes", "Actor Classes", "{3B45CAC5-3849-41EA-B017-7C3ACC6EA71C}"
-	ProjectSection(SolutionItems) = preProject
-		Actor.cpp = Actor.cpp
-		Actor.h = Actor.h
-		Dwarf.cpp = Dwarf.cpp
-		Dwarf.h = Dwarf.h
-		Elf.cpp = Elf.cpp
-		Elf.h = Elf.h
-		Fighter.cpp = Fighter.cpp
-		Fighter.h = Fighter.h
-		Halfling.cpp = Halfling.cpp
-		Halfling.h = Halfling.h
-		Human.cpp = Human.cpp
-		Human.h = Human.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item Classes", "Item Classes", "{A216FE0F-0766-4AF8-893F-D50CFF2EA855}"
-	ProjectSection(SolutionItems) = preProject
-		Armor.cpp = Armor.cpp
-		Armor.h = Armor.h
-		Currency.cpp = Currency.cpp
-		Currency.h = Currency.h
-		Inventory.cpp = Inventory.cpp
-		Inventory.h = Inventory.h
-		Item.cpp = Item.cpp
-		Item.h = Item.h
-		Shield.cpp = Shield.cpp
-		Shield.h = Shield.h
-		Sword.cpp = Sword.cpp
-		Sword.h = Sword.h
-		Weapon.cpp = Weapon.cpp
-		Weapon.h = Weapon.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface Classes", "Interface Classes", "{DB0370E7-42B0-497B-8578-94C86484B916}"
-	ProjectSection(SolutionItems) = preProject
-		I_Display.cpp = I_Display.cpp
-		I_Display.h = I_Display.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Attack", "Attack", "{BD885911-51DC-4E4E-B59C-254A3071985E}"
-	ProjectSection(SolutionItems) = preProject
-		Attack.cpp = Attack.cpp
-		Attack.h = Attack.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Melee", "Melee", "{64A12B03-7C53-446E-9E2B-7DB5865CC454}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spell", "Spell", "{9AE69929-81C7-4D8D-AD9E-C2F7793363B1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -74,10 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{64A12B03-7C53-446E-9E2B-7DB5865CC454} = {BD885911-51DC-4E4E-B59C-254A3071985E}
-		{9AE69929-81C7-4D8D-AD9E-C2F7793363B1} = {BD885911-51DC-4E4E-B59C-254A3071985E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E83138C1-3879-4532-B998-724FCD5EA2C1}

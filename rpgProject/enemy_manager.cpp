@@ -236,7 +236,7 @@ void EnemyManager::CleanUpDead()
 }
 
 /*
-Deletes all Actor pointers in the enemies vector
+Deletes all actor pointers in the enemies vector
 */
 void EnemyManager::CleanUp()
 {

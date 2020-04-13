@@ -1,23 +1,22 @@
 #pragma once
 
-#include "CombatClass.h"
+#include "combat_class.h"
 
 class Fighter 
-	: public CombatClass
+	: public combat_class
 {
 public:
 
-	// constructors
-		// player constructor
+	// player constructor
 	Fighter(std::string name, std::string race);
-		// enemy constructor
+	// enemy constructor
 	Fighter(int identifier);
 
 	// destructor
 	virtual ~Fighter() override;
 
 	// roll racial stats
-	virtual void RollHumanStats() override, RollDwarfStats() override, RollElfStats() override, RollHalflingStats() override;
+	virtual void roll_human_stats() override, roll_dwarf_stats() override, roll_elf_stats() override, roll_halfling_stats() override;
 
 	// player fighting style
 	void SetFightingStyle();
@@ -33,8 +32,8 @@ public:
 	// display
 	virtual void DisplayClassInformation() override;
 
-	// level up
-	void LevelUp() override;
+	// level_ up
+	void level_up() override;
 
 private:
 };

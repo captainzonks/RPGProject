@@ -1,6 +1,6 @@
-#include "Upgrades.h"
+#include "upgrades.h"
 
-Upgrades::Upgrades()
+upgrades::upgrades()
 {
 	nothingEquipped = true;
 
@@ -14,7 +14,7 @@ Upgrades::Upgrades()
 	hasBoots = false;
 }
 
-Upgrades::~Upgrades()
+upgrades::~upgrades()
 {
 	weaponL = nullptr;
 	weaponR = nullptr;
@@ -25,16 +25,16 @@ Upgrades::~Upgrades()
 	legs = nullptr;
 	hands = nullptr;
 	boots = nullptr;
-	std::cout << "Upgrades destructor called" << std::endl; // debug
+	std::cout << "upgrades destructor called" << std::endl; // debug
 }
 
-void Upgrades::DisplayUpgrades()
+void upgrades::DisplayUpgrades()
 {
 	std::cout << "\n====UPGRADES EQUIPPED====" << std::endl;
 
 	if (IsAnythingEquipped())
 	{
-		std::cout << "NONE" << std::endl;
+		std::cout << "none" << std::endl;
 	}
 	else
 	{
@@ -141,7 +141,7 @@ void Upgrades::DisplayUpgrades()
 	std::cout << "=======================" << std::endl;
 }
 
-int Upgrades::TotalArmorValue()
+int upgrades::TotalArmorValue()
 {
 	int total{};
 
@@ -161,92 +161,92 @@ int Upgrades::TotalArmorValue()
 	return total;
 }
 
-bool Upgrades::HelmetEquipped()
+bool upgrades::HelmetEquipped()
 {
 	return hasHelmet;
 }
 
-bool Upgrades::ChestEquipped()
+bool upgrades::ChestEquipped()
 {
 	return hasChest;
 }
 
-bool Upgrades::LegsEquipped()
+bool upgrades::LegsEquipped()
 {
 	return hasLegs;
 }
 
-bool Upgrades::HandsEquipped()
+bool upgrades::HandsEquipped()
 {
 	return hasHands;
 }
 
-bool Upgrades::BootsEquipped()
+bool upgrades::BootsEquipped()
 {
 	return hasBoots;
 }
 
-int Upgrades::GetHelmetLevel()
+int upgrades::GetHelmetLevel()
 {
 	return this->helmet->GetLevel();
 }
 
-int Upgrades::GetChestLevel()
+int upgrades::GetChestLevel()
 {
 	return this->chest->GetLevel();
 }
 
-int Upgrades::GetLegsLevel()
+int upgrades::GetLegsLevel()
 {
 	return this->legs->GetLevel();
 }
 
-int Upgrades::GetHandsLevel()
+int upgrades::GetHandsLevel()
 {
 	return this->hands->GetLevel();
 }
 
-int Upgrades::GetBootsLevel()
+int upgrades::GetBootsLevel()
 {
 	return this->boots->GetLevel();
 }
 
-bool Upgrades::WeaponLEquipped()
+bool upgrades::WeaponLEquipped()
 {
 	return hasWeaponL;
 }
 
-bool Upgrades::WeaponREquipped()
+bool upgrades::WeaponREquipped()
 {
 	return hasWeaponR;
 }
 
-bool Upgrades::RangedWeaponEquipped()
+bool upgrades::RangedWeaponEquipped()
 {
 	return hasRangedWeapon;
 }
 
-int Upgrades::GetWeaponLLevel()
+int upgrades::GetWeaponLLevel()
 {
 	return this->weaponL->GetLevel();
 }
 
-int Upgrades::GetShieldLevel()
+int upgrades::GetShieldLevel()
 {
 	return this->shield->GetLevel();
 }
 
-int Upgrades::GetWeaponRLevel()
+int upgrades::GetWeaponRLevel()
 {
 	return this->weaponR->GetLevel();
 }
 
-int Upgrades::GetRangedWeaponLevel()
+int upgrades::GetRangedWeaponLevel()
 {
 	return this->rangedWeapon->GetLevel();
 }
 
-int Upgrades::GetAttackDieWeaponL()
+int upgrades::GetAttackDieWeaponL()
 {
 	if (hasWeaponL)
 		return weaponL->GetAttackDieWeapon();
@@ -254,7 +254,7 @@ int Upgrades::GetAttackDieWeaponL()
 		return unarmedAttackDie;
 }
 
-int Upgrades::GetAttackDieWeaponR()
+int upgrades::GetAttackDieWeaponR()
 {
 	if (hasWeaponR)
 		return weaponR->GetAttackDieWeapon();
@@ -262,7 +262,7 @@ int Upgrades::GetAttackDieWeaponR()
 		return unarmedAttackDie;
 }
 
-int Upgrades::GetRangedAttackDie()
+int upgrades::GetRangedAttackDie()
 {
 	if (hasRangedWeapon)
 		return rangedWeapon->GetAttackDieWeapon();
@@ -270,31 +270,31 @@ int Upgrades::GetRangedAttackDie()
 		return unarmedAttackDie;
 }
 
-DAMAGE_TYPE Upgrades::GetAttackDamageTypeWeaponL()
+damage_type upgrades::GetAttackDamageTypeWeaponL()
 {
 	if (hasWeaponL)
 		return weaponL->GetDamageType();
 	else
-		return DAMAGE_TYPE::NONE;
+		return damage_type::none;
 }
 
-DAMAGE_TYPE Upgrades::GetAttackDamageTypeWeaponR()
+damage_type upgrades::GetAttackDamageTypeWeaponR()
 {
 	if (hasWeaponR)
 		return weaponR->GetDamageType();
 	else
-		return DAMAGE_TYPE::NONE;
+		return damage_type::none;
 }
 
-DAMAGE_TYPE Upgrades::GetRangedAttackDamageType()
+damage_type upgrades::GetRangedAttackDamageType()
 {
 	if (hasRangedWeapon)
 		return rangedWeapon->GetDamageType();
 	else
-		return DAMAGE_TYPE::NONE;
+		return damage_type::none;
 }
 
-bool Upgrades::IsDualWielding()
+bool upgrades::IsDualWielding()
 {
 	if (hasWeaponL && hasWeaponR)
 	{
@@ -308,17 +308,17 @@ bool Upgrades::IsDualWielding()
 	return isDualWielding;
 }
 
-bool Upgrades::IsRangedWeapon()
+bool upgrades::IsRangedWeapon()
 {
 	return hasRangedWeapon;
 }
 
-bool Upgrades::ShieldEquipped()
+bool upgrades::ShieldEquipped()
 {
 	return hasShield;
 }
 
-void Upgrades::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
+void upgrades::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
 {
 	if (ShieldEquipped() && WeaponREquipped())
 		std::cout << "No free hand to equip a second weapon." << std::endl;
@@ -331,7 +331,7 @@ void Upgrades::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
 	}
 }
 
-void Upgrades::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
+void upgrades::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
 {
 	if (ShieldEquipped() && WeaponLEquipped())
 		std::cout << "No free hand to equip a second weapon." << std::endl;
@@ -345,7 +345,7 @@ void Upgrades::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
 
 }
 
-void Upgrades::EquipRangedWeapon(std::unique_ptr<Weapon> rangedWeapon)
+void upgrades::EquipRangedWeapon(std::unique_ptr<Weapon> rangedWeapon)
 {
 	if (!ShieldEquipped() && !WeaponLEquipped() && !WeaponREquipped())
 	{
@@ -356,25 +356,25 @@ void Upgrades::EquipRangedWeapon(std::unique_ptr<Weapon> rangedWeapon)
 		std::cout << "No free hand to equip a ranged weapon." << std::endl;
 }
 
-void Upgrades::UnequipWeaponL()
+void upgrades::UnequipWeaponL()
 {
 	this->weaponL = nullptr;
 	hasWeaponL = false;
 }
 
-void Upgrades::UnequipWeaponR()
+void upgrades::UnequipWeaponR()
 {
 	this->weaponR = nullptr;
 	hasWeaponR = false;
 }
 
-void Upgrades::UnequipRangedWeapon()
+void upgrades::UnequipRangedWeapon()
 {
 	this->rangedWeapon = nullptr;
 	hasRangedWeapon = false;
 }
 
-void Upgrades::EquipShield(std::unique_ptr<Armor> shield)
+void upgrades::EquipShield(std::unique_ptr<Armor> shield)
 {
 	if (WeaponLEquipped() && WeaponREquipped() || RangedWeaponEquipped())
 		std::cout << "No free hand to equip a shield." << std::endl;
@@ -385,73 +385,73 @@ void Upgrades::EquipShield(std::unique_ptr<Armor> shield)
 	}
 }
 
-void Upgrades::UnequipShield()
+void upgrades::UnequipShield()
 {
 	this->shield = nullptr;
 	hasShield = false;
 }
 
-void Upgrades::EquipHelmet(std::unique_ptr<Armor> helmet)
+void upgrades::EquipHelmet(std::unique_ptr<Armor> helmet)
 {
 	this->helmet = std::move(helmet);
 	hasHelmet = true;
 }
 
-void Upgrades::EquipChest(std::unique_ptr<Armor> chest)
+void upgrades::EquipChest(std::unique_ptr<Armor> chest)
 {
 	this->chest = std::move(chest);
 	hasChest = true;
 }
 
-void Upgrades::EquipLegs(std::unique_ptr<Armor> legs)
+void upgrades::EquipLegs(std::unique_ptr<Armor> legs)
 {
 	this->legs = std::move(legs);
 	hasLegs = true;
 }
 
-void Upgrades::EquipHands(std::unique_ptr<Armor> hands)
+void upgrades::EquipHands(std::unique_ptr<Armor> hands)
 {
 	this->hands = std::move(hands);
 	hasHands = true;
 }
 
-void Upgrades::EquipBoots(std::unique_ptr<Armor> boots)
+void upgrades::EquipBoots(std::unique_ptr<Armor> boots)
 {
 	this->boots = std::move(boots);
 	hasBoots = true;
 }
 
-void Upgrades::UnequipHelmet()
+void upgrades::UnequipHelmet()
 {
 	this->helmet = nullptr;
 	hasHelmet = false;
 }
 
-void Upgrades::UnequipChest()
+void upgrades::UnequipChest()
 {
 	this->chest = nullptr;
 	hasChest = false;
 }
 
-void Upgrades::UnequipLegs()
+void upgrades::UnequipLegs()
 {
 	this->legs = nullptr;
 	hasLegs = false;
 }
 
-void Upgrades::UnequipHands()
+void upgrades::UnequipHands()
 {
 	this->hands = nullptr;
 	hasHands = false;
 }
 
-void Upgrades::UnequipBoots()
+void upgrades::UnequipBoots()
 {
 	this->boots = nullptr;
 	hasBoots = false;
 }
 
-bool Upgrades::IsAnythingEquipped()
+bool upgrades::IsAnythingEquipped()
 {
 	if (!HelmetEquipped() &&
 		!ChestEquipped() &&

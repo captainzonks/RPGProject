@@ -1,9 +1,1 @@
-#include "Item.h"
-
-Item::Item()
-{
-}
-
-Item::~Item()
-{
-}
+#include "item.h"

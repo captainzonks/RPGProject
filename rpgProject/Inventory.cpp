@@ -1,187 +1,78 @@
-#include "Inventory.h"
+#include "inventory.h"
 
-Inventory::Inventory()
+#include <iostream>
+
+inventory::~inventory()
 {
+	the_inventory_.clear();
+	std::cout << "inventory destructor called" << std::endl;
 }
 
-Inventory::~Inventory()
+void inventory::set_capacity(const int new_capacity)
 {
-	this->inventory.clear();
-	cout << "Inventory destructor called" << endl;
+	capacity_ = new_capacity;
 }
 
-void Inventory::SetCapacity(int capacityChange)
+unsigned int inventory::get_capacity() const
 {
-	this->capacity += capacityChange;
+	return capacity_;
 }
 
-int Inventory::GetCapacity() const
+int inventory::total_items_in_inventory() const
 {
-	return this->capacity;
+	return the_inventory_.size();
 }
 
-int Inventory::TotalItemsInInventory() const
+void inventory::add_to_inventory(std::unique_ptr<item> item)
 {
-	return this->inventory.size();
-}
-
-void Inventory::GetWeaponL(std::unique_ptr<Weapon> weaponL)
-{
-	hasWeaponL = true;
-	attackDiceL = weaponL->GetAttackDieWeapon();
-	AddToInventory(std::move(weaponL));
-}
-
-void Inventory::GetWeaponR(std::unique_ptr<Weapon> weaponR)
-{
-	hasWeaponR = true;
-	attackDiceR = weaponR->GetAttackDieWeapon();
-	AddToInventory(std::move(weaponR));
-}
-
-void Inventory::AddToInventory(std::unique_ptr<Item> item)
-{
-	if (this->capacity > 0)
-	{
-		this->inventory.push_back(std::move(item));
-		this->capacity--;
-	}
+	if (the_inventory_.size() != capacity_)
+		the_inventory_.push_back(std::move(item));
 	else
 		std::cout << "You don't have enough room!" << std::endl;
 }
 
-void Inventory::AddPotionToInventory(std::unique_ptr<Potion> potion)
+void inventory::remove_from_inventory(const std::string& item_name)
 {
-	if (this->potionCapacity > 0)
+	const auto itr{ std::find(the_inventory_.begin(), the_inventory_.end(), item_name) };
+	the_inventory_.erase(the_inventory_.begin() + std::distance(the_inventory_.begin(), itr));
+}
+
+void inventory::display_inventory() const
+{
+	std::cout << "=====INVENTORY=====" << std::endl;
+	auto counter{ 1 };
+	if (the_inventory_.empty())
 	{
-		this->potionInventory.push_back(std::move(potion));
-		this->potionCapacity--;
-	}
-	else
-		std::cout << "You don't have enough room!" << std::endl;
-}
-
-void Inventory::RemoveFromInventory(std::unique_ptr<Item> item)
-{
-	std::vector<std::unique_ptr<Item>>::iterator itr{ std::find(inventory.begin(), inventory.end(), item) };
-	this->inventory.erase(inventory.begin() + std::distance(inventory.begin(), itr));
-	capacity++;
-}
-
-void Inventory::RemovePotionFromInventory(std::unique_ptr<Potion> potion)
-{
-	std::vector<std::unique_ptr<Potion>>::iterator itr{ std::find(potionInventory.begin(), potionInventory.end(), potion) };
-	this->potionInventory.erase(potionInventory.begin() + std::distance(potionInventory.begin(), itr));
-	potionCapacity++;
-}
-
-void Inventory::DisplayInventory() const
-{
-	cout << "=====INVENTORY=====" << endl;
-	int counter{ 1 };
-	if (this->inventory.size() == 0)
-	{
-		cout << "EMPTY" << endl;
+		std::cout << "EMPTY" << std::endl;
 	}
 	else
 	{
-		for (auto& i : this->inventory)
+		for (auto& i : the_inventory_)
 		{
-			cout << counter << ": " << *i << endl;
+			std::cout << counter << ": " << i->get_name() << std::endl;
 			counter++;
 		}
 	}
-	cout << "===================" << endl;
+	std::cout << "===================" << std::endl;
 }
 
-void Inventory::DisplayPotions() const
+std::unique_ptr<item> inventory::get_item(const std::string& item_name)
 {
-	cout << "\n=====POTION BAG=====" << endl;
-	int counter{ 1 };
-	if (this->potionInventory.size() == 0)
-	{
-		cout << "EMPTY" << endl;
-	}
-	else
-	{
-		for (auto& i : this->potionInventory)
-		{
-			cout << counter << ": " << *i << " +" << i->GetHealthValue() << "HP" << endl;
-			counter++;
-		}
-	}
-	cout << "====================" << endl;
+	const auto itr{ std::find(the_inventory_.begin(), the_inventory_.end(), item_name) };
+	return std::move(*itr);
 }
 
-std::unique_ptr<Item> Inventory::GetItem(int itemNumber)
+int inventory::return_ammo() const
 {
-	return std::move(inventory.at(static_cast<size_t>(itemNumber - 1)));
+	return ammunition_;
 }
 
-std::unique_ptr<Potion> Inventory::GetPotion(int itemNumber)
+void inventory::subtract_ammo()
 {
-	return std::move(potionInventory.at(static_cast<size_t>(itemNumber - 1)));
+	ammunition_--;
 }
 
-int Inventory::ReturnAmmo()
+void inventory::add_ammo(const int amount)
 {
-	return ammunition;
+	ammunition_ += amount;
 }
-
-void Inventory::SubtractAmmo()
-{
-	ammunition--;
-}
-
-void Inventory::AddAmmo(int amount)
-{
-	ammunition += amount;
-}
-
-bool Inventory::HasWeapon()
-{
-	return hasWeaponL;
-}
-
-int Inventory::GetAttackDiceL()
-{
-	return attackDiceL;
-}
-
-int Inventory::GetAttackDiceR()
-{
-	return attackDiceR;
-}
-
-void Inventory::GetArmor(std::unique_ptr<Armor> armor)
-{
-	// need to separate out armor and shield...
-	if (!hasArmor)
-	{
-		hasArmor = true;
-		armorBonus += armor->GetArmorValue();
-		AddToInventory(std::move(armor));
-	}
-}
-
-bool Inventory::HasArmor()
-{
-	return hasArmor;
-}
-
-int Inventory::GetArmorBonus()
-{
-	return armorBonus;
-}
-
-//Item* Inventory::selectItemInInventory()
-//{
-//	Menu* tempMenu = new Menu;
-//	const int* decisions = new int{ totalItemsInInventory() };
-//
-//	Item* item_ptr = this->inventory[tempMenu->choiceHandler(*decisions)];
-//
-//	delete decisions, tempMenu;
-//
-//	return item_ptr;
-//}

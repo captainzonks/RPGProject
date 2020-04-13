@@ -1,36 +1,41 @@
-#pragma once
+#ifndef CURRENCY_H
+#define CURRENCY_H
 
-#include <string>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-
-using std::cout;
-using std::cin;
-using std::endl;
-using std::vector;
-
-class Currency
+class currency
 {
 public:
-    friend class Actor;
-    
-    // constructor
-    Currency();
-    Currency(int copper);
+	currency(const currency& other) = default;
 
-    // destructor
-    ~Currency();
+	currency(currency&& other) noexcept
+		: copper_(other.copper_)
+	{
+	}
+
+	currency& operator=(const currency& other) = default;
+
+	currency& operator=(currency&& other) noexcept
+	{
+		if (this == &other)
+			return *this;
+		copper_ = other.copper_;
+		return *this;
+	}
+
+	currency() = default;
+
+    ~currency() = default;
 
     // getters
-    int GetGold(), GetSilver(), GetCopper();
-    void DisplayMoney();
+    unsigned get_gold() const, get_silver() const, get_copper() const;
+    void display_money() const;
 
     // add or subtract
-    void AddMoney(int copper);
-    void SubtractMoney(int copper);
+    void add_money(unsigned copper);
+    void subtract_money(unsigned copper);
 
 private:
-    int copper{};
+    unsigned copper_{};
 
 };
+
+#endif

@@ -2,26 +2,26 @@
 #define ATTACK_H
 
 #include "HelperFunctions.h"
-#include "Actor.h"
+#include "actor.h"
 
-class Actor;
+class actor;
 
 class Attack
 {
 public:
 	// the primary attack function
-	static void MakeAnAttack(Actor& attacker, Actor& target);
+	static void MakeAnAttack(actor& attacker, actor& target);
 
 	// the damage functions
-	static void DealDamage(Actor& attacker, Actor& target, char hand, bool finesse);
-	static void DealCriticalDamage(Actor& attacker, Actor& target, char hand, bool finesse);
+	static void DealDamage(actor& attacker, actor& target, char hand, bool finesse);
+	static void DealCriticalDamage(actor& attacker, actor& target, char hand, bool finesse);
 
 	// attack helper functions
-	static int CheckForAttackModifier(Actor& attacker);
-	static int CheckForACModifier(Actor& target);
+	static int CheckForAttackModifier(actor& attacker);
+	static int CheckForACModifier(actor& target);
 
 	// loot function
-	static void LootCorpse(Actor& attacker, Actor& target);
+	static void LootCorpse(actor& attacker, actor& target);
 
 private:
 	Attack();

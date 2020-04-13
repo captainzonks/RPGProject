@@ -3,54 +3,43 @@
 
 #include <iostream>
 #include <memory>
-#include <time.h>
+#include <ctime>
 #include <string>
 #include <vector>
 
-#include "EnemyManager.h"
-#include "Actor.h"
-#include "Human.h"
-#include "Elf.h"
-#include "Dwarf.h"
-//#include "Narrator.h"
-#include "Encounter.h"
-#include "Item.h"
+#include "enemy_manager.h"
+#include "actor.h"
+#include "human.h"
+#include "elf.h"
+#include "dwarf.h"
+#include "encounter.h"
 
-class GameState;
+class game_state;
 
-class Game
+class game
 {
 public:
-	Actor* player{ nullptr };
+	actor* player{ nullptr };
 
-	void Initialize();
-	void Cleanup();
+	void initialize();
+	void cleanup();
 
-	void ChangeState(GameState* state);
-	void PushState(GameState* state);
-	void PopState();
+	void change_state(game_state* state);
+	void push_state(game_state* state);
+	void pop_state();
 
-	void HandleEvents();
-	void Update();
-	void Draw();
+	void handle_events();
+	void update();
+	void draw();
 
-	/*void GameLoop();*/
+	bool is_running() const { return running_; }
+	void quit() { running_ = false; };
 
-	/*void GetInput(Actor& player);*/
-
-
-	//void RandomEncounter(Actor& player);
-	//void StartEncounter(Actor& player);
-
-	bool IsRunning();
-	void Quit() { isRunning = false; };
-
-	/*Narrator narrator;*/
-	EnemyManager manager;
+	enemy_manager manager;
 
 private:
-	bool isRunning{ false };
-	std::vector<GameState*> states;
+	bool running_{ false };
+	std::vector<game_state*> states_;
 };
 
-#endif // !GAME_H
+#endif

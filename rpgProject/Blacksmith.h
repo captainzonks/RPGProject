@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Actor.h"
+#include "actor.h"
 #include "Item.h"
 #include "Armor.h"
 #include "Weapon.h"
@@ -23,8 +23,8 @@ public:
 	~Blacksmith();
 
 	// functions
-	void MakeArmor(Actor& actor);
-	void MakeWeapon(Actor& actor);
+	void MakeArmor(actor& actor);
+	void MakeWeapon(actor& actor);
 
 private:
 

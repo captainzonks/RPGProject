@@ -38,7 +38,7 @@ protected:
 	const std::string name{ "Shop Menu" };
 
 private:
-	// bool states
+	// bool states_
 	bool helmetState{};
 	bool chestState{};
 	bool legsState{};

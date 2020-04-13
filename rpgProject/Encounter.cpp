@@ -1,6 +1,6 @@
 //#include "Encounter.h"
 //
-//Encounter::Encounter(EnemyManager& manager, Actor& player)
+//Encounter::Encounter(EnemyManager& manager, actor& player)
 //	: manager(manager), player(&player)
 //{
 //	std::cout << "\nEncounter (manager, player) overloaded constructor called" << std::endl; // debug
@@ -19,12 +19,12 @@
 //
 //void Encounter::SortInitiativeOrder()
 //{
-//	Actor* temp{ nullptr };
+//	actor* temp{ nullptr };
 //	for (size_t i{}; i < initiativeOrder.size(); ++i)
 //	{
 //		for (size_t j{ i + 1 }; j < initiativeOrder.size(); ++j)
 //		{
-//			if (initiativeOrder.at(i)->GetInitiative() < initiativeOrder.at(j)->GetInitiative())
+//			if (initiativeOrder.at(i)->get_initiative() < initiativeOrder.at(j)->get_initiative())
 //			{
 //				temp = initiativeOrder.at(i);
 //				initiativeOrder.at(i) = initiativeOrder.at(j);
@@ -41,14 +41,14 @@
 //*/
 //void Encounter::DisplayIniatives()
 //{
-//	// debug Display initiative order to check
+//	// debug display initiative order to check
 //	for (auto actor : initiativeOrder)
 //	{
-//		std::cout << actor->GetName() << " Initiative: " << actor->GetInitiative() << std::endl;
+//		std::cout << actor->get_name() << " Initiative: " << actor->get_initiative() << std::endl;
 //	}
 //}
 //
-//void Encounter::BeginEncounter(EnemyManager& manager, Actor& player)
+//void Encounter::BeginEncounter(EnemyManager& manager, actor& player)
 //{
 //	std::cout << "Roll for initiative!" << std::endl;
 //	player.RollForInitiative();
@@ -67,15 +67,15 @@
 //		std::cout << "\n====ROUND " << round << "====" << std::endl;
 //		for (auto attacker : initiativeOrder)
 //		{
-//			Actor* target{ RandomTargetPicker(*attacker) };
-//			std::vector<Actor*>::iterator itr{ std::find(initiativeOrder.begin(), initiativeOrder.end(), target) };
+//			actor* target{ RandomTargetPicker(*attacker) };
+//			std::vector<actor*>::iterator itr{ std::find(initiativeOrder.begin(), initiativeOrder.end(), target) };
 //			if (EncounterHandler(*attacker, *target))
 //			{
-//				if (target->GetName() == player.GetName())
+//				if (target->get_name() == player.get_name())
 //				{
 //					std::cout << "You Died!" << std::endl;
 //					std::cout << "\nYou were killed by: " << std::endl;
-//					attacker->Display();
+//					attacker->display();
 //					initiativeOrder.clear();
 //					manager.CleanUp();
 //					break;
@@ -102,21 +102,21 @@
 //as the attacker... this is a debug function,
 //to be rewritten and redone later
 //*/
-//Actor* Encounter::RandomTargetPicker(Actor& attacker)
+//actor* Encounter::RandomTargetPicker(actor& attacker)
 //{
-//	Actor* target{ initiativeOrder.at(rand() % initiativeOrder.size()) };
-//	if (target->GetName() == attacker.GetName())
+//	actor* target{ initiativeOrder.at(rand() % initiativeOrder.size()) };
+//	if (target->get_name() == attacker.get_name())
 //		return RandomTargetPicker(attacker);
 //
 //	return target;
 //}
 //
 //// returns TRUE if defender dies, FALSE if defender still lives
-//bool Encounter::EncounterHandler(Actor& attacker, Actor& defender)
+//bool Encounter::EncounterHandler(actor& attacker, actor& defender)
 //{
 //	if (Attack::MakeAnAttack(attacker, defender))
 //	{
-//		if (!defender.IsAlive())
+//		if (!defender.is_alive())
 //		{
 //			manager.CleanUpDead();
 //			return true; // target died

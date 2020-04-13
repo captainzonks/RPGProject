@@ -12,14 +12,14 @@
 #include "ShortBow.h"
 #include "Shield.h"
 
-class Upgrades
+class upgrades
 {
 public:
 	// constructor
-	Upgrades();
+	upgrades();
 
 	// destructor
-	~Upgrades();
+	~upgrades();
 
 	// pointers
 	std::unique_ptr<Weapon> weaponL{ nullptr };
@@ -48,7 +48,7 @@ public:
 	bool WeaponLEquipped(), WeaponREquipped(), RangedWeaponEquipped(), ShieldEquipped();
 	int GetWeaponLLevel(), GetWeaponRLevel(), GetRangedWeaponLevel(), GetShieldLevel();
 	int GetAttackDieWeaponL(), GetAttackDieWeaponR(), GetRangedAttackDie();
-	DAMAGE_TYPE GetAttackDamageTypeWeaponL(), GetAttackDamageTypeWeaponR(), GetRangedAttackDamageType();
+	damage_type GetAttackDamageTypeWeaponL(), GetAttackDamageTypeWeaponR(), GetRangedAttackDamageType();
 
 	// weapon setter
 	void EquipWeaponL(std::unique_ptr<Weapon> weaponL);

@@ -12,11 +12,11 @@
 //	this->RollStats();
 //	this->identifier = identifier;
 //	this->race = "Elf";
-//	this->level = 1;
-//	this->health = 6 + GetConstMod();
-//	this->maxHealth = health;
+//	this->level_ = 1;
+//	this->health = 6 + get_const_mod();
+//	this->max_health_ = health;
 //	this->xp = 0;
-//	this->myCurrency.AddMoney(RollDice(4, 4) * 10);
+//	this->myCurrency.add_money(roll_dice(4, 4) * 10);
 //}
 //
 //Elf::Elf(string name)
@@ -25,11 +25,11 @@
 //	this->name = name;
 //	this->RollStats();
 //	this->race = "Elf";
-//	this->level = 1;
-//	this->health = 6 + GetConstMod();
-//	this->maxHealth = health;
+//	this->level_ = 1;
+//	this->health = 6 + get_const_mod();
+//	this->max_health_ = health;
 //	this->xp = 0;
-//	this->myCurrency.AddMoney(RollDice(4, 4) * 10);
+//	this->myCurrency.add_money(roll_dice(4, 4) * 10);
 //}
 //
 //Elf::~Elf()
@@ -39,15 +39,15 @@
 //
 //void Elf::RollStats()
 //{
-//	this->strength = RollDiceIgnoreLowest(4, 6);
-//	this->dexterity = RollDiceIgnoreLowest(4, 6) + 2;
-//	this->constitution = RollDiceIgnoreLowest(4, 6);
-//	this->intelligence = RollDiceIgnoreLowest(4, 6) + 1;
-//	this->wisdom = RollDiceIgnoreLowest(4, 6) + 1;
-//	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
+//	this->strength = roll_dice_ignore_lowest(4, 6);
+//	this->dexterity = roll_dice_ignore_lowest(4, 6) + 2;
+//	this->constitution = roll_dice_ignore_lowest(4, 6);
+//	this->intelligence = roll_dice_ignore_lowest(4, 6) + 1;
+//	this->wisdom = roll_dice_ignore_lowest(4, 6) + 1;
+//	this->charisma = roll_dice_ignore_lowest(4, 6) + 1;
 //}
 //
-//string Elf::GetRace()
+//string Elf::get_race()
 //{
 //	return this->race;
 //}

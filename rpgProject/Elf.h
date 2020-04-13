@@ -1,7 +1,7 @@
 //#pragma once
 //
 //#include "Menu.h"
-//#include "Actor.h"
+//#include "actor.h"
 //
 //#include <string>
 //#include <vector>
@@ -10,7 +10,7 @@
 //
 //using std::vector;
 //class Elf :
-//	public Actor
+//	public actor
 //{
 //public:
 //
@@ -26,7 +26,7 @@
 //	virtual void RollStats() override;
 //
 //	// getter
-//	virtual string GetRace() override;
+//	virtual string get_race() override;
 //
 //private:
 //

@@ -12,12 +12,12 @@ void MainMenuState::Cleanup()
 
 void MainMenuState::Pause()
 {
-	std::cout << "MenuState Pause" << std::endl;
+	std::cout << "MenuState pause" << std::endl;
 }
 
 void MainMenuState::Resume()
 {
-	std::cout << "MenuState Resume" << std::endl;
+	std::cout << "MenuState resume" << std::endl;
 }
 
 void MainMenuState::HandleEvents(Game* game)

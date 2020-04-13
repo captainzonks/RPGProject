@@ -1,7 +1,7 @@
 //#ifndef ENCOUNTER_H
 //#define ENCOUNTER_H
 //
-//#include "Actor.h"
+//#include "actor.h"
 //#include "EnemyManager.h"
 //
 //#include <vector>
@@ -9,18 +9,18 @@
 //class Encounter
 //{
 //public:
-//	Encounter(EnemyManager& manager, Actor& player);
+//	Encounter(EnemyManager& manager, actor& player);
 //	~Encounter();
 //	void SortInitiativeOrder();
 //	void DisplayIniatives(); // debug
-//	void BeginEncounter(EnemyManager& manager, Actor& player);
-//	Actor* RandomTargetPicker(Actor& attacker);
-//	bool EncounterHandler(Actor& attacker, Actor& defender);
+//	void BeginEncounter(EnemyManager& manager, actor& player);
+//	actor* RandomTargetPicker(actor& attacker);
+//	bool EncounterHandler(actor& attacker, actor& defender);
 //
 //private:
-//	Actor* player;
+//	actor* player;
 //	EnemyManager& manager;
-//	std::vector<Actor*> initiativeOrder;
+//	std::vector<actor*> initiativeOrder;
 //};
 //
 //#endif // !ENCOUNTER_H

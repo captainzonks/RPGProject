@@ -14,9 +14,9 @@ public:
 	void Pause();
 	void Resume();
 
-	void HandleEvents(Game* game);
-	void Update(Game* game);
-	void Draw(Game* game);
+	void HandleEvents(game* game);
+	void Update(game* game);
+	void Draw(game* game);
 
 	static MainMenuState* Instance()
 	{
@@ -29,7 +29,7 @@ protected:
 	static MainMenuState m_MainMenuState;
 	std::vector<std::string> options{ "Display Player", "Display Class Information",
 		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
-		"Use A Potion", "Display Enemies", "Attack", "Add Enemy", "Exit Game" };
+		"Use A Potion", "Display Enemies", "Attack", "Add Enemy", "Exit game" };
 	const std::string name{ "Main Menu" };
 };
 

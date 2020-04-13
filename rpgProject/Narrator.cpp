@@ -3,11 +3,11 @@
 //void Narrator::StartGreeting()
 //{
 //	cout << "=======================" << endl;
-//	cout << "Welcome to RPG Game " << version << endl;
+//	cout << "Welcome to RPG game " << version << endl;
 //	cout << "-----------------------" << endl;
 //}
 //
-//Actor* Narrator::CharacterCreator()
+//actor* Narrator::CharacterCreator()
 //{
 //	cout << "\nLet's create a character!" << endl;
 //
@@ -17,7 +17,7 @@
 //	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 //	std::unique_ptr<int> const decisions = std::make_unique<int>(4);
 //	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Human", "Dwarf", "Elf", "Halfling" }));
-//	choice = tempMenu->PrintMenu(*decisions, *tempDecisions);
+//	choice = tempMenu->print_menu(*decisions, *tempDecisions);
 //
 //	switch (choice)
 //	{
@@ -46,9 +46,9 @@
 //	std::unique_ptr<Menu> tempMenu2 = std::make_unique<Menu>();
 //	std::unique_ptr<int> const decisions2 = std::make_unique<int>(1);
 //	std::unique_ptr<vector<string>> tempDecisions2 = std::make_unique<vector<string>>(std::initializer_list<string>({ "Fighter" }));
-//	choice = tempMenu2->PrintMenu(*decisions2, *tempDecisions2);
+//	choice = tempMenu2->print_menu(*decisions2, *tempDecisions2);
 //
-//	Actor* new_player{ nullptr };
+//	actor* new_player{ nullptr };
 //
 //	switch (choice)
 //	{
@@ -62,7 +62,7 @@
 //	return new_player;
 //}
 //
-//void Narrator::BuySomething(Actor& player)
+//void Narrator::BuySomething(actor& player)
 //{
 //	cout << "Welcome to fantasy shop " << version << "!" << endl;
 //	cout << "=============================" << endl;
@@ -71,15 +71,15 @@
 //	Upgrader(player);
 //}
 //
-//bool Narrator::CheckPrice(Actor& player, int price) const
+//bool Narrator::CheckPrice(actor& player, int price) const
 //{
-//	if (price > player.myCurrency.GetCopper())
+//	if (price > player.myCurrency.get_copper())
 //		return false;
 //	else
 //		return true;
 //}
 //
-//void Narrator::Upgrader(Actor& actor)
+//void Narrator::Upgrader(actor& actor)
 //{
 //	// false(0) for new purchase, true(1) for upgrading
 //	bool helmetState{ actor.myUpgrades.HelmetEquipped() };
@@ -103,7 +103,7 @@
 //	std::unique_ptr<Shield> shield_ptr{ nullptr };
 //	std::unique_ptr<Potion> potion_ptr{ nullptr };
 //
-//	// ARMOR
+//	// armor
 //	std::cout << "\nARMOR FOR SALE" << std::endl;
 //	std::cout << "--------------" << std::endl;
 //	if (!helmetState)
@@ -111,10 +111,10 @@
 //		int tempSilver{}, tempCopper{};
 //		// new helmet
 //		helmet_ptr = std::make_unique<Helmet>();
-//		std::cout << "1) Buy " << helmet_ptr->GetName() <<
-//			" : Level " << helmet_ptr->GetLevel() <<
+//		std::cout << "1) Buy " << helmet_ptr->get_name() <<
+//			" : Level " << helmet_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(helmet_ptr->GetValue());
+//		display_price(helmet_ptr->GetValue());
 //	}
 //	else
 //	{
@@ -122,16 +122,16 @@
 //		std::cout << "1) Upgrade to Helmet Level " <<
 //			actor.myUpgrades.GetHelmetLevel() + 1 <<
 //			" :";
-//		DisplayPrice(actor.myUpgrades.helmet->GetValue() + 150);
+//		display_price(actor.myUpgrades.helmet->GetValue() + 150);
 //	}
 //	if (!chestState)
 //	{
 //		// new chest
 //		chest_ptr = std::make_unique<Chest>();
-//		std::cout << "2) Buy " << chest_ptr->GetName() <<
-//			" : Level " << chest_ptr->GetLevel() <<
+//		std::cout << "2) Buy " << chest_ptr->get_name() <<
+//			" : Level " << chest_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(chest_ptr->GetValue());
+//		display_price(chest_ptr->GetValue());
 //	}
 //	else
 //	{
@@ -139,16 +139,16 @@
 //		std::cout << "2) Upgrade to Chest Armor Level " <<
 //			actor.myUpgrades.GetChestLevel() + 1 <<
 //			" :";
-//		DisplayPrice(actor.myUpgrades.chest->GetValue() + 300);
+//		display_price(actor.myUpgrades.chest->GetValue() + 300);
 //	}
 //	if (!legsState)
 //	{
 //		// new legs
 //		legs_ptr = std::make_unique<Legs>();
-//		std::cout << "3) Buy " << legs_ptr->GetName() <<
-//			" : Level " << legs_ptr->GetLevel() <<
+//		std::cout << "3) Buy " << legs_ptr->get_name() <<
+//			" : Level " << legs_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(legs_ptr->GetValue());
+//		display_price(legs_ptr->GetValue());
 //	}
 //	else
 //	{
@@ -156,16 +156,16 @@
 //		std::cout << "3) Upgrade to Leg Armor Level " <<
 //			actor.myUpgrades.GetLegsLevel() + 1 <<
 //			" :";
-//		DisplayPrice(actor.myUpgrades.legs->GetValue() + 250);
+//		display_price(actor.myUpgrades.legs->GetValue() + 250);
 //	}
 //	if (!handsState)
 //	{
 //		// new hands
 //		hands_ptr = std::make_unique<Hands>();
-//		std::cout << "4) Buy " << hands_ptr->GetName() <<
-//			" : Level " << hands_ptr->GetLevel() <<
+//		std::cout << "4) Buy " << hands_ptr->get_name() <<
+//			" : Level " << hands_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(hands_ptr->GetValue());
+//		display_price(hands_ptr->GetValue());
 //	}
 //	else
 //	{
@@ -173,16 +173,16 @@
 //		std::cout << "4) Upgrade to Gauntlets Level " <<
 //			actor.myUpgrades.GetHandsLevel() + 1 <<
 //			" :";
-//		DisplayPrice(actor.myUpgrades.hands->GetValue() + 150);
+//		display_price(actor.myUpgrades.hands->GetValue() + 150);
 //	}
 //	if (!bootsState)
 //	{
 //		// new boots
 //		boots_ptr = std::make_unique<Boots>();
-//		std::cout << "5) Buy " << boots_ptr->GetName() <<
-//			" : Level " << boots_ptr->GetLevel() <<
+//		std::cout << "5) Buy " << boots_ptr->get_name() <<
+//			" : Level " << boots_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(boots_ptr->GetValue());
+//		display_price(boots_ptr->GetValue());
 //	}
 //	else
 //	{
@@ -190,16 +190,16 @@
 //		std::cout << "5) Upgrade to Boots Level " <<
 //			actor.myUpgrades.GetBootsLevel() + 1 <<
 //			" :";
-//		DisplayPrice(actor.myUpgrades.boots->GetValue() + 200);
+//		display_price(actor.myUpgrades.boots->GetValue() + 200);
 //	}
 //	if (!shieldState && !rangedState)
 //	{
 //		// new shield
 //		shield_ptr = std::make_unique<Shield>();
-//		std::cout << "6) Buy " << shield_ptr->GetName() <<
-//			" : Level " << shield_ptr->GetLevel() <<
+//		std::cout << "6) Buy " << shield_ptr->get_name() <<
+//			" : Level " << shield_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(shield_ptr->GetValue());
+//		display_price(shield_ptr->GetValue());
 //	}
 //	else if (shieldState)
 //	{
@@ -207,7 +207,7 @@
 //		std::cout << "6) Upgrade to Shield Level " <<
 //			actor.myUpgrades.GetShieldLevel() + 1 <<
 //			" :";
-//		DisplayPrice(actor.myUpgrades.shield->GetValue() + 200);
+//		display_price(actor.myUpgrades.shield->GetValue() + 200);
 //	}
 //	/*********************************************************************/
 //
@@ -218,19 +218,19 @@
 //	{
 //		// new swordL
 //		sword_ptr = std::make_unique<Sword>();
-//		std::cout << "7) Buy " << sword_ptr->GetName() <<
-//			"(L) : Level " << sword_ptr->GetLevel() <<
+//		std::cout << "7) Buy " << sword_ptr->get_name() <<
+//			"(L) : Level " << sword_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(sword_ptr->GetValue());
+//		display_price(sword_ptr->GetValue());
 //	}
 //	if ((swordLState && !shieldState) && !swordRState && !rangedState)
 //	{
 //		// new swordR
 //		sword_ptr = std::make_unique<Sword>();
-//		std::cout << "8) Buy " << sword_ptr->GetName() <<
-//			"(R) : Level " << sword_ptr->GetLevel() <<
+//		std::cout << "8) Buy " << sword_ptr->get_name() <<
+//			"(R) : Level " << sword_ptr->get_level() <<
 //			" :";
-//		DisplayPrice(sword_ptr->GetValue());
+//		display_price(sword_ptr->GetValue());
 //	}
 //	else if (swordLState || swordRState)
 //	{
@@ -240,7 +240,7 @@
 //			std::cout << "7) Upgrade to Sword Level " <<
 //				actor.myUpgrades.GetWeaponLLevel() + 1 <<
 //				"(L) :";
-//			DisplayPrice(actor.myUpgrades.weaponL->GetValue() + 250);
+//			display_price(actor.myUpgrades.weaponL->GetValue() + 250);
 //		}
 //		// upgrade swordR
 //		if (swordRState)
@@ -248,17 +248,17 @@
 //			std::cout << "8) Upgrade to Sword Level " <<
 //				actor.myUpgrades.GetWeaponLLevel() + 1 <<
 //				"(R) :";
-//			DisplayPrice(actor.myUpgrades.weaponR->GetValue() + 250);
+//			display_price(actor.myUpgrades.weaponR->GetValue() + 250);
 //		}
 //	}
 //	if (!rangedState)
 //	{
 //		// new shortbow
 //		bow_ptr = std::make_unique<ShortBow>();
-//		std::cout << "9) Buy " << bow_ptr->GetName() <<
-//			" : Level " << bow_ptr->GetLevel() <<
+//		std::cout << "9) Buy " << bow_ptr->get_name() <<
+//			" : Level " << bow_ptr->get_level() <<
 //			" : ";
-//		DisplayPrice(bow_ptr->GetValue());
+//		display_price(bow_ptr->GetValue());
 //	}
 //	else
 //	{
@@ -268,7 +268,7 @@
 //			std::cout << "9) Upgrade to Shortbow Level " <<
 //				actor.myUpgrades.GetRangedWeaponLevel() + 1 <<
 //				" :";
-//			DisplayPrice(actor.myUpgrades.rangedWeapon->GetValue() + 200);
+//			display_price(actor.myUpgrades.rangedWeapon->GetValue() + 200);
 //		}
 //
 //	}
@@ -277,12 +277,12 @@
 //	// POTIONS
 //	std::cout << "\nPOTIONS FOR SALE" << std::endl;
 //	std::cout << "--------------" << std::endl;
-//	// new potion
+//	// new consumable
 //	int randomHeals{ rand() % 12 + 2 };
 //	potion_ptr = std::make_unique<Potion>(randomHeals);
-//	std::cout << "10) Buy a " << potion_ptr->GetName() <<
+//	std::cout << "10) Buy a " << potion_ptr->get_name() <<
 //		" :";
-//	DisplayPrice(potion_ptr->GetValue());
+//	display_price(potion_ptr->GetValue());
 //	/****************************************************************/
 //
 //	std::cout << "--------------" << std::endl;
@@ -297,7 +297,7 @@
 //		{
 //			if (CheckPrice(actor, helmet_ptr->GetValue()))
 //			{
-//				actor.myCurrency.SubtractMoney(helmet_ptr->GetValue());
+//				actor.myCurrency.subtract_money(helmet_ptr->GetValue());
 //				actor.EquipHelmet(std::move(helmet_ptr));
 //				cout << "Obtained a Helmet!" << endl;
 //				break;
@@ -312,7 +312,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.helmet->GetValue() + 150))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.helmet->GetValue() + 150);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.helmet->GetValue() + 150);
 //				actor.myUpgrades.helmet->UpgradeArmor();
 //				cout << "Upgraded Helmet to Level " << actor.myUpgrades.GetHelmetLevel() << endl;
 //				break;
@@ -328,7 +328,7 @@
 //		{
 //			if (CheckPrice(actor, chest_ptr->GetValue()))
 //			{
-//				actor.myCurrency.SubtractMoney(chest_ptr->GetValue());
+//				actor.myCurrency.subtract_money(chest_ptr->GetValue());
 //				actor.EquipChest(std::move(chest_ptr));
 //				cout << "Obtained Chest Armor!" << endl;
 //				break;
@@ -343,7 +343,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.chest->GetValue() + 300))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.chest->GetValue() + 300);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.chest->GetValue() + 300);
 //				actor.myUpgrades.chest->UpgradeArmor();
 //				cout << "Upgraded Chest Armor to Level " << actor.myUpgrades.GetChestLevel() << endl;
 //				break;
@@ -373,7 +373,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.legs->GetValue() + 250))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.legs->GetValue() + 250);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.legs->GetValue() + 250);
 //				actor.myUpgrades.legs->UpgradeArmor();
 //				cout << "Upgraded Leg Armor to Level " << actor.myUpgrades.GetLegsLevel() << endl;
 //				break;
@@ -403,7 +403,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.hands->GetValue() + 150))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.hands->GetValue() + 150);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.hands->GetValue() + 150);
 //				actor.myUpgrades.hands->UpgradeArmor();
 //				cout << "Upgraded Gauntlets to Level " << actor.myUpgrades.GetHandsLevel() << endl;
 //				break;
@@ -433,7 +433,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.boots->GetValue() + 200))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.boots->GetValue() + 200);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.boots->GetValue() + 200);
 //				actor.myUpgrades.boots->UpgradeArmor();
 //				cout << "Upgraded Boots to Level " << actor.myUpgrades.GetBootsLevel() << endl;
 //				break;
@@ -468,7 +468,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.shield->GetValue() + 200))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.shield->GetValue() + 200);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.shield->GetValue() + 200);
 //				actor.myUpgrades.shield->UpgradeArmor();
 //				cout << "Upgraded Shield to Level " << actor.myUpgrades.GetShieldLevel() << endl;
 //				break;
@@ -503,7 +503,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.weaponL->GetValue() + 200))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.weaponL->GetValue() + 200);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.weaponL->GetValue() + 200);
 //				actor.myUpgrades.weaponL->UpgradeWeapon();
 //				cout << "Upgraded Sword to Level " << actor.myUpgrades.GetWeaponLLevel() << endl;
 //				break;
@@ -538,7 +538,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.weaponR->GetValue() + 200))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.weaponR->GetValue() + 200);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.weaponR->GetValue() + 200);
 //				actor.myUpgrades.weaponR->UpgradeWeapon();
 //				cout << "Upgraded Sword to Level " << actor.myUpgrades.GetWeaponRLevel() << endl;
 //				break;
@@ -573,7 +573,7 @@
 //		{
 //			if (CheckPrice(actor, actor.myUpgrades.rangedWeapon->GetValue() + 200))
 //			{
-//				actor.myCurrency.SubtractMoney(actor.myUpgrades.rangedWeapon->GetValue() + 200);
+//				actor.myCurrency.subtract_money(actor.myUpgrades.rangedWeapon->GetValue() + 200);
 //				actor.myUpgrades.rangedWeapon->UpgradeWeapon();
 //				cout << "Upgraded Shortbow to Level " << actor.myUpgrades.GetRangedWeaponLevel() << endl;
 //				break;
@@ -585,13 +585,13 @@
 //			}
 //		}
 //	case 10:
-//		if (actor.myInventory.GetCapacity() != 0)
+//		if (actor.myInventory.get_capacity() != 0)
 //		{
 //			if (CheckPrice(actor, potion_ptr->GetValue()))
 //			{
-//				actor.myCurrency.SubtractMoney(potion_ptr->GetValue());
+//				actor.myCurrency.subtract_money(potion_ptr->GetValue());
 //				cout << "Obtained a +" << potion_ptr->GetHealthValue() << "HP Healing Potion!" << endl;
-//				actor.myInventory.AddPotionToInventory(std::move(potion_ptr));
+//				actor.myInventory.add_potion_to_inventory(std::move(potion_ptr));
 //				break;
 //			}
 //			else
@@ -613,10 +613,10 @@
 //	}
 //}
 //
-//void Narrator::DisplayPrice(const int copper) const
+//void Narrator::display_price(const int copper_) const
 //{
-//	int tempGold{}, tempSilver{}, tempCopper{ copper };
-//	tempGold = copper / 100;
+//	int tempGold{}, tempSilver{}, tempCopper{ copper_ };
+//	tempGold = copper_ / 100;
 //	tempCopper %= 100;
 //	tempSilver = tempCopper / 10;
 //	tempCopper %= 10;
@@ -629,9 +629,9 @@
 //	cout << endl;
 //}
 //
-//int Narrator::GetPlayerAverageLevel(Actor& player) const
+//int Narrator::GetPlayerAverageLevel(actor& player) const
 //{
-//	int average{player.GetAverageItemLevel()};
+//	int average{player.get_average_item_level()};
 //
 //	return average;
 //}

@@ -329,7 +329,7 @@ void ShopMenuState::HandleEvents(Game* game)
 				}
 			}
 		case 10:
-			// healing potion
+			// healing consumable
 			if (game->player->myInventory.GetCapacity() != 0)
 			{
 				if (CheckPrice(*game->player, potion_ptr->GetValue()))
@@ -374,7 +374,7 @@ void ShopMenuState::Update(Game* game)
 
 void ShopMenuState::Draw(Game* game)
 {
-	// ARMOR
+	// armor
 	std::cout << "\nARMOR FOR SALE" << std::endl;
 	std::cout << "--------------" << std::endl;
 	if (!helmetState)
@@ -548,7 +548,7 @@ void ShopMenuState::Draw(Game* game)
 	// POTIONS
 	std::cout << "\nPOTIONS FOR SALE" << std::endl;
 	std::cout << "--------------" << std::endl;
-	// new potion
+	// new consumable
 	int randomHeals{ rand() % 12 + 2 };
 	potion_ptr = std::make_unique<Potion>(randomHeals);
 	std::cout << "10) Buy a " << potion_ptr->GetName() <<

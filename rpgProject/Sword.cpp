@@ -7,9 +7,9 @@ Sword::Sword()
 	this->durability = 20;
 	this->value = 1000;
 	this->level = 1;
-	this->damageType = DAMAGE_TYPE::SLASHING;
-	this->weaponType = WEAPON_TYPE::MELEE;
-	this->weaponProficiency = WEAPON_PROFICIENCY::MARTIAL;
+	this->damage_type_ = damage_type::slashing;
+	this->weaponType = weapon_type::melee;
+	this->weaponProficiency = weapon_proficiency::martial;
 }
 
 Sword::Sword(std::string swordType)
@@ -23,9 +23,9 @@ Sword::Sword(std::string swordType)
 		this->isFinesse = true;
 		this->isTwoHanded = false;
 		this->attackDie = 6;
-		this->damageType = DAMAGE_TYPE::PIERCING;
-		this->weaponType = WEAPON_TYPE::MELEE;
-		this->weaponProficiency = WEAPON_PROFICIENCY::MARTIAL;
+		this->damage_type_ = damage_type::piercing;
+		this->weaponType = weapon_type::melee;
+		this->weaponProficiency = weapon_proficiency::martial;
 	}
 	else if (swordType == "Greatsword")
 	{

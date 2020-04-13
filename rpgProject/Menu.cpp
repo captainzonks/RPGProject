@@ -30,7 +30,7 @@ int Menu::PrintMenu(const int& decisions, const std::vector<std::string>& listOf
 	return choiceHandler(decisions);
 }
 
-int Menu::UpgradeMenu(const int& decisions, const std::vector<std::unique_ptr<Item>>& listOfDecisions)
+int Menu::UpgradeMenu(const int& decisions, const std::vector<std::unique_ptr<item>>& listOfDecisions)
 {
 	cout << "--------" << std::endl;
 	int count{ 1 };

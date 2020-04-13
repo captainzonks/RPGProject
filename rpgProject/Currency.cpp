@@ -1,60 +1,46 @@
-#include "Currency.h"
+#include "currency.h"
 
-Currency::Currency()
+#include <iostream>
+
+unsigned currency::get_gold() const
 {
+	return copper_ / 100;
 }
 
-Currency::~Currency()
+unsigned currency::get_silver() const
 {
-	std::cout << "Currency destructor called" << std::endl;
+	return copper_ / 10;
 }
 
-Currency::Currency(int copper)
+unsigned currency::get_copper() const
 {
-	this->copper = copper;
+	return copper_;
 }
 
-int Currency::GetGold()
+void currency::display_money() const
 {
-	return copper / 100;
+	auto temp_copper = copper_;
+	const auto gold = temp_copper / 100;
+	temp_copper %= 100;
+	const auto silver = temp_copper / 10;
+	temp_copper %= 10;
+
+	std::cout << "\n====MONEY====" << std::endl;
+	std::cout << "Gold   : " << gold << std::endl;
+	std::cout << "Silver : " << silver << std::endl;
+	std::cout << "Copper : " << temp_copper << std::endl;
+	std::cout << "=============" << std::endl;
 }
 
-int Currency::GetSilver()
+void currency::add_money(const unsigned copper)
 {
-	return copper / 10;
+	copper_ += copper;
 }
 
-int Currency::GetCopper()
+void currency::subtract_money(const unsigned copper)
 {
-	return copper;
-}
-
-void Currency::DisplayMoney()
-{
-	int tempCopper = copper;
-	int gold = tempCopper / 100;
-	tempCopper %= 100;
-	int silver = tempCopper / 10;
-	tempCopper %= 10;
-
-	cout << "\n====MONEY====" << endl;
-	cout << "Gold   : " << gold << endl;
-	cout << "Silver : " << silver << endl;
-	cout << "Copper : " << tempCopper << endl;
-	cout << "=============" << endl;
-}
-
-void Currency::AddMoney(int copper)
-{
-	this->copper += copper;
-}
-
-void Currency::SubtractMoney(int copper)
-{
-	if (copper > this->copper)
-	{
+	if (copper > copper_)
 		std::cout << "You don't have enough money!" << std::endl;
-	}
 	else
-		this->copper -= copper;
+		copper_ -= copper;
 }

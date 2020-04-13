@@ -1,209 +1,209 @@
-#include "Actor.h"
+#include "actor.h"
 
-Actor::Actor()
+actor::actor()
 {
-	cout << "Actor constructor called" << endl; // debug
+	cout << "actor constructor called" << endl; // debug
 }
 
-Actor::~Actor()
+actor::~actor()
 {
-	cout << "Actor destructor called" << endl;
+	cout << "actor destructor called" << endl;
 }
 
-void Actor::Update()
+void Acactoror::Update()
 {
 	CheckLevelUpThreshold();
 	UpdateArmorClass();
 	UpdateAverageItemLevel();
 }
 
-void Actor::UpdateArmorClass()
+void actor::update_armor_class()
 {
 	armorClass = myUpgrades.TotalArmorValue() + 10;
 }
 
-std::string Actor::GetName()
+std::string actor::get_name()
 {
 	return this->name;
 }
 
-std::string Actor::GetRace()
+std::string actor::get_race()
 {
 	return this->race;
 }
 
-int Actor::GetHealth()
+int actor::get_health()
 {
 	return this->health;
 }
 
-int Actor::GetXP()
+int actor::get_xp()
 {
 	return this->xp;
 }
 
-int Actor::GetArmorClass()
+int actor::get_armor_class()
 {
 	return this->armorClass;
 }
 
-int Actor::GetLevel()
+int actor::get_level()
 {
-	return this->level;
+	return this->level_;
 }
 
-int Actor::GetProficiency()
+int actor::get_proficiency()
 {
 	return this->proficiencyBonus;
 }
 
-int Actor::GetStrength()
+int actor::get_strength()
 {
 	return this->strength;
 }
 
-int Actor::GetDexterity()
+int actor::get_dexterity()
 {
 	return this->dexterity;
 }
 
-int Actor::GetConstitution()
+int actor::get_constitution()
 {
 	return this->constitution;
 }
 
-int Actor::GetIntelligence()
+int actor::get_intelligence()
 {
 	return this->intelligence;
 }
 
-int Actor::GetWisdom()
+int actor::get_wisdom()
 {
 	return this->wisdom;
 }
 
-int Actor::GetCharisma()
+int actor::get_charisma()
 {
 	return this->charisma;
 }
 
-int Actor::GetStrengthMod()
+int actor::get_strength_mod()
 {
 	int mod{ (this->strength - 10) / 2 };
 	return mod;
 }
 
-int Actor::GetDexMod()
+int actor::get_dex_mod()
 {
 	int mod{ (this->dexterity - 10) / 2 };
 	return mod;
 }
 
-int Actor::GetConstMod()
+int actor::get_const_mod()
 {
 	int mod{ (this->constitution - 10) / 2 };
 	return mod;
 }
 
-int Actor::GetIntelMod()
+int actor::get_intel_mod()
 {
 	int mod{ (this->intelligence - 10) / 2 };
 	return mod;
 }
 
-int Actor::GetWisdomMod()
+int actor::get_wisdom_mod()
 {
 	int mod{ (this->wisdom - 10) / 2 };
 	return mod;
 }
 
-int Actor::GetCharMod()
+int actor::get_char_mod()
 {
 	int mod{ (this->charisma - 10) / 2 };
 	return mod;
 }
 
-int Actor::GetPassiveInsight()
+int actor::get_passive_insight()
 {
-	int passiveInsight{ 10 + this->GetWisdomMod() };
+	int passiveInsight{ 10 + this->get_wisdom_mod() };
 	return passiveInsight;
 }
 
-int Actor::GetPassivePerception()
+int actor::get_passive_perception()
 {
-	int passivePerception{ 10 + this->GetWisdomMod() };
+	int passivePerception{ 10 + this->get_wisdom_mod() };
 	return passivePerception;
 }
 
-int Actor::GetPassiveInvestigation()
+int actor::get_passive_investigation()
 {
-	int passiveInvestigation{ 10 + this->GetIntelMod() };
+	int passiveInvestigation{ 10 + this->get_intel_mod() };
 	return passiveInvestigation;
 }
 
-DAMAGE_TYPE Actor::GetResistance()
+damage_type actor::get_resistance()
 {
 	return resistance;
 }
 
-DAMAGE_TYPE Actor::GetVulnerability()
+damage_type actor::get_vulnerability()
 {
 	return vulnerability;
 }
 
-int Actor::GetInitiative()
+int actor::get_initiative()
 {
 	return initiative;
 }
 
-bool Actor::IsAlive()
+bool actor::is_alive()
 {
 	return isAlive;
 }
 
-bool Actor::IsDualWielding()
+bool actor::is_dual_wielding()
 {
 	return isDualWielding;
 }
 
-bool Actor::IsTwoHandedMelee()
+bool actor::is_two_handed_melee()
 {
 	return isTwoHanded;
 }
 
-void Actor::Display()
+void actor::display()
 {
 	cout << endl;
 	// name header
-	cout << "====" << this->GetName() << "====" << endl;
+	cout << "====" << this->get_name() << "====" << endl;
 	// basic stats
-	cout << "   " << this->GetRace() << endl;
-	cout << "   " << this->GetHealth() << " HP / " << this->maxHealth << " HP" << endl;
-	cout << "   " << (this->GetArmorClass()) << " AC" << endl;
-	cout << "   " << this->GetXP() << " XP" << endl;
+	cout << "   " << this->get_race() << endl;
+	cout << "   " << this->get_health() << " HP / " << this->max_health_ << " HP" << endl;
+	cout << "   " << (this->get_armor_class()) << " AC" << endl;
+	cout << "   " << this->get_xp() << " XP" << endl;
 	// ability stats
-	cout << "   " << this->GetStrength() << " Strength"
-		<< " (" << this->GetStrengthMod() << ")" << endl;
-	cout << "   " << this->GetDexterity() << " Dexterity"
-		<< " (" << this->GetDexMod() << ")" << endl;
-	cout << "   " << this->GetConstitution() << " Constitution"
-		<< " (" << this->GetConstMod() << ")" << endl;
-	cout << "   " << this->GetIntelligence() << " Intelligence"
-		<< " (" << this->GetIntelMod() << ")" << endl;
-	cout << "   " << this->GetWisdom() << " Wisdom"
-		<< " (" << this->GetWisdomMod() << ")" << endl;
-	cout << "   " << this->GetCharisma() << " Charisma"
-		<< " (" << this->GetCharMod() << ")" << endl;
+	cout << "   " << this->get_strength() << " Strength"
+		<< " (" << this->get_strength_mod() << ")" << endl;
+	cout << "   " << this->get_dexterity() << " Dexterity"
+		<< " (" << this->get_dex_mod() << ")" << endl;
+	cout << "   " << this->get_constitution() << " Constitution"
+		<< " (" << this->get_const_mod() << ")" << endl;
+	cout << "   " << this->get_intelligence() << " Intelligence"
+		<< " (" << this->get_intel_mod() << ")" << endl;
+	cout << "   " << this->get_wisdom() << " Wisdom"
+		<< " (" << this->get_wisdom_mod() << ")" << endl;
+	cout << "   " << this->get_charisma() << " Charisma"
+		<< " (" << this->get_char_mod() << ")" << endl;
 	// footer (matches length of header plus name)
 	cout << "====";
-	for (char c : this->GetName())
+	for (char c : this->get_name())
 	{
 		cout << "=";
 	}
 	cout << endl;
 }
 
-void Actor::UpdateAverageItemLevel()
+void actor::update_average_item_level()
 {
 	int totalUpgrades{};
 
@@ -259,24 +259,24 @@ void Actor::UpdateAverageItemLevel()
 	if (totalUpgrades != 0)
 		averageItemLevel /= totalUpgrades;
 }
-int Actor::GetAverageItemLevel()
+int actor::get_average_item_level()
 {
 	return averageItemLevel;
 }
 
-COMBAT_CLASS Actor::GetCombatClass()
+character_class actor::get_combat_class()
 {
 	return combatClass;
 }
 
-int Actor::SizeOfInventory()
+int actor::size_of_inventory()
 {
-	return this->myInventory.GetCapacity();
+	return this->myInventory.get_capacity();
 }
 
-void Actor::UsePotion()
+void actor::use_potion()
 {
-	this->myInventory.DisplayPotions();
+	this->myInventory.display_potions();
 	std::cout << "------------" << std::endl;
 	std::cout << "0) to Exit" << std::endl;
 
@@ -298,62 +298,62 @@ void Actor::UsePotion()
 
 	if (choice != 0)
 	{
-		this->AddHealth(this->myInventory.GetPotion(choice)->GetHealthValue());
-		this->myInventory.GetPotion(choice)->Destroy();
-		this->myInventory.RemovePotionFromInventory(this->myInventory.GetPotion(choice));
+		this->add_health(this->myInventory.get_potion(choice)->GetHealthValue());
+		this->myInventory.get_potion(choice)->Destroy();
+		this->myInventory.remove_potion_from_inventory(this->myInventory.get_potion(choice));
 	}
 }
 
-void Actor::SubtractHealth(unsigned int damage)
+void actor::subtract_health(unsigned int damage)
 {
 	this->health -= damage;
 	if (health <= 0)
 		isAlive = false;
 }
 
-void Actor::AddHealth(int healing)
+void actor::add_health(int healing)
 {
 	this->health += healing;
-	if (health > maxHealth)
-		health = maxHealth;
+	if (health > max_health_)
+		health = max_health_;
 }
 
-void Actor::AddXP(int xpGain)
+void actor::add_xp(int xpGain)
 {
 	this->xp += xpGain;
 }
 
-void Actor::CheckLevelUpThreshold()
+void actor::check_level_up_threshold()
 {
 	int levelTwo{ 300 };
 	int levelThree{ 900 };
 	int levelFour{ 2700 };
 	int levelFive{ 6500 };
 
-	if (this->GetXP() >= levelTwo)
+	if (this->get_xp() >= levelTwo)
 	{
-		this->LevelUp();
-		cout << this->GetName() << " has reached LEVEL TWO!!!" << endl;
+		this->level_up();
+		cout << this->get_name() << " has reached LEVEL TWO!!!" << endl;
 	}
 
-	if (this->GetXP() >= levelThree)
+	if (this->get_xp() >= levelThree)
 	{
-		this->LevelUp();
-		cout << this->GetName() << " has reached LEVEL THREE!!!" << endl;
+		this->level_up();
+		cout << this->get_name() << " has reached LEVEL THREE!!!" << endl;
 	}
-	if (this->GetXP() >= levelFour)
+	if (this->get_xp() >= levelFour)
 	{
-		this->LevelUp();
-		cout << this->GetName() << " has reached LEVEL FOUR!!!" << endl;
+		this->level_up();
+		cout << this->get_name() << " has reached LEVEL FOUR!!!" << endl;
 	}
-	if (this->GetXP() >= levelFive)
+	if (this->get_xp() >= levelFive)
 	{
-		this->LevelUp();
-		cout << this->GetName() << " has reached LEVEL FIVE!!!" << endl;
+		this->level_up();
+		cout << this->get_name() << " has reached LEVEL FIVE!!!" << endl;
 	}
 }
 
-//void Actor::openInventory()
+//void actor::openInventory()
 //{
 //	myInventory.displayInventory();
 //	
@@ -361,102 +361,102 @@ void Actor::CheckLevelUpThreshold()
 //	const int* decisions = new int{ 2 };
 //	vector<string>* decisionList = new vector<string>{ "Equip Armor", "Exit" };
 //
-//	if (tempMenu->PrintMenu(*decisions, *decisionList) == 1)
+//	if (tempMenu->print_menu(*decisions, *decisionList) == 1)
 //	{
 //		EquipArmor(myInventory.selectItemInInventory());
 //	}
 //}
 
-void Actor::EquipHelmet(std::unique_ptr<Armor> helmet)
+void actor::EquipHelmet(std::unique_ptr<Armor> helmet)
 {
 	myUpgrades.EquipHelmet(std::move(helmet));
 }
 
-void Actor::EquipChest(std::unique_ptr<Armor> chest)
+void actor::EquipChest(std::unique_ptr<Armor> chest)
 {
 	myUpgrades.EquipChest(std::move(chest));
 }
 
-void Actor::EquipLegs(std::unique_ptr<Armor> legs)
+void actor::EquipLegs(std::unique_ptr<Armor> legs)
 {
 	myUpgrades.EquipLegs(std::move(legs));
 }
 
-void Actor::EquipHands(std::unique_ptr<Armor> hands)
+void actor::EquipHands(std::unique_ptr<Armor> hands)
 {
 	myUpgrades.EquipHands(std::move(hands));
 }
 
-void Actor::EquipBoots(std::unique_ptr<Armor> boots)
+void actor::EquipBoots(std::unique_ptr<Armor> boots)
 {
 	myUpgrades.EquipBoots(std::move(boots));
 }
 
-void Actor::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
+void actor::EquipWeaponL(std::unique_ptr<Weapon> weaponL)
 {
 	myUpgrades.EquipWeaponL(std::move(weaponL));
 	if (this->myUpgrades.WeaponREquipped())
 		isDualWielding = true;
 }
 
-void Actor::EquipRanged(std::unique_ptr<Weapon> rangedWeapon)
+void actor::EquipRanged(std::unique_ptr<Weapon> rangedWeapon)
 {
 	myUpgrades.EquipRangedWeapon(std::move(rangedWeapon));
 }
 
-void Actor::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
+void actor::EquipWeaponR(std::unique_ptr<Weapon> weaponR)
 {
 	myUpgrades.EquipWeaponR(std::move(weaponR));
 	if (this->myUpgrades.WeaponLEquipped())
 		isDualWielding = true;
 }
 
-void Actor::EquipShield(std::unique_ptr<Armor> shield)
+void actor::EquipShield(std::unique_ptr<Armor> shield)
 {
 	myUpgrades.EquipShield(std::move(shield));
 }
 
-void Actor::ModifyStrength(const int& modifier)
+void actor::ModifyStrength(const int& modifier)
 {
 	this->strength += modifier;
 }
 
-void Actor::ModifyDexterity(const int& modifier)
+void actor::ModifyDexterity(const int& modifier)
 {
 	this->dexterity += modifier;
 }
 
-void Actor::ModifyConstitution(const int& modifier)
+void actor::ModifyConstitution(const int& modifier)
 {
 	this->constitution += modifier;
 }
 
-void Actor::ModifyIntelligence(const int& modifier)
+void actor::ModifyIntelligence(const int& modifier)
 {
 	this->intelligence += modifier;
 }
 
-void Actor::ModifyWisdom(const int& modifier)
+void actor::ModifyWisdom(const int& modifier)
 {
 	this->wisdom += modifier;
 }
 
-void Actor::ModifyCharisma(const int& modifier)
+void actor::ModifyCharisma(const int& modifier)
 {
 	this->charisma += modifier;
 }
 
-void Actor::RollForInitiative()
+void actor::RollForInitiative()
 {
-	initiative = RollDice(1, 20) + this->GetDexMod();
+	initiative = roll_dice(1, 20) + this->get_dex_mod();
 }
 
-void Actor::ClearInitiative()
+void actor::ClearInitiative()
 {
 	this->initiative = 0;
 }
 
-FIGHTING_STYLE Actor::GetFightingStyle()
+fighting_style actor::GetFightingStyle()
 {
 	return fightingStyle;
 }

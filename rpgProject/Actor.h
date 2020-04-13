@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Constants.h"
-#include "HelperFunctions.h"
-#include "Menu.h"
-#include "Upgrades.h"
-#include "Inventory.h"
-#include "Currency.h"
-#include "Attack.h"
-#include "Potion.h"
+#include "constants.h"
+#include "helper_functions.h"
+#include "menu.h"
+#include "upgrades.h"
+#include "inventory.h"
+#include "currency.h"
+#include "attack.h"
+#include "potion.h"
 
 #include <string>
 #include <vector>
@@ -22,52 +22,52 @@ using std::vector;
 
 // Abstract Base Class
 
-class Actor
+class actor
 {
 public:
 
-	Inventory myInventory;
-	Currency myCurrency;
-	Upgrades myUpgrades;
+	the_inventory_ myInventory;
+	currency myCurrency;
+	upgrades myUpgrades;
 
 	// constructor
-	Actor();
+	actor();
 
 	// destructors
-	virtual ~Actor();
+	virtual ~actor();
 
 	// setters
-	virtual void RollHumanStats() = 0, RollDwarfStats() = 0, RollElfStats() = 0, RollHalflingStats() = 0;
+	virtual void roll_human_stats() = 0, roll_dwarf_stats() = 0, roll_elf_stats() = 0, roll_halfling_stats() = 0;
 
 	// updaters
-	virtual void Update();
-	virtual void UpdateArmorClass();
+	virtual void update();
+	virtual void update_armor_class();
 
 	// getters
-	virtual std::string GetName(), GetRace();
-	virtual int GetHealth(), GetArmorClass(), GetXP(), GetLevel(), GetProficiency();
-	virtual int GetStrength(), GetDexterity(), GetConstitution(), GetIntelligence(), GetWisdom(), GetCharisma();
-	virtual int GetStrengthMod(), GetDexMod(), GetConstMod(), GetIntelMod(), GetWisdomMod(), GetCharMod();
-	virtual int GetPassivePerception(), GetPassiveInsight(), GetPassiveInvestigation();
-	virtual DAMAGE_TYPE GetResistance(), GetVulnerability();
-	virtual int GetInitiative();
-	virtual bool IsAlive(), IsDualWielding(), IsTwoHandedMelee();
-	virtual void Display();
-	virtual void UpdateAverageItemLevel();
-	virtual int GetAverageItemLevel();
-	virtual COMBAT_CLASS GetCombatClass();
+	virtual std::string get_name(), get_race();
+	virtual int get_health(), get_armor_class(), get_xp(), get_level(), get_proficiency();
+	virtual int get_strength(), get_dexterity(), get_constitution(), get_intelligence(), get_wisdom(), get_charisma();
+	virtual int get_strength_mod(), get_dex_mod(), get_const_mod(), get_intel_mod(), get_wisdom_mod(), get_char_mod();
+	virtual int get_passive_perception(), get_passive_insight(), get_passive_investigation();
+	virtual damage_type get_resistance(), get_vulnerability();
+	virtual int get_initiative();
+	virtual bool is_alive(), is_dual_wielding(), is_two_handed_melee();
+	virtual void display();
+	virtual void update_average_item_level();
+	virtual int get_average_item_level();
+	virtual character_class get_combat_class();
 	
-	virtual int SizeOfInventory();
-	virtual void UsePotion();
+	virtual int size_of_inventory();
+	virtual void use_potion();
 
 	// actions
-	virtual void SubtractHealth(unsigned int damage);
-	virtual void AddHealth(int healing);
-	virtual void AddXP(int xpGain);
-	virtual void CheckLevelUpThreshold();
-	virtual void LevelUp() = 0;
+	virtual void subtract_health(unsigned int damage);
+	virtual void add_health(int healing);
+	virtual void add_xp(int xpGain);
+	virtual void check_level_up_threshold();
+	virtual void level_up() = 0;
 
-	// inventory management
+	// the_inventory_ management
 	// virtual void openInventory();
 
 	// armor related functions
@@ -97,17 +97,17 @@ public:
 	virtual void DisplayClassInformation() = 0;
 
 	// fighter functions
-	virtual FIGHTING_STYLE GetFightingStyle();
+	virtual fighting_style GetFightingStyle();
 
 protected:
 	// combat class
-	COMBAT_CLASS combatClass{ COMBAT_CLASS::NONE };
+	character_class combatClass{ character_class::none };
 
 	// basic traits
 	std::string name;
 	std::string race;
-	int level{ 1 };
-	int maxHealth{};
+	int level_{ 1 };
+	int max_health_{};
 	int health{};
 	int armorClass{ 10 };
 	int proficiencyBonus{ 2 };
@@ -116,8 +116,8 @@ protected:
 	bool isAlive{ true };
 	bool isDualWielding{ false };
 	bool isTwoHanded{ false };
-	DAMAGE_TYPE resistance{ DAMAGE_TYPE::NONE };
-	DAMAGE_TYPE vulnerability{ DAMAGE_TYPE::NONE };
+	damage_type resistance{ damage_type::none };
+	damage_type vulnerability{ damage_type::none };
 
 	// combat stuff
 	int initiative{};
@@ -128,8 +128,8 @@ protected:
 	int strength{}, dexterity{}, constitution{}, intelligence{}, wisdom{}, charisma{};
 
 	// fighter class things
-	std::vector<ABILITIES> savingThrows{ ABILITIES::NONE };
+	std::vector<abilities> savingThrows{ abilities::none };
 
-	FIGHTING_STYLE fightingStyle{};
+	fighting_style fightingStyle{};
 };
 
