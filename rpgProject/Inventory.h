@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <tuple>
 
 class item;
 
@@ -50,21 +51,37 @@ public:
 	int total_items_in_inventory() const;
 
 	// inventory functions
-	void add_to_inventory(std::unique_ptr<item> item);
-	void remove_from_inventory(const std::string& item_name);
+	bool add_to_inventory(std::unique_ptr<item> item);
+	void remove_from_inventory(unsigned item_identifier);
 	void display_inventory() const;
-	std::unique_ptr<item> get_item(const std::string& item_name);
+	std::unique_ptr<item> get_item(unsigned item_identifier);
 	
-	// ammunition_
+	// ammunition
 	int return_ammo() const;
 	void subtract_ammo();
 	void add_ammo(int amount);
+
+	// equipment functions
+	void equip(std::unique_ptr<item> item);
+	void unequip(std::unique_ptr<item> item);
+	static bool ask_to_swap(item& new_item, item& old_item);
 
 private:
 
 	std::vector<std::unique_ptr<item>> the_inventory_{};
 	unsigned int capacity_{};
 	int ammunition_{};
+
+	// equipped armor
+	std::unique_ptr<item> helmet_slot_;
+	std::unique_ptr<item> chest_slot_;
+	std::unique_ptr<item> legs_slot_;
+	std::unique_ptr<item> hands_slot_;
+	std::unique_ptr<item> feet_slot_;
+
+	// equipped hands
+	std::unique_ptr<item> main_hand_slot_;
+	std::unique_ptr<item> off_hand_slot_;
 
 };
 

@@ -58,6 +58,34 @@ inline void display_price(const int copper)
 	std::cout << std::endl;
 }
 
+inline bool yes_or_no()
+{
+	unsigned choice{};
+	const auto valid_input{false};
+
+	std::cout << "--------" << std::endl;
+	std::cout << "1) Yes" << std::endl;
+	std::cout << "2) No" << std::endl;
+	std::cout << "--------" << std::endl;
+	
+	do
+	{
+		std::cout << "Please enter a number: ";
+		std::cin >> choice;
+
+		if (!(valid_input == std::cin.good()) || choice > 2 || choice < 1)
+		{
+			std::cout << "That's not a valid choice." << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	} while (!(valid_input == std::cin.good()) || choice > 2 || choice < 1);
+
+	if(choice == 1)
+		return true;
+	return false;
+}
+
 inline void print_menu(const std::string& name, const std::vector<std::string>& options)
 {
 	std::cout << "\n----" << name << "----" << std::endl;
@@ -75,9 +103,9 @@ inline void print_menu(const std::string& name, const std::vector<std::string>& 
 	std::cout << "----" << std::endl;
 }
 
-inline int menu_choice(const std::vector<std::string>& options)
+inline unsigned menu_choice(const std::vector<std::string>& options)
 {
-	int choice{};
+	unsigned choice{};
 	const auto valid_input{ false };
 
 	do

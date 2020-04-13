@@ -4,7 +4,6 @@
 #include "currency.h"
 #include "combat_class.h"
 
-
 character::character()
 {
 	is_alive_ = true;

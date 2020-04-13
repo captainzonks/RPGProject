@@ -56,6 +56,15 @@ enum class weapon_type
 	ranged = 2
 };
 
+enum class weapon_hand
+{
+	none = 0,
+	main = 1,
+	offhand = 2,
+	either = 3,
+	two_handed = 4
+};
+
 enum class weapon_proficiency
 {
 	none = 0,
@@ -70,6 +79,16 @@ enum class armor_type
 	medium_armor = 2,
 	heavy_armor = 3,
 	shield = 4
+};
+
+enum class armor_slot
+{
+	none = 0,
+	head = 1,
+	chest = 2,
+	legs = 3,
+	hands = 4,
+	feet = 5
 };
 
 enum class abilities
