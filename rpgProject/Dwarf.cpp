@@ -7,11 +7,11 @@
 //
 //Dwarf::Dwarf(int identifier)
 //{
-//	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
-//	this->name = "Bad Guy Dwarf"; // temporary debug value
+//	cout << "Dwarf (name_) overloaded constructor called" << endl; // debug
+//	this->name_ = "Bad Guy Dwarf"; // temporary debug value
 //	this->RollStats();
 //	this->identifier = identifier;
-//	this->race = "Dwarf";
+//	this->race_ = "Dwarf";
 //	this->level_ = 1;
 //	this->health = 8 + get_const_mod();
 //	this->max_health_ = health;
@@ -20,12 +20,12 @@
 //	this->resistance = damage_type::poison;
 //}
 //
-//Dwarf::Dwarf(string name)
+//Dwarf::Dwarf(string name_)
 //{
-//	cout << "Dwarf (name) overloaded constructor called" << endl; // debug
-//	this->name = name;
+//	cout << "Dwarf (name_) overloaded constructor called" << endl; // debug
+//	this->name_ = name_;
 //	this->RollStats();
-//	this->race = "Dwarf";
+//	this->race_ = "Dwarf";
 //	this->level_ = 1;
 //	this->health = 8 + get_const_mod();
 //	this->max_health_ = health;
@@ -51,5 +51,5 @@
 //
 //string Dwarf::get_race()
 //{
-//	return this->race;
+//	return this->race_;
 //}

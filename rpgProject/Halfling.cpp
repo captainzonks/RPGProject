@@ -8,10 +8,10 @@
 //Halfling::Halfling(int identifier)
 //{
 //	cout << "Halfling (int identifier) overloaded constructor called" << endl; // debug
-//	this->name = "Bad Guy Halfling";
+//	this->name_ = "Bad Guy Halfling";
 //	this->RollStats();
 //	this->identifier = identifier;
-//	this->race = "Halfling";
+//	this->race_ = "Halfling";
 //	this->level_ = 1;
 //	this->health = 6 + get_const_mod();
 //	this->max_health_ = health;
@@ -19,12 +19,12 @@
 //	this->myCurrency.add_money(roll_dice(4, 4)* 10);
 //}
 //
-//Halfling::Halfling(string name)
+//Halfling::Halfling(string name_)
 //{
-//	cout << "Halfling (name) overloaded constructor called" << endl; // debug
-//	this->name = name;
+//	cout << "Halfling (name_) overloaded constructor called" << endl; // debug
+//	this->name_ = name_;
 //	this->RollStats();
-//	this->race = "Halfling";
+//	this->race_ = "Halfling";
 //	this->level_ = 1;
 //	this->health = 6 + get_const_mod();
 //	this->max_health_ = health;
@@ -49,5 +49,5 @@
 //
 //string Halfling::get_race()
 //{
-//	return this->race;
+//	return this->race_;
 //}

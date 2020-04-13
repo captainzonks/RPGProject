@@ -18,7 +18,7 @@
 //	// constructors
 //	Human();
 //	Human(int identifier);
-//	Human(string name);
+//	Human(string name_);
 //
 //	// destructor
 //	virtual ~Human() override;
@@ -31,7 +31,7 @@
 //
 //private:
 //
-//	string race{ "Human" };
+//	string race_{ "Human" };
 //	int walkingSpeed{ 30 };
 //
 //};

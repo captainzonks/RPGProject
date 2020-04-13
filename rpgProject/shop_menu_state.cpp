@@ -569,7 +569,7 @@ void ShopMenuState::Draw(Game* game)
 
 		if (!(valid_input = cin.good()) || choice > 11 || choice < 1)
 		{
-			cout << "That's not a valid choice." << endl;
+			cout << "That's not a valid choice_." << endl;
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}

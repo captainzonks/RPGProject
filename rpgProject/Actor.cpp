@@ -174,7 +174,7 @@ bool actor::is_two_handed_melee()
 void actor::display()
 {
 	cout << endl;
-	// name header
+	// name_ header
 	cout << "====" << this->get_name() << "====" << endl;
 	// basic stats
 	cout << "   " << this->get_race() << endl;
@@ -194,7 +194,7 @@ void actor::display()
 		<< " (" << this->get_wisdom_mod() << ")" << endl;
 	cout << "   " << this->get_charisma() << " Charisma"
 		<< " (" << this->get_char_mod() << ")" << endl;
-	// footer (matches length of header plus name)
+	// footer (matches length of header plus name_)
 	cout << "====";
 	for (char c : this->get_name())
 	{
@@ -290,7 +290,7 @@ void actor::use_potion()
 
 		if (!(valid_input = cin.good()) || choice > static_cast<int>(this->myInventory.potionInventory.size()) || choice < 0)
 		{
-			std::cout << "That's not a valid choice." << std::endl;
+			std::cout << "That's not a valid choice_." << std::endl;
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}

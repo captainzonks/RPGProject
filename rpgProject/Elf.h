@@ -17,7 +17,7 @@
 //	// constructors
 //	Elf();
 //	Elf(int identifier);
-//	Elf(string name);
+//	Elf(string name_);
 //
 //	// destructor
 //	virtual ~Elf() override;
@@ -30,7 +30,7 @@
 //
 //private:
 //
-//	string race{ "Elf" };
+//	string race_{ "Elf" };
 //	int walkingSpeed{ 30 };
 //
 //};

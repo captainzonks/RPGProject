@@ -8,10 +8,10 @@
 //Elf::Elf(int identifier)
 //{
 //	cout << "Elf (int identifier) overloaded constructor called" << endl; // debug
-//	this->name = "Bad Guy Elf";
+//	this->name_ = "Bad Guy Elf";
 //	this->RollStats();
 //	this->identifier = identifier;
-//	this->race = "Elf";
+//	this->race_ = "Elf";
 //	this->level_ = 1;
 //	this->health = 6 + get_const_mod();
 //	this->max_health_ = health;
@@ -19,12 +19,12 @@
 //	this->myCurrency.add_money(roll_dice(4, 4) * 10);
 //}
 //
-//Elf::Elf(string name)
+//Elf::Elf(string name_)
 //{
-//	cout << "Elf (name) overloaded constructor called" << endl; // debug
-//	this->name = name;
+//	cout << "Elf (name_) overloaded constructor called" << endl; // debug
+//	this->name_ = name_;
 //	this->RollStats();
-//	this->race = "Elf";
+//	this->race_ = "Elf";
 //	this->level_ = 1;
 //	this->health = 6 + get_const_mod();
 //	this->max_health_ = health;
@@ -49,5 +49,5 @@
 //
 //string Elf::get_race()
 //{
-//	return this->race;
+//	return this->race_;
 //}

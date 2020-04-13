@@ -1,35 +1,33 @@
 #pragma once
 
-#include "GameState.h"
-#include "ShopMenuState.h"
-#include "CombatState.h"
+#include "game_state.h"
 
-class MainMenuState :
-	public GameState
+class menu_state :
+	public game_state
 {
 public:
-	void Init();
-	void Cleanup();
+	void init();
+	void cleanup();
 
-	void Pause();
-	void Resume();
+	void pause();
+	void resume();
 
-	void HandleEvents(game* game);
-	void Update(game* game);
-	void Draw(game* game);
+	void handle_events(game* game);
+	void update(game* game);
+	void draw(game* game);
 
-	static MainMenuState* Instance()
+	static menu_state* instance()
 	{
-		return &m_MainMenuState;
+		return &menu_state_;
 	}
 
 protected:
-	MainMenuState() {}
-	int choice{};
-	static MainMenuState m_MainMenuState;
-	std::vector<std::string> options{ "Display Player", "Display Class Information",
+	menu_state() = default;
+	int choice_{};
+	static menu_state menu_state_;
+	std::vector<std::string> options_{ "Display Player", "Display Class Information",
 		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
 		"Use A Potion", "Display Enemies", "Attack", "Add Enemy", "Exit game" };
-	const std::string name{ "Main Menu" };
+	const std::string name_{ "Main Menu" };
 };
 

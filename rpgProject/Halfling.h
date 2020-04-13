@@ -17,7 +17,7 @@
 //	// constructors
 //	Halfling();
 //	Halfling(int identifier);
-//	Halfling(string name);
+//	Halfling(string name_);
 //
 //	// destructor
 //	virtual ~Halfling() override;
@@ -30,7 +30,7 @@
 //
 //private:
 //
-//	string race{ "Elf" };
+//	string race_{ "Elf" };
 //	int walkingSpeed{ 25 };
 //
 //};

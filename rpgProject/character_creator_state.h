@@ -2,35 +2,35 @@
 
 #include "game_state.h"
 
-class character_creator_state :
+class character_creator_state final:
 	public game_state
 {
 public:
-	void init();
-	void cleanup();
+	void init() override;
+	void cleanup() override;
 
-	void pause();
-	void resume();
+	void pause() override;
+	void resume() override;
 
-	void handle_events(game* game);
-	void update(game* game);
-	void draw(game* game);
+	void handle_events(game* game) override;
+	void update(game* game) override;
+	void draw(game* game) override;
 
 	static character_creator_state* instance()
 	{
-		return &m_character_creator_state_;
+		return &character_creator_state_;
 	}
 
 protected:
-	character_creator_state() {}
-	int race_choice{};
-	std::string race{};
-	std::string char_name{};
-	int class_choice{};
-	static character_creator_state m_character_creator_state_;
-	std::vector<std::string> race_options{ "Human", "Dwarf", "Elf", "Halfling" };
-	std::vector<std::string> class_options{ "Fighter" };
-	const std::string races{ "Races" };
-	const std::string classes{ "Classes" };
+	character_creator_state() = default;
+	int race_choice_{};
+	std::string race_{};
+	std::string char_name_{};
+	int class_choice_{};
+	static character_creator_state character_creator_state_;
+	std::vector<std::string> race_options_{ "Human", "Dwarf", "Elf", "Halfling" };
+	std::vector<std::string> class_options_{ "Fighter" };
+	const std::string races_{ "Races" };
+	const std::string classes_{ "Classes" };
 };
 

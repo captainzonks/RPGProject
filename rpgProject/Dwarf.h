@@ -18,7 +18,7 @@
 //	// constructors
 //	Dwarf();
 //	Dwarf(int identifier);
-//	Dwarf(string name);
+//	Dwarf(string name_);
 //
 //	// destructor
 //	virtual ~Dwarf() override;
@@ -31,7 +31,7 @@
 //
 //private:
 //
-//	string race{ "Dwarf" };
+//	string race_{ "Dwarf" };
 //	int walkingSpeed{ 25 };
 //
 //};

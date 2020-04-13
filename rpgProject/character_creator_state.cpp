@@ -22,34 +22,34 @@ void character_creator_state::resume()
 
 void character_creator_state::handle_events(game* game)
 {
-	if (race_choice != 0)
+	if (race_choice_ != 0)
 	{
-		switch (raceChoice)
+		switch (race_choice_)
 		{
 		case 1:
-			race = "Human";
+			race_ = "Human";
 			break;
 		case 2:
-			race = "Dwarf";
+			race_ = "Dwarf";
 			break;
 		case 3:
-			race = "Elf";
+			race_ = "Elf";
 			break;
 		case 4:
-			race = "Halfling";
+			race_ = "Halfling";
 			break;
 		default:
 			break;
 		}
 	}
 
-	if (classChoice != 0)
+	if (class_choice_ != 0)
 	{
-		switch (classChoice)
+		switch (class_choice_)
 		{
 		case 1:
-			game->player = new Fighter(charName, race);
-			game->change_state(MainMenuState::Instance());
+			game->player = new Fighter(char_name_, race_);
+			game->change_state(menu_state::instance());
 			break;
 		default:
 			break;
@@ -57,25 +57,25 @@ void character_creator_state::handle_events(game* game)
 	}
 }
 
-void character_creator_state::Update(game* game)
+void character_creator_state::update(game* game)
 {
 
 }
 
-void character_creator_state::Draw(game* game)
+void character_creator_state::draw(game* game)
 {
-	std::cout << "\nWhat race are you?" << std::endl;
+	std::cout << "\nWhat race_ are you?" << std::endl;
 
-	print_menu(races, raceOptions);
+	print_menu(races_, race_options_);
 
-	raceChoice = menu_choice(raceOptions);
+	race_choice_ = menu_choice(race_options_);
 
 	std::cout << "\nWhat's your name? ";
-	std::cin >> charName;
+	std::cin >> char_name_;
 
 	std::cout << "\nWhat class are you?" << std::endl;
 
-	print_menu(classes, classOptions);
+	print_menu(classes_, class_options_);
 
-	classChoice = menu_choice(classOptions);
+	class_choice_ = menu_choice(class_options_);
 }

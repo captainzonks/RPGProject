@@ -55,7 +55,7 @@ int Menu::choiceHandler(const int& decisions)
 
 		if (!(valid_input = std::cin.good()) || choice > decisions || choice < 1)
 		{
-			std::cout << "That's not a valid choice." << std::endl;
+			std::cout << "That's not a valid choice_." << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}

@@ -1,39 +1,41 @@
-#include "MenuState.h"
+#include "menu_state.h"
+#include "shop_menu_state.h"
+#include "combat_state.h"
 
-MainMenuState MainMenuState::m_MainMenuState;
+menu_state menu_state::menu_state_;
 
-void MainMenuState::Init()
+void menu_state::init()
 {
 }
 
-void MainMenuState::Cleanup()
+void menu_state::cleanup()
 {
 }
 
-void MainMenuState::Pause()
+void menu_state::pause()
 {
 	std::cout << "MenuState pause" << std::endl;
 }
 
-void MainMenuState::Resume()
+void menu_state::resume()
 {
 	std::cout << "MenuState resume" << std::endl;
 }
 
-void MainMenuState::HandleEvents(Game* game)
+void menu_state::handle_events(game* game)
 {
-	if (choice != 0)
+	if (choice_ != 0)
 	{
-		switch (choice)
+		switch (choice_)
 		{
 		case 1:
-			game->player->Display();
+			game->player->display();
 			break;
 		case 2:
 			game->player->DisplayClassInformation();
 			break;
 		case 3:
-			game->player->myCurrency.DisplayMoney();
+			game->player->myCurrency.display_money();
 			break;
 		case 4:
 			game->player->myUpgrades.DisplayUpgrades();
@@ -42,10 +44,10 @@ void MainMenuState::HandleEvents(Game* game)
 			game->player->myInventory.DisplayPotions();
 			break;
 		case 6:
-			game->PushState(ShopMenuState::Instance());
+			game->push_state(shop_menu_state::instance());
 			break;
 		case 7:
-			game->player->UsePotion();
+			game->player->use_potion();
 			break;
 		case 8:
 			game->manager.DisplayAllEnemies();
@@ -53,17 +55,17 @@ void MainMenuState::HandleEvents(Game* game)
 		case 9:
 			if (game->manager.GetTotalEnemies() != 0)
 			{
-				game->PushState(CombatState::Instance());
+				game->push_state(combat_state::instance());
 				break;
 			}
 			else
 				std::cout << "There are no enemies!" << std::endl;
 			break;
 		case 10:
-			game->manager.AddEnemy(game->manager.CreateEnemy(game->player->GetAverageItemLevel()));
+			game->manager.AddEnemy(game->manager.CreateEnemy(game->player->get_average_item_level()));
 			break;
 		case 11:
-			game->Quit();
+			game->quit();
 			break;
 		default:
 			break;
@@ -71,14 +73,14 @@ void MainMenuState::HandleEvents(Game* game)
 	}
 }
 
-void MainMenuState::Update(Game* game)
+void menu_state::update(game* game)
 {
-	game->player->Update();
+	game->player->update();
 }
 
-void MainMenuState::Draw(Game* game)
+void menu_state::draw(game* game)
 {
-	PrintMenu(this->name, options);
+	print_menu(this->name_, options_);
 
-	choice = MenuChoice(options);
+	choice_ = menu_choice(options_);
 }

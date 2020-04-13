@@ -11,49 +11,49 @@
 //{
 //	cout << "\nLet's create a character!" << endl;
 //
-//	cout << "\nWhat race are you?" << endl;
-//	int choice{};
-//	string race;
+//	cout << "\nWhat race_ are you?" << endl;
+//	int choice_{};
+//	string race_;
 //	std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 //	std::unique_ptr<int> const decisions = std::make_unique<int>(4);
 //	std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Human", "Dwarf", "Elf", "Halfling" }));
-//	choice = tempMenu->print_menu(*decisions, *tempDecisions);
+//	choice_ = tempMenu->print_menu(*decisions, *tempDecisions);
 //
-//	switch (choice)
+//	switch (choice_)
 //	{
 //	case 1:
-//		race = "Human";
+//		race_ = "Human";
 //		break;
 //	case 2:
-//		race = "Dwarf";
+//		race_ = "Dwarf";
 //		break;
 //	case 3:
-//		race = "Elf";
+//		race_ = "Elf";
 //		break;
 //	case 4:
-//		race = "Halfling";
+//		race_ = "Halfling";
 //		break;
 //	default:
 //		break;
 //	}
 //
-//	string name{};
-//	cout << "\nWhat's your name? ";
-//	cin >> name;
+//	string name_{};
+//	cout << "\nWhat's your name_? ";
+//	cin >> name_;
 //
 //	cout << "\nWhat class are you?" << endl;
-//	choice = 0;
+//	choice_ = 0;
 //	std::unique_ptr<Menu> tempMenu2 = std::make_unique<Menu>();
 //	std::unique_ptr<int> const decisions2 = std::make_unique<int>(1);
 //	std::unique_ptr<vector<string>> tempDecisions2 = std::make_unique<vector<string>>(std::initializer_list<string>({ "Fighter" }));
-//	choice = tempMenu2->print_menu(*decisions2, *tempDecisions2);
+//	choice_ = tempMenu2->print_menu(*decisions2, *tempDecisions2);
 //
 //	actor* new_player{ nullptr };
 //
-//	switch (choice)
+//	switch (choice_)
 //	{
 //	case 1:
-//		new_player = new Fighter(name, race);
+//		new_player = new Fighter(name_, race_);
 //		break;
 //	default:
 //		break;
@@ -288,9 +288,9 @@
 //	std::cout << "--------------" << std::endl;
 //	std::cout << "0) - Exit" << std::endl;
 //	std::cout << "Please enter a number: " << std::endl;
-//	int choice{};
-//	cin >> choice;
-//	switch (choice)
+//	int choice_{};
+//	cin >> choice_;
+//	switch (choice_)
 //	{
 //	case 1:
 //		if (!helmetState)

@@ -65,10 +65,10 @@ private:
 /*
 MENU CODE TEMPLATE
 
-int choice{};
+int choice_{};
 std::unique_ptr<Menu> tempMenu = std::make_unique<Menu>();
 std::unique_ptr<int> const decisions = std::make_unique<int>(4);
 std::unique_ptr<vector<string>> tempDecisions = std::make_unique<vector<string>>(std::initializer_list<string>({ "Human", "Dwarf", "Elf", "Halfling" }));
-choice = tempMenu->print_menu(*decisions, *tempDecisions);
+choice_ = tempMenu->print_menu(*decisions, *tempDecisions);
 
 */

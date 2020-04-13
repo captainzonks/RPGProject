@@ -8,10 +8,10 @@
 //Human::Human(int identifier)
 //{
 //	cout << "Human (int identifier) overloaded constructor called" << endl; // debug
-//	this->name = "Bad Guy Human"; // temporary debug
+//	this->name_ = "Bad Guy Human"; // temporary debug
 //	this->RollStats();
 //	this->identifier = identifier;
-//	this->race = "Human";
+//	this->race_ = "Human";
 //	this->level_ = 1;
 //	this->health = 8 + get_const_mod();
 //	this->max_health_ = health;
@@ -19,12 +19,12 @@
 //	this->myCurrency.add_money(roll_dice(4, 4) * 10);
 //}
 //
-//Human::Human(string name)
+//Human::Human(string name_)
 //{
-//	cout << "Human (name) overloaded constructor called" << endl; // debug
+//	cout << "Human (name_) overloaded constructor called" << endl; // debug
 //	this->RollStats();
-//	this->name = name;
-//	this->race = "Human";
+//	this->name_ = name_;
+//	this->race_ = "Human";
 //	this->level_ = 1;
 //	this->health = 8 + get_const_mod();
 //	this->max_health_ = health;
@@ -49,5 +49,5 @@
 //
 //string Human::get_race()
 //{
-//	return this->race;
+//	return this->race_;
 //}
