@@ -11,24 +11,23 @@ class item;
 class inventory
 {
 public:
-	inventory(const inventory& other) = default;
+	inventory(const inventory& other) = delete;
 
 	inventory(inventory&& other) noexcept
 		: the_inventory_(std::move(other.the_inventory_)),
 		  capacity_(other.capacity_),
-		  ammunition_(other.ammunition_)
+		  ammunition_(other.ammunition_),
+		  helmet_slot_(std::move(other.helmet_slot_)),
+		  chest_slot_(std::move(other.chest_slot_)),
+		  legs_slot_(std::move(other.legs_slot_)),
+		  hands_slot_(std::move(other.hands_slot_)),
+		  feet_slot_(std::move(other.feet_slot_)),
+		  main_hand_slot_(std::move(other.main_hand_slot_)),
+		  off_hand_slot_(std::move(other.off_hand_slot_))
 	{
 	}
 
-	inventory& operator=(const inventory& other)
-	{
-		if (this == &other)
-			return *this;
-		the_inventory_ = other.the_inventory_;
-		capacity_ = other.capacity_;
-		ammunition_ = other.ammunition_;
-		return *this;
-	}
+	inventory& operator=(const inventory& other) = delete;
 
 	inventory& operator=(inventory&& other) noexcept
 	{
@@ -37,13 +36,18 @@ public:
 		the_inventory_ = std::move(other.the_inventory_);
 		capacity_ = other.capacity_;
 		ammunition_ = other.ammunition_;
+		helmet_slot_ = std::move(other.helmet_slot_);
+		chest_slot_ = std::move(other.chest_slot_);
+		legs_slot_ = std::move(other.legs_slot_);
+		hands_slot_ = std::move(other.hands_slot_);
+		feet_slot_ = std::move(other.feet_slot_);
+		main_hand_slot_ = std::move(other.main_hand_slot_);
+		off_hand_slot_ = std::move(other.off_hand_slot_);
 		return *this;
 	}
 
-	// constructor
 	inventory() = default;
 
-	// destructor
 	~inventory();
 
 	void set_capacity(int new_capacity);

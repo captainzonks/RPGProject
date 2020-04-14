@@ -23,14 +23,6 @@ public:
 
 protected:
 	character_creator_state() = default;
-	int race_choice_{};
-	std::string race_{};
-	std::string char_name_{};
-	int class_choice_{};
 	static character_creator_state character_creator_state_;
-	std::vector<std::string> race_options_{ "Human", "Dwarf", "Elf", "Halfling" };
-	std::vector<std::string> class_options_{ "Fighter" };
-	const std::string races_{ "Races" };
-	const std::string classes_{ "Classes" };
 };
 

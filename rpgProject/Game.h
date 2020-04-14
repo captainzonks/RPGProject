@@ -1,25 +1,21 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <iostream>
 #include <memory>
-#include <ctime>
-#include <string>
 #include <vector>
 
-#include "enemy_manager.h"
-#include "actor.h"
 #include "human.h"
 #include "elf.h"
 #include "dwarf.h"
 #include "encounter.h"
 
+class character;
 class game_state;
 
 class game
 {
 public:
-	actor* player{ nullptr };
+	std::shared_ptr<character> player;
 
 	void initialize();
 	void cleanup();
@@ -34,8 +30,6 @@ public:
 
 	bool is_running() const { return running_; }
 	void quit() { running_ = false; };
-
-	enemy_manager manager;
 
 private:
 	bool running_{ false };

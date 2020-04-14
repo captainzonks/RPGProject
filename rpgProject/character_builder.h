@@ -4,19 +4,28 @@
 #include <memory>
 
 class character;
+class attributes;
+class inventory;
+class currency;
+class combat_class;
 
 class character_builder
 {
 public:
-	virtual void build_fighter() = 0;
-	virtual void build_wizard() = 0;
-	virtual void build_rogue() = 0;
+	void build_attributes() const;
+	void build_inventory() const;
+	void build_currency() const;
+	void build_combat_class() const;
 
-	virtual ~character_builder() = default;
+	~character_builder() = default;
+
+	static character_builder* instance() { return &character_builder_instance_; }
 	
-	std::shared_ptr<character> build_character() const { return result_; }
+	std::shared_ptr<character> build_character() const;
 
 protected:
+	character_builder() = default;
+	static character_builder character_builder_instance_;
 	std::shared_ptr<character> result_;
 	
 };

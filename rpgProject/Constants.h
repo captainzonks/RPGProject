@@ -5,6 +5,15 @@
 
 static std::string game_version{"v0.02"};
 
+enum class race_options
+{
+	none = 0,
+	human = 1,
+	dwarf = 2,
+	elf = 3,
+	halfling = 4
+};
+
 enum class character_class
 {
 	none = 0,

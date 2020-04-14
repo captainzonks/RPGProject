@@ -1,9 +1,11 @@
 #include "game.h"
 #include "game_state.h"
 
+#include <ctime>
+
 void game::initialize()
 {
-	srand(static_cast<unsigned int>(time(nullptr))); // seed the dice rolls
+	srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
 	running_ = true;
 }
 
@@ -15,7 +17,6 @@ void game::cleanup()
 		states_.back()->cleanup();
 		states_.pop_back();
 	}
-	delete player;
 }
 
 void game::change_state(game_state* state)

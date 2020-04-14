@@ -11,13 +11,13 @@ class character
 public:
 
 	character();
-	~character() = default;
-
-	
+	~character();
 
 	void update();
 
 	bool alive() const { return is_alive_; }
+	void die() { is_alive_ = false; }
+	
 	attributes& access_attributes() const { return *my_attributes_; }
 	inventory& access_inventory() const { return *my_inventory_; }
 	currency& access_currency() const { return *my_currency_; }
