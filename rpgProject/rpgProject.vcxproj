@@ -37,6 +37,7 @@
     <ClCompile Include="encounter.cpp" />
     <ClCompile Include="enemy_manager.cpp" />
     <ClCompile Include="fighter.cpp" />
+    <ClCompile Include="fighter_functions.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_state.cpp" />
     <ClCompile Include="halfling.cpp" />
@@ -52,12 +53,14 @@
     <ClCompile Include="menu_state.cpp" />
     <ClCompile Include="narrator.cpp" />
     <ClCompile Include="potion.cpp" />
+    <ClCompile Include="rogue_functions.cpp" />
     <ClCompile Include="shield.cpp" />
     <ClCompile Include="shop_menu_state.cpp" />
     <ClCompile Include="short_bow.cpp" />
     <ClCompile Include="sword.cpp" />
     <ClCompile Include="upgrades.cpp" />
     <ClCompile Include="weapon.cpp" />
+    <ClCompile Include="wizard_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor.h" />
@@ -79,6 +82,7 @@
     <ClInclude Include="encounter.h" />
     <ClInclude Include="enemy_manager.h" />
     <ClInclude Include="fighter.h" />
+    <ClInclude Include="fighter_functions.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_state.h" />
     <ClInclude Include="halfling.h" />
@@ -94,12 +98,14 @@
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="narrator.h" />
     <ClInclude Include="potion.h" />
+    <ClInclude Include="rogue_functions.h" />
     <ClInclude Include="shield.h" />
     <ClInclude Include="shop_menu_state.h" />
     <ClInclude Include="short_bow.h" />
     <ClInclude Include="sword.h" />
     <ClInclude Include="upgrades.h" />
     <ClInclude Include="weapon.h" />
+    <ClInclude Include="wizard_functions.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

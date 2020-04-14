@@ -2,18 +2,18 @@
 
 #include "combat_class.h"
 
-class Fighter 
+class fighter 
 	: public combat_class
 {
 public:
 
 	// player constructor
-	Fighter(std::string name, std::string race);
+	fighter(std::string name, std::string race);
 	// enemy constructor
-	Fighter(int identifier);
+	fighter(int identifier);
 
 	// destructor
-	virtual ~Fighter() override;
+	~fighter() override;
 
 	// roll racial stats
 	virtual void roll_human_stats() override, roll_dwarf_stats() override, roll_elf_stats() override, roll_halfling_stats() override;

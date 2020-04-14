@@ -45,7 +45,7 @@
 //	choice_ = 0;
 //	std::unique_ptr<Menu> tempMenu2 = std::make_unique<Menu>();
 //	std::unique_ptr<int> const decisions2 = std::make_unique<int>(1);
-//	std::unique_ptr<vector<string>> tempDecisions2 = std::make_unique<vector<string>>(std::initializer_list<string>({ "Fighter" }));
+//	std::unique_ptr<vector<string>> tempDecisions2 = std::make_unique<vector<string>>(std::initializer_list<string>({ "fighter" }));
 //	choice_ = tempMenu2->print_menu(*decisions2, *tempDecisions2);
 //
 //	actor* new_player{ nullptr };
@@ -53,7 +53,7 @@
 //	switch (choice_)
 //	{
 //	case 1:
-//		new_player = new Fighter(name_, race_);
+//		new_player = new fighter(name_, race_);
 //		break;
 //	default:
 //		break;

@@ -19,7 +19,7 @@
 //#include "Hands.h"
 //#include "Boots.h"
 //#include "Potion.h"
-//#include "Fighter.h"
+//#include "fighter.h"
 //
 //class Narrator
 //{

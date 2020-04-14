@@ -1,9 +1,9 @@
 #include "Fighter.h"
 
 // Player Constructor
-Fighter::Fighter(std::string name, std::string race)
+fighter::fighter(std::string name, std::string race)
 {
-	std::cout << "Player Fighter constructor called" << std::endl;
+	std::cout << "Player fighter constructor called" << std::endl;
 
 	this->name = name;
 	this->race = race;
@@ -40,9 +40,9 @@ Fighter::Fighter(std::string name, std::string race)
 	this->max_health_ = health;
 }
 
-Fighter::Fighter(int identifier)
+fighter::fighter(int identifier)
 {
-	std::cout << "Bad Guy Fighter constructor called" << std::endl;
+	std::cout << "Bad Guy fighter constructor called" << std::endl;
 
 	this->identifier = identifier;
 	this->combatClass = character_class::fighter;
@@ -82,12 +82,12 @@ Fighter::Fighter(int identifier)
 	this->max_health_ = health;
 }
 
-Fighter::~Fighter()
+fighter::~fighter()
 {
-	std::cout << "Fighter destructor called" << std::endl; // debug
+	std::cout << "fighter destructor called" << std::endl; // debug
 }
 
-void Fighter::roll_human_stats()
+void fighter::roll_human_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6) + 1;
 	this->dexterity = RollDiceIgnoreLowest(4, 6) + 1;
@@ -97,7 +97,7 @@ void Fighter::roll_human_stats()
 	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
 }
 
-void Fighter::roll_dwarf_stats()
+void fighter::roll_dwarf_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6) + 2;
 	this->dexterity = RollDiceIgnoreLowest(4, 6);
@@ -107,7 +107,7 @@ void Fighter::roll_dwarf_stats()
 	this->charisma = RollDiceIgnoreLowest(4, 6);
 }
 
-void Fighter::roll_elf_stats()
+void fighter::roll_elf_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6);
 	this->dexterity = RollDiceIgnoreLowest(4, 6) + 2;
@@ -117,7 +117,7 @@ void Fighter::roll_elf_stats()
 	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
 }
 
-void Fighter::roll_halfling_stats()
+void fighter::roll_halfling_stats()
 {
 	this->strength = RollDiceIgnoreLowest(4, 6);
 	this->dexterity = RollDiceIgnoreLowest(4, 6);
@@ -127,7 +127,7 @@ void Fighter::roll_halfling_stats()
 	this->charisma = RollDiceIgnoreLowest(4, 6) + 1;
 }
 
-void Fighter::SetFightingStyle()
+void fighter::SetFightingStyle()
 {
 	std::vector<std::string> pickThis{ "Pick this Fighting Style", "Choose a different Fighting Style" };
 
@@ -277,7 +277,7 @@ void Fighter::SetFightingStyle()
 	}
 }
 
-void Fighter::PrintTWFDef()
+void fighter::PrintTWFDef()
 {
 	std::cout << "\n==Two-Weapon Fighting==" << std::endl;
 	std::cout << "When you engage in two-weapon fighting," << std::endl;
@@ -286,7 +286,7 @@ void Fighter::PrintTWFDef()
 	std::cout << "-----------" << std::endl;
 }
 
-void Fighter::PrintProtectionDef()
+void fighter::PrintProtectionDef()
 {
 	std::cout << "\n==Protection==" << std::endl;
 	std::cout << "When a creature you can see attacks a" << std::endl;
@@ -297,7 +297,7 @@ void Fighter::PrintProtectionDef()
 	std::cout << "-----------" << std::endl;
 }
 
-void Fighter::PrintGWFDef()
+void fighter::PrintGWFDef()
 {
 	std::cout << "\n==Great Weapon Fighting==" << std::endl;
 	std::cout << "When you roll a 1 or 2 on a damage" << std::endl;
@@ -311,7 +311,7 @@ void Fighter::PrintGWFDef()
 	std::cout << "-----------" << std::endl;
 }
 
-void Fighter::PrintDuelingDef()
+void fighter::PrintDuelingDef()
 {
 	std::cout << "\n==Dueling==" << std::endl;
 	std::cout << "When you are wielding a melee" << std::endl;
@@ -321,7 +321,7 @@ void Fighter::PrintDuelingDef()
 	std::cout << "-----------" << std::endl;
 }
 
-void Fighter::PrintDefenseDef()
+void fighter::PrintDefenseDef()
 {
 	std::cout << "\n==Defense==" << std::endl;
 	std::cout << "While you are wearing armor," << std::endl;
@@ -329,7 +329,7 @@ void Fighter::PrintDefenseDef()
 	std::cout << "-----------" << std::endl;
 }
 
-void Fighter::PrintArcheryDef()
+void fighter::PrintArcheryDef()
 {
 	std::cout << "\n==Archery==" << std::endl;
 	std::cout << "You gain a +2 bonus to attack rolls" << std::endl;
@@ -337,7 +337,7 @@ void Fighter::PrintArcheryDef()
 	std::cout << "-----------" << std::endl;
 }
 
-void Fighter::SetEnemyFightingStyle()
+void fighter::SetEnemyFightingStyle()
 {
 	int randomFightingStyle{ rand() % 6 + 1 };
 
@@ -355,7 +355,7 @@ void Fighter::SetEnemyFightingStyle()
 		this->fightingStyle = fighting_style::two_weapon_fighting;
 }
 
-void Fighter::DisplayClassInformation()
+void fighter::DisplayClassInformation()
 {
 	std::cout << "\n\n******fighter lvl " << this->get_level() << "******" << std::endl;
 	if (fightingStyle == fighting_style::archery)
@@ -384,7 +384,7 @@ void Fighter::DisplayClassInformation()
 	}
 }
 
-void Fighter::level_up()
+void fighter::level_up()
 {
 	this->max_health_ += RollDice(1, GetHitDice()) + get_const_mod();
 	this->health = this->max_health_;
