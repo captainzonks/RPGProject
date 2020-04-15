@@ -4,9 +4,7 @@ Personal project to create an RPG text game. Eventual goals may be to put this t
 
 ### What's it do?
 
-Some stuff. Like randomly rolling stats and generating a player character. Enemies randomly spawn between "turns" and attack in a free-for-all brawl til either they're all dead or the player dies. An upgrade system is implemented that requires money (gold, silver, copper) which can be looted off the corpses of foes murdered in combat. There's a simple level-up system implemented based on XP (all it does is boost the max HP and auto-heal). Enemies have random upgrades based on a VERY simple check of the player's average item level and the total number of enemies.
-
-Lot of stuff to do, but things happen and it isn't terrible.
+This branch is the current active development branch. I'm currently rewriting all the code to better decouple classes and functions. It was becoming spaghetti.
 
 I'm keeping the crap below in case I ever want to know how to format this readme... but this is the end.
 
