@@ -25,10 +25,10 @@ public:
 	
 private:
 	bool is_alive_;
-	attributes* my_attributes_;
-	inventory* my_inventory_;
-	currency* my_currency_;
-	combat_class* my_combat_class_;
+	attributes* my_attributes_ {};
+	inventory* my_inventory_ {};
+	currency* my_currency_ {};
+	combat_class* my_combat_class_ {};
 };
 
 #endif

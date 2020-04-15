@@ -29,6 +29,8 @@
     <ClCompile Include="character_builder.cpp" />
     <ClCompile Include="character_creator_state.cpp" />
     <ClCompile Include="chest.cpp" />
+    <ClCompile Include="class_features.cpp" />
+    <ClCompile Include="class_functions.cpp" />
     <ClCompile Include="combat_class.cpp" />
     <ClCompile Include="combat_state.cpp" />
     <ClCompile Include="currency.cpp" />
@@ -37,6 +39,7 @@
     <ClCompile Include="encounter.cpp" />
     <ClCompile Include="enemy_manager.cpp" />
     <ClCompile Include="fighter.cpp" />
+    <ClCompile Include="fighter_features.cpp" />
     <ClCompile Include="fighter_functions.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_state.cpp" />
@@ -73,6 +76,8 @@
     <ClInclude Include="character_builder.h" />
     <ClInclude Include="character_creator_state.h" />
     <ClInclude Include="chest.h" />
+    <ClInclude Include="class_features.h" />
+    <ClInclude Include="class_functions.h" />
     <ClInclude Include="combat_class.h" />
     <ClInclude Include="combat_state.h" />
     <ClInclude Include="constants.h" />
@@ -82,6 +87,7 @@
     <ClInclude Include="encounter.h" />
     <ClInclude Include="enemy_manager.h" />
     <ClInclude Include="fighter.h" />
+    <ClInclude Include="fighter_features.h" />
     <ClInclude Include="fighter_functions.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_state.h" />
@@ -180,6 +186,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <BrowseInformation>true</BrowseInformation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -213,6 +220,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

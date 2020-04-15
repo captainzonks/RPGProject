@@ -17,7 +17,9 @@ enum class race_options
 enum class character_class
 {
 	none = 0,
-	fighter = 1
+	fighter = 1,
+	wizard = 2,
+	rogue = 3
 };
 
 // fighter related enum

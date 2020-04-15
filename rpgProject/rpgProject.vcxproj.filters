@@ -141,6 +141,15 @@
     <ClCompile Include="rogue_functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fighter_features.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="class_features.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="class_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat_class.h">
@@ -270,6 +279,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rogue_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fighter_features.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="class_features.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="class_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,18 +1,12 @@
 #pragma once
 
-#include "combat_class.h"
-
 class fighter 
-	: public combat_class
 {
 public:
 
-	// player constructor
-	fighter(std::string name, std::string race);
-	// enemy constructor
-	fighter(int identifier);
 
-	// destructor
+	fighter();
+
 	~fighter() override;
 
 	// roll racial stats

@@ -1,7 +1,7 @@
 #include "Fighter.h"
 
 // Player Constructor
-fighter::fighter(std::string name, std::string race)
+fighter::fighter()
 {
 	std::cout << "Player fighter constructor called" << std::endl;
 
