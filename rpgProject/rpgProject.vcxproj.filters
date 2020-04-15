@@ -15,31 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="actor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="armor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="attack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="attributes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="blacksmith.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="boots.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="character_creator_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="chest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="combat_class.cpp">
@@ -51,18 +33,6 @@
     <ClCompile Include="currency.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dwarf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="elf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="encounter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="enemy_manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fighter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,28 +42,10 @@
     <ClCompile Include="game_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="halfling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="hands.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="helmet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="human.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="i_display.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="legs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -105,28 +57,7 @@
     <ClCompile Include="menu_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="narrator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="potion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="shield.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="shop_menu_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="short_bow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sword.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="upgrades.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="character_builder.cpp">
@@ -164,18 +95,6 @@
     <ClInclude Include="currency.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dwarf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="elf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="encounter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="enemy_manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="fighter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -185,22 +104,7 @@
     <ClInclude Include="game_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="halfling.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="hands.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="helmet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="helper_functions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="human.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="i_display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inventory.h">
@@ -209,64 +113,22 @@
     <ClInclude Include="item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="legs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menu_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="narrator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="potion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shield.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="shop_menu_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="short_bow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sword.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="upgrades.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="weapon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="actor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="armor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="attack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="attributes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="blacksmith.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="boots.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="character_creator_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="chest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="character_builder.h">

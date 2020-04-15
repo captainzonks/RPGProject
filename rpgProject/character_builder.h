@@ -12,12 +12,12 @@ class combat_class;
 class character_builder
 {
 public:
+	~character_builder() = default;
+
 	void build_attributes() const;
 	void build_inventory() const;
 	void build_currency() const;
 	void build_combat_class() const;
-
-	~character_builder() = default;
 
 	static character_builder* instance() { return &character_builder_instance_; }
 	

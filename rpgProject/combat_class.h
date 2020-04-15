@@ -2,7 +2,6 @@
 #define COMBAT_CLASS_H
 
 #include <map>
-#include <vector>
 
 #include "constants.h"
 
@@ -35,7 +34,7 @@ private:
 	rogue_functions* my_rogue_functions_ {};
 
 	// class features pointers
-	fighter_features* my_fighter_features_ {};
+	fighter_features& my_fighter_features_;
 	
 };
 

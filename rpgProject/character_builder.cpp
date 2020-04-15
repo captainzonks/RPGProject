@@ -17,12 +17,40 @@ void character_builder::build_attributes() const
 	std::string name;
 	std::cin >> name;
 	
-	const auto strength {roll_dice_ignore_lowest(4, 6)};
-	const auto dexterity {roll_dice_ignore_lowest(4, 6)};
-	const auto constitution {roll_dice_ignore_lowest(4, 6)};
-	const auto intelligence {roll_dice_ignore_lowest(4, 6)};
-	const auto wisdom {roll_dice_ignore_lowest(4, 6)};
-	const auto charisma {roll_dice_ignore_lowest(4, 6)};
+	auto strength {roll_dice_ignore_lowest(4, 6)};
+	auto dexterity {roll_dice_ignore_lowest(4, 6)};
+	auto constitution {roll_dice_ignore_lowest(4, 6)};
+	auto intelligence {roll_dice_ignore_lowest(4, 6)};
+	auto wisdom {roll_dice_ignore_lowest(4, 6)};
+	auto charisma {roll_dice_ignore_lowest(4, 6)};
+
+	if(race_choice == 1) // human
+	{
+		strength++;
+		dexterity++;
+		constitution++;
+		intelligence++;
+		wisdom++;
+		charisma++;
+	}
+	else if(race_choice == 2) // dwarf
+	{
+		strength += 2;
+		constitution += 2;
+	}
+	else if( race_choice == 3) // elf
+	{
+		dexterity += 2;
+		intelligence++;
+		wisdom++;
+		charisma++;
+	}
+	else // halfling
+	{
+		constitution++;
+		charisma++;
+	}
+	
 	result_->access_attributes() = { attributes("Player", name, static_cast<::race_options>(race_choice), strength, dexterity, constitution, intelligence, wisdom, charisma) };
 }
 
