@@ -1,41 +1,75 @@
 #ifndef COMBAT_CLASS_H
 #define COMBAT_CLASS_H
 
-#include <map>
+#include <ostream>
+#include <vector>
 
 #include "constants.h"
 
 class class_features;
-class class_functions;
 class fighter_features;
-class fighter_functions;
-class wizard_functions;
-class rogue_functions;
+class wizard_features;
+class rogue_features;
 
-class combat_class
+class combat_class final
 {
 public:
+	combat_class() = default;
+	explicit combat_class(combat_class_enum class_choice);
+	~combat_class();
+	
+	combat_class(const combat_class& other) = default;
 
-	explicit combat_class(unsigned class_choice);
-	virtual ~combat_class();
+	combat_class(combat_class&& other) noexcept
+		: my_class_(std::move(other.my_class_)),
+		  my_fighter_features_(other.my_fighter_features_),
+		  my_wizard_features_(other.my_wizard_features_),
+		  my_rogue_features_(other.my_rogue_features_)
+	{
+	}
 
-	void build_class(unsigned class_choice);
-	std::map<character_class, int>& get_my_class() { return my_class_; }
+	combat_class& operator=(const combat_class& other)
+	{
+		if (this == &other)
+			return *this;
+		my_class_ = other.my_class_;
+		my_fighter_features_ = other.my_fighter_features_;
+		my_wizard_features_ = other.my_wizard_features_;
+		my_rogue_features_ = other.my_rogue_features_;
+		return *this;
+	}
+
+	combat_class& operator=(combat_class&& other) noexcept
+	{
+		if (this == &other)
+			return *this;
+		my_class_ = std::move(other.my_class_);
+		my_fighter_features_ = other.my_fighter_features_;
+		my_wizard_features_ = other.my_wizard_features_;
+		my_rogue_features_ = other.my_rogue_features_;
+		return *this;
+	}
+	
+	void set_features(combat_class_enum class_choice);
+	
+	[[nodiscard]] fighter_features* access_fighter_features() const { return my_fighter_features_; }
+	[[nodiscard]] wizard_features* access_wizard_features() const { return my_wizard_features_; }
+	[[nodiscard]] rogue_features* access_rogue_features() const { return my_rogue_features_; }
+	
+	void build_class(combat_class_enum class_choice);
+	void display_class() const;
+	std::vector<combat_class_enum>& get_my_class() { return my_class_; }
 	
 	void attack();
 	
 private:
-	// class & level storage
-	std::map<character_class, int> my_class_ {};
+	// class storage
+	std::vector<combat_class_enum> my_class_ {};
 
-	// class function pointers
-	fighter_functions* my_fighter_functions_ {};
-	wizard_functions* my_wizard_functions_ {};
-	rogue_functions* my_rogue_functions_ {};
-
-	// class features pointers
-	fighter_features& my_fighter_features_;
-	
+	// class pointers
+	fighter_features* my_fighter_features_ {};
+	wizard_features* my_wizard_features_ {};
+	rogue_features* my_rogue_features_ {};
 };
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef CURRENCY_H
 #define CURRENCY_H
 
+#include <iostream>
+
 class currency
 {
 public:
@@ -23,10 +25,10 @@ public:
 
 	currency() = default;
 
-    ~currency() = default;
+    ~currency() { std::cout << "currency destructor called" << std::endl; }
 
     // getters
-    unsigned get_gold() const, get_silver() const, get_copper() const;
+    [[nodiscard]] unsigned get_gold() const, get_silver() const, get_copper() const;
     void display_money() const;
 
     // add or subtract

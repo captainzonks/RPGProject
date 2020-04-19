@@ -1,6 +1,8 @@
 #include "menu_state.h"
-#include "shop_menu_state.h"
-#include "combat_state.h"
+#include "character.h"
+#include "helper_functions.h"
+
+#include <iostream>
 
 menu_state menu_state::menu_state_;
 
@@ -14,12 +16,10 @@ void menu_state::cleanup()
 
 void menu_state::pause()
 {
-	std::cout << "MenuState pause" << std::endl;
 }
 
 void menu_state::resume()
 {
-	std::cout << "MenuState resume" << std::endl;
 }
 
 void menu_state::handle_events(game* game)
@@ -32,39 +32,15 @@ void menu_state::handle_events(game* game)
 			game->player->display();
 			break;
 		case 2:
-			game->player->DisplayClassInformation();
+			game->player->access_combat_class().display_class();
 			break;
 		case 3:
-			game->player->myCurrency.display_money();
+			game->player->access_currency().display_money();
 			break;
 		case 4:
-			game->player->myUpgrades.DisplayUpgrades();
+			game->player->access_inventory().display_inventory();
 			break;
 		case 5:
-			game->player->myInventory.DisplayPotions();
-			break;
-		case 6:
-			game->push_state(shop_menu_state::instance());
-			break;
-		case 7:
-			game->player->use_potion();
-			break;
-		case 8:
-			game->manager.DisplayAllEnemies();
-			break;
-		case 9:
-			if (game->manager.GetTotalEnemies() != 0)
-			{
-				game->push_state(combat_state::instance());
-				break;
-			}
-			else
-				std::cout << "There are no enemies!" << std::endl;
-			break;
-		case 10:
-			game->manager.AddEnemy(game->manager.CreateEnemy(game->player->get_average_item_level()));
-			break;
-		case 11:
 			game->quit();
 			break;
 		default:

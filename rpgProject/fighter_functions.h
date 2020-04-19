@@ -2,7 +2,7 @@
 #define FIGHTER_FUNCTIONS_H
 #include "class_functions.h"
 
-class fighter_functions
+class fighter_functions final
 	: public class_functions
 {
 public:

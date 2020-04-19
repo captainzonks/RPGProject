@@ -2,11 +2,9 @@
 #define INVENTORY_H
 
 #include <memory>
-#include <string>
 #include <vector>
-#include <tuple>
 
-class item;
+#include "item.h"
 
 class inventory
 {
@@ -51,8 +49,8 @@ public:
 	~inventory();
 
 	void set_capacity(int new_capacity);
-	unsigned int get_capacity() const;
-	int total_items_in_inventory() const;
+	[[nodiscard]] unsigned int get_capacity() const;
+	[[nodiscard]] int total_items_in_inventory() const;
 
 	// inventory functions
 	bool add_to_inventory(std::unique_ptr<item> item);
@@ -61,7 +59,7 @@ public:
 	std::unique_ptr<item> get_item(unsigned item_identifier);
 	
 	// ammunition
-	int return_ammo() const;
+	[[nodiscard]] int return_ammo() const;
 	void subtract_ammo();
 	void add_ammo(int amount);
 

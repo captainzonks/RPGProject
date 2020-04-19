@@ -1,5 +1,4 @@
 #include "inventory.h"
-#include "item.h"
 #include "helper_functions.h"
 
 #include <iostream>
@@ -41,7 +40,7 @@ void inventory::remove_from_inventory(const unsigned item_identifier)
 {
 	// finds item in the inventory via the identifier using find_if() and a lambda
 	const auto itr{ std::find_if(the_inventory_.begin(), the_inventory_.end(),
-		[&item_identifier](const item& obj) { return obj.get_identifier() == item_identifier; })};
+		[&item_identifier](const std::unique_ptr<item>& obj) { return obj->get_identifier() == item_identifier; })};
 	the_inventory_.erase(the_inventory_.begin() + std::distance(the_inventory_.begin(), itr));
 }
 
@@ -68,7 +67,7 @@ std::unique_ptr<item> inventory::get_item(const unsigned item_identifier)
 {
 	// finds item in the inventory via the identifier using find_if() and a lambda
 	const auto itr{ std::find_if(the_inventory_.begin(), the_inventory_.end(), 
-		[&item_identifier](const item& obj) { return obj.get_identifier() == item_identifier; })};
+		[&item_identifier](const std::unique_ptr<item>& obj) { return obj->get_identifier() == item_identifier; })};
 	return std::move(*itr);
 }
 

@@ -2,7 +2,7 @@
 #define WIZARD_FUNCTIONS_H
 #include "class_functions.h"
 
-class wizard_functions
+class wizard_functions final
 	: public class_functions
 {
 public:

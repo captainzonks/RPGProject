@@ -1,20 +1,22 @@
 #pragma once
 
+#include <string>
+
 #include "game_state.h"
 
-class menu_state :
-	public game_state
+class menu_state final
+	:	public game_state
 {
 public:
-	void init();
-	void cleanup();
+	void init() override;
+	void cleanup() override;
 
-	void pause();
-	void resume();
+	void pause() override;
+	void resume() override;
 
-	void handle_events(game* game);
-	void update(game* game);
-	void draw(game* game);
+	void handle_events(game* game) override;
+	void update(game* game) override;
+	void draw(game* game) override;
 
 	static menu_state* instance()
 	{
@@ -23,11 +25,10 @@ public:
 
 protected:
 	menu_state() = default;
-	int choice_{};
+	unsigned choice_{};
 	static menu_state menu_state_;
-	std::vector<std::string> options_{ "Display Player", "Display Class Information",
-		"Display Money", "Display Upgrades", "Display Potions", "Buy Something",
-		"Use A Potion", "Display Enemies", "Attack", "Add Enemy", "Exit game" };
+	std::vector<std::string> options_{ "Display Player Stats", "Display Class",
+		"Display Money", "Display Inventory", "Exit game" };
 	const std::string name_{ "Main Menu" };
 };
 

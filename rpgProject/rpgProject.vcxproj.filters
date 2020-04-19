@@ -33,9 +33,6 @@
     <ClCompile Include="currency.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fighter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,6 +78,12 @@
     <ClCompile Include="class_functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="wizard_features.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rogue_features.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat_class.h">
@@ -93,9 +96,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="currency.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fighter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
@@ -150,6 +150,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="class_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wizard_features.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rogue_features.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

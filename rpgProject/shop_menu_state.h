@@ -1,63 +1,46 @@
 #pragma once
 
-#include "GameState.h"
+#include <string>
 
-class ShopMenuState :
-	public GameState
+#include "game_state.h"
+#include "character.h"
+
+class shop_menu_state final
+	: public game_state
 {
 public:
-	void Init();
-	void Cleanup();
+	void init() override;
+	void cleanup() override;
 
-	void Pause();
-	void Resume();
+	void pause() override;
+	void resume() override;
 
-	void HandleEvents(Game* game);
-	void Update(Game* game);
-	void Draw(Game* game);
+	void handle_events(game* game) override;
+	void update(game* game) override;
+	void draw(game* game) override;
 
-	static ShopMenuState* Instance()
+	static shop_menu_state* instance()
 	{
-		return &m_ShopMenuState;
+		return &shop_menu_state_;
 	}
 
-	bool CheckPrice(Actor& player, int price) const
+	static bool check_price(character& player, const unsigned price)
 	{
-		if (price > player.myCurrency.GetCopper())
+		if (price > player.access_currency().get_copper())
 			return false;
 		else
 			return true;
 	}
 
 protected:
-	ShopMenuState() {}
+	shop_menu_state() = default;
 
-	int choice{};
-	static ShopMenuState m_ShopMenuState;
-	std::vector<std::string> options{ "Buy Armor", "Buy Weapons", "Back" };
-	const std::string name{ "Shop Menu" };
+	unsigned choice_ {};
+	static shop_menu_state shop_menu_state_;
+	std::vector<std::string> options_ { "Buy Armor", "Buy Weapons", "Back" };
+	const std::string name_ { "Shop Menu" };
 
 private:
-	// bool states_
-	bool helmetState{};
-	bool chestState{};
-	bool legsState{};
-	bool handsState{};
-	bool bootsState{};
-	bool swordLState{};
-	bool swordRState{};
-	bool rangedState{};
-	bool shieldState{};
 
-	// pointers
-	std::unique_ptr<Helmet> helmet_ptr{ nullptr };
-	std::unique_ptr<Chest> chest_ptr{ nullptr };
-	std::unique_ptr<Legs> legs_ptr{ nullptr };
-	std::unique_ptr<Hands> hands_ptr{ nullptr };
-	std::unique_ptr<Boots> boots_ptr{ nullptr };
-	std::unique_ptr<Sword> sword_ptr{ nullptr };
-	std::unique_ptr<ShortBow> bow_ptr{ nullptr };
-	std::unique_ptr<Shield> shield_ptr{ nullptr };
-	std::unique_ptr<Potion> potion_ptr{ nullptr };
 };
 

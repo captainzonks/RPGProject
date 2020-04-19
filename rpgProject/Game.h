@@ -28,7 +28,7 @@ public:
 	void update();
 	void draw();
 
-	bool is_running() const { return running_; }
+	[[nodiscard]] bool is_running() const { return running_; }
 	void quit() { running_ = false; };
 
 private:

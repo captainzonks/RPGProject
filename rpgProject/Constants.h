@@ -14,13 +14,17 @@ enum class race_options
 	halfling = 4
 };
 
-enum class character_class
+inline std::string race_strings[4] { "Human", "Dwarf", "Elf", "Halfling" };
+
+enum class combat_class_enum
 {
 	none = 0,
 	fighter = 1,
 	wizard = 2,
 	rogue = 3
 };
+
+inline std::string class_strings[3] { "Figher", "Wizard", "Rogue" };
 
 // fighter related enum
 enum class fighting_style

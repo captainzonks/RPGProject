@@ -1,12 +1,16 @@
 #include "character_builder.h"
+
+#include <memory>
+
 #include "character.h"
 #include "attributes.h"
 #include "combat_class.h"
 #include "currency.h"
 #include "helper_functions.h"
-#include "inventory.h"
 
-void character_builder::build_attributes() const
+character_builder character_builder::character_builder_instance_;
+
+void character_builder::build_attributes()
 {
 	std::cout << "\nWhat race are you?" << std::endl;
 	const std::vector<std::string> race_options{ "Human", "Dwarf", "Elf", "Halfling" };
@@ -50,31 +54,34 @@ void character_builder::build_attributes() const
 		constitution++;
 		charisma++;
 	}
-	
-	result_->access_attributes() = { attributes("Player", name, static_cast<::race_options>(race_choice), strength, dexterity, constitution, intelligence, wisdom, charisma) };
+
+	built_attributes_ = new attributes("Player", name, static_cast<::race_options>(race_choice), strength,
+	                                          dexterity, constitution,
+	                                          intelligence, wisdom, charisma);
 }
 
-void character_builder::build_inventory() const
+void character_builder::build_currency()
 {
-	result_->access_inventory() = { inventory() };
+	built_currency_ = new currency();
 }
 
-void character_builder::build_currency() const
+void character_builder::build_combat_class()
 {
-	result_->access_currency() = { currency() };
+	std::cout << "\nWhat class are you?" << std::endl;
+	const std::vector<std::string> class_options{ "Fighter", "Wizard", "Rogue" };
+	print_menu("Classes", class_options);
+	auto choice { menu_choice(class_options) };
+
+	built_combat_class_ = new combat_class(static_cast<combat_class_enum>(choice));
 }
 
-void character_builder::build_combat_class() const
-{
-	result_->access_combat_class() = { combat_class() };
-}
-
-std::shared_ptr<character> character_builder::build_character() const
+std::shared_ptr<character> character_builder::build_character()
 {
 	build_attributes();
-	build_inventory();
 	build_currency();
 	build_combat_class();
 
+	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_combat_class_);
+	
 	return result_;
 }

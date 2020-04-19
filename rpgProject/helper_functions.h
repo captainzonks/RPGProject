@@ -1,7 +1,6 @@
 #ifndef HELPER_FUNCTIONS_H
 #define HELPER_FUNCTIONS_H
 
-#include <cmath>
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -60,8 +59,7 @@ inline void display_price(const int copper)
 
 inline bool yes_or_no()
 {
-	unsigned choice{};
-	const auto valid_input{false};
+	int choice{};
 
 	std::cout << "--------" << std::endl;
 	std::cout << "1) Yes" << std::endl;
@@ -73,13 +71,13 @@ inline bool yes_or_no()
 		std::cout << "Please enter a number: ";
 		std::cin >> choice;
 
-		if (!(valid_input == std::cin.good()) || choice > 2 || choice < 1)
+		if (std::cin.fail() || choice > 2 || choice < 1)
 		{
-			std::cout << "That's not a valid choice_." << std::endl;
+			std::cout << "That's not a valid choice." << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
-	} while (!(valid_input == std::cin.good()) || choice > 2 || choice < 1);
+	} while (std::cin.fail() || choice > 2 || choice < 1);
 
 	if(choice == 1)
 		return true;
@@ -105,21 +103,20 @@ inline void print_menu(const std::string& name, const std::vector<std::string>& 
 
 inline unsigned menu_choice(const std::vector<std::string>& options)
 {
-	unsigned choice{};
-	const auto valid_input{ false };
+	int choice{};
 
 	do
 	{
 		std::cout << "Please enter a number: ";
 		std::cin >> choice;
 
-		if (!(valid_input == std::cin.good()) || choice > static_cast<int>(options.size()) || choice < 1)
+		if (std::cin.fail() || choice > static_cast<int>(options.size()) || choice < 1)
 		{
-			std::cout << "That's not a valid choice_." << std::endl;
+			std::cout << "That's not a valid choice." << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
-	} while (!(valid_input == std::cin.good()) || choice > static_cast<int>(options.size()) || choice < 1);
+	} while (std::cin.fail() || choice > static_cast<int>(options.size()) || choice < 1);
 
 	return choice;
 }

@@ -28,7 +28,6 @@
     <ClCompile Include="combat_class.cpp" />
     <ClCompile Include="combat_state.cpp" />
     <ClCompile Include="currency.cpp" />
-    <ClCompile Include="fighter.cpp" />
     <ClCompile Include="fighter_features.cpp" />
     <ClCompile Include="fighter_functions.cpp" />
     <ClCompile Include="game.cpp" />
@@ -38,8 +37,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menu_state.cpp" />
+    <ClCompile Include="rogue_features.cpp" />
     <ClCompile Include="rogue_functions.cpp" />
     <ClCompile Include="shop_menu_state.cpp" />
+    <ClCompile Include="wizard_features.cpp" />
     <ClCompile Include="wizard_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +54,6 @@
     <ClInclude Include="combat_state.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="currency.h" />
-    <ClInclude Include="fighter.h" />
     <ClInclude Include="fighter_features.h" />
     <ClInclude Include="fighter_functions.h" />
     <ClInclude Include="game.h" />
@@ -63,8 +63,10 @@
     <ClInclude Include="item.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menu_state.h" />
+    <ClInclude Include="rogue_features.h" />
     <ClInclude Include="rogue_functions.h" />
     <ClInclude Include="shop_menu_state.h" />
+    <ClInclude Include="wizard_features.h" />
     <ClInclude Include="wizard_functions.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

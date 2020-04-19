@@ -1,44 +1,58 @@
 #include "combat_class.h"
 
-#include "fighter_functions.h"
-#include "wizard_functions.h"
-#include "rogue_functions.h"
+#include <iostream>
 
-combat_class::combat_class(const unsigned class_choice)
+#include "fighter_features.h"
+#include "wizard_features.h"
+#include "rogue_features.h"
+
+combat_class::combat_class(combat_class_enum const class_choice)
 {
 	build_class(class_choice);
 }
 
 combat_class::~combat_class()
 {
-	my_fighter_functions_ = nullptr;
-	my_wizard_functions_ = nullptr;
-	my_rogue_functions_ = nullptr;
+	std::cout << "combat class destructor called" << std::endl;
+	delete my_fighter_features_;
+	delete my_wizard_features_;
+	delete my_rogue_features_;
 }
 
-void combat_class::build_class(const unsigned class_choice)
+void combat_class::set_features(combat_class_enum const class_choice)
 {
-	switch (static_cast<character_class>(class_choice))
+	switch (class_choice)
 	{
-	case character_class::fighter:
-		my_fighter_functions_ = fighter_functions::instance();
-		my_class_.try_emplace(character_class::fighter, 1);
+	case combat_class_enum::fighter:
+		my_fighter_features_ = new fighter_features();
 		break;
-	case character_class::wizard:
-		my_wizard_functions_ = wizard_functions::instance();
-		my_class_.try_emplace(character_class::wizard, 1);
+	case combat_class_enum::wizard:
+		my_wizard_features_ = new wizard_features();
 		break;
-	case character_class::rogue:
-		my_rogue_functions_ = rogue_functions::instance();
-		my_class_.try_emplace(character_class::rogue, 1);
-		break;
-	case character_class::none:
+	case combat_class_enum::rogue:
+		my_rogue_features_ = new rogue_features();
 	default:
 		break;
 	}
 }
 
+void combat_class::build_class(combat_class_enum const class_choice)
+{
+	if (std::find(my_class_.begin(), my_class_.end(), class_choice) != my_class_.end())
+	{
+		my_class_.push_back(class_choice);
+		set_features(class_choice);
+	}
+}
+
+void combat_class::display_class() const
+{
+	std::cout << "\nClasses:" << std::endl;
+	for(auto& c : my_class_)
+		std::cout << class_strings[static_cast<int>(c)] << std::endl;
+}
+
 void combat_class::attack()
 {
-	
+	// TODO: attack functions
 }
