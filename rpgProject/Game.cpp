@@ -1,10 +1,14 @@
 #include "game.h"
 #include "game_state.h"
+#include "constants.h"
 
 #include <ctime>
+#include <iostream>
 
 void game::initialize()
 {
+	std::cout << welcome_message + " " + game_version << std::endl;
+	std::cout << "------------------------------------" << std::endl;
 	srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
 	running_ = true;
 }

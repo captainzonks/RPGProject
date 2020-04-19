@@ -38,7 +38,7 @@ void combat_class::set_features(combat_class_enum const class_choice)
 
 void combat_class::build_class(combat_class_enum const class_choice)
 {
-	if (std::find(my_class_.begin(), my_class_.end(), class_choice) != my_class_.end())
+	if (std::find(my_class_.begin(), my_class_.end(), class_choice) == my_class_.end())
 	{
 		my_class_.push_back(class_choice);
 		set_features(class_choice);

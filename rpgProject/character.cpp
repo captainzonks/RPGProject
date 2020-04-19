@@ -23,21 +23,21 @@ void character::display() const
 	// name header
 	std::cout << "\n====" << my_attributes_->get_name() << "====" << std::endl;
 	// basic stats
-	std::cout << "\t" << my_attributes_->get_race_string() << std::endl;
-	std::cout << "\t" << my_attributes_->get_current_health() << " HP / " << my_attributes_->get_max_health() << " HP" << std::endl;
-	std::cout << "\t" << my_attributes_->get_current_exp() << " XP" << std::endl;
+	std::cout << "    " << my_attributes_->get_race_string() << std::endl;
+	std::cout << "    " << my_attributes_->get_current_health() << " HP / " << my_attributes_->get_max_health() << " HP" << std::endl;
+	std::cout << "    " << my_attributes_->get_current_exp() << " XP" << std::endl;
 	// ability stats
-	std::cout << "\t" << my_attributes_->get_strength() << " Strength"
+	std::cout << "    " << my_attributes_->get_strength() << " Strength"
 	<< " (" << std::showpos << my_attributes_->get_strength_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "\t" << my_attributes_->get_dexterity() << " Dexterity"
+	std::cout << "    " << my_attributes_->get_dexterity() << " Dexterity"
 	<< " (" << std::showpos << my_attributes_->get_dexterity_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "\t" << my_attributes_->get_constitution() << " Constitution"
+	std::cout << "    " << my_attributes_->get_constitution() << " Constitution"
 	<< " (" << std::showpos << my_attributes_->get_constitution_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "\t" << my_attributes_->get_intelligence() << " Intelligence"
+	std::cout << "    " << my_attributes_->get_intelligence() << " Intelligence"
 	<< " (" << std::showpos << my_attributes_->get_intelligence_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "\t" << my_attributes_->get_wisdom() << " Wisdom"
+	std::cout << "    " << my_attributes_->get_wisdom() << " Wisdom"
 	<< " (" << std::showpos << my_attributes_->get_wisdom_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "\t" << my_attributes_->get_charisma() << " Charisma"
+	std::cout << "    " << my_attributes_->get_charisma() << " Charisma"
 	<< " (" << std::showpos << my_attributes_->get_charisma_mod() << ")" << std::noshowpos << std::endl;
 	// footer
 	std::cout << "====";

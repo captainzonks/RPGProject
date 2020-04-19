@@ -3,7 +3,8 @@
 
 #include <string>
 
-static std::string game_version{"v0.02"};
+static std::string welcome_message{"Welcome to C++ RPG"};
+static std::string game_version{"v0.1"};
 
 enum class race_options
 {
@@ -14,7 +15,7 @@ enum class race_options
 	halfling = 4
 };
 
-inline std::string race_strings[4] { "Human", "Dwarf", "Elf", "Halfling" };
+inline std::string race_strings[5] { "None", "Human", "Dwarf", "Elf", "Halfling" };
 
 enum class combat_class_enum
 {
@@ -24,7 +25,7 @@ enum class combat_class_enum
 	rogue = 3
 };
 
-inline std::string class_strings[3] { "Figher", "Wizard", "Rogue" };
+inline std::string class_strings[4] { "None", "Fighter", "Wizard", "Rogue" };
 
 // fighter related enum
 enum class fighting_style
