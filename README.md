@@ -4,7 +4,11 @@ Personal project to create an RPG text game. Eventual goals may be to put this t
 
 ### What's it do?
 
-This branch is the current active development branch. I'm currently rewriting all the code to better decouple classes and functions. It was becoming spaghetti.
+This branch is the current active development branch.
+
+The basic functions of character creation are now implemented and functioning. Everything is working through a state engine, singleton and builder patterns, and the messy spaghetti of the previous code is now abstracted out into interfaces and decoupled classes and functions. A LOT smoother. A LOT of work still to do.
+
+But it runs. For now.
 
 I'm keeping the crap below in case I ever want to know how to format this readme... but this is the end.
 
