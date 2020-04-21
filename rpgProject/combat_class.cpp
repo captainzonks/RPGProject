@@ -36,6 +36,30 @@ void combat_class::set_features(combat_class_enum const class_choice)
 	}
 }
 
+fighter_features* combat_class::access_fighter_features() const
+{
+	if (is_fighter())
+		return my_fighter_features_;
+
+	return nullptr;
+}
+
+wizard_features* combat_class::access_wizard_features() const
+{
+	if (is_wizard())
+		return my_wizard_features_;
+
+	return nullptr;
+}
+
+rogue_features* combat_class::access_rogue_features() const
+{
+	if (is_rogue())
+		return my_rogue_features_;
+
+	return nullptr;
+}
+
 void combat_class::build_class(combat_class_enum const class_choice)
 {
 	if (std::find(my_class_.begin(), my_class_.end(), class_choice) == my_class_.end())
@@ -47,9 +71,15 @@ void combat_class::build_class(combat_class_enum const class_choice)
 
 void combat_class::display_class() const
 {
-	std::cout << "\nClasses:" << std::endl;
-	for(auto& c : my_class_)
-		std::cout << class_strings[static_cast<int>(c)] << std::endl;
+	if (my_class_.capacity() == 1)
+		std::cout << class_strings[static_cast<int>(my_class_.at(0))];
+	else
+	{
+		for (auto& c : my_class_)
+		{
+			std::cout << class_strings[static_cast<int>(c)];
+		}
+	}
 }
 
 void combat_class::attack()

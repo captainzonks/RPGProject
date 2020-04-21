@@ -20,7 +20,8 @@ character::~character()
 
 void character::update() const
 {
-	my_inventory_->update();
+	if (is_alive_)
+		my_inventory_->update();
 }
 
 void character::display() const
@@ -28,7 +29,9 @@ void character::display() const
 	// name header
 	std::cout << "\n====" << my_attributes_->get_name() << "====" << std::endl;
 	// basic stats
-	std::cout << "    " << my_attributes_->get_race_string() << std::endl;
+	std::cout << "    " << my_attributes_->get_race_string() << " ";
+	my_combat_class_->display_class();
+	std::cout << std::endl;
 	std::cout << "    " << my_attributes_->get_current_health() << " HP / " << my_attributes_->get_max_health() << " HP" << std::endl;
 	std::cout << "    " << my_attributes_->get_current_exp() << " XP" << std::endl;
 	// ability stats

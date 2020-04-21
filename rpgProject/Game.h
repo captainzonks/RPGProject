@@ -4,10 +4,7 @@
 #include <memory>
 #include <vector>
 
-#include "human.h"
-#include "elf.h"
-#include "dwarf.h"
-#include "encounter.h"
+#include "character_manager.h"
 
 class character;
 class game_state;
@@ -16,6 +13,7 @@ class game
 {
 public:
 	std::shared_ptr<character> player;
+	character_manager manager { *character_manager::instance() };
 
 	void initialize();
 	void cleanup();

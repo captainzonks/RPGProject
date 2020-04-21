@@ -51,10 +51,14 @@ public:
 	}
 	
 	void set_features(combat_class_enum class_choice);
+
+	[[nodiscard]] bool is_fighter() const { return my_fighter_features_ != nullptr; }
+	[[nodiscard]] bool is_wizard() const { return my_wizard_features_ != nullptr; }
+	[[nodiscard]] bool is_rogue() const { return my_rogue_features_ != nullptr; }
 	
-	[[nodiscard]] fighter_features* access_fighter_features() const { return my_fighter_features_; }
-	[[nodiscard]] wizard_features* access_wizard_features() const { return my_wizard_features_; }
-	[[nodiscard]] rogue_features* access_rogue_features() const { return my_rogue_features_; }
+	[[nodiscard]] fighter_features* access_fighter_features() const;
+	[[nodiscard]] wizard_features* access_wizard_features() const;
+	[[nodiscard]] rogue_features* access_rogue_features() const;
 	
 	void build_class(combat_class_enum class_choice);
 	void display_class() const;

@@ -1,12 +1,5 @@
 #pragma once
 
-#include "Fighter.h"
-//#include "Human.h"
-//#include "Dwarf.h"
-//#include "Elf.h"
-//#include "Halfling.h"
-#include "upgrades.h"
-
 #include <vector>
 
 class EnemyManager

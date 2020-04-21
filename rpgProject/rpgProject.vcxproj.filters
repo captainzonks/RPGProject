@@ -87,6 +87,15 @@
     <ClCompile Include="item_list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="character_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player_info_menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="npc_info_menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat_class.h">
@@ -162,6 +171,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="item_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="character_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="name_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player_info_menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="npc_info_menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

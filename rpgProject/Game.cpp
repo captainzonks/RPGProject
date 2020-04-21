@@ -5,8 +5,6 @@
 #include <ctime>
 #include <iostream>
 
-#include "character_creator_state.h"
-
 void game::initialize()
 {
 	std::cout << welcome_message + " " + game_version << std::endl;
@@ -82,6 +80,7 @@ void game::update()
 	// let the state update the game
 	if (is_running())
 	{
+		manager.update();
 		states_.back()->update(this);
 	}
 }

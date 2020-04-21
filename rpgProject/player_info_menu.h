@@ -1,12 +1,11 @@
-#ifndef MENU_STATE_H
-#define MENU_STATE_H
+#ifndef PLAYER_INFO_MENU_H
+#define PLAYER_INFO_MENU_H
 
 #include <string>
 
 #include "game_state.h"
-
-class menu_state final
-	:	public game_state
+class player_info_menu final
+	: public game_state
 {
 public:
 	void init() override;
@@ -19,23 +18,22 @@ public:
 	void update(game* game) override;
 	void draw(game* game) override;
 
-	static menu_state* instance()
+	static player_info_menu* instance()
 	{
-		return &menu_state_;
+		return &player_info_menu_state_;
 	}
-
 protected:
-	menu_state() = default;
+	player_info_menu() = default;
 	unsigned choice_{};
-	static menu_state menu_state_;
+	static player_info_menu player_info_menu_state_;
 	std::vector<std::string> options_
 	{
-		"Player Info",
-		"Fantasy Shop",
-		"NPC Debug Menu",
-		"Exit game"
+		"Player Stats",
+		"Inventory",
+		"Money",
+		"Back"
 	};
-	const std::string name_{ "Main Menu" };
+	const std::string name_{ "Player Info" };
 };
 
 #endif

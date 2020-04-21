@@ -1,9 +1,7 @@
 #include "menu_state.h"
-#include "character.h"
 #include "helper_functions.h"
-
-#include <iostream>
-
+#include "npc_info_menu.h"
+#include "player_info_menu.h"
 #include "shop_menu_state.h"
 
 menu_state menu_state::menu_state_;
@@ -31,24 +29,15 @@ void menu_state::handle_events(game* game)
 		switch (choice_)
 		{
 		case 1:
-			game->player->display();
+			game->push_state(player_info_menu::instance());
 			break;
 		case 2:
-			game->player->access_combat_class().display_class();
+			game->push_state(shop_menu_state::instance());
 			break;
 		case 3:
-			game->player->access_currency().display_money();
+			game->push_state(npc_info_menu::instance());
 			break;
 		case 4:
-			game->player->access_inventory().display_inventory();
-			break;
-		case 5:
-			game->player->access_inventory().display_equipped();
-			break;
-		case 6:
-			game->change_state(shop_menu_state::instance());
-			break;
-		case 7:
 			game->quit();
 			break;
 		default:
@@ -59,7 +48,6 @@ void menu_state::handle_events(game* game)
 
 void menu_state::update(game* game)
 {
-	game->player->update();
 }
 
 void menu_state::draw(game* game)

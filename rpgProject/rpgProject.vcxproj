@@ -23,6 +23,7 @@
     <ClCompile Include="character.cpp" />
     <ClCompile Include="character_builder.cpp" />
     <ClCompile Include="character_creator_state.cpp" />
+    <ClCompile Include="character_manager.cpp" />
     <ClCompile Include="class_features.cpp" />
     <ClCompile Include="class_functions.cpp" />
     <ClCompile Include="combat_class.cpp" />
@@ -38,6 +39,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menu_state.cpp" />
+    <ClCompile Include="npc_info_menu.cpp" />
+    <ClCompile Include="player_info_menu.cpp" />
     <ClCompile Include="rogue_features.cpp" />
     <ClCompile Include="rogue_functions.cpp" />
     <ClCompile Include="shop_menu_state.cpp" />
@@ -49,6 +52,7 @@
     <ClInclude Include="character.h" />
     <ClInclude Include="character_builder.h" />
     <ClInclude Include="character_creator_state.h" />
+    <ClInclude Include="character_manager.h" />
     <ClInclude Include="class_features.h" />
     <ClInclude Include="class_functions.h" />
     <ClInclude Include="combat_class.h" />
@@ -65,6 +69,9 @@
     <ClInclude Include="item_list.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menu_state.h" />
+    <ClInclude Include="name_list.h" />
+    <ClInclude Include="npc_info_menu.h" />
+    <ClInclude Include="player_info_menu.h" />
     <ClInclude Include="rogue_features.h" />
     <ClInclude Include="rogue_functions.h" />
     <ClInclude Include="shop_menu_state.h" />
