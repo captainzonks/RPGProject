@@ -28,8 +28,7 @@ public:
 	{
 		if (price > player.access_currency().get_copper())
 			return false;
-		else
-			return true;
+		return true;
 	}
 
 protected:
@@ -37,7 +36,10 @@ protected:
 
 	unsigned choice_ {};
 	static shop_menu_state shop_menu_state_;
-	std::vector<std::string> options_ { "Buy Armor", "Buy Weapons", "Back" };
+	std::vector<std::string> top_options_ { "Buy Armor", "Buy Weapons", "Back" };
+	std::vector<std::string> armor_options_ { "Back" };
+	std::vector<std::string> weapons_options_ { "Sword of Infinite Fury", "Back" };
+	std::vector<std::string>* menu_options_ptr_ {};
 	const std::string name_ { "Shop Menu" };
 
 private:

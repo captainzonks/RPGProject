@@ -1,6 +1,10 @@
 #include "shop_menu_state.h"
+#include "helper_functions.h"
 
 #include <iostream>
+
+#include "item_list.h"
+#include "menu_state.h"
 
 shop_menu_state shop_menu_state::shop_menu_state_;
 
@@ -8,11 +12,14 @@ void shop_menu_state::init()
 {
 	std::cout << "Welcome to fantasy shop " << game_version << "!" << std::endl;
 	std::cout << "=============================" << std::endl;
-	std::cout << "We are not open yet" << std::endl;
+	std::cout << "We have one item." << std::endl;
+
+	menu_options_ptr_ = &top_options_;
 }
 
 void shop_menu_state::cleanup()
 {
+	menu_options_ptr_ = nullptr;
 }
 
 void shop_menu_state::pause()
@@ -25,6 +32,52 @@ void shop_menu_state::resume()
 
 void shop_menu_state::handle_events(game* game)
 {
+	if(menu_options_ptr_ == &top_options_)
+	{
+		if (choice_ == 1)
+		{
+			menu_options_ptr_ = &armor_options_;
+			return;
+		}
+
+		if (choice_ == 2)
+		{
+			menu_options_ptr_ = &weapons_options_;
+			return;
+		}
+			
+		if (choice_ == 3)
+		{
+			game->change_state(menu_state::instance());
+			return;
+		}
+	}
+	if(menu_options_ptr_ == &armor_options_)
+	{
+		if (choice_ == 1)
+		{
+			menu_options_ptr_ = &top_options_;
+			return;
+		}
+	}
+	if(menu_options_ptr_ == &weapons_options_)
+	{
+		if (choice_ == 1)
+		{
+			game->player->access_inventory().equip(
+				item_list::item_maker::instance()->make_sword_of_infinite_fury());
+			return;
+		}
+			
+		if (choice_ == 2)
+		{
+			menu_options_ptr_ = &top_options_;
+		}
+	}
+	
+
+
+	
 	//if (choice != 0)
 	//{
 	//	switch (choice)
@@ -363,6 +416,7 @@ void shop_menu_state::handle_events(game* game)
 
 void shop_menu_state::update(game* game)
 {
+	choice_ = 0;
 	//helmetState = game->player->myUpgrades.HelmetEquipped();
 	//chestState = game->player->myUpgrades.ChestEquipped();
 	//legsState = game->player->myUpgrades.LegsEquipped();
@@ -376,6 +430,12 @@ void shop_menu_state::update(game* game)
 
 void shop_menu_state::draw(game* game)
 {
+	print_menu("", *menu_options_ptr_);
+	choice_ = menu_choice(*menu_options_ptr_);
+
+
+
+	
 	//// armor
 	//std::cout << "\nARMOR FOR SALE" << std::endl;
 	//std::cout << "--------------" << std::endl;

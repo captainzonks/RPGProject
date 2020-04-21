@@ -48,14 +48,19 @@ public:
 
 	~inventory();
 
+	void update();
+	void update_armor_bonus();
+	
 	void set_capacity(int new_capacity);
 	[[nodiscard]] unsigned int get_capacity() const;
+	[[nodiscard]] int get_armor_bonus() const { return armor_bonus_; }
 	[[nodiscard]] int total_items_in_inventory() const;
 
 	// inventory functions
 	bool add_to_inventory(std::unique_ptr<item> item);
 	void remove_from_inventory(unsigned item_identifier);
 	void display_inventory() const;
+	void display_equipped() const;
 	std::unique_ptr<item> get_item(unsigned item_identifier);
 	
 	// ammunition
@@ -71,7 +76,8 @@ public:
 private:
 
 	std::vector<std::unique_ptr<item>> the_inventory_{};
-	unsigned int capacity_{};
+	unsigned int capacity_{ 10 };
+	int armor_bonus_{};
 	int ammunition_{};
 
 	// equipped armor

@@ -32,7 +32,7 @@ void character_creator_state::handle_events(game* game)
 void character_creator_state::update(game* game)
 {
 	if(game->player)
-		change_state(game, menu_state::instance());
+		game->change_state(menu_state::instance());
 }
 
 void character_creator_state::draw(game* game)

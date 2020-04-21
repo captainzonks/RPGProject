@@ -18,6 +18,11 @@ character::~character()
 	delete my_combat_class_;
 }
 
+void character::update() const
+{
+	my_inventory_->update();
+}
+
 void character::display() const
 {
 	// name header

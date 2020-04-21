@@ -34,6 +34,7 @@
     <ClCompile Include="game_state.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="item.cpp" />
+    <ClCompile Include="item_list.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menu_state.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="helper_functions.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="item.h" />
+    <ClInclude Include="item_list.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="rogue_features.h" />

@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include "shop_menu_state.h"
+
 menu_state menu_state::menu_state_;
 
 void menu_state::init()
@@ -41,6 +43,12 @@ void menu_state::handle_events(game* game)
 			game->player->access_inventory().display_inventory();
 			break;
 		case 5:
+			game->player->access_inventory().display_equipped();
+			break;
+		case 6:
+			game->change_state(shop_menu_state::instance());
+			break;
+		case 7:
 			game->quit();
 			break;
 		default:

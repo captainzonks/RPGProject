@@ -27,8 +27,16 @@ protected:
 	menu_state() = default;
 	unsigned choice_{};
 	static menu_state menu_state_;
-	std::vector<std::string> options_{ "Display Player Stats", "Display Class",
-		"Display Money", "Display Inventory", "Exit game" };
+	std::vector<std::string> options_
+	{
+		"Display Player Stats",
+		"Display Class",
+		"Display Money",
+		"Display Inventory",
+		"Display Equipped Items",
+		"Fantasy Shop",
+		"Exit game"
+	};
 	const std::string name_{ "Main Menu" };
 };
 

@@ -9,6 +9,30 @@ inventory::~inventory()
 	std::cout << "inventory destructor called" << std::endl;
 }
 
+void inventory::update()
+{
+	update_armor_bonus();
+}
+
+void inventory::update_armor_bonus()
+{
+	if(helmet_slot_)
+		armor_bonus_ += helmet_slot_->get_armor_value();
+	if(chest_slot_)
+		armor_bonus_ += chest_slot_->get_armor_value();
+	if(legs_slot_)
+		armor_bonus_ += legs_slot_->get_armor_value();
+	if(hands_slot_)
+		armor_bonus_ += hands_slot_->get_armor_value();
+	if(feet_slot_)
+		armor_bonus_ += feet_slot_->get_armor_value();
+
+	if(off_hand_slot_ && off_hand_slot_->get_armor_type() == armor_type::shield)
+		armor_bonus_ += off_hand_slot_->get_armor_value();
+	if(main_hand_slot_ && main_hand_slot_->get_armor_type() == armor_type::shield)
+		armor_bonus_ += main_hand_slot_->get_armor_value();
+}
+
 void inventory::set_capacity(const int new_capacity)
 {
 	capacity_ = new_capacity;
@@ -46,7 +70,7 @@ void inventory::remove_from_inventory(const unsigned item_identifier)
 
 void inventory::display_inventory() const
 {
-	std::cout << "=====INVENTORY=====" << std::endl;
+	std::cout << "\n=====INVENTORY=====" << std::endl;
 	auto counter{ 1 };
 	if (the_inventory_.empty())
 	{
@@ -61,6 +85,27 @@ void inventory::display_inventory() const
 		}
 	}
 	std::cout << "===================" << std::endl;
+}
+
+void inventory::display_equipped() const
+{
+	std::cout << "\n=====EQUIPPED ITEMS=====" << std::endl;
+	std::cout << "    -ARMOR-" << std::endl;
+	if(helmet_slot_)
+		helmet_slot_->display();
+	if(chest_slot_)
+		chest_slot_->display();
+	if(legs_slot_)
+		legs_slot_->display();
+	if(hands_slot_)
+		hands_slot_->display();
+	if(feet_slot_)
+		feet_slot_->display();
+	std::cout << "    -WEAPONS-" << std::endl;
+	if(main_hand_slot_)
+		main_hand_slot_->display();
+	if(off_hand_slot_)
+		off_hand_slot_->display();
 }
 
 std::unique_ptr<item> inventory::get_item(const unsigned item_identifier)
@@ -186,6 +231,7 @@ void inventory::equip(std::unique_ptr<item> item)
 				if(ask_to_swap(*item, *main_hand_slot_))
 				{
 					std::swap(main_hand_slot_, item);
+					add_to_inventory(std::move(item));
 					std::cout << "Equipped " << main_hand_slot_->get_name() << std::endl;
 				}
 			}
@@ -201,6 +247,7 @@ void inventory::equip(std::unique_ptr<item> item)
 				if(ask_to_swap(*item, *off_hand_slot_))
 				{
 					std::swap(off_hand_slot_, item);
+					add_to_inventory(std::move(item));
 					std::cout << "Equipped " << off_hand_slot_->get_name() << std::endl;
 				}
 			}
@@ -221,11 +268,13 @@ void inventory::equip(std::unique_ptr<item> item)
 				if(ask_to_swap(*item, *main_hand_slot_))
 				{
 					std::swap(main_hand_slot_, item);
+					add_to_inventory(std::move(item));
 					std::cout << "Equipped " << main_hand_slot_->get_name() << std::endl;
 				}
 				else if(ask_to_swap(*item, *off_hand_slot_))
 				{
 					std::swap(off_hand_slot_, item);
+					add_to_inventory(std::move(item));
 					std::cout << "Equipped " << off_hand_slot_->get_name() << std::endl;
 				}
 			}
@@ -241,6 +290,7 @@ void inventory::equip(std::unique_ptr<item> item)
 				if(ask_to_swap(*item, *main_hand_slot_))
 				{
 					std::swap(main_hand_slot_, item);
+					add_to_inventory(std::move(item));
 					std::cout << "Equipped " << main_hand_slot_->get_name() << std::endl;
 				}
 			}

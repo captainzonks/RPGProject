@@ -47,7 +47,7 @@ public:
 	explicit character(attributes* new_attributes, currency* new_currency, combat_class* new_combat_class);
 	~character();
 
-	void update() {} // TODO: implement this
+	void update() const;
 	void display() const;
 
 	[[nodiscard]] bool alive() const { return is_alive_; }

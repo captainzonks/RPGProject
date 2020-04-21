@@ -84,6 +84,9 @@
     <ClCompile Include="rogue_features.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="item_list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat_class.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rogue_features.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="item_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

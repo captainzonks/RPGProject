@@ -5,6 +5,8 @@
 #include <ctime>
 #include <iostream>
 
+#include "character_creator_state.h"
+
 void game::initialize()
 {
 	std::cout << welcome_message + " " + game_version << std::endl;

@@ -57,6 +57,14 @@ enum class damage_type
 	thunder = 13
 };
 
+inline std::string damage_type_strings[14]
+{
+	"None", "Acid", "Bludgeoning", "Cold",
+	"Fire", "Force", "Lightning", "Necrotic",
+	"Piercing", "Poison", "Psychic", "Radiant",
+	"Slashing", "Thunder"
+};
+
 enum class item_type
 {
 	none = 0,
@@ -65,11 +73,21 @@ enum class item_type
 	weapon = 3
 };
 
+inline std::string item_type_strings[4]
+{
+	"None", "Consumable", "Armor", "Weapon"
+};
+
 enum class weapon_type
 {
 	none = 0,
 	melee = 1,
 	ranged = 2
+};
+
+inline std::string weapon_type_strings[3]
+{
+	"None", "Melee", "Ranged"
 };
 
 enum class weapon_hand
@@ -88,6 +106,11 @@ enum class weapon_proficiency
 	martial = 2
 };
 
+inline std::string weapon_proficiency_strings[3]
+{
+	"None", "Simple", "Martial"
+};
+
 enum class armor_type
 {
 	none = 0,
@@ -95,6 +118,11 @@ enum class armor_type
 	medium_armor = 2,
 	heavy_armor = 3,
 	shield = 4
+};
+
+inline std::string armor_type_string[6]
+{
+	"None", "Light Armor", "Medium Armor", "Heavy Armor", "Shield"
 };
 
 enum class armor_slot
