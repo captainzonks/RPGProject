@@ -4,7 +4,7 @@
 
 #include "character.h"
 #include "attributes.h"
-#include "combat_class.h"
+#include "character_job.h"
 #include "currency.h"
 #include "helper_functions.h"
 #include "name_list.h"
@@ -71,28 +71,28 @@ void character_builder::build_currency()
 	built_currency_ = new currency();
 }
 
-void character_builder::ask_for_combat_class()
+void character_builder::ask_for_job()
 {
-	std::cout << "\nWhat class are you?" << std::endl;
-	const std::vector<std::string> class_options{ "Fighter", "Wizard", "Rogue" };
-	print_menu("Classes", class_options);
-	auto choice { menu_choice(class_options) };
+	std::cout << "\nWhat is your job?" << std::endl;
+	const std::vector<std::string> job_options{ "Lumberer", "Blacksmith", "Farmer" };
+	print_menu("Jobs", job_options);
+	auto choice { menu_choice(job_options) };
 
-	build_combat_class(static_cast<combat_class_enum>(choice));
+	build_job(static_cast<job_labels>(choice));
 }
 
-void character_builder::build_combat_class(const combat_class_enum choice)
+void character_builder::build_job(const job_labels choice)
 {
-	built_combat_class_ = new combat_class(choice);
+	built_job_ = new character_job(choice);
 }
 
 std::shared_ptr<character> character_builder::build_player()
 {
 	ask_for_race_and_name();
 	build_currency();
-	ask_for_combat_class();
+	ask_for_job();
 
-	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_combat_class_);
+	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_job_);
 	
 	return result_;
 }
@@ -111,9 +111,9 @@ std::shared_ptr<character> character_builder::build_character()
 	
 	build_attributes(name, "NPC", static_cast<race_options>(race));
 	build_currency();
-	build_combat_class(static_cast<combat_class_enum>(class_choice));
+	build_job(static_cast<job_labels>(class_choice));
 
-	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_combat_class_);
+	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_job_);
 
 	return result_;
 }

@@ -26,7 +26,7 @@
     <ClCompile Include="character_manager.cpp" />
     <ClCompile Include="class_features.cpp" />
     <ClCompile Include="class_functions.cpp" />
-    <ClCompile Include="combat_class.cpp" />
+    <ClCompile Include="character_job.cpp" />
     <ClCompile Include="combat_state.cpp" />
     <ClCompile Include="currency.cpp" />
     <ClCompile Include="fighter_features.cpp" />
@@ -36,6 +36,7 @@
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="item_list.cpp" />
+    <ClCompile Include="job_functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menu_state.cpp" />
@@ -55,7 +56,7 @@
     <ClInclude Include="character_manager.h" />
     <ClInclude Include="class_features.h" />
     <ClInclude Include="class_functions.h" />
-    <ClInclude Include="combat_class.h" />
+    <ClInclude Include="character_job.h" />
     <ClInclude Include="combat_state.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="currency.h" />
@@ -67,6 +68,7 @@
     <ClInclude Include="inventory.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="item_list.h" />
+    <ClInclude Include="job_functions.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="name_list.h" />

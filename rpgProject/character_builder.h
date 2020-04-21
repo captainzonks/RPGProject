@@ -10,7 +10,7 @@ class character;
 class attributes;
 class inventory;
 class currency;
-class combat_class;
+class character_job;
 
 class character_builder
 {
@@ -20,8 +20,8 @@ public:
 	void ask_for_race_and_name();
 	void build_attributes(const std::string& name, const std::string& label, race_options race);
 	void build_currency();
-	void ask_for_combat_class();
-	void build_combat_class(combat_class_enum choice);
+	void ask_for_job();
+	void build_job(job_labels choice);
 
 	static character_builder* instance() { return &character_builder_instance_; }
 
@@ -34,7 +34,7 @@ protected:
 	
 	attributes* built_attributes_ {};
 	currency* built_currency_ {};
-	combat_class* built_combat_class_ {};
+	character_job* built_job_ {};
 	std::shared_ptr<character> result_ {};
 };
 

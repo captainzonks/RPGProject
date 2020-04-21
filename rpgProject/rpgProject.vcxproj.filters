@@ -24,9 +24,6 @@
     <ClCompile Include="character_creator_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="combat_class.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="combat_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -96,11 +93,14 @@
     <ClCompile Include="npc_info_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="job_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="character_job.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="combat_class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="combat_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -183,6 +183,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="npc_info_menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="job_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="character_job.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

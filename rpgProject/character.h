@@ -4,7 +4,7 @@
 #include "attributes.h"
 #include "inventory.h"
 #include "currency.h"
-#include "combat_class.h"
+#include "character_job.h"
 
 class character
 {
@@ -16,7 +16,7 @@ public:
 		  my_attributes_(other.my_attributes_),
 		  my_inventory_(other.my_inventory_),
 		  my_currency_(other.my_currency_),
-		  my_combat_class_(other.my_combat_class_)
+		  my_job_(other.my_job_)
 	{
 	}
 
@@ -28,7 +28,7 @@ public:
 		my_attributes_ = other.my_attributes_;
 		my_inventory_ = other.my_inventory_;
 		my_currency_ = other.my_currency_;
-		my_combat_class_ = other.my_combat_class_;
+		my_job_ = other.my_job_;
 		return *this;
 	}
 
@@ -40,11 +40,11 @@ public:
 		my_attributes_ = other.my_attributes_;
 		my_inventory_ = other.my_inventory_;
 		my_currency_ = other.my_currency_;
-		my_combat_class_ = other.my_combat_class_;
+		my_job_ = other.my_job_;
 		return *this;
 	}
 
-	explicit character(attributes* new_attributes, currency* new_currency, combat_class* new_combat_class);
+	explicit character(attributes* new_attributes, currency* new_currency, character_job* new_combat_class);
 	~character();
 
 	void update() const;
@@ -56,14 +56,14 @@ public:
 	[[nodiscard]] attributes& access_attributes() const { return *my_attributes_; }
 	[[nodiscard]] inventory& access_inventory() const { return *my_inventory_; }
 	[[nodiscard]] currency& access_currency() const { return *my_currency_; }
-	[[nodiscard]] combat_class& access_combat_class() const { return *my_combat_class_; }
+	[[nodiscard]] character_job& access_job() const { return *my_job_; }
 	
 private:
 	bool is_alive_;
 	attributes* my_attributes_ {};
 	inventory* my_inventory_ {};
 	currency* my_currency_ {};
-	combat_class* my_combat_class_ {};
+	character_job* my_job_ {};
 };
 
 #endif

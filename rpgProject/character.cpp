@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-character::character(attributes* new_attributes, currency* new_currency, combat_class* new_combat_class)
-	: my_attributes_(new_attributes), my_currency_(new_currency), my_combat_class_(new_combat_class)
+character::character(attributes* new_attributes, currency* new_currency, character_job* new_combat_class)
+	: my_attributes_(new_attributes), my_currency_(new_currency), my_job_(new_combat_class)
 {
 	my_inventory_ = new inventory();
 	is_alive_ = true;
@@ -15,7 +15,7 @@ character::~character()
 	delete my_attributes_;
 	delete my_inventory_;
 	delete my_currency_;
-	delete my_combat_class_;
+	delete my_job_;
 }
 
 void character::update() const
@@ -30,7 +30,7 @@ void character::display() const
 	std::cout << "\n====" << my_attributes_->get_name() << "====" << std::endl;
 	// basic stats
 	std::cout << "    " << my_attributes_->get_race_string() << " ";
-	my_combat_class_->display_class();
+	my_job_->display_jobs();
 	std::cout << std::endl;
 	std::cout << "    " << my_attributes_->get_current_health() << " HP / " << my_attributes_->get_max_health() << " HP" << std::endl;
 	std::cout << "    " << my_attributes_->get_current_exp() << " XP" << std::endl;

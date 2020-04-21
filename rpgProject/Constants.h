@@ -2,6 +2,7 @@
 #define CONSTANTS_H
 
 #include <string>
+#include <vector>
 
 static std::string welcome_message{"Welcome to C++ RPG"};
 static std::string game_version{"v0.1"};
@@ -15,17 +16,26 @@ enum class race_options
 	halfling = 4
 };
 
-inline std::string race_strings[5] { "None", "Human", "Dwarf", "Elf", "Halfling" };
-
-enum class combat_class_enum
+inline std::vector<std::string> race_strings
 {
-	none = 0,
-	fighter = 1,
-	wizard = 2,
-	rogue = 3
+	"None", "Human", "Dwarf", "Elf", "Halfling"
 };
 
-inline std::string class_strings[4] { "None", "Fighter", "Wizard", "Rogue" };
+enum class job_labels
+{
+	none = 0,
+	lumberer = 1,
+	blacksmith = 2,
+	farmer = 3
+};
+
+inline std::vector<std::string> job_strings
+{
+	"None",
+	"Lumberer",
+	"Blacksmith",
+	"Farmer"
+};
 
 // fighter related enum
 enum class fighting_style
@@ -57,7 +67,7 @@ enum class damage_type
 	thunder = 13
 };
 
-inline std::string damage_type_strings[14]
+inline std::vector<std::string> damage_type_strings
 {
 	"None", "Acid", "Bludgeoning", "Cold",
 	"Fire", "Force", "Lightning", "Necrotic",
@@ -73,7 +83,7 @@ enum class item_type
 	weapon = 3
 };
 
-inline std::string item_type_strings[4]
+inline std::vector<std::string> item_type_strings
 {
 	"None", "Consumable", "Armor", "Weapon"
 };
@@ -85,7 +95,7 @@ enum class weapon_type
 	ranged = 2
 };
 
-inline std::string weapon_type_strings[3]
+inline std::vector<std::string> weapon_type_strings
 {
 	"None", "Melee", "Ranged"
 };
@@ -106,7 +116,7 @@ enum class weapon_proficiency
 	martial = 2
 };
 
-inline std::string weapon_proficiency_strings[3]
+inline std::vector<std::string> weapon_proficiency_strings
 {
 	"None", "Simple", "Martial"
 };
@@ -120,7 +130,7 @@ enum class armor_type
 	shield = 4
 };
 
-inline std::string armor_type_string[6]
+inline std::vector<std::string> armor_type_string
 {
 	"None", "Light Armor", "Medium Armor", "Heavy Armor", "Shield"
 };
