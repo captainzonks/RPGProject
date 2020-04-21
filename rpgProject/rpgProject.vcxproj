@@ -37,6 +37,7 @@
     <ClCompile Include="item.cpp" />
     <ClCompile Include="item_list.cpp" />
     <ClCompile Include="job_functions.cpp" />
+    <ClCompile Include="location.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menu_state.cpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="shop_menu_state.cpp" />
     <ClCompile Include="wizard_features.cpp" />
     <ClCompile Include="wizard_functions.cpp" />
+    <ClCompile Include="world_map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attributes.h" />
@@ -69,6 +71,7 @@
     <ClInclude Include="item.h" />
     <ClInclude Include="item_list.h" />
     <ClInclude Include="job_functions.h" />
+    <ClInclude Include="location.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="name_list.h" />
@@ -79,6 +82,7 @@
     <ClInclude Include="shop_menu_state.h" />
     <ClInclude Include="wizard_features.h" />
     <ClInclude Include="wizard_functions.h" />
+    <ClInclude Include="world_map.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

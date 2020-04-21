@@ -99,6 +99,12 @@
     <ClCompile Include="character_job.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world_map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat_state.h">
@@ -189,6 +195,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="character_job.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="location.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

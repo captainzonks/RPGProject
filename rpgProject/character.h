@@ -60,6 +60,7 @@ public:
 	
 private:
 	bool is_alive_;
+	std::vector<int> my_location_ {};
 	attributes* my_attributes_ {};
 	inventory* my_inventory_ {};
 	currency* my_currency_ {};
