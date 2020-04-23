@@ -60,7 +60,7 @@ void character_builder::build_attributes(const std::string& name, const std::str
 		constitution++;
 		charisma++;
 	}
-
+	
 	built_attributes_ = new attributes(label, name, race, strength,
 	                                          dexterity, constitution,
 	                                          intelligence, wisdom, charisma);

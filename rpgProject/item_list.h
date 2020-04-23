@@ -17,6 +17,7 @@ namespace item_list
 			const std::vector<unsigned> damage_dice {2,6};
 			auto sword_of_infinite_fury = std::make_unique<item>(
 				item_type::weapon,
+				resources::none,
 				weapon_hand::main,
 				armor_type::none,
 				armor_slot::none,

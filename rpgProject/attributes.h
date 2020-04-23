@@ -24,7 +24,8 @@ public:
 		  constitution_(other.constitution_),
 		  intelligence_(other.intelligence_),
 		  wisdom_(other.wisdom_),
-		  charisma_(other.charisma_)
+		  charisma_(other.charisma_),
+		  speed_(other.speed_)
 	{
 	}
 
@@ -47,6 +48,7 @@ public:
 		intelligence_ = other.intelligence_;
 		wisdom_ = other.wisdom_;
 		charisma_ = other.charisma_;
+		speed_ = other.speed_;
 		return *this;
 	}
 
@@ -69,8 +71,10 @@ public:
 		intelligence_ = other.intelligence_;
 		wisdom_ = other.wisdom_;
 		charisma_ = other.charisma_;
+		speed_ = other.speed_;
 		return *this;
 	}
+
 
 	attributes() = default;
 	explicit attributes(std::string label, std::string name, race_options race, const int& strength, const int& dexterity, const int& constitution, const int& intelligence, const int& wisdom, const int& charisma);

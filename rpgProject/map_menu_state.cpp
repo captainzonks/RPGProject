@@ -55,7 +55,7 @@ void map_menu_state::draw(game* game)
 location* map_menu_state::make_new_location()
 {
 	const std::vector<double> coords { 500, 700, 0 };
-	const auto l = new location("Big House", coords);
+	const auto l = new location("Big House", coords, resources::lumber);
 
 	return l;
 }

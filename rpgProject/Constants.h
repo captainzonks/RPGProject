@@ -80,7 +80,8 @@ enum class item_type
 	none = 0,
 	consumable = 1,
 	armor = 2,
-	weapon = 3
+	weapon = 3,
+	resource = 4
 };
 
 inline std::vector<std::string> item_type_strings
@@ -154,6 +155,19 @@ enum class abilities
 	intelligence = 4,
 	wisdom = 5,
 	charisma = 6
+};
+
+enum class resources
+{
+	none = 0,
+	lumber = 1,
+	ore = 2,
+	food = 3
+};
+
+inline std::vector<std::string> resources_string
+{
+	"None", "Lumber", "Ore", "Food"
 };
 
 #endif

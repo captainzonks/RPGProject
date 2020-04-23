@@ -11,30 +11,11 @@
 class item
 {
 public:
-	item(const item_type item_type, const weapon_hand weapon_hand, const armor_type armor_type,
-		const armor_slot armor_slot, std::string name, const unsigned identifier, const unsigned value,
-		const unsigned level, const unsigned weight, const int health_change_value, const int armor_value,
-		std::vector<unsigned> damage_dice, const damage_type damage_type)
-		: item_type_(item_type),
-		  weapon_hand_(weapon_hand),
-		  armor_type_(armor_type),
-		  armor_slot_(armor_slot),
-		  name_(std::move(name)),
-		  identifier_(identifier),
-		  value_(value),
-		  level_(level),
-		  weight_(weight),
-		  health_change_value_(health_change_value),
-		  armor_value_(armor_value),
-		  damage_dice_(std::move(damage_dice)),
-		  damage_type_(damage_type)
-	{
-	}
-
 	item(const item& other) = default;
 
 	item(item&& other) noexcept
 		: item_type_(other.item_type_),
+		  resource_type_(other.resource_type_),
 		  weapon_hand_(other.weapon_hand_),
 		  armor_type_(other.armor_type_),
 		  armor_slot_(other.armor_slot_),
@@ -55,6 +36,7 @@ public:
 		if (this == &other)
 			return *this;
 		item_type_ = other.item_type_;
+		resource_type_ = other.resource_type_;
 		weapon_hand_ = other.weapon_hand_;
 		armor_type_ = other.armor_type_;
 		armor_slot_ = other.armor_slot_;
@@ -75,6 +57,7 @@ public:
 		if (this == &other)
 			return *this;
 		item_type_ = other.item_type_;
+		resource_type_ = other.resource_type_;
 		weapon_hand_ = other.weapon_hand_;
 		armor_type_ = other.armor_type_;
 		armor_slot_ = other.armor_slot_;
@@ -88,6 +71,34 @@ public:
 		damage_dice_ = std::move(other.damage_dice_);
 		damage_type_ = other.damage_type_;
 		return *this;
+	}
+
+	item(const item_type item_type, const resources resource_type, const weapon_hand weapon_hand, const armor_type armor_type,
+	     const armor_slot armor_slot, std::string name, const unsigned identifier, const unsigned value,
+	     const unsigned level, const unsigned weight, const int health_change_value, const int armor_value,
+	     std::vector<unsigned> damage_dice, const damage_type damage_type)
+		: item_type_(item_type),
+		  resource_type_(resource_type),
+		  weapon_hand_(weapon_hand),
+		  armor_type_(armor_type),
+		  armor_slot_(armor_slot),
+		  name_(std::move(name)),
+		  identifier_(identifier),
+		  value_(value),
+		  level_(level),
+		  weight_(weight),
+		  health_change_value_(health_change_value),
+		  armor_value_(armor_value),
+		  damage_dice_(std::move(damage_dice)),
+		  damage_type_(damage_type)
+	{
+	}
+
+	item(const item_type item_type, const resources resource_type, std::string name)
+		: item_type_(item_type),
+		  resource_type_(resource_type),
+		  name_(std::move(name))
+	{
 	}
 
 	item() = default;
@@ -113,6 +124,7 @@ public:
 private:
 	
 	item_type item_type_{ item_type::none };
+	resources resource_type_ { resources::none };
 	weapon_hand weapon_hand_{ weapon_hand::none };
 	armor_type armor_type_{ armor_type::none };
 	armor_slot armor_slot_{ armor_slot::none };
