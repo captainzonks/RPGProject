@@ -1,10 +1,11 @@
-#ifndef PLAYER_INFO_MENU_H
-#define PLAYER_INFO_MENU_H
+#ifndef MAP_MENU_STATE_H
+#define MAP_MENU_STATE_H
 
 #include <string>
 
 #include "game_state.h"
-class player_info_menu final
+
+class map_menu_state final
 	: public game_state
 {
 public:
@@ -18,23 +19,24 @@ public:
 	void update(game* game) override;
 	void draw(game* game) override;
 
-	static player_info_menu* instance()
+	static map_menu_state* instance()
 	{
-		return &player_info_menu_state_;
+		return &map_menu_state_;
 	}
+
+	location* make_new_location();
+
 protected:
-	player_info_menu() = default;
+	map_menu_state() = default;
 	unsigned choice_{};
-	static player_info_menu player_info_menu_state_;
+	static map_menu_state map_menu_state_;
 	std::vector<std::string> options_
 	{
-		"Player Stats",
-		"Inventory",
-		"Money",
-		"Move",
+		"New Location",
+		"Print Places",
 		"Back"
 	};
-	const std::string name_{ "Player Info" };
+	const std::string name_{ "Map Menu" };
 };
 
 #endif

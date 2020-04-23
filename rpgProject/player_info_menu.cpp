@@ -1,6 +1,7 @@
 #include "player_info_menu.h"
 #include "character.h"
 #include "helper_functions.h"
+#include "location.h"
 
 player_info_menu player_info_menu::player_info_menu_state_;
 
@@ -37,6 +38,9 @@ void player_info_menu::handle_events(game* game)
 			game->player->access_currency().display_money();
 			break;
 		case 4:
+			game->player->move(game->world.get_places().at(0).get_coordinates());
+			break;
+		case 5:
 			game->pop_state();
 			break;
 		default:

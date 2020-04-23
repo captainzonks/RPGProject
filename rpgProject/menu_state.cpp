@@ -1,5 +1,6 @@
 #include "menu_state.h"
 #include "helper_functions.h"
+#include "map_menu_state.h"
 #include "npc_info_menu.h"
 #include "player_info_menu.h"
 #include "shop_menu_state.h"
@@ -38,6 +39,9 @@ void menu_state::handle_events(game* game)
 			game->push_state(npc_info_menu::instance());
 			break;
 		case 4:
+			game->push_state(map_menu_state::instance());
+			break;
+		case 5:
 			game->quit();
 			break;
 		default:

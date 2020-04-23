@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "character_manager.h"
+#include "world_map.h"
 
 class character;
 class game_state;
@@ -14,6 +15,7 @@ class game
 public:
 	std::shared_ptr<character> player;
 	character_manager manager { *character_manager::instance() };
+	world_map world { *world_map::instance() };
 
 	void initialize();
 	void cleanup();

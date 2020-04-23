@@ -39,6 +39,7 @@
     <ClCompile Include="job_functions.cpp" />
     <ClCompile Include="location.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map_menu_state.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="menu_state.cpp" />
     <ClCompile Include="npc_info_menu.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="item_list.h" />
     <ClInclude Include="job_functions.h" />
     <ClInclude Include="location.h" />
+    <ClInclude Include="map_menu_state.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="name_list.h" />

@@ -52,6 +52,8 @@ public:
 
 	[[nodiscard]] bool alive() const { return is_alive_; }
 	void die() { is_alive_ = false; }
+
+	void move(std::vector<double> destination);
 	
 	[[nodiscard]] attributes& access_attributes() const { return *my_attributes_; }
 	[[nodiscard]] inventory& access_inventory() const { return *my_inventory_; }
@@ -60,7 +62,7 @@ public:
 	
 private:
 	bool is_alive_;
-	std::vector<int> my_location_ {};
+	std::vector<double> my_location_ { 0, 0, 0 };
 	attributes* my_attributes_ {};
 	inventory* my_inventory_ {};
 	currency* my_currency_ {};

@@ -33,6 +33,7 @@ protected:
 		"Player Info",
 		"Fantasy Shop",
 		"NPC Debug Menu",
+		"Map Debug Menu",
 		"Exit game"
 	};
 	const std::string name_{ "Main Menu" };

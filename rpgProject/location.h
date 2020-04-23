@@ -1,21 +1,22 @@
 #ifndef LOCATION_H
 #define LOCATION_H
+#include <string>
 #include <vector>
 
 class location
 {
 public:
 
-	explicit location(std::vector<int> coordinates)
-		: coordinates_(std::move(coordinates))
+	explicit location(std::string name, std::vector<double> coordinates)
+		: name_(std::move(name)), coordinates_(std::move(coordinates))
 	{
 	}
-
-	[[nodiscard]] std::vector<int> get_coordinates() const { return coordinates_; }
+	[[nodiscard]] std::string get_name() const { return name_; }
+	[[nodiscard]] std::vector<double> get_coordinates() const { return coordinates_; }
 	
 private:
-
-	std::vector<int> coordinates_ {};
+	std::string name_ {};
+	std::vector<double> coordinates_ {};
 };
 
 #endif

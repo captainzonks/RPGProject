@@ -8,6 +8,8 @@ public:
 
 	void access_functions(job_labels job);
 
+	void update();
+
 	static job_functions* instance()
 	{
 		return &job_functions_instance_;

@@ -100,6 +100,8 @@ public:
 	[[nodiscard]] int get_wisdom_mod() const { return (wisdom_ - 10) / 2; }
 	[[nodiscard]] int get_charisma() const { return charisma_; }
 	[[nodiscard]] int get_charisma_mod() const { return (charisma_ - 10) / 2; }
+
+	[[nodiscard]] int get_speed() const { return speed_; }
 	
 private:
 	std::string label_, name_;
@@ -108,6 +110,8 @@ private:
 	int current_health_{}, max_health_{}, current_mana_{}, max_mana_{}, current_exp_{};
 
 	int strength_{}, dexterity_{}, constitution_{}, intelligence_{}, wisdom_{}, charisma_{};
+
+	int speed_ { 25 };
 };
 
 #endif
