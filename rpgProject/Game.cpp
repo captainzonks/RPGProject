@@ -77,12 +77,21 @@ void game::handle_events()
 
 void game::update()
 {
+	// wait until 16ms has ellapsed since the last frame
+	while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticks_last_frame_ + frame_target_time));
+
+	// delta time is the difference in ticks from last frame converted to seconds
+	auto delta_time = SDL_GetTicks() - static_cast<float>(ticks_last_frame_) / 1000.0f;
+
+	// clamp delta time to a max value
+	delta_time = delta_time > 0.05 ? 0.05f : delta_time;
+
+	// sets the new ticks for the current frame to be used in the next pass
+	ticks_last_frame_ = SDL_GetTicks();
+	
 	// let the state update the game
-	if (is_running())
-	{
-		manager.update();
-		states_.back()->update(this);
-	}
+	manager.update(delta_time);
+	
 }
 
 void game::draw()

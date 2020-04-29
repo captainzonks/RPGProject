@@ -1,72 +1,81 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "attributes.h"
-#include "inventory.h"
-#include "currency.h"
-#include "character_job.h"
+#include <map>
+
+#include "attributes_component.h"
+#include "inventory_component.h"
+#include "currency_component.h"
+#include "job_component.h"
+#include "character_manager.h"
+
+class component;
 
 class character
 {
 public:
 	character(const character& other) = default;
+	character(character&& other) noexcept = default;
+	character& operator=(const character& other) = delete;
+	character& operator=(character&& other) noexcept = delete;
 
-	character(character&& other) noexcept
-		: is_alive_(other.is_alive_),
-		  my_attributes_(other.my_attributes_),
-		  my_inventory_(other.my_inventory_),
-		  my_currency_(other.my_currency_),
-		  my_job_(other.my_job_)
+	explicit character(attributes_component* attributes, currency_component* currency, job_component* job)
 	{
+		add_component<attributes_component>(attributes);
+		add_component<currency_component>(currency);
+		add_component<job_component>(job);
+		add_component<inventory_component>();
 	}
 
-	character& operator=(const character& other)
-	{
-		if (this == &other)
-			return *this;
-		is_alive_ = other.is_alive_;
-		my_attributes_ = other.my_attributes_;
-		my_inventory_ = other.my_inventory_;
-		my_currency_ = other.my_currency_;
-		my_job_ = other.my_job_;
-		return *this;
-	}
-
-	character& operator=(character&& other) noexcept
-	{
-		if (this == &other)
-			return *this;
-		is_alive_ = other.is_alive_;
-		my_attributes_ = other.my_attributes_;
-		my_inventory_ = other.my_inventory_;
-		my_currency_ = other.my_currency_;
-		my_job_ = other.my_job_;
-		return *this;
-	}
-
-	explicit character(attributes* new_attributes, currency* new_currency, character_job* new_combat_class);
 	~character();
 
-	void update() const;
+	void update(float delta_time) const;
+	void draw();
+	void destroy();
+
+	void list_all_components() const;
 	void display() const;
 
 	[[nodiscard]] bool alive() const { return is_alive_; }
-	void die() { is_alive_ = false; }
 
-	void move(std::vector<double> destination);
+	//void move(std::vector<double> destination);
+
+	template <typename T, typename ... TArgs>
+	T& add_component(TArgs&& ... args)
+	{
+		T* new_component(new T(std::forward<TArgs>(args)...));
+		new_component->owner = this;
+		components_.emplace_back(new_component);
+		component_type_map_[&typeid(*new_component)] = new_component;
+		new_component->initialize();
+		return *new_component;
+	}
+
+	template <typename T>
+	[[nodiscard]] bool has_component() const
+	{
+		return component_type_map_.count(&typeid(T));
+	}
+
+	template <typename T>
+	T* get_component()
+	{
+		return static_cast<T*>(component_type_map_[&typeid(T)]);
+	}
 	
-	[[nodiscard]] attributes& access_attributes() const { return *my_attributes_; }
-	[[nodiscard]] inventory& access_inventory() const { return *my_inventory_; }
-	[[nodiscard]] currency& access_currency() const { return *my_currency_; }
-	[[nodiscard]] character_job& access_job() const { return *my_job_; }
 	
 private:
-	bool is_alive_;
-	std::vector<double> my_location_ { 0, 0, 0 };
-	attributes* my_attributes_ {};
-	inventory* my_inventory_ {};
-	currency* my_currency_ {};
-	character_job* my_job_ {};
+	bool is_alive_ { true };
+	//std::vector<double> my_location_ { 0, 0, 0 };
+
+	const attributes_component* my_attributes_ { get_component<attributes_component>() };
+	const inventory_component* my_inventory_ { get_component<inventory_component>() };
+	const currency_component* my_currency_ { get_component<currency_component>() };
+	const job_component* my_job_ { get_component<job_component>() };
+
+	character_manager& manager_ { *character_manager::instance() };
+	std::vector<component*> components_;
+	std::map<const std::type_info*, component*> component_type_map_;
 };
 
 #endif

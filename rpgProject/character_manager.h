@@ -2,7 +2,10 @@
 #define CHARACTER_MANAGER_H
 
 #include <memory>
+#include <string>
 #include <vector>
+
+#include "constants.h"
 
 class character;
 
@@ -24,8 +27,14 @@ public:
 	void display_all_npcs() const;
 	[[nodiscard]] int total_npcs() const;
 
-	void update();
+	void update(float delta_time);
+	void draw() const;
 	void clean_up();
+
+	[[nodiscard]] bool has_no_characters() const;
+	[[nodiscard]] std::vector<std::shared_ptr<character>> get_characters() const;
+	[[nodiscard]] std::shared_ptr<character> get_character_by_name(std::string& character_name) const;
+	[[nodiscard]] std::vector<std::shared_ptr<character>> get_characters_by_layer(layer_type layer) const;
 	
 	static character_manager* instance()
 	{

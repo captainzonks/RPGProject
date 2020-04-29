@@ -1,6 +1,6 @@
 #ifndef JOB_FUNCTIONS_H
 #define JOB_FUNCTIONS_H
-#include "character_job.h"
+#include "job_component.h"
 
 class job_functions
 {

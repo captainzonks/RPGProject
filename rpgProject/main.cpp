@@ -2,9 +2,8 @@
 
 #include "game.h"
 #include "character_creator_state.h"
-#include "menu_state.h"
 
-int main()
+int main(int argc, char* args[])
 {
     game game;
 

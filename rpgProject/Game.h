@@ -3,6 +3,10 @@
 
 #include <memory>
 #include <vector>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+
 
 #include "character_manager.h"
 #include "world_map.h"
@@ -34,6 +38,8 @@ public:
 private:
 	bool running_{ false };
 	std::vector<game_state*> states_;
+
+	int ticks_last_frame_ {};
 };
 
 #endif

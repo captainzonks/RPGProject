@@ -7,10 +7,10 @@
 #include "constants.h"
 
 class character;
-class attributes;
-class inventory;
-class currency;
-class character_job;
+class attributes_component;
+class inventory_component;
+class currency_component;
+class job_component;
 
 class character_builder
 {
@@ -32,9 +32,9 @@ protected:
 	character_builder() = default;
 	static character_builder character_builder_instance_;
 	
-	attributes* built_attributes_ {};
-	currency* built_currency_ {};
-	character_job* built_job_ {};
+	attributes_component* built_attributes_ {};
+	currency_component* built_currency_ {};
+	job_component* built_job_ {};
 	std::shared_ptr<character> result_ {};
 };
 

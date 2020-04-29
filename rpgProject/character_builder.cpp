@@ -3,9 +3,10 @@
 #include <memory>
 
 #include "character.h"
-#include "attributes.h"
-#include "character_job.h"
-#include "currency.h"
+#include "attributes_component.h"
+#include "job_component.h"
+#include "currency_component.h"
+#include "game.h"
 #include "helper_functions.h"
 #include "name_list.h"
 
@@ -61,14 +62,14 @@ void character_builder::build_attributes(const std::string& name, const std::str
 		charisma++;
 	}
 	
-	built_attributes_ = new attributes(label, name, race, strength,
+	built_attributes_ = new attributes_component(label, name, layer_type::player_layer, race, strength,
 	                                          dexterity, constitution,
 	                                          intelligence, wisdom, charisma);
 }
 
 void character_builder::build_currency()
 {
-	built_currency_ = new currency();
+	built_currency_ = new currency_component();
 }
 
 void character_builder::ask_for_job()
@@ -83,7 +84,7 @@ void character_builder::ask_for_job()
 
 void character_builder::build_job(const job_labels choice)
 {
-	built_job_ = new character_job(choice);
+	built_job_ = new job_component(choice);
 }
 
 std::shared_ptr<character> character_builder::build_player()

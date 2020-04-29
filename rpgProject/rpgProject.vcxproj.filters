@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="attributes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -27,16 +24,10 @@
     <ClCompile Include="combat_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="currency.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="item.cpp">
@@ -96,9 +87,6 @@
     <ClCompile Include="job_functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="character_job.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="world_map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -106,6 +94,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="map_menu_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="attributes_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="currency_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="job_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,9 +119,6 @@
     <ClInclude Include="constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="currency.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -126,9 +126,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="helper_functions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="item.h">
@@ -141,9 +138,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shop_menu_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="attributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="character.h">
@@ -197,9 +191,6 @@
     <ClInclude Include="job_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="character_job.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="world_map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -207,6 +198,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="map_menu_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transform_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="attributes_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="currency_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="job_component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

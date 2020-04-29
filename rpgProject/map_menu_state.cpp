@@ -27,7 +27,7 @@ void map_menu_state::handle_events(game* game)
 		switch (choice_)
 		{
 		case 1:
-			game->world.add_place(*make_new_location());
+			//game->world.add_place(*make_new_location());
 			break;
 		case 2:
 			game->world.print_places();
@@ -52,10 +52,10 @@ void map_menu_state::draw(game* game)
 	choice_ = menu_choice(options_);
 }
 
-location* map_menu_state::make_new_location()
-{
-	const std::vector<double> coords { 500, 700, 0 };
-	const auto l = new location("Big House", coords, resources::lumber);
-
-	return l;
-}
+//location* map_menu_state::make_new_location()
+//{
+//	const std::vector<double> coords { 500, 700, 0 };
+//	const auto l = new location("Big House", coords, resources::lumber);
+//
+//	return l;
+//}

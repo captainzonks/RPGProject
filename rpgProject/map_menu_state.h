@@ -24,7 +24,7 @@ public:
 		return &map_menu_state_;
 	}
 
-	location* make_new_location();
+	//location* make_new_location();
 
 protected:
 	map_menu_state() = default;

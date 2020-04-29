@@ -5,7 +5,24 @@
 #include <vector>
 
 static std::string welcome_message{"Welcome to C++ RPG"};
-static std::string game_version{"v0.1"};
+static std::string game_version{"v0.1b"};
+
+const unsigned fps = 60;
+const unsigned frame_target_time = 1000 / fps;
+
+enum class layer_type
+{
+	tile_map_layer = 0,
+	vegetation_layer = 1,
+	enemy_layer = 2,
+	obstacle_layer = 3,
+	player_layer = 4,
+	projectile_layer = 5,
+	ui_layer = 6
+};
+
+const unsigned num_layers = 7;
+
 
 enum class race_options
 {
