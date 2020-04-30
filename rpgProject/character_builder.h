@@ -17,11 +17,12 @@ class character_builder
 public:
 	~character_builder() = default;
 
-	void ask_for_race_and_name();
-	void build_attributes(const std::string& name, const std::string& label, race_options race);
-	void build_currency();
-	void ask_for_job();
-	void build_job(job_labels choice);
+	void ask_for_race_and_name() const;
+	void build_attributes(const std::string& name, const std::string& label, race_options race) const;
+	void build_currency() const;
+	void build_inventory() const;
+	void ask_for_job() const;
+	void build_job(job_labels choice) const;
 
 	static character_builder* instance() { return &character_builder_instance_; }
 

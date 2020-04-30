@@ -6,7 +6,7 @@
 #include "component.h"
 
 class currency_component final
-	: component
+	: public component
 {
 public:
 	currency_component(const currency_component& other) = default;

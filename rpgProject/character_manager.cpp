@@ -26,7 +26,7 @@ int character_manager::total_characters() const
 void character_manager::display_all_players() const
 {
 	for (auto& c : characters_)
-		if (c->access_attributes().get_label() == "Player")
+		if (c->get_component<attributes_component>()->get_label() == "Player")
 			c->display();
 }
 
@@ -34,7 +34,7 @@ int character_manager::total_players() const
 {
 	int sum {};
 	for (auto& c : characters_)
-		if (c->access_attributes().get_label() == "Player")
+		if (c->get_component<attributes_component>()->get_label() == "Player")
 			sum++;
 
 	return sum;
@@ -43,7 +43,7 @@ int character_manager::total_players() const
 void character_manager::display_all_npcs() const
 {
 	for (auto& c : characters_)
-		if (c->access_attributes().get_label() == "NPC")
+		if (c->get_component<attributes_component>()->get_label() == "NPC")
 			c->display();
 }
 
@@ -51,7 +51,7 @@ int character_manager::total_npcs() const
 {
 	int sum {};
 	for (auto& c : characters_)
-		if (c->access_attributes().get_label() == "NPC")
+		if (c->get_component<attributes_component>()->get_label() == "NPC")
 			sum++;
 
 	return sum;
@@ -99,7 +99,7 @@ std::shared_ptr<character> character_manager::get_character_by_name(std::string&
 {
 	for (auto character : characters_)
 	{
-		if (character->access_attributes().get_name() == character_name)
+		if (character->get_component<attributes_component>()->get_name() == character_name)
 		{
 			return character;
 		}
@@ -113,7 +113,7 @@ std::vector<std::shared_ptr<character>> character_manager::get_characters_by_lay
 	std::vector<std::shared_ptr<character>> selected_characters;
 	for (auto& character: characters_)
 	{
-		if (character->access_attributes().get_layer() == layer)
+		if (character->get_component<attributes_component>()->get_layer() == layer)
 		{
 			selected_characters.emplace_back(character);
 		}

@@ -12,7 +12,7 @@
 
 character_builder character_builder::character_builder_instance_;
 
-void character_builder::ask_for_race_and_name()
+void character_builder::ask_for_race_and_name() const
 {
 	std::cout << "\nWhat race are you?" << std::endl;
 	const std::vector<std::string> race_options{ "Human", "Dwarf", "Elf", "Halfling" };
@@ -26,7 +26,7 @@ void character_builder::ask_for_race_and_name()
 	build_attributes(name, "Player", static_cast<::race_options>(race_choice));
 }
 
-void character_builder::build_attributes(const std::string& name, const std::string& label, const race_options race)
+void character_builder::build_attributes(const std::string& name, const std::string& label, const race_options race) const
 {
 	auto strength {roll_dice_ignore_lowest(4, 6)};
 	auto dexterity {roll_dice_ignore_lowest(4, 6)};
@@ -62,17 +62,23 @@ void character_builder::build_attributes(const std::string& name, const std::str
 		charisma++;
 	}
 	
-	built_attributes_ = new attributes_component(label, name, layer_type::player_layer, race, strength,
+	result_->add_component<attributes_component>(label, name, layer_type::player_layer, race, strength,
 	                                          dexterity, constitution,
 	                                          intelligence, wisdom, charisma);
 }
 
-void character_builder::build_currency()
+void character_builder::build_currency() const
 {
-	built_currency_ = new currency_component();
+	result_->add_component<currency_component>();
 }
 
-void character_builder::ask_for_job()
+void character_builder::build_inventory() const
+{
+	result_->add_component<inventory_component>();
+}
+
+
+void character_builder::ask_for_job() const
 {
 	std::cout << "\nWhat is your job?" << std::endl;
 	const std::vector<std::string> job_options{ "Lumberer", "Blacksmith", "Farmer" };
@@ -82,24 +88,27 @@ void character_builder::ask_for_job()
 	build_job(static_cast<job_labels>(choice));
 }
 
-void character_builder::build_job(const job_labels choice)
+void character_builder::build_job(const job_labels choice) const
 {
-	built_job_ = new job_component(choice);
+	result_->add_component<job_component>(choice);
 }
 
 std::shared_ptr<character> character_builder::build_player()
 {
+	result_ = std::make_shared<character>();
+	
 	ask_for_race_and_name();
 	build_currency();
+	build_inventory();
 	ask_for_job();
-
-	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_job_);
 	
 	return result_;
 }
 
 std::shared_ptr<character> character_builder::build_character()
 {
+	result_ = std::make_shared<character>();
+	
 	const auto gender = rand() % 2;
 	std::string name;
 	if (gender == 0)
@@ -112,9 +121,8 @@ std::shared_ptr<character> character_builder::build_character()
 	
 	build_attributes(name, "NPC", static_cast<race_options>(race));
 	build_currency();
+	build_inventory();
 	build_job(static_cast<job_labels>(class_choice));
-
-	result_ = std::make_shared<character>(built_attributes_, built_currency_, built_job_);
 
 	return result_;
 }

@@ -8,7 +8,7 @@
 #include "item.h"
 
 class inventory_component final
-	: component
+	: public component
 {
 public:
 	inventory_component(const inventory_component& other) = delete;

@@ -8,7 +8,7 @@
 #include "constants.h"
 
 class job_component final
-	: component
+	: public component
 {
 public:
 	job_component(const job_component& other) = default;

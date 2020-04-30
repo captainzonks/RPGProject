@@ -31,14 +31,14 @@ void player_info_menu::handle_events(game* game)
 			game->player->display();
 			break;
 		case 2:
-			game->player->access_inventory().display_inventory();
-			game->player->access_inventory().display_equipped();
+			game->player->get_component<inventory_component>()->display_inventory();
+			game->player->get_component<inventory_component>()->display_equipped();
 			break;
 		case 3:
-			game->player->access_currency().display_money();
+			game->player->get_component<currency_component>()->display_money();
 			break;
 		case 4:
-			game->player->move(game->world.get_places().at(0).get_coordinates());
+			//game->player->move(game->world.get_places().at(0).get_coordinates());
 			break;
 		case 5:
 			game->pop_state();

@@ -6,13 +6,82 @@
 #include "constants.h"
 
 class attributes_component final
-	: component
+	: public component
 {
 public:
 	attributes_component(const attributes_component& other) = default;
-	attributes_component(attributes_component&& other) noexcept = default;
-	attributes_component& operator=(const attributes_component& other) = default;
-	attributes_component& operator=(attributes_component&& other) noexcept = default;
+
+	attributes_component(attributes_component&& other) noexcept
+		: component(std::move(other)),
+		  label_(std::move(other.label_)),
+		  name_(std::move(other.name_)),
+		  layer_(other.layer_),
+		  race_enum_(other.race_enum_),
+		  race_string_(std::move(other.race_string_)),
+		  current_health_(other.current_health_),
+		  max_health_(other.max_health_),
+		  current_mana_(other.current_mana_),
+		  max_mana_(other.max_mana_),
+		  current_exp_(other.current_exp_),
+		  strength_(other.strength_),
+		  dexterity_(other.dexterity_),
+		  constitution_(other.constitution_),
+		  intelligence_(other.intelligence_),
+		  wisdom_(other.wisdom_),
+		  charisma_(other.charisma_),
+		  speed_(other.speed_)
+	{
+	}
+
+	attributes_component& operator=(const attributes_component& other)
+	{
+		if (this == &other)
+			return *this;
+		component::operator =(other);
+		label_ = other.label_;
+		name_ = other.name_;
+		layer_ = other.layer_;
+		race_enum_ = other.race_enum_;
+		race_string_ = other.race_string_;
+		current_health_ = other.current_health_;
+		max_health_ = other.max_health_;
+		current_mana_ = other.current_mana_;
+		max_mana_ = other.max_mana_;
+		current_exp_ = other.current_exp_;
+		strength_ = other.strength_;
+		dexterity_ = other.dexterity_;
+		constitution_ = other.constitution_;
+		intelligence_ = other.intelligence_;
+		wisdom_ = other.wisdom_;
+		charisma_ = other.charisma_;
+		speed_ = other.speed_;
+		return *this;
+	}
+
+	attributes_component& operator=(attributes_component&& other) noexcept
+	{
+		if (this == &other)
+			return *this;
+		component::operator =(std::move(other));
+		label_ = std::move(other.label_);
+		name_ = std::move(other.name_);
+		layer_ = other.layer_;
+		race_enum_ = other.race_enum_;
+		race_string_ = std::move(other.race_string_);
+		current_health_ = other.current_health_;
+		max_health_ = other.max_health_;
+		current_mana_ = other.current_mana_;
+		max_mana_ = other.max_mana_;
+		current_exp_ = other.current_exp_;
+		strength_ = other.strength_;
+		dexterity_ = other.dexterity_;
+		constitution_ = other.constitution_;
+		intelligence_ = other.intelligence_;
+		wisdom_ = other.wisdom_;
+		charisma_ = other.charisma_;
+		speed_ = other.speed_;
+		return *this;
+	}
 
 	attributes_component(std::string label, std::string name, const layer_type layer, const race_options race_enum,
 	                     std::string race_string, const int current_health, const int max_health, const int current_mana,

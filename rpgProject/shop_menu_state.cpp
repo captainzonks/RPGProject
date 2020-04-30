@@ -64,7 +64,7 @@ void shop_menu_state::handle_events(game* game)
 	{
 		if (choice_ == 1)
 		{
-			game->player->access_inventory().equip(
+			game->player->get_component<inventory_component>()->equip(
 				item_list::item_maker::instance()->make_sword_of_infinite_fury());
 			return;
 		}

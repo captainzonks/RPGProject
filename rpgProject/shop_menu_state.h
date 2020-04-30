@@ -26,7 +26,7 @@ public:
 
 	static bool check_price(character& player, const unsigned price)
 	{
-		if (price > player.access_currency().get_copper())
+		if (price > player.get_component<currency_component>()->get_copper())
 			return false;
 		return true;
 	}

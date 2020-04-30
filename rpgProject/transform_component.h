@@ -6,7 +6,7 @@
 #include "./lib/glm/glm.hpp"
 
 class transform_component final
-	: component
+	: public component
 {
 public:
 	glm::vec2 position;

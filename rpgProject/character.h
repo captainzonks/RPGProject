@@ -14,19 +14,8 @@ class component;
 class character
 {
 public:
-	character(const character& other) = default;
-	character(character&& other) noexcept = default;
-	character& operator=(const character& other) = delete;
-	character& operator=(character&& other) noexcept = delete;
 
-	explicit character(attributes_component* attributes, currency_component* currency, job_component* job)
-	{
-		add_component<attributes_component>(attributes);
-		add_component<currency_component>(currency);
-		add_component<job_component>(job);
-		add_component<inventory_component>();
-	}
-
+	character() = default;
 	~character();
 
 	void update(float delta_time) const;
