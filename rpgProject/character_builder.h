@@ -21,6 +21,7 @@ public:
 	void build_attributes(const std::string& name, const std::string& label, race_options race) const;
 	void build_currency() const;
 	void build_inventory() const;
+	void build_transform() const;
 	void ask_for_job() const;
 	void build_job(job_labels choice) const;
 
@@ -33,9 +34,6 @@ protected:
 	character_builder() = default;
 	static character_builder character_builder_instance_;
 	
-	attributes_component* built_attributes_ {};
-	currency_component* built_currency_ {};
-	job_component* built_job_ {};
 	std::shared_ptr<character> result_ {};
 };
 

@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+#include "attributes_component.h"
+#include "inventory_component.h"
+#include "job_component.h"
+
 character::~character()
 {
 	std::cout << "character destructor called" << std::endl;

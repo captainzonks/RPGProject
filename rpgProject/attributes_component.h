@@ -1,5 +1,6 @@
 #ifndef ATTRIBUTES_H
 #define ATTRIBUTES_H
+#include <iostream>
 #include <string>
 
 #include "component.h"
@@ -122,7 +123,10 @@ public:
 	{
 	}
 
-	~attributes_component() = default;
+	~attributes_component()
+	{
+		std::cout << "attributes_component destructor called" << std::endl;
+	}
 
 	void initialize() override
 	{

@@ -4,6 +4,7 @@
 
 #include "game_state.h"
 #include "character.h"
+#include "currency_component.h"
 
 class shop_menu_state final
 	: public game_state

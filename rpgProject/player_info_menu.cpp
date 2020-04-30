@@ -1,7 +1,8 @@
 #include "player_info_menu.h"
 #include "character.h"
+#include "currency_component.h"
 #include "helper_functions.h"
-#include "location.h"
+#include "inventory_component.h"
 
 player_info_menu player_info_menu::player_info_menu_state_;
 
@@ -38,7 +39,7 @@ void player_info_menu::handle_events(game* game)
 			game->player->get_component<currency_component>()->display_money();
 			break;
 		case 4:
-			//game->player->move(game->world.get_places().at(0).get_coordinates());
+			game->player->list_all_components();
 			break;
 		case 5:
 			game->pop_state();

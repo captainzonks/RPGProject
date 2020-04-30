@@ -31,7 +31,7 @@ protected:
 		"Player Stats",
 		"Inventory",
 		"Money",
-		"Move",
+		"List All Components",
 		"Back"
 	};
 	const std::string name_{ "Player Info" };

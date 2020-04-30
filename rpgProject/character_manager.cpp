@@ -1,4 +1,9 @@
 #include "character_manager.h"
+
+#include <iostream>
+
+
+#include "attributes_component.h"
 #include "character.h"
 
 character_manager character_manager::character_manager_instance_;

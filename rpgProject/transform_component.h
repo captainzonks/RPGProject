@@ -21,6 +21,11 @@ public:
 		
 	}
 
+	~transform_component()
+	{
+		std::cout << "transform_component destructor called" << std::endl;
+	}
+
 	void initialize() override
 	{
 		

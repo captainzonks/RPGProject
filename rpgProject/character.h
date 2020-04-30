@@ -3,10 +3,6 @@
 
 #include <map>
 
-#include "attributes_component.h"
-#include "inventory_component.h"
-#include "currency_component.h"
-#include "job_component.h"
 #include "character_manager.h"
 
 class component;

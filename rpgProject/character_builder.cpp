@@ -6,9 +6,10 @@
 #include "attributes_component.h"
 #include "job_component.h"
 #include "currency_component.h"
-#include "game.h"
 #include "helper_functions.h"
 #include "name_list.h"
+#include "transform_component.h"
+#include "inventory_component.h"
 
 character_builder character_builder::character_builder_instance_;
 
@@ -77,6 +78,11 @@ void character_builder::build_inventory() const
 	result_->add_component<inventory_component>();
 }
 
+void character_builder::build_transform() const
+{
+	result_->add_component<transform_component>(0, 0, 0, 0, 16, 16, 1);
+}
+
 
 void character_builder::ask_for_job() const
 {
@@ -100,6 +106,7 @@ std::shared_ptr<character> character_builder::build_player()
 	ask_for_race_and_name();
 	build_currency();
 	build_inventory();
+	build_transform();
 	ask_for_job();
 	
 	return result_;
@@ -122,6 +129,7 @@ std::shared_ptr<character> character_builder::build_character()
 	build_attributes(name, "NPC", static_cast<race_options>(race));
 	build_currency();
 	build_inventory();
+	build_transform();
 	build_job(static_cast<job_labels>(class_choice));
 
 	return result_;
