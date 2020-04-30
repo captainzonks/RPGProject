@@ -9,7 +9,7 @@ job_component::job_component(job_labels const class_choice)
 
 job_component::~job_component()
 {
-	std::cout << "combat class destructor called" << std::endl;
+	std::cout << "job_component destructor called" << std::endl;
 }
 
 void job_component::build_job(job_labels const class_choice)

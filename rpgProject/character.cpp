@@ -6,6 +6,9 @@
 character::~character()
 {
 	std::cout << "character destructor called" << std::endl;
+
+	for (auto component : components_)
+		delete component;
 }
 
 void character::update(const float delta_time) const
@@ -31,36 +34,34 @@ void character::list_all_components() const
 		std::cout << "  Component<" << map_element.first->name() << ">" << std::endl;
 }
 
-
-
-void character::display() const
+void character::display() 
 {
 
 	
 	// name header
-	std::cout << "\n====" << my_attributes_->get_name() << "====" << std::endl;
+	std::cout << "\n====" << get_component<attributes_component>()->get_name() << "====" << std::endl;
 	// basic stats
-	std::cout << "    " << my_attributes_->get_race_string() << " ";
-	my_job_->display_jobs();
+	std::cout << "    " << get_component<attributes_component>()->get_race_string() << " ";
+	get_component<job_component>()->display_jobs();
 	std::cout << std::endl;
-	std::cout << "    " << my_attributes_->get_current_health() << " HP / " << my_attributes_->get_max_health() << " HP" << std::endl;
-	std::cout << "    " << my_attributes_->get_current_exp() << " XP" << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_current_health() << " HP / " << get_component<attributes_component>()->get_max_health() << " HP" << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_current_exp() << " XP" << std::endl;
 	// ability stats
-	std::cout << "    " << my_attributes_->get_strength() << " Strength"
-	<< " (" << std::showpos << my_attributes_->get_strength_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "    " << my_attributes_->get_dexterity() << " Dexterity"
-	<< " (" << std::showpos << my_attributes_->get_dexterity_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "    " << my_attributes_->get_constitution() << " Constitution"
-	<< " (" << std::showpos << my_attributes_->get_constitution_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "    " << my_attributes_->get_intelligence() << " Intelligence"
-	<< " (" << std::showpos << my_attributes_->get_intelligence_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "    " << my_attributes_->get_wisdom() << " Wisdom"
-	<< " (" << std::showpos << my_attributes_->get_wisdom_mod() << ")" << std::noshowpos << std::endl;
-	std::cout << "    " << my_attributes_->get_charisma() << " Charisma"
-	<< " (" << std::showpos << my_attributes_->get_charisma_mod() << ")" << std::noshowpos << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_strength() << " Strength"
+	<< " (" << std::showpos << get_component<attributes_component>()->get_strength_mod() << ")" << std::noshowpos << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_dexterity() << " Dexterity"
+	<< " (" << std::showpos << get_component<attributes_component>()->get_dexterity_mod() << ")" << std::noshowpos << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_constitution() << " Constitution"
+	<< " (" << std::showpos << get_component<attributes_component>()->get_constitution_mod() << ")" << std::noshowpos << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_intelligence() << " Intelligence"
+	<< " (" << std::showpos << get_component<attributes_component>()->get_intelligence_mod() << ")" << std::noshowpos << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_wisdom() << " Wisdom"
+	<< " (" << std::showpos << get_component<attributes_component>()->get_wisdom_mod() << ")" << std::noshowpos << std::endl;
+	std::cout << "    " << get_component<attributes_component>()->get_charisma() << " Charisma"
+	<< " (" << std::showpos << get_component<attributes_component>()->get_charisma_mod() << ")" << std::noshowpos << std::endl;
 	// footer
 	std::cout << "====";
-	for (auto c : my_attributes_->get_name())
+	for (auto c : get_component<attributes_component>()->get_name())
 		std::cout << "=";
 	std::cout << std::endl;
 }

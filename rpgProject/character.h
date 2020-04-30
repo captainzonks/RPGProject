@@ -23,7 +23,7 @@ public:
 	void destroy();
 
 	void list_all_components() const;
-	void display() const;
+	void display();
 
 	[[nodiscard]] bool alive() const { return is_alive_; }
 
@@ -56,11 +56,6 @@ public:
 private:
 	bool is_alive_ { true };
 	//std::vector<double> my_location_ { 0, 0, 0 };
-
-	const attributes_component* my_attributes_ { get_component<attributes_component>() };
-	const inventory_component* my_inventory_ { get_component<inventory_component>() };
-	const currency_component* my_currency_ { get_component<currency_component>() };
-	const job_component* my_job_ { get_component<job_component>() };
 
 	character_manager& manager_ { *character_manager::instance() };
 	std::vector<component*> components_;

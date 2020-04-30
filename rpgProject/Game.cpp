@@ -91,6 +91,8 @@ void game::update()
 	
 	// let the state update the game
 	manager.update(delta_time);
+
+	states_.back()->update(this);
 	
 }
 
