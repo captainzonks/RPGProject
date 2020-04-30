@@ -10,6 +10,9 @@ static std::string game_version{"v0.1b"};
 const unsigned fps = 60;
 const unsigned frame_target_time = 1000 / fps;
 
+const unsigned window_width = 800;
+const unsigned window_height = 600;
+
 enum class layer_type
 {
 	tile_map_layer = 0,

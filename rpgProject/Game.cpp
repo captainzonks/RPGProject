@@ -5,11 +5,47 @@
 #include <ctime>
 #include <iostream>
 
-void game::initialize()
+#include "transform_component.h"
+
+void game::initialize(const int width, const int height)
 {
-	std::cout << welcome_message + " " + game_version << std::endl;
-	std::cout << "------------------------------------" << std::endl;
 	srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
+
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+	{
+		std::cerr << "Error initializing SDL." << std::endl;
+		return;
+	}
+
+	if (TTF_Init() != 0)
+	{
+		std::cerr << "Error initializing SDL TTF." << std::endl;
+		return;
+	}
+
+	window_ = SDL_CreateWindow(
+		nullptr, 
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		width,
+		height,
+		SDL_WINDOW_BORDERLESS
+	);
+
+	if (!window_)
+	{
+		std::cerr << "Error creating SDL window." << std::endl;
+		return;
+	}
+
+	renderer = SDL_CreateRenderer(window_, -1, 0);
+
+	if (!renderer)
+	{
+		std::cerr << "Error creating SDL renderer." << std::endl;
+		return;
+	}
+	
 	running_ = true;
 }
 
@@ -21,6 +57,10 @@ void game::cleanup()
 		states_.back()->cleanup();
 		states_.pop_back();
 	}
+
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window_);
+	SDL_Quit();
 }
 
 void game::change_state(game_state* state)
@@ -68,11 +108,23 @@ void game::pop_state()
 
 void game::handle_events()
 {
-	// let the state handle events
-	if (is_running())
+	SDL_PollEvent(&event);
+
+	switch (event.type)
 	{
-		states_.back()->handle_events(this);
+	case SDL_QUIT:
+		running_ = false;
+		break;
+	case SDL_KEYDOWN:
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+			running_ = false;
+	default:
+		break;
 	}
+	
+	// let the state handle events
+	//states_.back()->handle_events(this);
+
 }
 
 void game::update()
@@ -92,15 +144,35 @@ void game::update()
 	// let the state update the game
 	manager.update(delta_time);
 
-	states_.back()->update(this);
+	//states_.back()->update(this);
 	
 }
 
 void game::draw()
 {
-	// let the state draw the screen
-	if (is_running())
+	SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
+	SDL_RenderClear(renderer);
+
+	if (manager.has_no_characters())
+		return;
+	
+	//states_.back()->draw(this);
+
+	SDL_RenderPresent(renderer);
+}
+
+void game::handle_camera_movement() const
+{
+	if (player)
 	{
-		states_.back()->draw(this);
+		const auto player_transform = player->get_component<transform_component>();
+
+		camera.x = static_cast<int>(player_transform->position.x) - (static_cast<int>(window_width) / 2);
+		camera.y = static_cast<int>(player_transform->position.y) - (static_cast<int>(window_height) / 2);
+
+		camera.x = camera.x < 0 ? 0 : camera.x;
+		camera.y = camera.y < 0 ? 0 : camera.y;
+		camera.x = camera.x > camera.w ? camera.w : camera.x;
+		camera.y = camera.y > camera.h ? camera.h : camera.y;
 	}
 }

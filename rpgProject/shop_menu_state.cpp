@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+
+#include "inventory_component.h"
 #include "item_list.h"
 #include "menu_state.h"
 

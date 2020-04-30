@@ -8,10 +8,10 @@ int main(int argc, char* args[])
     game game;
 
     // initialize
-    game.initialize();
+    game.initialize(window_width, window_height);
 
     // start the character creator
-    game.change_state(character_creator_state::instance());
+    //game.change_state(character_creator_state::instance());
 
     // main loop
     while (game.is_running())
