@@ -7,7 +7,7 @@
 
 menu_state menu_state::menu_state_;
 
-void menu_state::init()
+void menu_state::init(game* game)
 {
 }
 

@@ -4,7 +4,7 @@
 
 map_menu_state map_menu_state::map_menu_state_;
 
-void map_menu_state::init()
+void map_menu_state::init(game* game)
 {
 }
 
@@ -30,7 +30,7 @@ void map_menu_state::handle_events(game* game)
 			//game->world.add_place(*make_new_location());
 			break;
 		case 2:
-			game->world.print_places();
+			/*game->world.print_places();*/
 			break;
 		case 3:
 			game->pop_state();

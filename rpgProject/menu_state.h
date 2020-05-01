@@ -9,7 +9,7 @@ class menu_state final
 	:	public game_state
 {
 public:
-	void init() override;
+	void init(game* game) override;
 	void cleanup() override;
 
 	void pause() override;

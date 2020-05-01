@@ -5,6 +5,8 @@
 #include <ctime>
 #include <iostream>
 
+#include "entity.h"
+#include "entity_manager.h"
 #include "transform_component.h"
 
 void game::initialize(const int width, const int height)
@@ -74,7 +76,7 @@ void game::change_state(game_state* state)
 
 	// store and init the new state
 	states_.push_back(state);
-	states_.back()->init();
+	states_.back()->init(this);
 }
 
 void game::push_state(game_state* state)
@@ -87,7 +89,7 @@ void game::push_state(game_state* state)
 
 	// store and init the new state
 	states_.push_back(state);
-	states_.back()->init();
+	states_.back()->init(this);
 }
 
 void game::pop_state()
@@ -123,7 +125,7 @@ void game::handle_events()
 	}
 	
 	// let the state handle events
-	//states_.back()->handle_events(this);
+	states_.back()->handle_events(this);
 
 }
 
@@ -142,9 +144,11 @@ void game::update()
 	ticks_last_frame_ = SDL_GetTicks();
 	
 	// let the state update the game
-	manager.update(delta_time);
+	entity_manager::instance()->update(delta_time);
 
-	//states_.back()->update(this);
+	handle_camera_movement();
+
+	states_.back()->update(this);
 	
 }
 
@@ -153,10 +157,10 @@ void game::draw()
 	SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
 	SDL_RenderClear(renderer);
 
-	if (manager.has_no_characters())
+	if (entity_manager::instance()->has_no_entities())
 		return;
 	
-	//states_.back()->draw(this);
+	states_.back()->draw(this);
 
 	SDL_RenderPresent(renderer);
 }

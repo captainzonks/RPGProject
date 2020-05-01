@@ -1,6 +1,7 @@
 #include "sprite_component.h"
 
 #include "asset_manager.h"
+#include "entity.h"
 #include "game.h"
 #include "texture_manager.h"
 

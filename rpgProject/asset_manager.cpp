@@ -1,5 +1,6 @@
 #include "asset_manager.h"
 
+#include <string>
 
 #include "font_manager.h"
 #include "texture_manager.h"

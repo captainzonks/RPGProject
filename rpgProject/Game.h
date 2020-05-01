@@ -7,11 +7,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-#include "asset_manager.h"
-#include "character_manager.h"
-#include "world_map.h"
-
-class character;
+class entity;
 class game_state;
 
 class game
@@ -20,10 +16,7 @@ public:
 	game() = default;
 	~game() = default;
 	
-	std::shared_ptr<character> player;
-	//character_manager manager { *character_manager::instance() };
-	//asset_manager asset_manager { *asset_manager::instance() };
-	//world_map world { *world_map::instance() };
+	std::shared_ptr<entity> player;
 
 	inline static SDL_Renderer* renderer { nullptr };
 	inline static SDL_Event event;

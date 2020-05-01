@@ -10,7 +10,7 @@
 
 shop_menu_state shop_menu_state::shop_menu_state_;
 
-void shop_menu_state::init()
+void shop_menu_state::init(game* game)
 {
 	std::cout << "Welcome to fantasy shop " << game_version << "!" << std::endl;
 	std::cout << "=============================" << std::endl;

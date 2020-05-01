@@ -1,15 +1,15 @@
 #include "character_creator_state.h"
 
-#include <iostream>
 
-#include "character_builder.h"
+#include "entity_manager.h"
 #include "menu_state.h"
 
 character_creator_state character_creator_state::character_creator_state_;
 
-void character_creator_state::init()
+void character_creator_state::init(game* game)
 {
-	std::cout << "\nLet's create a character!" << std::endl;
+	load(1);
+	game->player = entity_manager::instance()->get_entity_by_name("player");
 }
 
 void character_creator_state::cleanup()
@@ -26,13 +26,10 @@ void character_creator_state::resume()
 
 void character_creator_state::handle_events(game* game)
 {
-	game->player = character_builder::instance()->build_player();
 }
 
 void character_creator_state::update(game* game)
 {
-	game->manager.add_character(game->player);
-	game->change_state(menu_state::instance());
 }
 
 void character_creator_state::draw(game* game)

@@ -6,7 +6,7 @@
 
 #include "constants.h"
 
-class character;
+class entity;
 class attributes_component;
 class inventory_component;
 class currency_component;
@@ -27,14 +27,14 @@ public:
 
 	static character_builder* instance() { return &character_builder_instance_; }
 
-	[[nodiscard]] std::shared_ptr<character> build_player();
-	[[nodiscard]] std::shared_ptr<character> build_character();
+	[[nodiscard]] std::shared_ptr<entity> build_player();
+	[[nodiscard]] std::shared_ptr<entity> build_character();
 
 protected:
 	character_builder() = default;
 	static character_builder character_builder_instance_;
 	
-	std::shared_ptr<character> result_ {};
+	std::shared_ptr<entity> result_ {};
 };
 
 #endif

@@ -1,12 +1,12 @@
 #include "player_info_menu.h"
-#include "character.h"
+#include "entity.h"
 #include "currency_component.h"
 #include "helper_functions.h"
 #include "inventory_component.h"
 
 player_info_menu player_info_menu::player_info_menu_state_;
 
-void player_info_menu::init()
+void player_info_menu::init(game* game)
 {
 }
 

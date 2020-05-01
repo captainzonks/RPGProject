@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "character.h"
+#include "entity.h"
 #include "attributes_component.h"
 #include "job_component.h"
 #include "currency_component.h"
@@ -99,9 +99,9 @@ void character_builder::build_job(const job_labels choice) const
 	result_->add_component<job_component>(choice);
 }
 
-std::shared_ptr<character> character_builder::build_player()
+std::shared_ptr<entity> character_builder::build_player()
 {
-	result_ = std::make_shared<character>();
+	result_ = std::make_shared<entity>();
 	
 	ask_for_race_and_name();
 	build_currency();
@@ -112,9 +112,9 @@ std::shared_ptr<character> character_builder::build_player()
 	return result_;
 }
 
-std::shared_ptr<character> character_builder::build_character()
+std::shared_ptr<entity> character_builder::build_character()
 {
-	result_ = std::make_shared<character>();
+	result_ = std::make_shared<entity>();
 	
 	const auto gender = rand() % 2;
 	std::string name;

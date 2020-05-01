@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "character.h"
+#include "entity.h"
 
 class location
 {
@@ -17,24 +17,24 @@ public:
 
 	void update();
 
-	void add_owners(character& owner);
-	void add_visitors(character& visitor);
+	void add_owners(entity& owner);
+	void add_visitors(entity& visitor);
 
-	void remove_owners(character& not_owner);
-	void remove_visitors(character& not_visitor);
+	void remove_owners(entity& not_owner);
+	void remove_visitors(entity& not_visitor);
 	
 	[[nodiscard]] std::string get_name() const { return name_; }
 	[[nodiscard]] std::vector<double> get_coordinates() const { return coordinates_; }
 
-	[[nodiscard]] std::vector<character> get_owners() const { return owners_; }
-	[[nodiscard]] std::vector<character> get_visitors() const { return visitors_; }
+	[[nodiscard]] std::vector<entity> get_owners() const { return owners_; }
+	[[nodiscard]] std::vector<entity> get_visitors() const { return visitors_; }
 	
 private:
 	std::string name_ {};
 	std::vector<double> coordinates_ {};
 
-	std::vector<character> owners_ {};
-	std::vector<character> visitors_ {};
+	std::vector<entity> owners_ {};
+	std::vector<entity> visitors_ {};
 };
 
 #endif

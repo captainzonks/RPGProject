@@ -4,9 +4,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 
-
-
-#include "character_manager.h"
+#include "entity_manager.h"
 
 class asset_manager
 {

@@ -30,8 +30,11 @@ public:
 	virtual ~game_state() = default;
 	
 	// setup and destroy the state
-	virtual void init() = 0;
+	virtual void init(game* game) = 0;
 	virtual void cleanup() = 0;
+
+	// load lua config
+	virtual void load(int level_number);
 
 	// used when temporarily transitioning to another state
 	virtual void pause() = 0;

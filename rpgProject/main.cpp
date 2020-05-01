@@ -1,6 +1,7 @@
 // MAIN
 
 #include "game.h"
+#include "constants.h"
 #include "character_creator_state.h"
 
 int main(int argc, char* args[])
@@ -10,8 +11,8 @@ int main(int argc, char* args[])
     // initialize
     game.initialize(window_width, window_height);
 
-    // start the character creator
-    //game.change_state(character_creator_state::instance());
+    // start the entity creator
+    game.change_state(character_creator_state::instance());
 
     // main loop
     while (game.is_running())

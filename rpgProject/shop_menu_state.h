@@ -3,14 +3,14 @@
 #include <string>
 
 #include "game_state.h"
-#include "character.h"
+#include "entity.h"
 #include "currency_component.h"
 
 class shop_menu_state final
 	: public game_state
 {
 public:
-	void init() override;
+	void init(game* game) override;
 	void cleanup() override;
 
 	void pause() override;
@@ -25,7 +25,7 @@ public:
 		return &shop_menu_state_;
 	}
 
-	static bool check_price(character& player, const unsigned price)
+	static bool check_price(entity& player, const unsigned price)
 	{
 		if (price > player.get_component<currency_component>()->get_copper())
 			return false;
