@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="asset_manager.cpp" />
     <ClCompile Include="attributes_component.cpp" />
     <ClCompile Include="character.cpp" />
@@ -50,12 +51,14 @@
     <ClCompile Include="rogue_features.cpp" />
     <ClCompile Include="rogue_functions.cpp" />
     <ClCompile Include="shop_menu_state.cpp" />
+    <ClCompile Include="sprite_component.cpp" />
     <ClCompile Include="texture_manager.cpp" />
     <ClCompile Include="wizard_features.cpp" />
     <ClCompile Include="wizard_functions.cpp" />
     <ClCompile Include="world_map.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="asset_manager.h" />
     <ClInclude Include="attributes_component.h" />
     <ClInclude Include="character.h" />
@@ -89,6 +92,7 @@
     <ClInclude Include="rogue_features.h" />
     <ClInclude Include="rogue_functions.h" />
     <ClInclude Include="shop_menu_state.h" />
+    <ClInclude Include="sprite_component.h" />
     <ClInclude Include="texture_manager.h" />
     <ClInclude Include="transform_component.h" />
     <ClInclude Include="wizard_features.h" />

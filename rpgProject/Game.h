@@ -21,9 +21,9 @@ public:
 	~game() = default;
 	
 	std::shared_ptr<character> player;
-	character_manager manager { *character_manager::instance() };
-	asset_manager asset_manager { *asset_manager::instance() };
-	world_map world { *world_map::instance() };
+	//character_manager manager { *character_manager::instance() };
+	//asset_manager asset_manager { *asset_manager::instance() };
+	//world_map world { *world_map::instance() };
 
 	inline static SDL_Renderer* renderer { nullptr };
 	inline static SDL_Event event;
