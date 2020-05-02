@@ -35,8 +35,33 @@ public:
 
 	void update(const float delta_time) override
 	{
-		position.x += velocity.x * delta_time;
-		position.y += velocity.y * delta_time;
+		if (velocity.x > 0)
+		{
+			const auto new_pos_x { position.x + 16} ;
+			while (position.x != new_pos_x)
+				position.x += velocity.x * delta_time;
+		}
+		if (velocity.x < 0)
+		{
+			const auto new_pos_x { position.x - 16 };
+			while (position.x != new_pos_x)
+				position.x += velocity.x * delta_time;
+		}
+		if (velocity.y > 0)
+		{
+			const auto new_pos_y { position.y + 16 };
+			while (position.y != new_pos_y)
+				position.y += velocity.y * delta_time;
+		}
+		if (velocity.y < 0)
+		{
+			const auto new_pos_y { position.y - 16 };
+			while (position.y != new_pos_y)
+				position.y += velocity.y * delta_time;
+		}
+		
+		//position.x += velocity.x * delta_time;
+		//position.y += velocity.y * delta_time;
 	}
 
 	void render() override {}

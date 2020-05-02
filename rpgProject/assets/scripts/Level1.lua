@@ -21,7 +21,7 @@ Level1 = {
     assets = {
         [0] = { type="texture", id = "terrain-texture-day", file = "./assets/images/tilemaps/jungle.png"  },
         [1] = { type="texture", id = "terrain-texture-night", file = "./assets/images/tilemapes/jungle-night.png" },
-        [2] = { type="texture", id = "player_texture", file = "./assets/images/chopper-spritesheet.png" }
+        [2] = { type="texture", id = "player_texture", file = "./assets/images/player_character/ash-sprite-sheet.png" }
     },
 
     ----------------------------------------------------
@@ -53,16 +53,16 @@ Level1 = {
                         x = 0,
                         y = 0
                     },
-                    width = 32,
-                    height = 32,
-                    scale = 1,
+                    width = 16,
+                    height = 16,
+                    scale = 2,
                     rotation = 0
                 },
                 sprite = {
                     texture_asset_id = "player_texture",
                     animated = true,
-                    frame_count = 2,
-                    animation_speed = 90,
+                    frame_count = 3,
+                    animation_speed = 200,
                     has_directions = true,
                     fixed = false
                 },
