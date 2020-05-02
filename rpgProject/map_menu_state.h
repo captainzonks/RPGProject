@@ -9,7 +9,7 @@ class map_menu_state final
 	: public game_state
 {
 public:
-	void init(game* game) override;
+	void init() override;
 	void cleanup() override;
 
 	void pause() override;
@@ -17,7 +17,7 @@ public:
 
 	void handle_events(game* game) override;
 	void update(game* game) override;
-	void draw(game* game) override;
+	void render(game* game) override;
 
 	static map_menu_state* instance()
 	{

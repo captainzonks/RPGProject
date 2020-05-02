@@ -10,10 +10,27 @@ class attributes_component final
 	: public component
 {
 public:
+	attributes_component(std::string label, std::string name, const layer_type layer, const race_options race_enum,
+		const int strength, const int dexterity, const int constitution, const int intelligence, const int wisdom,
+		const int charisma, const int speed)
+		: label_(std::move(label)),
+		  name_(std::move(name)),
+		  layer_(layer),
+		  race_enum_(race_enum),
+		  strength_(strength),
+		  dexterity_(dexterity),
+		  constitution_(constitution),
+		  intelligence_(intelligence),
+		  wisdom_(wisdom),
+		  charisma_(charisma),
+		  speed_(speed)
+	{
+	}
+
 	attributes_component(const attributes_component& other) = default;
 
 	attributes_component(attributes_component&& other) noexcept
-		: component(std::move(other)),
+		: component(other),
 		  label_(std::move(other.label_)),
 		  name_(std::move(other.name_)),
 		  layer_(other.layer_),
@@ -63,7 +80,7 @@ public:
 	{
 		if (this == &other)
 			return *this;
-		component::operator =(std::move(other));
+		component::operator =(other);
 		label_ = std::move(other.label_);
 		name_ = std::move(other.name_);
 		layer_ = other.layer_;
@@ -84,45 +101,6 @@ public:
 		return *this;
 	}
 
-	attributes_component(std::string label, std::string name, const layer_type layer, const race_options race_enum,
-	                     std::string race_string, const int current_health, const int max_health, const int current_mana,
-	                     const int max_mana, const int current_exp, const int strength, const int dexterity, const int constitution,
-	                     const int intelligence, const int wisdom, const int charisma, const int speed)
-		: label_(std::move(label)),
-		  name_(std::move(name)),
-		  layer_(layer),
-		  race_enum_(race_enum),
-		  race_string_(std::move(race_string)),
-		  current_health_(current_health),
-		  max_health_(max_health),
-		  current_mana_(current_mana),
-		  max_mana_(max_mana),
-		  current_exp_(current_exp),
-		  strength_(strength),
-		  dexterity_(dexterity),
-		  constitution_(constitution),
-		  intelligence_(intelligence),
-		  wisdom_(wisdom),
-		  charisma_(charisma),
-		  speed_(speed)
-	{
-	}
-
-	explicit attributes_component(std::string label, std::string name, const layer_type layer, const race_options race_enum,
-		const int strength, const int dexterity, const int constitution, const int intelligence, const int wisdom, const int charisma)
-		: label_(std::move(label)),
-		  name_(std::move(name)),
-	      layer_(layer),
-		  race_enum_(race_enum),
-	      strength_(strength),
-		  dexterity_(dexterity),
-		  constitution_(constitution),
-		  intelligence_(intelligence),
-		  wisdom_(wisdom),
-		  charisma_(charisma)
-	{
-	}
-
 	~attributes_component()
 	{
 		std::cout << "attributes_component destructor called" << std::endl;
@@ -138,7 +116,7 @@ public:
 		
 	}
 
-	void draw() override
+	void render() override
 	{
 		
 	}

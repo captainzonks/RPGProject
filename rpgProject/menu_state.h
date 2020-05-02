@@ -9,7 +9,7 @@ class menu_state final
 	:	public game_state
 {
 public:
-	void init(game* game) override;
+	void init() override;
 	void cleanup() override;
 
 	void pause() override;
@@ -17,7 +17,7 @@ public:
 
 	void handle_events(game* game) override;
 	void update(game* game) override;
-	void draw(game* game) override;
+	void render(game* game) override;
 
 	static menu_state* instance()
 	{
@@ -26,8 +26,13 @@ public:
 
 protected:
 	menu_state() = default;
-	unsigned choice_{};
+
+private:
 	static menu_state menu_state_;
+	SDL_Surface* menu_sprite_;
+
+	unsigned choice_{};
+
 	std::vector<std::string> options_
 	{
 		"Player Info",

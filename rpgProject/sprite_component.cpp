@@ -33,19 +33,19 @@ sprite_component::sprite_component(const std::string& id, const int num_frames, 
 		auto right_animation = animation(1, num_frames, animation_speed);
 		auto left_animation = animation(2, num_frames, animation_speed);
 		auto up_animation = animation(3, num_frames, animation_speed);
-		animations_.emplace("DownAnimation", down_animation);
-		animations_.emplace("RightAnimation", right_animation);
-		animations_.emplace("LeftAnimation", left_animation);
-		animations_.emplace("UpAnimation", up_animation);
+		animations_.emplace("down_animation", down_animation);
+		animations_.emplace("right_animation", right_animation);
+		animations_.emplace("left_animation", left_animation);
+		animations_.emplace("up_animation", up_animation);
 		this->animation_index_ = 0;
-		this->current_animation_name_ = "DownAnimation";
+		this->current_animation_name_ = "down_animation";
 	}
 	else
 	{
 		auto single_animation = animation(0, num_frames, animation_speed);
-		animations_.emplace("SingleAnimation", single_animation);
+		animations_.emplace("single_animation", single_animation);
 		this->animation_index_ = 0;
-		this->current_animation_name_ = "SingleAnimation";
+		this->current_animation_name_ = "single_animation";
 	}
 
 	play(this->current_animation_name_);
@@ -55,9 +55,9 @@ sprite_component::sprite_component(const std::string& id, const int num_frames, 
 
 void sprite_component::play(const std::string& animation_name)
 {
-	num_frames_ = static_cast<int>(animations_[animation_name].num_frames);
+	num_frames_ = animations_[animation_name].num_frames;
 	animation_index_ = animations_[animation_name].index;
-	animation_speed_ = static_cast<int>(animations_[animation_name].animation_speed);
+	animation_speed_ = animations_[animation_name].animation_speed;
 	current_animation_name_ = animation_name;
 }
 
@@ -79,8 +79,7 @@ void sprite_component::update(float delta_time)
 {
 	if (is_animated_)
 	{
-		source_rectangle_.x = source_rectangle_.w * static_cast<int>(( SDL_GetTicks() / animation_speed_ ) % num_frames_
-		);
+		source_rectangle_.x = source_rectangle_.w * static_cast<int>( SDL_GetTicks() / animation_speed_ % num_frames_ );
 	}
 	source_rectangle_.y = static_cast<int>(animation_index_) * transform_->height;
 
@@ -90,7 +89,7 @@ void sprite_component::update(float delta_time)
 	destination_rectangle_.h = transform_->height * transform_->scale;
 }
 
-void sprite_component::draw()
+void sprite_component::render()
 {
 	texture_manager::draw(texture_, source_rectangle_, destination_rectangle_, sprite_flip);
 }

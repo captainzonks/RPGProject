@@ -16,7 +16,7 @@ public:
 	entity& add_entity(std::string entity_name, layer_type layer);
 
 	void update(float delta_time);
-	void draw() const;
+	void render() const;
 	void clean_up();
 
 	[[nodiscard]] bool has_no_entities() const;

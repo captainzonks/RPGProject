@@ -10,8 +10,7 @@ public:
 	virtual ~component() = default;
 	virtual void initialize() {}
 	virtual void update(float delta_time) {}
-	virtual void draw() {}
-	
+	virtual void render() {}
 };
 
 #endif

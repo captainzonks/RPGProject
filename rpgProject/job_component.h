@@ -14,7 +14,8 @@ public:
 	job_component(const job_component& other) = default;
 
 	job_component(job_component&& other) noexcept
-		: my_jobs_(std::move(other.my_jobs_))
+		: component(other),
+		  my_jobs_(std::move(other.my_jobs_))
 	{
 	}
 
@@ -22,6 +23,7 @@ public:
 	{
 		if (this == &other)
 			return *this;
+		component::operator =(other);
 		my_jobs_ = other.my_jobs_;
 		return *this;
 	}
@@ -30,17 +32,17 @@ public:
 	{
 		if (this == &other)
 			return *this;
+		component::operator =(other);
 		my_jobs_ = std::move(other.my_jobs_);
 		return *this;
 	}
 
-	job_component() = default;
 	explicit job_component(job_labels class_choice);
 	~job_component();
 
 	void initialize() override {}
 	void update(float delta_time) override {}
-	void draw() override {}
+	void render() override {}
 	
 	void build_job(job_labels class_choice);
 	void display_jobs() const;

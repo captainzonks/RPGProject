@@ -10,7 +10,7 @@
 
 shop_menu_state shop_menu_state::shop_menu_state_;
 
-void shop_menu_state::init(game* game)
+void shop_menu_state::init()
 {
 	std::cout << "Welcome to fantasy shop " << game_version << "!" << std::endl;
 	std::cout << "=============================" << std::endl;
@@ -430,7 +430,7 @@ void shop_menu_state::update(game* game)
 	//shieldState = game->player->myUpgrades.ShieldEquipped();
 }
 
-void shop_menu_state::draw(game* game)
+void shop_menu_state::render(game* game)
 {
 	print_menu("", *menu_options_ptr_);
 	choice_ = menu_choice(*menu_options_ptr_);

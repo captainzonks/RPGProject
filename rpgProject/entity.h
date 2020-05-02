@@ -10,13 +10,47 @@ class component;
 class entity
 {
 public:
+	entity(const entity& other) = default;
+
+	entity(entity&& other) noexcept
+		: name(std::move(other.name)),
+		  layer(other.layer),
+		  is_active_(other.is_active_),
+		  components_(std::move(other.components_)),
+		  component_type_map_(std::move(other.component_type_map_))
+	{
+	}
+
+	entity& operator=(const entity& other)
+	{
+		if (this == &other)
+			return *this;
+		name = other.name;
+		layer = other.layer;
+		is_active_ = other.is_active_;
+		components_ = other.components_;
+		component_type_map_ = other.component_type_map_;
+		return *this;
+	}
+
+	entity& operator=(entity&& other) noexcept
+	{
+		if (this == &other)
+			return *this;
+		name = std::move(other.name);
+		layer = other.layer;
+		is_active_ = other.is_active_;
+		components_ = std::move(other.components_);
+		component_type_map_ = std::move(other.component_type_map_);
+		return *this;
+	}
 
 	entity() = default;
 	entity(std::string name, layer_type layer);
 	~entity();
 
 	void update(float delta_time) const;
-	void draw();
+	void render();
 	void destroy();
 
 	void list_all_components() const;
@@ -48,7 +82,7 @@ public:
 	}
 
 	std::string name;
-	layer_type layer;
+	layer_type layer {layer_type::ui_layer};
 	
 private:
 	bool is_active_ { true };

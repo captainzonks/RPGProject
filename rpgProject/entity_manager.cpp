@@ -31,13 +31,13 @@ void entity_manager::update(const float delta_time)
 	}
 }
 
-void entity_manager::draw() const
+void entity_manager::render() const
 {
 	for (size_t layer_number{}; layer_number < num_layers; layer_number++)
 	{
 		for (auto& entity: get_entities_by_layer(static_cast<layer_type>(layer_number)))
 		{
-			entity->draw();
+			entity->render();
 		}
 	}
 }
@@ -63,9 +63,9 @@ std::vector<std::shared_ptr<entity>> entity_manager::get_entities() const
 
 std::shared_ptr<entity> entity_manager::get_entity_by_name(const std::string& entity_name)
 {
-	for (auto entity : entities_)
+	for (auto& entity : entities_)
 	{
-		if (entity->get_component<attributes_component>()->get_name() == entity_name)
+		if (entity->name == entity_name)
 		{
 			return entity;
 		}
@@ -79,7 +79,7 @@ std::vector<std::shared_ptr<entity>> entity_manager::get_entities_by_layer(const
 	std::vector<std::shared_ptr<entity>> selected_entities;
 	for (auto& entity: entities_)
 	{
-		if (entity->get_component<attributes_component>()->get_layer() == layer)
+		if (entity->layer == layer)
 		{
 			selected_entities.emplace_back(entity);
 		}

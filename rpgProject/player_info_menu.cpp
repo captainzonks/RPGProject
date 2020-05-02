@@ -6,7 +6,7 @@
 
 player_info_menu player_info_menu::player_info_menu_state_;
 
-void player_info_menu::init(game* game)
+void player_info_menu::init()
 {
 }
 
@@ -54,7 +54,7 @@ void player_info_menu::update(game* game)
 {
 }
 
-void player_info_menu::draw(game* game)
+void player_info_menu::render(game* game)
 {
 	print_menu(this->name_, options_);
 

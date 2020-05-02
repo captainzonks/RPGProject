@@ -111,6 +111,18 @@
     <ClCompile Include="keyboard_control_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tile_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collider_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="projectile_emitter_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_label_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat_state.h">
@@ -213,6 +225,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="keyboard_control_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tile_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collider_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile_emitter_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_label_component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,7 +19,9 @@ Level1 = {
     -- Table to define the list of assets
     ----------------------------------------------------
     assets = {
-        [0] = { type="texture", id = "chopper-texture", file = "./assets/images/chopper-spritesheet.png" },
+        [0] = { type="texture", id = "terrain-texture-day", file = "./assets/images/tilemaps/jungle.png"  },
+        [1] = { type="texture", id = "terrain-texture-night", file = "./assets/images/tilemapes/jungle-night.png" },
+        [2] = { type="texture", id = "player_texture", file = "./assets/images/chopper-spritesheet.png" }
     },
 
     ----------------------------------------------------
@@ -57,20 +59,23 @@ Level1 = {
                     rotation = 0
                 },
                 sprite = {
-                    texture_asset_id = "chopper-texture",
+                    texture_asset_id = "player_texture",
                     animated = true,
-                    frameCount = 2,
+                    frame_count = 2,
                     animation_speed = 90,
                     has_directions = true,
                     fixed = false
                 },
+                collider = {
+                    tag = "PLAYER"        
+				},
                 input = {
                     keyboard = {
                         up = "w",
-                        left = "a",
-                        down = "s",
                         right = "d",
-                        interact = "e"
+                        down = "s",
+                        left = "a",                 
+                        interact = "space"
                     }
                 }
             }

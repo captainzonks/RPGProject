@@ -22,6 +22,7 @@
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="asset_manager.cpp" />
     <ClCompile Include="attributes_component.cpp" />
+    <ClCompile Include="collider_component.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="character_builder.cpp" />
     <ClCompile Include="character_creator_state.cpp" />
@@ -47,14 +48,18 @@
     <ClCompile Include="menu_state.cpp" />
     <ClCompile Include="npc_info_menu.cpp" />
     <ClCompile Include="player_info_menu.cpp" />
+    <ClCompile Include="projectile_emitter_component.cpp" />
     <ClCompile Include="shop_menu_state.cpp" />
     <ClCompile Include="sprite_component.cpp" />
     <ClCompile Include="texture_manager.cpp" />
+    <ClCompile Include="text_label_component.cpp" />
+    <ClCompile Include="tile_component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
     <ClInclude Include="asset_manager.h" />
     <ClInclude Include="attributes_component.h" />
+    <ClInclude Include="collider_component.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="character_builder.h" />
     <ClInclude Include="character_creator_state.h" />
@@ -82,9 +87,12 @@
     <ClInclude Include="name_list.h" />
     <ClInclude Include="npc_info_menu.h" />
     <ClInclude Include="player_info_menu.h" />
+    <ClInclude Include="projectile_emitter_component.h" />
     <ClInclude Include="shop_menu_state.h" />
     <ClInclude Include="sprite_component.h" />
     <ClInclude Include="texture_manager.h" />
+    <ClInclude Include="text_label_component.h" />
+    <ClInclude Include="tile_component.h" />
     <ClInclude Include="transform_component.h" />
   </ItemGroup>
   <ItemGroup>

@@ -17,10 +17,10 @@ public:
 
 	explicit sprite_component(const std::string& asset_texture_id);
 
-	explicit sprite_component(const std::string& asset_texture_id, const bool is_fixed);
+	explicit sprite_component(const std::string& asset_texture_id, bool is_fixed);
 
-	explicit sprite_component(const std::string& id, const int num_frames, const int animation_speed,
-	                          const bool has_directions, const bool is_fixed);
+	explicit sprite_component(const std::string& id, int num_frames, int animation_speed,
+	                          bool has_directions, bool is_fixed);
 
 	void play(const std::string& animation_name);
 
@@ -30,7 +30,7 @@ public:
 
 	void update(float delta_time) override;
 
-	void draw() override;
+	void render() override;
 
 
 private:

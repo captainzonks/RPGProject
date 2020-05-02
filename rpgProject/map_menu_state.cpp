@@ -4,7 +4,7 @@
 
 map_menu_state map_menu_state::map_menu_state_;
 
-void map_menu_state::init(game* game)
+void map_menu_state::init()
 {
 }
 
@@ -45,7 +45,7 @@ void map_menu_state::update(game* game)
 {
 }
 
-void map_menu_state::draw(game* game)
+void map_menu_state::render(game* game)
 {
 	print_menu(this->name_, options_);
 

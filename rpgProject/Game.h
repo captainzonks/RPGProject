@@ -7,6 +7,8 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
+#include "constants.h"
+
 class entity;
 class game_state;
 
@@ -16,11 +18,11 @@ public:
 	game() = default;
 	~game() = default;
 	
-	std::shared_ptr<entity> player;
+	std::shared_ptr<entity> player { nullptr };
 
 	inline static SDL_Renderer* renderer { nullptr };
 	inline static SDL_Event event;
-	inline static SDL_Rect camera;
+	inline static SDL_Rect camera {0,0,window_width, window_height};
 
 	void initialize(int width, int height);
 	void cleanup();
@@ -31,9 +33,10 @@ public:
 
 	void handle_events();
 	void update();
-	void draw();
+	void render();
 
 	void handle_camera_movement() const;
+	void load_files(int level_number);
 
 	[[nodiscard]] bool is_running() const { return running_; }
 	void quit() { running_ = false; };

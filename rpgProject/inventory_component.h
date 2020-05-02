@@ -11,11 +11,14 @@ class inventory_component final
 	: public component
 {
 public:
+	inventory_component() = default;
 	inventory_component(const inventory_component& other) = delete;
 
 	inventory_component(inventory_component&& other) noexcept
-		: the_inventory_(std::move(other.the_inventory_)),
+		: component(other),
+		  the_inventory_(std::move(other.the_inventory_)),
 		  capacity_(other.capacity_),
+		  armor_bonus_(other.armor_bonus_),
 		  ammunition_(other.ammunition_),
 		  helmet_slot_(std::move(other.helmet_slot_)),
 		  chest_slot_(std::move(other.chest_slot_)),
@@ -33,8 +36,10 @@ public:
 	{
 		if (this == &other)
 			return *this;
+		component::operator =(other);
 		the_inventory_ = std::move(other.the_inventory_);
 		capacity_ = other.capacity_;
+		armor_bonus_ = other.armor_bonus_;
 		ammunition_ = other.ammunition_;
 		helmet_slot_ = std::move(other.helmet_slot_);
 		chest_slot_ = std::move(other.chest_slot_);
@@ -46,13 +51,11 @@ public:
 		return *this;
 	}
 
-	inventory_component() = default;
-
 	~inventory_component();
 
 	void initialize() override {}
 	void update(float delta_time) override;
-	void draw() override {}
+	void render() override {}
 	
 	void update_armor_bonus();
 	

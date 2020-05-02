@@ -39,10 +39,7 @@ public:
 		position.y += velocity.y * delta_time;
 	}
 
-	void draw() override
-	{
-		
-	}
+	void render() override {}
 };
 
 #endif

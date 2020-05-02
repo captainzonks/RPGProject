@@ -27,10 +27,10 @@ void entity::update(const float delta_time) const
 		component->update(delta_time);
 }
 
-void entity::draw()
+void entity::render()
 {
 	for (auto& component: components_)
-		component->draw();
+		component->render();
 }
 
 void entity::destroy()
@@ -46,8 +46,6 @@ void entity::list_all_components() const
 
 void entity::display() 
 {
-
-	
 	// name header
 	std::cout << "\n====" << get_component<attributes_component>()->get_name() << "====" << std::endl;
 	// basic stats
@@ -75,35 +73,3 @@ void entity::display()
 		std::cout << "=";
 	std::cout << std::endl;
 }
-
-//void entity::move(std::vector<double> destination)
-//{
-//	const auto my_speed = my_attributes_->get_speed();
-//	auto dx = destination.at(0) - my_location_.at(0);
-//	auto dy = destination.at(1) - my_location_.at(1);
-//
-//	const auto r = sqrt(dx*dx + dy*dy);
-//
-//	if (r < my_speed)
-//	{
-//		my_location_.at(0) = destination.at(0);
-//		my_location_.at(1) = destination.at(1);
-//
-//		std::cout << "I have arrived at (" << destination.at(0) << ", " << destination.at(1) << ")" << std::endl;
-//
-//		return;
-//	}
-//
-//	// normalize
-//	if (r > 0)
-//	{	
-//		dx /= r;
-//		dy /= r;
-//	}
-//
-//	my_location_.at(0) += (my_speed) * dx;
-//
-//	my_location_.at(1) += (my_speed) * dy;
-//
-//	std::cout << "My new position is now (" << static_cast<int>(my_location_.at(0)) << ", " << static_cast<int>(my_location_.at(1)) << ")" << std::endl;
-//}
