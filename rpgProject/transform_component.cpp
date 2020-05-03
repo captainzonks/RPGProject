@@ -31,47 +31,21 @@ void transform_component::update_direction()
 		if (velocity.y == -1)
 		{
 			facing = direction::up;
-			sprite->play("up_animation");
 			return;
 		}
 		if (velocity.x == 1)
 		{
 			facing = direction::right;
-			sprite->play("right_animation");
 			return;
 		}
 		if (velocity.y == 1)
 		{
 			facing = direction::down;
-			sprite->play("down_animation");
 			return;
 		}
 		if (velocity.x == -1)
 		{
 			facing = direction::left;
-			sprite->play("left_animation");
-		}
-	}
-	else if (!is_moving())
-	{
-		if (facing == direction::up)
-		{
-			sprite->play("up_idle");
-			return;
-		}
-		if (facing == direction::right)
-		{
-			sprite->play("right_idle");
-			return;
-		}
-		if (facing == direction::down)
-		{
-			sprite->play("down_idle");
-			return;
-		}
-		if (facing == direction::left)
-		{
-			sprite->play("left_idle");
 		}
 	}
 }
@@ -92,6 +66,8 @@ void transform_component::move(const glm::vec2 direction)
 	if (is_moving())
 		return;
 
+	is_moving_ = true;
+	
 	velocity = direction;
 
 	target_position = calculate_new_position(position);
@@ -105,21 +81,23 @@ void transform_component::finish_move(const float delta_time)
 	if (facing == direction::up || facing == direction::down)
 	{
 		position.y += velocity.y * delta_time * default_speed;
-		if (almost_equal(position.y, target_position.y, 10000))
+		if (almost_equal(position.y, target_position.y))
 		{
 			position = target_position;
 			velocity = { 0, 0 };
 			target_position = { 0, 0 };
+			is_moving_ = false;
 		}
 	}
 	if (facing == direction::right || facing == direction::left)
 	{
 		position.x += velocity.x * delta_time * default_speed;
-		if (almost_equal(position.x, target_position.x, 10000))
+		if (almost_equal(position.x, target_position.x))
 		{
 			position = target_position;
 			velocity = { 0, 0 };
 			target_position = { 0, 0 };
+			is_moving_ = false;
 		}
 	}
 

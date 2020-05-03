@@ -31,11 +31,11 @@ sprite_component::sprite_component(const std::string& id, const int num_frames, 
 	{
 		auto up_animation = animation(0, num_frames, animation_speed);
 		auto up_idle = animation(0, 1, 0);
-		auto right_animation = animation(1, num_frames, animation_speed);
+		auto right_animation = animation(1, num_frames - 1, animation_speed);
 		auto right_idle = animation(1, 1, 0);
 		auto down_animation = animation(2, num_frames, animation_speed);
 		auto down_idle = animation(2, 1, 0);
-		auto left_animation = animation(3, num_frames, animation_speed);
+		auto left_animation = animation(3, num_frames - 1, animation_speed);
 		auto left_idle = animation(3, 1, 0);
 		
 		animations_.emplace("up_animation", up_animation);

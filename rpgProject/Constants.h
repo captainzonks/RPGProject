@@ -14,7 +14,7 @@ const unsigned window_width = 800;
 const unsigned window_height = 600;
 
 const unsigned tile_size = 32;
-const unsigned default_speed = 16;
+const unsigned default_speed = 15;
 
 enum class layer_type
 {
