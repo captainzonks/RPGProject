@@ -32,7 +32,6 @@ public:
 	void render() override {}
 
 	void update_direction();
-	void update_sprite_direction() const;
 	[[nodiscard]] bool is_moving() const { return velocity.x != 0 || velocity.y != 0; }
 	glm::vec2 calculate_new_position(glm::vec2 current_target);
 

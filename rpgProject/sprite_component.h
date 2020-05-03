@@ -32,7 +32,6 @@ public:
 
 	void render() override;
 
-
 private:
 	transform_component* transform_ {};
 	SDL_Texture* texture_ {};

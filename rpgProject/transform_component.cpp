@@ -19,33 +19,61 @@ transform_component::~transform_component()
 void transform_component::update(const float delta_time)
 {
 	update_direction();
-	update_sprite_direction();
 	if (is_moving())
 		finish_move(delta_time);
 }
 
 void transform_component::update_direction()
 {
-	if (velocity.y == -1)
-		facing = direction::up;
-	if (velocity.x == 1)
-		facing = direction::right;
-	if (velocity.y == 1)
-		facing = direction::down;
-	if (velocity.x == -1)
-		facing = direction::left;
-}
-
-void transform_component::update_sprite_direction() const
-{
-	if (facing == direction::up)
-		owner->get_component<sprite_component>()->play("up_animation");
-	if (facing == direction::right)
-		owner->get_component<sprite_component>()->play("right_animation");
-	if (facing == direction::down)
-		owner->get_component<sprite_component>()->play("down_animation");
-	if (facing == direction::left)
-		owner->get_component<sprite_component>()->play("left_animation");
+	auto sprite { owner->get_component<sprite_component>() };
+	if (is_moving())
+	{
+		if (velocity.y == -1)
+		{
+			facing = direction::up;
+			sprite->play("up_animation");
+			return;
+		}
+		if (velocity.x == 1)
+		{
+			facing = direction::right;
+			sprite->play("right_animation");
+			return;
+		}
+		if (velocity.y == 1)
+		{
+			facing = direction::down;
+			sprite->play("down_animation");
+			return;
+		}
+		if (velocity.x == -1)
+		{
+			facing = direction::left;
+			sprite->play("left_animation");
+		}
+	}
+	else if (!is_moving())
+	{
+		if (facing == direction::up)
+		{
+			sprite->play("up_idle");
+			return;
+		}
+		if (facing == direction::right)
+		{
+			sprite->play("right_idle");
+			return;
+		}
+		if (facing == direction::down)
+		{
+			sprite->play("down_idle");
+			return;
+		}
+		if (facing == direction::left)
+		{
+			sprite->play("left_idle");
+		}
+	}
 }
 
 glm::vec2 transform_component::calculate_new_position(const glm::vec2 current_target)

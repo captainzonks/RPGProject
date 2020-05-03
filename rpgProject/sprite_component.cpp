@@ -29,16 +29,26 @@ sprite_component::sprite_component(const std::string& id, const int num_frames, 
 
 	if (has_directions)
 	{
+		auto up_animation = animation(0, num_frames, animation_speed);
+		auto up_idle = animation(0, 1, 0);
+		auto right_animation = animation(1, num_frames, animation_speed);
+		auto right_idle = animation(1, 1, 0);
 		auto down_animation = animation(2, num_frames, animation_speed);
-		auto right_animation = animation(0, num_frames - 1, animation_speed);
-		auto left_animation = animation(1, num_frames - 1, animation_speed);
-		auto up_animation = animation(3, num_frames, animation_speed);
-		animations_.emplace("down_animation", down_animation);
-		animations_.emplace("right_animation", right_animation);
-		animations_.emplace("left_animation", left_animation);
+		auto down_idle = animation(2, 1, 0);
+		auto left_animation = animation(3, num_frames, animation_speed);
+		auto left_idle = animation(3, 1, 0);
+		
 		animations_.emplace("up_animation", up_animation);
-		this->animation_index_ = 0;
-		this->current_animation_name_ = "down_animation";
+		animations_.emplace("up_idle", up_idle);
+		animations_.emplace("right_animation", right_animation);
+		animations_.emplace("right_idle", right_idle);
+		animations_.emplace("down_animation", down_animation);
+		animations_.emplace("down_idle", down_idle);
+		animations_.emplace("left_animation", left_animation);
+		animations_.emplace("left_idle", left_idle);
+		
+		this->animation_index_ = 2;
+		this->current_animation_name_ = "down_idle";
 	}
 	else
 	{
@@ -79,7 +89,7 @@ void sprite_component::update(float delta_time)
 {
 	if (is_animated_)
 	{
-		if (owner->get_component<transform_component>()->velocity.x != 0 || owner->get_component<transform_component>()->velocity.y != 0)
+		if (owner->get_component<transform_component>()->is_moving())
 			source_rectangle_.x = source_rectangle_.w * static_cast<int>( SDL_GetTicks() / animation_speed_ % num_frames_ );
 		else
 			source_rectangle_.x = source_rectangle_.w;
