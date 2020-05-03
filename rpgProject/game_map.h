@@ -12,8 +12,8 @@ public:
 	}
 	~game_map() = default;
 
-	void load_map(const std::string& file_path, int map_size_x, int map_size_y) const;
-	static void add_tile(int source_x, int source_y, int x, int y);
+	void load_map(const std::string& file_path, int map_size_x, int map_size_y);
+	void add_tile(int source_x, int source_y, int x, int y);
 
 private:
 	std::string texture_id_;

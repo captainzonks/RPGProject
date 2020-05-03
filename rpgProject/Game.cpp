@@ -161,7 +161,7 @@ void game::update()
 	
 	entity_manager::instance()->update(delta_time);
 	
-	//handle_camera_movement();
+	handle_camera_movement();
 
 	//states_.back()->update(this);
 	

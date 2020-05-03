@@ -19,8 +19,8 @@ Level1 = {
     -- Table to define the list of assets
     ----------------------------------------------------
     assets = {
-        [0] = { type="texture", id = "terrain-texture-day", file = "./assets/images/tilemaps/jungle.png"  },
-        [1] = { type="texture", id = "terrain-texture-night", file = "./assets/images/tilemapes/jungle-night.png" },
+        [0] = { type="texture", id = "terrain-texture-day", file = "./assets/tilemaps/jungle.png"  },
+        [1] = { type="texture", id = "terrain-texture-night", file = "./assets/tilemaps/jungle-night.png" },
         [2] = { type="texture", id = "player_texture", file = "./assets/images/player_character/ash-sprite-sheet.png" }
     },
 
