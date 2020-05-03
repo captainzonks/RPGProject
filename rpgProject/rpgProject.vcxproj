@@ -54,6 +54,7 @@
     <ClCompile Include="texture_manager.cpp" />
     <ClCompile Include="text_label_component.cpp" />
     <ClCompile Include="tile_component.cpp" />
+    <ClCompile Include="transform_component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />

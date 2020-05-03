@@ -46,8 +46,8 @@ Level1 = {
             components = {
                 transform = {
                     position = {
-                        x = 240,
-                        y = 106
+                        x = 64,
+                        y = 64
                     },
                     velocity = {
                         x = 0,
@@ -62,7 +62,7 @@ Level1 = {
                     texture_asset_id = "player_texture",
                     animated = true,
                     frame_count = 3,
-                    animation_speed = 200,
+                    animation_speed = 400,
                     has_directions = true,
                     fixed = false
                 },

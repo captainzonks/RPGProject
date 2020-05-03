@@ -7,11 +7,14 @@
 static std::string welcome_message{"Welcome to C++ RPG"};
 static std::string game_version{"v0.1b"};
 
-const unsigned fps = 60;
+const unsigned fps = 144;
 const unsigned frame_target_time = 1000 / fps;
 
 const unsigned window_width = 800;
 const unsigned window_height = 600;
+
+const unsigned tile_size = 32;
+const unsigned default_speed = 16;
 
 enum class layer_type
 {
@@ -26,6 +29,14 @@ enum class layer_type
 
 const unsigned num_layers = 7;
 
+enum class direction
+{
+	none,
+	up,
+	right,
+	down,
+	left
+};
 
 enum class race_options
 {

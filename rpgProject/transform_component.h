@@ -6,65 +6,46 @@
 #include "component.h"
 
 #include "./lib/glm/glm.hpp"
+#include "constants.h"
 
 class transform_component final
 	: public component
 {
 public:
-	glm::vec2 position;
-	glm::vec2 velocity;
-	int width;
-	int height;
-	int scale;
+	glm::vec2 position{};
+	glm::vec2 target_position{ 0, 0};
+	glm::vec2 velocity{ 0, 0 };
+	direction facing{ direction::down };
+	int width{};
+	int height{};
+	int scale{};
 
-	transform_component(const int pos_x,const int pos_y, const int vel_x, const int vel_y, const int w, const int h, const int s)
-		: position(glm::vec2(pos_x, pos_y)), velocity(glm::vec2(vel_x, vel_y)), width(w), height(h), scale(s)
-	{
-		
-	}
+	transform_component(int pos_x, int pos_y, int vel_x, int vel_y, int w, int h,
+	                    int s);
 
-	~transform_component()
-	{
-		std::cout << "transform_component destructor called" << std::endl;
-	}
+	~transform_component();
 
-	void initialize() override
-	{
-		
-	}
+	void initialize() override {}
 
-	void update(const float delta_time) override
-	{
-		if (velocity.x > 0)
-		{
-			const auto new_pos_x { position.x + 16} ;
-			while (position.x != new_pos_x)
-				position.x += velocity.x * delta_time;
-		}
-		if (velocity.x < 0)
-		{
-			const auto new_pos_x { position.x - 16 };
-			while (position.x != new_pos_x)
-				position.x += velocity.x * delta_time;
-		}
-		if (velocity.y > 0)
-		{
-			const auto new_pos_y { position.y + 16 };
-			while (position.y != new_pos_y)
-				position.y += velocity.y * delta_time;
-		}
-		if (velocity.y < 0)
-		{
-			const auto new_pos_y { position.y - 16 };
-			while (position.y != new_pos_y)
-				position.y += velocity.y * delta_time;
-		}
-		
-		//position.x += velocity.x * delta_time;
-		//position.y += velocity.y * delta_time;
-	}
+	void update(float delta_time) override;
 
 	void render() override {}
+
+	void update_direction();
+	void update_sprite_direction() const;
+	[[nodiscard]] bool is_moving() const { return velocity.x != 0 || velocity.y != 0; }
+	glm::vec2 calculate_new_position(glm::vec2 current_target);
+
+	void move(glm::vec2 direction);
+	void finish_move(float delta_time);
+
+	template <class T>
+	typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type
+		almost_equal( T x, T y, int ulp )
+	{
+		return std::fabs(x - y) <= std::numeric_limits<T>::epsilon() * std::fabs(x + y) * ulp
+			|| std::fabs(x - y) < std::numeric_limits<T>::min();
+	}
 };
 
 #endif
