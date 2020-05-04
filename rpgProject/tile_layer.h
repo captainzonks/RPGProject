@@ -21,13 +21,18 @@ class tile_layer
 	:	public layer
 {
 public:
-	tile_layer() = default;
+	tile_layer(int tile_size, int row_count, int column_count, tile_map tile_map, tile_set_list tile_sets);
+
+	void update(float delta_time) override;
+	void render() override;
+
+	[[nodiscard]] tile_map get_tile_map() const { return tile_map_; }
 
 private:
 	int tile_size_ {};
 	int row_count_ {}, column_count_ {};
 	tile_map tile_map_;
-	
+	tile_set_list tile_sets_;
 };
 
 #endif

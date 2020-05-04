@@ -20,6 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
+    <ClCompile Include="assets\tinyxml\tinystr.cpp" />
+    <ClCompile Include="assets\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="assets\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="assets\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="asset_manager.cpp" />
     <ClCompile Include="attributes_component.cpp" />
     <ClCompile Include="collider_component.cpp" />
@@ -45,6 +49,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="game_map.cpp" />
     <ClCompile Include="map_menu_state.cpp" />
+    <ClCompile Include="map_parser.cpp" />
     <ClCompile Include="menu_state.cpp" />
     <ClCompile Include="npc_info_menu.cpp" />
     <ClCompile Include="player_info_menu.cpp" />
@@ -59,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
+    <ClInclude Include="assets\tinyxml\tinystr.h" />
+    <ClInclude Include="assets\tinyxml\tinyxml.h" />
     <ClInclude Include="asset_manager.h" />
     <ClInclude Include="attributes_component.h" />
     <ClInclude Include="collider_component.h" />
@@ -86,6 +93,7 @@
     <ClInclude Include="location.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="map_menu_state.h" />
+    <ClInclude Include="map_parser.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="name_list.h" />
     <ClInclude Include="npc_info_menu.h" />

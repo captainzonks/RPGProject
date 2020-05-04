@@ -13,10 +13,10 @@ void game_map::render()
 		layer->render();
 }
 
-void game_map::update(float delta_time)
+void game_map::update(const float delta_time)
 {
 	for (auto& layer : map_layers_)
-		layer->update();
+		layer->update(delta_time);
 }
 
 void game_map::load_map(const std::string& file_path, const int map_size_x, const int map_size_y)
