@@ -30,13 +30,13 @@ sprite_component::sprite_component(const std::string& id, const int num_frames, 
 	if (has_directions)
 	{
 		auto up_animation = animation(0, num_frames, animation_speed);
-		auto up_idle = animation(0, 1, 0);
+		auto up_idle = animation(0, 1, 1);
 		auto right_animation = animation(1, num_frames - 1, animation_speed);
-		auto right_idle = animation(1, 1, 0);
+		auto right_idle = animation(1, 1, 1);
 		auto down_animation = animation(2, num_frames, animation_speed);
-		auto down_idle = animation(2, 1, 0);
+		auto down_idle = animation(2, 1, 1);
 		auto left_animation = animation(3, num_frames - 1, animation_speed);
-		auto left_idle = animation(3, 1, 0);
+		auto left_idle = animation(3, 1, 1);
 		
 		animations_.emplace("up_animation", up_animation);
 		animations_.emplace("up_idle", up_idle);
@@ -89,10 +89,7 @@ void sprite_component::update(float delta_time)
 {
 	if (is_animated_)
 	{
-		if (owner->get_component<transform_component>()->is_moving())
-			source_rectangle_.x = source_rectangle_.w * static_cast<int>( SDL_GetTicks() / animation_speed_ % num_frames_ );
-		else
-			source_rectangle_.x = source_rectangle_.w;
+		source_rectangle_.x = source_rectangle_.w * static_cast<int>( SDL_GetTicks() / animation_speed_ % num_frames_ );
 	}
 	source_rectangle_.y = static_cast<int>(animation_index_) * transform_->height;
 

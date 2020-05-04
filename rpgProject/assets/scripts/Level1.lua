@@ -62,7 +62,7 @@ Level1 = {
                     texture_asset_id = "player_texture",
                     animated = true,
                     frame_count = 3,
-                    animation_speed = 400,
+                    animation_speed = 200,
                     has_directions = true,
                     fixed = false
                 },

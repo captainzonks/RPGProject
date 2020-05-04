@@ -28,46 +28,31 @@ void keyboard_control_component::update(const float delta_time)
 		if (key_code == up_key)
 		{
 			if (transform->is_moving())
-				transform->finish_move(delta_time);
-			else
-			{
-				const glm::vec2 direction { 0, -1 };
-				transform->move(direction);
-				sprite->play("up_animation");
-			}
+				return;
+			const glm::vec2 direction { 0, -1 };
+			transform->move(direction);
 		}
 		if (key_code == right_key)
 		{
 			if (transform->is_moving())
-				transform->finish_move(delta_time);
-			else
-			{
-				const glm::vec2 direction { 1, 0 };
-				transform->move(direction);
-				sprite->play("right_animation");
-			}
+				return;
+			const glm::vec2 direction { 1, 0 };
+			transform->move(direction);
 		}
 		if (key_code == down_key)
 		{
 			if (transform->is_moving())
-				transform->finish_move(delta_time);
-			else
-			{
-				const glm::vec2 direction { 0, 1 };
-				transform->move(direction);
-				sprite->play("down_animation");
-			}
+				return;
+			const glm::vec2 direction { 0, 1 };
+			transform->move(direction);
 		}
 		if (key_code == left_key)
 		{
 			if (transform->is_moving())
-				transform->finish_move(delta_time);
-			else
-			{
-				const glm::vec2 direction { -1, 0 };
-				transform->move(direction);
-				sprite->play("left_animation");
-			}
+				return;
+			const glm::vec2 direction { -1, 0 };
+			transform->move(direction);
+
 		}
 		if (key_code == interact_key)
 		{
@@ -78,30 +63,28 @@ void keyboard_control_component::update(const float delta_time)
 	if (game::event.type == SDL_KEYUP)
 	{
 		if (transform->is_moving())
-			transform->finish_move(delta_time);
-		else
+			return;
+		
+		const auto key_code = std::to_string(game::event.key.keysym.sym);
+		if (key_code == up_key)
 		{
-			const auto key_code = std::to_string(game::event.key.keysym.sym);
-			if (key_code == up_key)
-			{
-				transform->velocity.y = 0;
-				sprite->play("up_idle");
-			}
-			if (key_code == right_key)
-			{
-				transform->velocity.x = 0;
-				sprite->play("right_idle");
-			}
-			if (key_code == down_key)
-			{
-				transform->velocity.y = 0;
-				sprite->play("down_idle");
-			}
-			if (key_code == left_key)
-			{
-				transform->velocity.x = 0;
-				sprite->play("left_idle");
-			}
+			transform->velocity.y = 0;
+			sprite->play("up_idle");
+		}
+		if (key_code == right_key)
+		{
+			transform->velocity.x = 0;
+			sprite->play("right_idle");
+		}
+		if (key_code == down_key)
+		{
+			transform->velocity.y = 0;
+			sprite->play("down_idle");
+		}
+		if (key_code == left_key)
+		{
+			transform->velocity.x = 0;
+			sprite->play("left_idle");
 		}
 	}
 }
