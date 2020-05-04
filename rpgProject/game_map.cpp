@@ -7,6 +7,18 @@
 #include "game.h"
 #include "tile_component.h"
 
+void game_map::render()
+{
+	for (auto& layer : map_layers_)
+		layer->render();
+}
+
+void game_map::update(float delta_time)
+{
+	for (auto& layer : map_layers_)
+		layer->update();
+}
+
 void game_map::load_map(const std::string& file_path, const int map_size_x, const int map_size_y)
 {
 	std::fstream map_file;

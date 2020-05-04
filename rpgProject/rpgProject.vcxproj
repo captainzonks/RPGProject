@@ -54,6 +54,7 @@
     <ClCompile Include="texture_manager.cpp" />
     <ClCompile Include="text_label_component.cpp" />
     <ClCompile Include="tile_component.cpp" />
+    <ClCompile Include="tile_layer.cpp" />
     <ClCompile Include="transform_component.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +82,7 @@
     <ClInclude Include="item_list.h" />
     <ClInclude Include="job_functions.h" />
     <ClInclude Include="keyboard_control_component.h" />
+    <ClInclude Include="layer.h" />
     <ClInclude Include="location.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="map_menu_state.h" />
@@ -94,6 +96,7 @@
     <ClInclude Include="texture_manager.h" />
     <ClInclude Include="text_label_component.h" />
     <ClInclude Include="tile_component.h" />
+    <ClInclude Include="tile_layer.h" />
     <ClInclude Include="transform_component.h" />
   </ItemGroup>
   <ItemGroup>
