@@ -26,7 +26,7 @@ protected:
 private:
 
 	bool parse(std::string map_id, std::string source);
-	tile_set_list parse_tile_set(TiXmlElement* xml_tile_set);
+	tileset parse_tile_set(TiXmlElement* xml_tile_set);
 	tile_layer* parse_tile_layer(TiXmlElement* xml_layer, tile_set_list tile_sets, int tile_size, int row_count, int column_count);
 	
 	std::map<std::string, game_map*> game_maps_;
