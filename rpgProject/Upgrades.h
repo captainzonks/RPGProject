@@ -12,6 +12,8 @@
 #include "ShortBow.h"
 #include "Shield.h"
 
+#include <memory>
+
 class Upgrades
 {
 public:
@@ -22,16 +24,16 @@ public:
 	~Upgrades();
 
 	// pointers
-	std::unique_ptr<Weapon> weaponL{ nullptr };
-	std::unique_ptr<Weapon> weaponR{ nullptr };
-	std::unique_ptr<Weapon> rangedWeapon{ nullptr };
-	std::unique_ptr<Armor> shield{ nullptr };
+	std::unique_ptr<Weapon> weaponL{nullptr};
+	std::unique_ptr<Weapon> weaponR{nullptr};
+	std::unique_ptr<Weapon> rangedWeapon{nullptr};
+	std::unique_ptr<Armor> shield{nullptr};
 
-	std::unique_ptr<Armor> helmet{ nullptr };
-	std::unique_ptr<Armor> chest{ nullptr };
-	std::unique_ptr<Armor> legs{ nullptr };
-	std::unique_ptr<Armor> hands{ nullptr };
-	std::unique_ptr<Armor> boots{ nullptr };
+	std::unique_ptr<Armor> helmet{nullptr};
+	std::unique_ptr<Armor> chest{nullptr};
+	std::unique_ptr<Armor> legs{nullptr};
+	std::unique_ptr<Armor> hands{nullptr};
+	std::unique_ptr<Armor> boots{nullptr};
 
 	// display
 	void DisplayUpgrades();
@@ -61,8 +63,8 @@ public:
 	void UnequipShield();
 
 	// armor setters
-	void EquipHelmet(std::unique_ptr<Armor> helmet), EquipChest(std::unique_ptr<Armor> chest), 
-		EquipLegs(std::unique_ptr<Armor> legs), EquipHands(std::unique_ptr<Armor> hands), 
+	void EquipHelmet(std::unique_ptr<Armor> helmet), EquipChest(std::unique_ptr<Armor> chest),
+		EquipLegs(std::unique_ptr<Armor> legs), EquipHands(std::unique_ptr<Armor> hands),
 		EquipBoots(std::unique_ptr<Armor> boots);
 	void UnequipHelmet(), UnequipChest(), UnequipLegs(), UnequipHands(), UnequipBoots();
 
@@ -71,22 +73,21 @@ public:
 
 private:
 	// initial null
-	bool nothingEquipped{ true };
+	bool nothingEquipped{true};
 
 	// armor booleans
-	bool hasHelmet{ false };
-	bool hasChest{ false };
-	bool hasLegs{ false };
-	bool hasHands{ false };
-	bool hasBoots{ false };
+	bool hasHelmet{false};
+	bool hasChest{false};
+	bool hasLegs{false};
+	bool hasHands{false};
+	bool hasBoots{false};
 
 	// weapon & shield booleans
-	bool isDualWielding{ false };
-	bool hasRangedWeapon{ false };
-	bool hasWeaponL{ false };
-	bool hasWeaponR{ false };
-	bool hasShield{ false };
+	bool isDualWielding{false};
+	bool hasRangedWeapon{false};
+	bool hasWeaponL{false};
+	bool hasWeaponR{false};
+	bool hasShield{false};
 
-	int unarmedAttackDie{ 4 };
+	int unarmedAttackDie{4};
 };
-
