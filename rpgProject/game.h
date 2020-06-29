@@ -14,14 +14,14 @@ class game
 public:
 	game() = default;
 	~game() = default;
-	
-	std::shared_ptr<entity> player { nullptr };
 
-	void initialize();
+	std::shared_ptr<entity> player{nullptr};
+
+	void init();
 	void cleanup();
 
-	void change_state(game_state* state);
-	void push_state(game_state* state);
+	void change_state(game_state *state);
+	void push_state(game_state *state);
 	void pop_state();
 
 	void handle_events();
@@ -35,10 +35,10 @@ public:
 	void quit() { running_ = false; };
 
 private:
-	bool running_{ false };
-	std::vector<game_state*> states_;
+	bool running_{false};
+	std::vector<game_state *> states_;
 
-	int ticks_last_frame_ {};
+	int ticks_last_frame_{};
 };
 
 #endif

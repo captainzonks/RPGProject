@@ -9,7 +9,7 @@ int main()
     game game;
 
     // initialize
-    game.initialize();
+    game.init();
 
     // start the entity creator
     game.change_state(character_creator_state::instance());

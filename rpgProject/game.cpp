@@ -8,7 +8,7 @@
 #include "entity.h"
 #include "entity_manager.h"
 
-void game::initialize()
+void game::init()
 {
 	srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
 }
@@ -23,7 +23,7 @@ void game::cleanup()
 	}
 }
 
-void game::change_state(game_state* state)
+void game::change_state(game_state *state)
 {
 	// cleanup the current state
 	if (!states_.empty())
@@ -37,7 +37,7 @@ void game::change_state(game_state* state)
 	states_.back()->init();
 }
 
-void game::push_state(game_state* state)
+void game::push_state(game_state *state)
 {
 	// pause current state
 	if (!states_.empty())
@@ -75,9 +75,8 @@ void game::handle_events()
 void game::update()
 {
 	entity_manager::instance()->update();
-	
+
 	states_.back()->update(this);
-	
 }
 
 void game::render()
@@ -86,7 +85,7 @@ void game::render()
 		return;
 
 	entity_manager::instance()->render();
-	
+
 	states_.back()->render(this);
 }
 
