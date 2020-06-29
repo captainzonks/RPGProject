@@ -4,15 +4,15 @@
 #include "constants.h"
 #include "character_creator_state.h"
 
-int main(int argc, char* args[])
+int main()
 {
     game game;
 
     // initialize
-    game.initialize(window_width, window_height);
+    game.initialize();
 
     // start the entity creator
-    // game.change_state(character_creator_state::instance());
+    game.change_state(character_creator_state::instance());
 
     // main loop
     while (game.is_running())

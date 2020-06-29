@@ -3,9 +3,6 @@
 
 #include <memory>
 #include <vector>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
 
 #include "constants.h"
 
@@ -20,11 +17,7 @@ public:
 	
 	std::shared_ptr<entity> player { nullptr };
 
-	inline static SDL_Renderer* renderer { nullptr };
-	inline static SDL_Event event;
-	inline static SDL_Rect camera {0,0,window_width, window_height};
-
-	void initialize(int width, int height);
+	void initialize();
 	void cleanup();
 
 	void change_state(game_state* state);
@@ -36,14 +29,13 @@ public:
 	void render();
 
 	void handle_camera_movement() const;
-	void load_files(int level_number);
+	void load_files();
 
 	[[nodiscard]] bool is_running() const { return running_; }
 	void quit() { running_ = false; };
 
 private:
 	bool running_{ false };
-	SDL_Window* window_ { nullptr };
 	std::vector<game_state*> states_;
 
 	int ticks_last_frame_ {};
