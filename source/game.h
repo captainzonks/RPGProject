@@ -28,9 +28,6 @@ public:
 	void update();
 	void render();
 
-	void handle_camera_movement() const;
-	void load_files();
-
 	[[nodiscard]] bool is_running() const { return running_; }
 	void quit() { running_ = false; };
 

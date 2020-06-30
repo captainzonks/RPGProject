@@ -7,28 +7,6 @@
 static std::string welcome_message{"Welcome to C++ RPG"};
 static std::string game_version{"v0.1b"};
 
-const unsigned fps = 144;
-const unsigned frame_target_time = 1000 / fps;
-
-const unsigned window_width = 800;
-const unsigned window_height = 600;
-
-const unsigned tile_size = 32;
-const unsigned default_speed = 16;
-
-enum class layer_type
-{
-	tile_map_layer = 0,
-	vegetation_layer = 1,
-	enemy_layer = 2,
-	obstacle_layer = 3,
-	player_layer = 4,
-	projectile_layer = 5,
-	ui_layer = 6
-};
-
-const unsigned num_layers = 7;
-
 enum class direction
 {
 	none,
@@ -47,10 +25,8 @@ enum class race_options
 	halfling = 4
 };
 
-inline std::vector<std::string> race_strings
-{
-	"None", "Human", "Dwarf", "Elf", "Halfling"
-};
+inline std::vector<std::string> race_strings{
+	"None", "Human", "Dwarf", "Elf", "Halfling"};
 
 enum class job_labels
 {
@@ -60,13 +36,11 @@ enum class job_labels
 	farmer = 3
 };
 
-inline std::vector<std::string> job_strings
-{
+inline std::vector<std::string> job_strings{
 	"None",
 	"Lumberer",
 	"Blacksmith",
-	"Farmer"
-};
+	"Farmer"};
 
 // fighter related enum
 enum class fighting_style
@@ -98,13 +72,11 @@ enum class damage_type
 	thunder = 13
 };
 
-inline std::vector<std::string> damage_type_strings
-{
+inline std::vector<std::string> damage_type_strings{
 	"None", "Acid", "Bludgeoning", "Cold",
 	"Fire", "Force", "Lightning", "Necrotic",
 	"Piercing", "Poison", "Psychic", "Radiant",
-	"Slashing", "Thunder"
-};
+	"Slashing", "Thunder"};
 
 enum class item_type
 {
@@ -115,10 +87,8 @@ enum class item_type
 	resource = 4
 };
 
-inline std::vector<std::string> item_type_strings
-{
-	"None", "Consumable", "Armor", "Weapon"
-};
+inline std::vector<std::string> item_type_strings{
+	"None", "Consumable", "Armor", "Weapon"};
 
 enum class weapon_type
 {
@@ -127,10 +97,8 @@ enum class weapon_type
 	ranged = 2
 };
 
-inline std::vector<std::string> weapon_type_strings
-{
-	"None", "Melee", "Ranged"
-};
+inline std::vector<std::string> weapon_type_strings{
+	"None", "Melee", "Ranged"};
 
 enum class weapon_hand
 {
@@ -148,10 +116,8 @@ enum class weapon_proficiency
 	martial = 2
 };
 
-inline std::vector<std::string> weapon_proficiency_strings
-{
-	"None", "Simple", "Martial"
-};
+inline std::vector<std::string> weapon_proficiency_strings{
+	"None", "Simple", "Martial"};
 
 enum class armor_type
 {
@@ -162,10 +128,8 @@ enum class armor_type
 	shield = 4
 };
 
-inline std::vector<std::string> armor_type_string
-{
-	"None", "Light Armor", "Medium Armor", "Heavy Armor", "Shield"
-};
+inline std::vector<std::string> armor_type_string{
+	"None", "Light Armor", "Medium Armor", "Heavy Armor", "Shield"};
 
 enum class armor_slot
 {
@@ -196,9 +160,7 @@ enum class resources
 	food = 3
 };
 
-inline std::vector<std::string> resources_string
-{
-	"None", "Lumber", "Ore", "Food"
-};
+inline std::vector<std::string> resources_string{
+	"None", "Lumber", "Ore", "Food"};
 
 #endif

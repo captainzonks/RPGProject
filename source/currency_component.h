@@ -10,28 +10,28 @@ class currency_component final
 {
 public:
 	currency_component() = default;
-	currency_component(const currency_component& other) = default;
+	currency_component(const currency_component &other) = default;
 
-	currency_component(currency_component&& other) noexcept
+	currency_component(currency_component &&other) noexcept
 		: component(other),
 		  copper_(other.copper_)
 	{
 	}
 
-	currency_component& operator=(const currency_component& other)
+	currency_component &operator=(const currency_component &other)
 	{
 		if (this == &other)
 			return *this;
-		component::operator =(other);
+		component::operator=(other);
 		copper_ = other.copper_;
 		return *this;
 	}
 
-	currency_component& operator=(currency_component&& other) noexcept
+	currency_component &operator=(currency_component &&other) noexcept
 	{
 		if (this == &other)
 			return *this;
-		component::operator =(other);
+		component::operator=(other);
 		copper_ = other.copper_;
 		return *this;
 	}
@@ -39,20 +39,19 @@ public:
 	~currency_component() { std::cout << "currency_component destructor called" << std::endl; }
 
 	void initialize() override {}
-	void update(float delta_time) override {}
+	void update() override {}
 	void render() override {}
 
-    // getters
-    [[nodiscard]] unsigned get_gold() const, get_silver() const, get_copper() const;
-    void display_money() const;
+	// getters
+	[[nodiscard]] unsigned get_gold() const, get_silver() const, get_copper() const;
+	void display_money() const;
 
-    // add or subtract
-    void add_money(unsigned copper);
-    void subtract_money(unsigned copper);
+	// add or subtract
+	void add_money(unsigned copper);
+	void subtract_money(unsigned copper);
 
 private:
-    unsigned copper_{};
-
+	unsigned copper_{};
 };
 
 #endif

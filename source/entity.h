@@ -10,35 +10,32 @@ class component;
 class entity
 {
 public:
-	entity(const entity& other) = default;
+	entity(const entity &other) = default;
 
-	entity(entity&& other) noexcept
+	entity(entity &&other) noexcept
 		: name(std::move(other.name)),
-		  layer(other.layer),
 		  is_active_(other.is_active_),
 		  components_(std::move(other.components_)),
 		  component_type_map_(std::move(other.component_type_map_))
 	{
 	}
 
-	entity& operator=(const entity& other)
+	entity &operator=(const entity &other)
 	{
 		if (this == &other)
 			return *this;
 		name = other.name;
-		layer = other.layer;
 		is_active_ = other.is_active_;
 		components_ = other.components_;
 		component_type_map_ = other.component_type_map_;
 		return *this;
 	}
 
-	entity& operator=(entity&& other) noexcept
+	entity &operator=(entity &&other) noexcept
 	{
 		if (this == &other)
 			return *this;
 		name = std::move(other.name);
-		layer = other.layer;
 		is_active_ = other.is_active_;
 		components_ = std::move(other.components_);
 		component_type_map_ = std::move(other.component_type_map_);
@@ -46,10 +43,10 @@ public:
 	}
 
 	entity() = default;
-	entity(std::string name, layer_type layer);
+	entity(std::string name);
 	~entity();
 
-	void update(float delta_time) const;
+	void update() const;
 	void render();
 	void destroy();
 
@@ -58,10 +55,10 @@ public:
 
 	[[nodiscard]] bool is_active() const { return is_active_; }
 
-	template <typename T, typename ... TArgs>
-	T& add_component(TArgs&& ... args)
+	template <typename T, typename... TArgs>
+	T &add_component(TArgs &&... args)
 	{
-		T* new_component(new T(std::forward<TArgs>(args)...));
+		T *new_component(new T(std::forward<TArgs>(args)...));
 		new_component->owner = this;
 		components_.emplace_back(new_component);
 		component_type_map_[&typeid(*new_component)] = new_component;
@@ -76,19 +73,18 @@ public:
 	}
 
 	template <typename T>
-	T* get_component()
+	T *get_component()
 	{
-		return static_cast<T*>(component_type_map_[&typeid(T)]);
+		return static_cast<T *>(component_type_map_[&typeid(T)]);
 	}
 
 	std::string name;
-	layer_type layer {layer_type::ui_layer};
-	
-private:
-	bool is_active_ { true };
 
-	std::vector<component*> components_;
-	std::map<const std::type_info*, component*> component_type_map_;
+private:
+	bool is_active_{true};
+
+	std::vector<component *> components_;
+	std::map<const std::type_info *, component *> component_type_map_;
 };
 
 #endif

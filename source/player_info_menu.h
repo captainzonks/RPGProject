@@ -14,27 +14,26 @@ public:
 	void pause() override;
 	void resume() override;
 
-	void handle_events(game* game) override;
-	void update(game* game) override;
-	void render(game* game) override;
+	void handle_events(game *game) override;
+	void update(game *game) override;
+	void render(game *game) override;
 
-	static player_info_menu* instance()
+	static player_info_menu *instance()
 	{
 		return &player_info_menu_state_;
 	}
+
 protected:
 	player_info_menu() = default;
 	unsigned choice_{};
 	static player_info_menu player_info_menu_state_;
-	std::vector<std::string> options_
-	{
+	std::vector<std::string> options_{
 		"Player Stats",
 		"Inventory",
 		"Money",
 		"List All Components",
-		"Back"
-	};
-	const std::string name_{ "Player Info" };
+		"Back"};
+	const std::string name_{"Player Info"};
 };
 
 #endif

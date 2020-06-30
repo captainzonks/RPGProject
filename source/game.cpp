@@ -3,97 +3,91 @@
 #include <ctime>
 #include <iostream>
 
-#include "game_state.h"
+#include "character_builder.h"
 #include "constants.h"
 #include "entity.h"
 #include "entity_manager.h"
+#include "game_state.h"
+#include "menu_state.h"
 
 void game::init()
 {
-	srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
+  srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
+  running_ = true;
 }
 
 void game::cleanup()
 {
-	// cleanup all the states_
-	while (!states_.empty())
-	{
-		states_.back()->cleanup();
-		states_.pop_back();
-	}
+  // cleanup all the states_
+  while (!states_.empty())
+  {
+    states_.back()->cleanup();
+    states_.pop_back();
+  }
 }
 
 void game::change_state(game_state *state)
 {
-	// cleanup the current state
-	if (!states_.empty())
-	{
-		states_.back()->cleanup();
-		states_.pop_back();
-	}
+  // cleanup the current state
+  if (!states_.empty())
+  {
+    states_.back()->cleanup();
+    states_.pop_back();
+  }
 
-	// store and init the new state
-	states_.push_back(state);
-	states_.back()->init();
+  // store and init the new state
+  states_.push_back(state);
+  states_.back()->init();
 }
 
 void game::push_state(game_state *state)
 {
-	// pause current state
-	if (!states_.empty())
-	{
-		states_.back()->pause();
-	}
+  // pause current state
+  if (!states_.empty())
+  {
+    states_.back()->pause();
+  }
 
-	// store and init the new state
-	states_.push_back(state);
-	states_.back()->init();
+  // store and init the new state
+  states_.push_back(state);
+  states_.back()->init();
 }
 
 void game::pop_state()
 {
-	// cleanup the current state
-	if (!states_.empty())
-	{
-		states_.back()->cleanup();
-		states_.pop_back();
-	}
+  // cleanup the current state
+  if (!states_.empty())
+  {
+    states_.back()->cleanup();
+    states_.pop_back();
+  }
 
-	// resume previous state
-	if (!states_.empty())
-	{
-		states_.back()->resume();
-	}
+  // resume previous state
+  if (!states_.empty())
+  {
+    states_.back()->resume();
+  }
 }
 
 void game::handle_events()
 {
-	// let the state handle events
-	states_.back()->handle_events(this);
+  // let the state handle events
+  states_.back()->handle_events(this);
 }
 
 void game::update()
 {
-	entity_manager::instance()->update();
+  // entity_manager::instance()->update(this);
 
-	states_.back()->update(this);
+  states_.back()->update(this);
 }
 
 void game::render()
 {
-	if (entity_manager::instance()->has_no_entities())
-		return;
+  // if (entity_manager::instance()->has_no_entities())
+  //   return;
 
-	entity_manager::instance()->render();
+  // entity_manager::instance()->render(this);
 
-	states_.back()->render(this);
-}
-
-void game::handle_camera_movement() const
-{
-}
-
-void game::load_files()
-{
-	player = entity_manager::instance()->get_entity_by_name("player");
+  states_.back()->render(this);
 }

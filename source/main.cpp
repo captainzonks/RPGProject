@@ -1,29 +1,28 @@
 // MAIN
 
-#include "game.h"
-#include "constants.h"
 #include "character_creator_state.h"
+#include "constants.h"
+#include "game.h"
 
 int main()
 {
-    game game;
+  game game;
 
-    // initialize
-    game.init();
+  // initialize
+  game.init();
 
-    // start the entity creator
-    game.change_state(character_creator_state::instance());
+  game.change_state(character_creator_state::instance());
 
-    // main loop
-    while (game.is_running())
-    {
-        game.handle_events();
-        game.update();
-        game.render();
-    }
+  // main loop
+  while (game.is_running())
+  {
+    game.handle_events();
+    game.update();
+    game.render();
+  }
 
-    // cleanup
-    game.cleanup();
+  // cleanup
+  game.cleanup();
 
-    return 0;
+  return 0;
 }

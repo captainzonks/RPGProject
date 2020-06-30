@@ -12,9 +12,9 @@ class inventory_component final
 {
 public:
 	inventory_component() = default;
-	inventory_component(const inventory_component& other) = delete;
+	inventory_component(const inventory_component &other) = delete;
 
-	inventory_component(inventory_component&& other) noexcept
+	inventory_component(inventory_component &&other) noexcept
 		: component(other),
 		  the_inventory_(std::move(other.the_inventory_)),
 		  capacity_(other.capacity_),
@@ -30,13 +30,13 @@ public:
 	{
 	}
 
-	inventory_component& operator=(const inventory_component& other) = delete;
+	inventory_component &operator=(const inventory_component &other) = delete;
 
-	inventory_component& operator=(inventory_component&& other) noexcept
+	inventory_component &operator=(inventory_component &&other) noexcept
 	{
 		if (this == &other)
 			return *this;
-		component::operator =(other);
+		component::operator=(other);
 		the_inventory_ = std::move(other.the_inventory_);
 		capacity_ = other.capacity_;
 		armor_bonus_ = other.armor_bonus_;
@@ -54,11 +54,11 @@ public:
 	~inventory_component();
 
 	void initialize() override {}
-	void update(float delta_time) override;
+	void update() override;
 	void render() override {}
-	
+
 	void update_armor_bonus();
-	
+
 	void set_capacity(int new_capacity);
 	[[nodiscard]] unsigned int get_capacity() const;
 	[[nodiscard]] int get_armor_bonus() const { return armor_bonus_; }
@@ -70,7 +70,7 @@ public:
 	void display_inventory() const;
 	void display_equipped() const;
 	std::unique_ptr<item> get_item(unsigned item_identifier);
-	
+
 	// ammunition
 	[[nodiscard]] int return_ammo() const;
 	void subtract_ammo();
@@ -79,12 +79,11 @@ public:
 	// equipment functions
 	void equip(std::unique_ptr<item> item);
 	void unequip(std::unique_ptr<item> item);
-	static bool ask_to_swap(item& new_item, item& old_item);
+	static bool ask_to_swap(item &new_item, item &old_item);
 
 private:
-
 	std::vector<std::unique_ptr<item>> the_inventory_{};
-	unsigned int capacity_{ 10 };
+	unsigned int capacity_{10};
 	int armor_bonus_{};
 	int ammunition_{};
 
@@ -98,7 +97,6 @@ private:
 	// equipped hands
 	std::unique_ptr<item> main_hand_slot_;
 	std::unique_ptr<item> off_hand_slot_;
-
 };
 
 #endif
