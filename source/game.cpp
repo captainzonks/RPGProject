@@ -72,14 +72,16 @@ void game::pop_state()
 void game::handle_events()
 {
   // let the state handle events
-  if(!is_running()) return;
+  if (!is_running())
+    return;
   states_.back()->handle_events(this);
 }
 
 void game::update()
 {
   // entity_manager::instance()->update(this);
-  if(!is_running()) return;
+  if (!is_running())
+    return;
   states_.back()->update(this);
 }
 
@@ -89,6 +91,7 @@ void game::render()
   //   return;
 
   // entity_manager::instance()->render(this);
-  if(!is_running()) return;
+  if (!is_running())
+    return;
   states_.back()->render(this);
 }

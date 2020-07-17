@@ -4,6 +4,7 @@
 #include "npc_info_menu.h"
 #include "player_info_menu.h"
 #include "shop_menu_state.h"
+#include "game.h"
 
 menu_state menu_state::menu_state_;
 

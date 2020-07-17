@@ -16,7 +16,7 @@ public:
 	{
 	}
 
-	~location() { std::cout << "Location destroyed" << std::endl; }
+	~location() { std::cout << "location destructor called" << std::endl; }
 
 	void update();
 

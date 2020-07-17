@@ -8,11 +8,9 @@
 
 entity_manager entity_manager::entity_manager_instance_;
 
-entity &entity_manager::add_entity(std::string entity_name)
+void entity_manager::add_entity(std::shared_ptr<entity> new_entity)
 {
-	auto new_entity = std::make_shared<entity>(std::move(entity_name));
 	entities_.emplace_back(new_entity);
-	return *new_entity;
 }
 
 void entity_manager::update(game *game)
@@ -71,4 +69,13 @@ std::shared_ptr<entity> entity_manager::get_entity_by_name(const std::string &en
 	}
 
 	return nullptr;
+}
+
+void entity_manager::display_entities() const
+{
+	std::cout << "\n#### Active NPCs ####" << std::endl;
+	for (auto entity : entities_)
+	{
+		entity->display();
+	}
 }
