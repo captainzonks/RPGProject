@@ -17,24 +17,28 @@ void menu_state::resume() {}
 
 void menu_state::handle_events(game *game)
 {
-
-  switch (choice_)
+  if (choice_ != 0)
   {
-  case 1:
-    game->push_state(player_info_menu::instance());
-    break;
-  case 2:
-    game->push_state(shop_menu_state::instance());
-    break;
-  case 3:
-    game->push_state(npc_info_menu::instance());
-    break;
-  case 4:
-    game->push_state(map_menu_state::instance());
-    break;
-  case 5:
-    game->quit();
-    break;
+    switch (choice_)
+    {
+    case 1:
+      game->push_state(player_info_menu::instance());
+      break;
+    case 2:
+      game->push_state(shop_menu_state::instance());
+      break;
+    case 3:
+      game->push_state(npc_info_menu::instance());
+      break;
+    case 4:
+      game->push_state(map_menu_state::instance());
+      break;
+    case 5:
+      game->quit();
+      break;
+    default:
+      break;
+    }
   }
 }
 

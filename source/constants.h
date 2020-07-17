@@ -160,7 +160,18 @@ enum class resources
 	food = 3
 };
 
-inline std::vector<std::string> resources_string{
-	"None", "Lumber", "Ore", "Food"};
+inline std::vector<std::string> resources_string
+{
+	"None", 
+	"Lumber", 
+	"Ore", 
+	"Food"
+};
+
+struct coordinates
+{
+	int x;
+	int y;
+};
 
 #endif

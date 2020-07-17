@@ -1,6 +1,7 @@
 #include "map_menu_state.h"
 #include "location.h"
 #include "helper_functions.h"
+#include "constants.h"
 
 map_menu_state map_menu_state::map_menu_state_;
 
@@ -27,10 +28,10 @@ void map_menu_state::handle_events(game* game)
 		switch (choice_)
 		{
 		case 1:
-			//game->world.add_place(*make_new_location());
+			game->the_world.add_location(make_new_location());
 			break;
 		case 2:
-			/*game->world.print_places();*/
+			game->the_world.print_locations();
 			break;
 		case 3:
 			game->pop_state();
@@ -52,10 +53,10 @@ void map_menu_state::render(game* game)
 	choice_ = menu_choice(options_);
 }
 
-//location* map_menu_state::make_new_location()
-//{
-//	const std::vector<double> coords { 500, 700, 0 };
-//	const auto l = new location("Big House", coords, resources::lumber);
-//
-//	return l;
-//}
+location* map_menu_state::make_new_location()
+{
+	coordinates coords{500,700};
+	const auto l = new location("Big House", coords);
+
+	return l;
+}

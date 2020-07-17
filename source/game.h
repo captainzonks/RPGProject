@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "constants.h"
+#include "world.h"
 
 class entity;
 class game_state;
@@ -16,6 +17,7 @@ public:
 	~game() = default;
 
 	std::shared_ptr<entity> player{nullptr};
+	world the_world;
 
 	void init();
 	void cleanup();
