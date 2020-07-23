@@ -1,0 +1,62 @@
+cmake_minimum_required(VERSION 3.16)
+project(RPG-Project)
+
+set(CMAKE_CXX_STANDARD 17)
+
+include_directories(.)
+
+add_executable(rpg-project
+        attributes_component.cpp
+        attributes_component.h
+        character_builder.cpp
+        character_builder.h
+        character_creator_state.cpp
+        character_creator_state.h
+        class_features.cpp
+        class_features.h
+        class_functions.cpp
+        class_functions.h
+        combat_state.cpp
+        combat_state.h
+        component.cpp
+        component.h
+        constants.h
+        currency_component.cpp
+        currency_component.h
+        entity.cpp
+        entity.h
+        entity_manager.cpp
+        entity_manager.h
+        game.cpp
+        game.h
+        game_state.cpp
+        game_state.h
+        helper_functions.h
+        inventory_component.cpp
+        inventory_component.h
+        item.cpp
+        item.h
+        item_list.cpp
+        item_list.h
+        job_component.cpp
+        job_component.h
+        job_functions.cpp
+        job_functions.h
+        location.cpp
+        location.h
+        main.cpp
+        map_menu_state.cpp
+        map_menu_state.h
+        menu_state.cpp
+        menu_state.h
+        name_list.h
+        npc_info_menu.cpp
+        npc_info_menu.h
+        player_info_menu.cpp
+        player_info_menu.h
+        shop_menu_state.cpp
+        shop_menu_state.h
+        spacial_component.cpp
+        spacial_component.h
+        world.cpp
+        world.h)

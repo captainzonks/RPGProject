@@ -36,8 +36,6 @@ public:
 private:
 	bool running_{false};
 	std::vector<game_state *> states_;
-
-	int ticks_last_frame_{};
 };
 
 #endif

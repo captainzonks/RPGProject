@@ -1,7 +1,6 @@
 // MAIN
 
 #include "character_creator_state.h"
-#include "constants.h"
 #include "game.h"
 
 int main()
