@@ -10,29 +10,24 @@
 #include "game_state.h"
 #include "menu_state.h"
 
-void game::init()
-{
+void game::init() {
   srand(static_cast<unsigned>(time(nullptr))); // seed the dice rolls
   running_ = true;
 }
 
-void game::cleanup()
-{
+void game::cleanup() {
   // cleanup all the states_
-  while (!states_.empty())
-  {
-    states_.back()->cleanup();
-    states_.pop_back();
+  while (!states_.empty()) {
+	states_.back()->cleanup();
+	states_.pop_back();
   }
 }
 
-void game::change_state(game_state *state)
-{
+void game::change_state(game_state *state) {
   // cleanup the current state
-  if (!states_.empty())
-  {
-    states_.back()->cleanup();
-    states_.pop_back();
+  if (!states_.empty()) {
+	states_.back()->cleanup();
+	states_.pop_back();
   }
 
   // store and init the new state
@@ -40,12 +35,10 @@ void game::change_state(game_state *state)
   states_.back()->init();
 }
 
-void game::push_state(game_state *state)
-{
+void game::push_state(game_state *state) {
   // pause current state
-  if (!states_.empty())
-  {
-    states_.back()->pause();
+  if (!states_.empty()) {
+	states_.back()->pause();
   }
 
   // store and init the new state
@@ -53,45 +46,39 @@ void game::push_state(game_state *state)
   states_.back()->init();
 }
 
-void game::pop_state()
-{
+void game::pop_state() {
   // cleanup the current state
-  if (!states_.empty())
-  {
-    states_.back()->cleanup();
-    states_.pop_back();
+  if (!states_.empty()) {
+	states_.back()->cleanup();
+	states_.pop_back();
   }
 
   // resume previous state
-  if (!states_.empty())
-  {
-    states_.back()->resume();
+  if (!states_.empty()) {
+	states_.back()->resume();
   }
 }
 
-void game::handle_events()
-{
+void game::handle_events() {
   // let the state handle events
   if (!is_running())
-    return;
+	return;
   states_.back()->handle_events(this);
 }
 
-void game::update()
-{
+void game::update() {
   // entity_manager::instance()->update(this);
   if (!is_running())
-    return;
+	return;
   states_.back()->update(this);
 }
 
-void game::render()
-{
+void game::render() {
   // if (entity_manager::instance()->has_no_entities())
   //   return;
 
   // entity_manager::instance()->render(this);
   if (!is_running())
-    return;
+	return;
   states_.back()->render(this);
 }

@@ -5,18 +5,17 @@
 
 class location;
 
-class world
-{
-public:
-    ~world();
+class world {
+ public:
+  ~world();
 
-    void add_location(location* new_location);
-    void print_locations();
+  void add_location(location *new_location);
+  void print_locations();
 
-    [[nodiscard]] std::vector<location*> get_world_map() { return world_map_; }
+  [[nodiscard]] std::vector<location *> get_world_map() { return world_map_; }
 
-private:
-    std::vector<location*> world_map_{};
+ private:
+  std::vector<location *> world_map_{};
 };
 
 #endif

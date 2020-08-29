@@ -2,8 +2,7 @@
 
 #include <algorithm>
 
-void location::update()
-{
+void location::update() {
 }
 
 // void location::add_owners(entity &owner)

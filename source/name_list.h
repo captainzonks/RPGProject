@@ -3,9 +3,8 @@
 #include <string>
 #include <vector>
 
-namespace name_list
-{
-	inline std::vector<std::string> male_names
+namespace name_list {
+inline std::vector<std::string> male_names
 	{
 		"Ackerly",
 		"Barney",
@@ -17,7 +16,7 @@ namespace name_list
 		"Haylan"
 	};
 
-	inline std::vector<std::string> female_names
+inline std::vector<std::string> female_names
 	{
 		"Abelena",
 		"Beverly",
@@ -28,7 +27,7 @@ namespace name_list
 		"Githa",
 		"Hazel"
 	};
-	
+
 }
 
 #endif

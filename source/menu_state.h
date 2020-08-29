@@ -5,9 +5,8 @@
 
 #include "game_state.h"
 
-class menu_state final : public game_state
-{
-public:
+class menu_state final : public game_state {
+ public:
   void init() override;
   void cleanup() override;
 
@@ -20,17 +19,17 @@ public:
 
   static menu_state *instance() { return &menu_state_; }
 
-protected:
+ protected:
   menu_state() = default;
 
-private:
+ private:
   static menu_state menu_state_;
 
   unsigned choice_{};
 
   std::vector<std::string> options_{"Player Info", "Fantasy Shop",
-                                    "NPC Debug Menu", "Map Debug Menu",
-                                    "Exit game"};
+									"NPC Debug Menu", "Map Debug Menu",
+									"Exit game"};
   const std::string name_{"Main Menu"};
 };
 

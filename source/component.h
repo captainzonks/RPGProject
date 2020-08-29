@@ -3,14 +3,13 @@
 
 class entity;
 
-class component
-{
-public:
-	entity *owner{nullptr};
-	virtual ~component() = default;
-	virtual void initialize() {}
-	virtual void update() {}
-	virtual void render() {}
+class component {
+ public:
+  entity *owner{nullptr};
+  virtual ~component() = default;
+  virtual void initialize() {}
+  virtual void update() {}
+  virtual void render() {}
 };
 
 #endif

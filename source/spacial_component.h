@@ -7,18 +7,17 @@
 #include "constants.h"
 
 class spacial_component final
-    : public component
-{
-public:
-    spacial_component() = default;
-    ~spacial_component() { std::cout << "spacial_component destructor called" << std::endl; }
+	: public component {
+ public:
+  spacial_component() = default;
+  ~spacial_component() override { std::cout << "spacial_component destructor called" << std::endl; }
 
-    void initialize() override {}
-    void update() override {}
-    void render() override {}
+  void initialize() override {}
+  void update() override {}
+  void render() override {}
 
-private:
-    coordinates my_coordinates_{};
+ private:
+  coordinates my_coordinates_{};
 };
 
 #endif

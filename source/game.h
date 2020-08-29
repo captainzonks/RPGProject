@@ -10,32 +10,31 @@
 class entity;
 class game_state;
 
-class game
-{
-public:
-	game() = default;
-	~game() = default;
+class game {
+ public:
+  game() = default;
+  ~game() = default;
 
-	std::shared_ptr<entity> player{nullptr};
-	world the_world;
+  std::shared_ptr<entity> player{nullptr};
+  world the_world;
 
-	void init();
-	void cleanup();
+  void init();
+  void cleanup();
 
-	void change_state(game_state *state);
-	void push_state(game_state *state);
-	void pop_state();
+  void change_state(game_state *state);
+  void push_state(game_state *state);
+  void pop_state();
 
-	void handle_events();
-	void update();
-	void render();
+  void handle_events();
+  void update();
+  void render();
 
-	[[nodiscard]] bool is_running() const { return running_; }
-	void quit() { running_ = false; };
+  [[nodiscard]] bool is_running() const { return running_; }
+  void quit() { running_ = false; };
 
-private:
-	bool running_{false};
-	std::vector<game_state *> states_;
+ private:
+  bool running_{false};
+  std::vector<game_state *> states_;
 };
 
 #endif

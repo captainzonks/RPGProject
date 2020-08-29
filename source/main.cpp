@@ -3,8 +3,7 @@
 #include "character_creator_state.h"
 #include "game.h"
 
-int main()
-{
+int main() {
   game game;
 
   // initialize
@@ -13,11 +12,10 @@ int main()
   game.change_state(character_creator_state::instance());
 
   // main loop
-  while (game.is_running())
-  {
-    game.handle_events();
-    game.update();
-    game.render();
+  while (game.is_running()) {
+	game.handle_events();
+	game.update();
+	game.render();
   }
 
   // cleanup

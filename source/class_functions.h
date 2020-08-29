@@ -3,13 +3,12 @@
 
 #include "constants.h"
 
-class class_functions
-{
-public:
-	virtual ~class_functions() = default;
-	
-protected:
-	
+class class_functions {
+ public:
+  virtual ~class_functions() = default;
+
+ protected:
+
 };
 
 #endif
