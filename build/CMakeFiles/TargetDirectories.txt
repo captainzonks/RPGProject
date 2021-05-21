@@ -1,0 +1,3 @@
+/home/pi/Documents/cpp/RPGProject/build/CMakeFiles/rebuild_cache.dir
+/home/pi/Documents/cpp/RPGProject/build/CMakeFiles/RPG_Game.dir
+/home/pi/Documents/cpp/RPGProject/build/CMakeFiles/edit_cache.dir

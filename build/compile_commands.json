@@ -1,0 +1,132 @@
+[
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/attributes_component.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/attributes_component.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/attributes_component.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/character_builder.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/character_builder.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/character_builder.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/character_creator_state.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/character_creator_state.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/character_creator_state.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/class_features.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/class_features.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/class_features.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/class_functions.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/class_functions.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/class_functions.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/combat_state.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/combat_state.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/combat_state.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/component.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/component.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/component.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/currency_component.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/currency_component.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/currency_component.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/entity.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/entity.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/entity.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/entity_manager.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/entity_manager.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/entity_manager.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/game.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/game.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/game.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/game_state.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/game_state.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/game_state.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/inventory_component.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/inventory_component.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/inventory_component.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/item.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/item.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/item.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/item_list.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/item_list.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/item_list.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/job_component.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/job_component.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/job_component.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/job_functions.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/job_functions.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/job_functions.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/location.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/location.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/location.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/main.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/main.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/main.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/map_menu_state.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/map_menu_state.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/map_menu_state.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/menu_state.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/menu_state.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/menu_state.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/npc_info_menu.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/npc_info_menu.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/npc_info_menu.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/player_info_menu.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/player_info_menu.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/player_info_menu.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/shop_menu_state.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/shop_menu_state.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/shop_menu_state.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/spacial_component.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/spacial_component.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/spacial_component.cpp"
+},
+{
+  "directory": "/home/pi/Documents/cpp/RPGProject/build",
+  "command": "/usr/bin/c++   -I/home/pi/Documents/cpp/RPGProject/source    -std=c++17 -o CMakeFiles/RPG_Game.dir/world.cpp.o -c /home/pi/Documents/cpp/RPGProject/source/world.cpp",
+  "file": "/home/pi/Documents/cpp/RPGProject/source/world.cpp"
+}
+]
