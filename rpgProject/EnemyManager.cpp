@@ -196,7 +196,7 @@ void EnemyManager::DisplayAllEnemies()
 
 unsigned int EnemyManager::GetTotalEnemies()
 {
-	unsigned int total{ enemies.size() };
+	unsigned int total{ static_cast<unsigned>(enemies.size()) };
 	return total;
 }
 
